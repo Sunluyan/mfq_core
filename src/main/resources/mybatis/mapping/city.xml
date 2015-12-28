@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.area.CityMapper">
+	<sql id="selectsql">
+		id, name, pro_id as proId, sort
+	</sql>
+
+	<select id="findById" resultType="City">
+		select
+		<include refid="selectsql" />
+		from area_city where id=#{id} order by sort desc
+	</select>
+
+</mapper>

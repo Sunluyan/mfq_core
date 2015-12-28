@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.PassportOauthMapper">
+	<sql id="selectsql">
+		uid,site_type as siteType,access_token as accessToken,uuid,status,extra,
+		expired_at as expiredAt,created_at as createdAt,updated_at as updatedAt,sync
+	</sql>
+	<sql id="insertsql">
+		uid,site_type,access_token,uuid,status,extra,expired_at,created_at,updated_at,sync
+	</sql>
+
+	<select id="queryPassportOauthByUid" resultType="PassportOauth">
+		select
+		<include refid="selectsql" />
+		from passports_oauth where uid=#{uid}
+	</select>
+	
+	<select id="queryPassportOauth" resultType="PassportOauth">
+		select
+		<include refid="selectsql" />
+		from passports_oauth where site_type=#{connectSite} and uuid=#{uuid}
+	</select>
+
+	<select id="queryPassportOauthByUidAndSiteType" resultType="PassportOauth">
+		select
+		<include refid="selectsql" />
+		from passports_oauth where site_type=#{connectSite} and uid=#{uid}
+	</select>
+
+	<insert id="createPassportOauth" parameterType="PassportOauth">
+		insert into passports_oauth(
+		<include refid="insertsql" />
+		)values (
+			#{uid}, #{siteType}, #{accessToken}, #{uuid}, #{status}, #{extra}, #{expiredAt}, now(), now(), 1
+		)
+	</insert>
+	
+	<update id="unbindPassportOauth">
+		update passports_oauth set status=99,updated_at=now() where uid=#{uid} and uuid=#{uuid}
+	</update>
+
+	<update id="updatePassportOauth">
+		update passports_oauth set access_token=#{accessToken},uuid=#{uuid},extra=#{extra},
+		expired_at=#{expiredAt},updated_at=now() where uid=#{uid} and site_type=#{siteType}
+	</update>
+
+	<update id="updatePassportOauthExtra">
+		update passports_oauth set extra=#{extra} where uid=#{uid} and site_type=#{siteType}
+	</update>
+
+	<update id="updateSync">
+		update passports_oauth set sync=#{sync} where uid=#{uid} and site_type=#{siteType}
+	</update>
+	
+	<delete id="delPassportOauth">
+		delete from passports_oauth  where uid=#{uid} and uuid=#{uuid}
+	</delete>
+
+</mapper>

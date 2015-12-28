@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.VcodeMapper">
+	<sql id="selectsql">
+		id, vcode, emkey as `key`, expire_at as expireAt, resend_at
+		as resendAt,
+		retry_time as retryTime, created_at as createdAt,
+		updated_at as
+		updatedAt, seq_id as seqId
+	</sql>
+	<sql id="insertsql">
+		vcode, emkey, expire_at, resend_at, retry_time, created_at,
+		updated_at, seq_id
+	</sql>
+
+	<select id="queryBykey" resultType="Vcode">
+		select
+		<include refid="selectsql" />
+		from vcode where emkey=#{key} order by id desc limit 1
+	</select>
+
+	<insert id="insertVcode" parameterType="Vcode"
+		useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into vcode(
+		<include refid="insertsql" />
+		)values (
+		#{code}, #{key}, #{expireAt}, #{resendAt}, 0, now(), now(), 0
+		)
+	</insert>
+
+	<update id="updateVcode">
+		update vcode set
+		vcode=#{code},expire_at=#{expireAt},resend_at=#{resendAt},updated_at=#{nowAt},
+		retry_time=0,seq_id=seq_id+1 where emkey=#{key}
+	</update>
+
+	<delete id="updateRetryTime">
+		update vcode set retry_time=retry_time+1 where emkey=#{key}
+	</delete>
+
+</mapper>

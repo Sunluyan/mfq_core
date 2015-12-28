@@ -1,0 +1,34 @@
+html,body{
+	width:100%;
+	height:100%;
+}
+*{
+	padding:0;
+	margin:0;
+}
+.container{
+	width:100%;
+	height:100%;
+	background:pink;
+}
+.bg{
+	width:100%;
+	height:100%;
+	background:url(../../images/activity/mc/bg-3_02_02_02.png);
+	background-size:cover;
+	position:relative;
+}
+.line{
+	width:70%;
+	height:23%;
+	-background:url(../../images/activity/mc/images/line-bg_03.png);
+	background-size:contain;
+	position:absolute;
+	left:50%;
+	bottom:22%;
+	margin-left:-35%;
+}
+.line img{
+	width:100%;
+	height:100%;
+}

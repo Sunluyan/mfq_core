@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.UserMapper">
+	<sql id="selectsql">
+		uid, status, nick, email, mobile, gender, location, location_id as locationId, icon, img, pic, 
+		birthday, intro, interest, career, created_at as createdAt, 
+		updated_at as updatedAt, sign
+	</sql>
+	
+	<sql id="insertsql">
+		status, nick, email, mobile, gender, location, location_id, icon, img, pic,
+		birthday, intro, interest, career, created_at, updated_at, sign
+	</sql>
+
+	<insert id="insertUser" parameterType="User"
+		useGeneratedKeys="true" keyProperty="uid">
+		<selectKey resultType="long" order="AFTER" keyProperty="uid">
+			SELECT LAST_INSERT_ID() AS uid
+		</selectKey>
+		insert into users(
+		<include refid="insertsql" />
+		)values (
+		#{status}, #{nick}, #{email}, #{mobile}, #{gender}, #{location}, #{locationId}, #{icon}, #{img}, #{pic},
+		#{birthday}, #{intro}, #{interest},  #{career}, now(), now(), #{sign}
+		)
+	</insert>
+
+	<select id="queryUser" resultType="User">
+		select
+		<include refid="selectsql" />
+		from users where uid=#{uid}
+	</select>
+
+	<select id="queryUserByEmail" resultType="User">
+		select
+		<include refid="selectsql" />
+		from users where email=#{email}
+	</select>
+	
+	<select id="queryUserByMobile" resultType="User">
+		select
+		<include refid="selectsql" />
+		from users where mobile=#{mobile}
+	</select>
+
+	<update id="updateStatus">
+		update users set status=#{status} where uid=#{uid} and status &lt;&gt; #{status}
+	</update>
+
+	<update id="updateSetSigns">
+		update users set sign=sign|${setSign} where uid=#{uid}
+	</update>
+	
+	<update id="updateUnsetSigns">
+		update users set sign=sign&amp;~${setSign} where uid=#{uid}
+	</update>
+
+	<update id="updateSign">
+		update users set sign=${sign} where uid=#{uid}
+	</update>
+	
+	<update id="updateSimpleProfile">
+		update users set updated_at=now(), nick=#{nick}, gender=#{gender} where uid=#{uid}
+	</update>
+	
+	<update id="updateEmail">
+		update users set email=#{newEmail} where uid=#{uid} 
+	</update>
+
+	<update id="updateMobile">
+		update users set mobile=#{newMobile} where uid=#{uid} 
+	</update>
+
+	<update id="updatePic">
+		update users set pic=#{pic} where uid=#{uid} 
+	</update>
+
+	<update id="updatePresentByMobile">
+
+		update users_quota,users set users_quota.present = 500
+
+		where users_quota.uid = users.uid and users.mobile = #{mobile}
+	</update>
+</mapper>

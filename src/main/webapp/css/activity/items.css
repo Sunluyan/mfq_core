@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+body{background-color:#F7EC62;}
+.timer_p{height:120pt; text-align:center; background-color:#FDE04D;}
+.timer_t{ margin-bottom:10pt;}
+.timer_t span{color:#3BA9CC; font-size:2.3rem;}
+.item_p{background-color:#FC3; padding-bottom:0px; position:relative;}
+.row{margin:0px;}
+.container{ padding:0px;}
+.detail_p{position:absolute; bottom:0px; width:100%; height:30pt; }
+.title_p{font-size:2.1rem; color:#FFF; line-height:30pt; opacity:0.6; background-color:#CCC;}
+small{color:#FFF;}
+.times{height:55pt; padding-top:12pt;}
+.title_f{display:block; height:100%; margin-bottom:0px;}
+.time_d{height:30pt; line-height:30pt;}
+.time_d span {color:#3BA9CC; font-size:2.3rem;}
+.time_d span img{width:30pt; height:30pt; float:left;}
+.time{background:url(../../images/activity/time.png) no-repeat; background-size:37px 37px; padding-left:45px; display:inline-block;}
+.title_r{height:100%; padding:0px; background: #E63F52 none repeat scroll 0% 0%;}
+.ms{background:#F00; height:100%; background:url(../../images/activity/mst.png) no-repeat; background-size:60px 40px;}
+.th{background:#F00; height:100%; background:url(../../images/activity/xs.png) no-repeat; background-size:60px 40px;}
+.title_th{font-size:2.1rem; color:#dc0032; line-height:30pt; opacity:0.6; background-color:#CCC;}
+.title_th h4 small{margin-left: 10pt;}
+
+

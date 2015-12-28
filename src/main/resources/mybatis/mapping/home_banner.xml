@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.HomeBannerMapper">
+	<sql id="selectsql">
+		`id`, `img`, `name`, `url`, `index`, `p_id` as pId, `p_type` as pType, `type`, `flag`, `created_at` as createdAt
+	</sql>
+	<sql id="insertsql">
+		`img`, `name`, `url`, `index`, `p_id`, `p_type`,  `type`, `flag`, `created_at`
+	</sql>
+	
+	<select id="findById" resultType="HomeBanner">
+		select
+		<include refid="selectsql" />
+		from home_banner where id=#{id} and `flag` &lt;&gt; 1
+	</select>
+	
+	<select id="queryAll" resultType="HomeBanner">
+		select <include refid="selectsql"/> from home_banner where `flag` &lt;&gt; 1
+	</select>
+
+	<insert id="insertHomeBanner" parameterType="HomeBanner">
+		insert into home_banner(
+		<include refid="insertsql" />
+		)values (
+		#{img}, #{name}, #{url}, #{index}, #{pId}, #{pType}, #{type}, #{flag}, now()
+		)
+	</insert>
+	
+	<update id="updateHomeBanner">
+		update home_banner set 		
+		<if test="img != null and img != ''">
+		`img`=#{img}, 
+		</if>
+		<if test="name != null and name != ''">
+		`name`=#{name}, 
+		</if>
+		<if test="pId != 0">
+		`p_id`=#{pId}, 
+		</if>
+		<if test="pType != null">
+		`p_type`=#{pType}, 
+		</if>
+		<if test="url != null and url != ''">
+		`url`=#{url}, 
+		</if>
+		`index`=#{index}, `type` = #{type}, `flag`=#{flag} where id=#{id} 
+	</update>
+	
+	<update id="deleteHomeBanner">
+		update home_banner set `flag` = 1 where `id` = #{id}
+	</update>
+
+</mapper>

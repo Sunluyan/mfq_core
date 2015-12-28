@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.WeChatMsgMapper">
+	<sql id="selectsql">
+		id, to_user_name as toUserName, open_id as openId, create_at as createAt,
+		msg_type as msgType, pic_url as picUrl, content, media_id as mediaId, msg_id as msgId
+	</sql>
+	<sql id="insertsql">
+		id, to_user_name, open_id, create_at,
+		msg_type, pic_url, content, media_id, msg_id
+	</sql>
+
+	<insert id="saveWeChatMsg" parameterType="WeChatMsg"
+		useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into wechat_msg(
+		<include refid="insertsql" />
+		)values (
+		#{id}, #{toUserName}, #{openId}, #{createAt}, #{msgType}, #{picUrl}, #{content}, #{mediaId}, #{msgId}
+		)
+	</insert>
+
+</mapper>

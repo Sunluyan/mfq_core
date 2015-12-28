@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.PassportMapper">
+	<sql id="selectsql">
+		uid,ticket,created_at as createdAt,expired_at as
+		expiredAt,actived_at as activedAt,password,salt,salt2,password2
+	</sql>
+
+	<sql id="insertsql">
+		uid,ticket,created_at,expired_at,actived_at,password,salt,salt2,password2
+	</sql>
+
+	<insert id="insertPassport" parameterType="Passport">
+		insert into passports(
+		<include refid="insertsql" />
+		)values (
+		#{uid}, #{ticket}, #{createdAt}, #{expiredAt}, #{activedAt},
+		#{password}, #{salt}, #{salt2}, #{password2}
+		)
+	</insert>
+
+	<select id="queryPassport" resultType="Passport">
+		select
+		<include refid="selectsql" />
+		from passports where uid=#{uid}
+	</select>
+
+	<select id="queryValidPassportByTicket" resultType="Passport">
+		select
+		p.uid as uid,p.ticket as ticket,p.created_at as createdAt,
+		p.expired_at as expiredAt from passports p,users u
+		where p.uid=#{uid} and p.ticket=#{ticket} and p.expired_at &gt; now() and p.uid=u.uid and
+		u.status &lt;&gt; #{status}
+	</select>
+
+	<update id="updateSalt2AndPassword2">
+		update passports set salt2=#{salt2},password2=#{password2} where uid=#{uid}
+	</update>
+
+	<update id="updateSalt2AndPP2">
+		update passports set password=#{password},salt2=#{salt2},password2=#{password2} where uid=#{uid}
+	</update>
+
+	<update id="updateExpired">
+		update passports set expired_at = #{expiredAt} where uid=#{uid}
+	</update>
+
+	<update id="updateDefaultTicket">
+		update passports set ticket=#{ticket},created_at=#{createdAt},expired_at=#{expiredAt} where uid=#{uid}
+	</update>
+
+</mapper>
