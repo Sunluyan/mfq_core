@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.octo:captcha:selfupload">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/octo/captcha/selfupload/captcha-selfupload.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/octo/captcha/selfupload/captcha-selfupload-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/octo/captcha/selfupload/captcha-selfupload-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
