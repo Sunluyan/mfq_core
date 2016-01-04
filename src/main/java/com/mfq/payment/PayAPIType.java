@@ -7,8 +7,8 @@ public enum PayAPIType {
 	INNER("innerpay", "平台内支付"),
     YEEPAY("yeepay", "易宝支付"),
     WECHAT("wechat", "微信支付"),
-    ALIPAY("alipay", "支付宝");
-    
+    ALIPAY("alipay", "支付宝"),
+    UNIONPAY("bcUnionpay","银联支付");//银联支付基于BeeCloud的服务
     String code;
     String pay;
     

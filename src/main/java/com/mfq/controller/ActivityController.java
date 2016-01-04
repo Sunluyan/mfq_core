@@ -53,10 +53,10 @@ public class ActivityController {
 
     private static final Logger logger = LoggerFactory
             .getLogger(ActivityController.class);
-
+    
     private String startDate = "2015-11-11 18:00:00";
     private String endDate = "2015-11-12 23:59:59";
-
+    
     @Resource
     ActivityService activityService;
     @Resource
@@ -73,13 +73,17 @@ public class ActivityController {
     SMSService smsService;
     @Resource
     UserQuotaService userQuotaService;
+
     /**
      * 首页HTML5页面
+     * @param request
+     * @param response
      * @return
      * @throws Exception
      */
     @RequestMapping(value = {"/index/","/index"})
-    public ModelAndView index() throws Exception {
+    public ModelAndView index(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
     	
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("title", "首页");
@@ -89,11 +93,14 @@ public class ActivityController {
     
     /**
      * 秒杀活动规则页面
+     * @param request
+     * @param response
      * @return
      * @throws Exception
      */
     @RequestMapping(value = {"/list/","/list"})
-    public ModelAndView rule() throws Exception {
+    public ModelAndView rule(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("title", "双十一");
         return new ModelAndView("/activity/s/rule", model);
@@ -342,7 +349,6 @@ public class ActivityController {
         } catch (Exception e) {
             logger.error("WeiXin_REGISTER_Exception", e);
         }
-
         return new ModelAndView("/activity/Christmas/"+page, model);
     }
 
@@ -375,9 +381,13 @@ public class ActivityController {
                 logger.info("user {} login meifenqi fronted system.....");
 
                 User user = userService.queryUserByMobile(mobile);
+
                 if(user!=null){
                     UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
-                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))!=0){
+                    System.out.println(quota.toString());
+                    System.out.println(quota.getPresent().compareTo(BigDecimal.valueOf(500)));
+
+                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))==0){
                         ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
                         return ret;
                     }

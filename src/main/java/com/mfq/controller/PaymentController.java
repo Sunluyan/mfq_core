@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.BeeCloudResult;
+import com.mfq.payment.impl.UnionpayServiceImpl;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +53,8 @@ public class PaymentController {
 	UserQuotaService userQuotaService;
 	@Resource
 	FinanceBillService financeBillService;
-
+    @Resource
+    UnionpayServiceImpl unionpayService;
 	
 	
 	/**
@@ -64,7 +67,7 @@ public class PaymentController {
 	@ResponseBody
 	@LoginRequired
 	public String mobileGoPay(@PathVariable String tpp, HttpServletRequest request, HttpServletResponse response)
-			 {
+	{
 		String ret = "";
 		long start = System.currentTimeMillis();
 		logger.info("Mobiles goPay start");
@@ -80,26 +83,21 @@ public class PaymentController {
 			
 			BigDecimal amount = new BigDecimal(params.get("amount").toString()); // 充值额度或实际需支付金额
 																				 // 或 还款金额
-			BigDecimal balancePay = new BigDecimal(0); // 余额部分，若为null应置为0
-			if (params.get("balance") != null) {
-				balancePay = new BigDecimal(params.get("balance").toString()); // 使用余额部分（目前包含优惠券的价值！！！）
-			}
-			String couponNum="";
-			if(params.get("coupon_num")!=null){
-				couponNum = params.get("coupon_num").toString();
-			}
+
+
 			
 			PayAPIType apiType = PayAPIType.fromCode(tpp);
 	        if (apiType == null) {
 	            return null;
 	        }
 	        
-			ret = payService.beforeGoPayCheck(orderType, amount, balancePay, couponNum, orderNo, apiType);
+			ret = payService.beforeGoPayCheck(orderType, amount, orderNo, apiType);
 			if (StringUtils.isNotBlank(ret)) {
 				logger.warn("Gopay前订单校验失败！");
 				return ret;
 			}
-			
+
+
 			BasePaymentService service = PayFactory.getInstance(tpp);
 			logger.info("tpp:{}",tpp);
 			if (service == null) {
@@ -109,9 +107,8 @@ public class PaymentController {
 			}
 			
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
-			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount,
-					balancePay);
-			logger.info("save2PayRecord! orderNo={}, num={}", orderNo, s);
+			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount);
+			logger.info("save2PayRecord! orderNo={}, count={}", orderNo, s);
 			
 			
 			ret = service.goPay(request, response, params, orderType);
@@ -149,31 +146,32 @@ public class PaymentController {
 				logger.warn("Unsupported tpp: {}", tpp);
 				throw new Exception("Unsupported tpp:"+tpp);
 			}
-			 
+
 			//传入 request、response 获取支付结果的实体类
 			PayCallbackResult result = service.payCallback(request, response, ret);
 			if(result.getOrderNo()==null){
 				ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_NULL, "参数不对", null);
 				throw new Exception("参数不对");
 			}
+
 			logger.info("{} get callback result:{}", tpp, result);
 			
 			// 根据订单号判断，是充值，支付还是还款
 			if (payService.getOrderType(result.getOrderNo()) == OrderType.RECHARGE) {
+
 				if (result.getStatus() != PayStatus.GO_PAY.getValue()) {
 					logger.error("Pay callback status is:{}", result.getStatus());
 					throw new Exception("回调充值状态异常");
 				}
 				logger.info("mobile_callback result = {}  , status = {}", result);
 				//充值成功后修改各种记录
-				payService.updateRechargePayOk(result, PayStatus.PAID); 
-			} 
-			
+				payService.updateRechargePayOk(result, PayStatus.PAID);
+
+			}
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.REFUND){//还款（还分期账单）
 				//还款，修改financeBill状态
 				payService.updateOrderRefundOk(result);
 			}
-			
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.ONLINE){
 				//订单支付
 				payService.updateOrderPayOk(result);
@@ -184,12 +182,11 @@ public class PaymentController {
 			logger.error("MOBILE_CALLBACK_EXCEPTION", e);
 			e.printStackTrace();
 		}finally {
-			// 释放分布式锁
+            // 释放分布式锁
 			/*
 			 * lock.unlock(lockFlag);
 			 */
-		}
-		
+        }
 		
 	     try {
 	    	 //如果ret还是""的话，就说明是正确的，设置为正确的样子
@@ -207,4 +204,92 @@ public class PaymentController {
 		
 		logger.info("{} pay callback receive success", tpp);
 	}
+
+
+    /**
+     * channel_type : WX/ALI/UN/KUAIQIAN/JD/BD/YEE/PAYPAL 分别代表微信/支付宝/银联/快钱/京东/百度/易宝/PAYPAL
+     *
+     * request中有
+     sign String 32位小写
+     timestamp	Long	1426817510111
+     channel_type	String	'WX' or 'ALI' or 'UN' or 'KUAIQIAN' or 'JD' or 'BD' or 'YEE' or 'PAYPAL'
+     sub_channel_type	String	'WX_APP' or 'WX_NATIVE' or 'WX_JSAPI' or 'WX_SCAN' or 'ALI_APP' or 'ALI_SCAN' or 'ALI_WEB' or 'ALI_QRCODE' or 'ALI_OFFLINE_QRCODE' or 'ALI_WAP' or 'UN_APP' or 'UN_WEB' or 'PAYPAL_SANDBOX' or 'PAYPAL_LIVE' or 'JD_WAP' or 'JD_WEB' or 'YEE_WAP' or 'YEE_WEB' or 'YEE_NOBANKCARD' or 'KUAIQIAN_WAP' or 'KUAIQIAN_WEB' or 'BD_APP' or 'BD_WEB' or 'BD_WAP'
+     transaction_type	String	'PAY' or 'REFUND'
+     transaction_id	String
+     transaction_fee 订单总金额 单位为分
+     trade_success
+     message_detail
+     optional
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = "/pay/mobile_callback/beecloud.do",method={RequestMethod.POST,RequestMethod.GET})
+    public void BCCallback(HttpServletRequest request,HttpServletResponse response){
+        String ret = "";
+        logger.info("enter mobile_callback/beecloud.do,request = {}",request);
+        try {
+            BeeCloudResult result = new BeeCloudResult(request);
+            logger.info("BeeCloudResult : {}",result);
+            System.out.println(result);
+            if(! UnionpayServiceImpl.checkSign(result. getTimestamp(),result.getSign())){
+                throw new Exception("签名不正确!");
+            }
+            //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("text/plain");
+            response.getWriter().write("success");
+
+            if(! result.getTrade_success()){
+                throw new Exception("用户付款失败");
+            }
+
+            //在创建BeeCloudResult对象时,已经做了各种错误判断.出错了就把sign设为null,所以参数缺失错误可以用sign==null来判断
+            if(result.getSign()==null){
+                logger.error("参数错误!");
+                throw new Exception("参数错误!");
+            }
+            //验证付款金额是否和订单需要付款的金额相等
+
+
+
+
+
+            //如果是银联付款的话
+            if(result.getChannel_type().equals("UN")){
+                ret = unionpayService.beeCloudCallback(result,request,response);
+            }
+
+
+
+        } catch (Exception e) {
+           logger.error("BeeCloud error",e);
+            ret = JsonUtil.toJson(9999,e.toString(),null);
+        }
+
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

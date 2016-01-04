@@ -697,6 +697,7 @@ public class WeChatController {
             vcode = vcodeService.applyVcode(mobile, expireAt, resendAt);
 
             String msg = vcode.getVcode() + ",30";
+            System.out.println(msg);
             logger.info("msg_full_log: {}|{}|{}|{}", ip,
                     request.getHeader("Referer"), mobile, msg);
             if (vcode.getVcode() == null) {

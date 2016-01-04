@@ -123,7 +123,7 @@ public class ActivityService {
 		OrderType orderType = payService.getOrderType(order.getOrder_no());
 		BasePaymentService service = PayFactory.getInstance(PayAPIType.INNER);
 		payService.getOrderType(order.getOrder_no());
-		long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), order.getOrder_no(), order.getPrice(),
+		long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), order.getOrder_no(),
 				order.getPrice());
 		if(s>0){
 			

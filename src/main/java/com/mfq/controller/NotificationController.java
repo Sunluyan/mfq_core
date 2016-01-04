@@ -56,6 +56,7 @@ public class NotificationController {
 			if(params.get("t") != null){
 				t = Long.parseLong(params.get("t").toString());
 			}
+
 			Date time = new Date(t);
 			ret = notificationService.queryMsgs(uid, page, time, type);
 		}catch(Exception e){
@@ -88,6 +89,7 @@ public class NotificationController {
 		}catch(Exception e){
 			logger.info("this is error {}",e);
 		}
+		logger.info("notification read ret is {}", ret);
 		return ret;
 		
 		

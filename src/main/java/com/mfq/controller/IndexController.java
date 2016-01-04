@@ -99,7 +99,9 @@ public class IndexController {
     	String ret = JsonUtil.successResultJson(data);
         return ret;
     }
-    
+
+
+    //首页弹窗活动
     @RequestMapping(value = {"/index/duration","/index/duration/"})
     @ResponseBody
     public String duration(HttpServletRequest request,

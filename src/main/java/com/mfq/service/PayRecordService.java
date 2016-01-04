@@ -8,6 +8,9 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.BeeCloudResult;
+import com.mfq.constants.CardType;
+import com.mfq.payment.PayAPIType;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,7 @@ import com.mfq.dao.PayRecordMapper;
 import com.mfq.service.user.UserQuotaService;
 import com.mfq.utils.DateUtil;
 import com.mfq.utils.ListSortUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PayRecordService {
@@ -38,15 +42,12 @@ public class PayRecordService {
 
     /**
      * 需要插入充值记录表
-     * 
-     * @param isRecharge是否充值
      * @param uid
      *            用户id
      * @param orderNo，若充值则为充值单号
-     * @return <=0插入失败，>0插入成功
      */
     public long saveRecord(OrderType orderType, long uid, String orderNo,
-            BigDecimal amount, BigDecimal balancePay) {
+            BigDecimal amount) {
         if (uid <= 0) {
             logger.warn("UserId is unvalid for recharge process! uid={}", uid);
             return 0;
@@ -54,36 +55,25 @@ public class PayRecordService {
         if (orderType == OrderType.RECHARGE && StringUtils.isBlank(orderNo)) {
             orderNo = makeChargeNo(uid);
         }
-        UserQuota quota = quotaService.queryUserQuota(uid);
-        BigDecimal balance = balancePay; // 纯粹的余额部分
         BigDecimal present = new BigDecimal(0);
-        // 如果存在赠送金额，则判断赠送金额使用部分，优先使用余额（非赠送部分）
-        if (quota.getPresent().compareTo(new BigDecimal(0)) > 0) {
-        	// 假如余额需要支付金额 大于 账户中的纯余额部分
-        	if(balancePay.compareTo(quota.getBalance()) > 0){
-        		balance = quota.getBalance(); // 纯粹的余额部分应该取一个较小值--取实际剩余的纯剩余额度，否则（账户余额足够大）按上面的逻辑获取-balancePay
-        	}
-            present = balancePay.subtract(balance);
-            logger.info("balance={}, balancePay={}", balance, balancePay);
-        }
-		if (amount.compareTo(BigDecimal.valueOf(0)) < 0 || balance.compareTo(BigDecimal.valueOf(0)) < 0
-				|| present.compareTo(BigDecimal.valueOf(0)) < 0) {
-			return 0;
-		}
+        BigDecimal balance = new BigDecimal(0);
         PayRecord record = buildDefaultRecord(orderType, uid, orderNo, amount,
                 balance, present);
         logger.info("create record {}", record);
         return mapper.insertOne(record);
     }
 
+
+
     /**
-     * 支付成功回调update
-     * 
+     * 充值成功回调update
+     *
      * @param result
      * @param status
      * @return
      */
-    public PayRecord updateOne(PayCallbackResult result, PayStatus status) {
+    @Transactional
+    public PayRecord updateOne(PayCallbackResult result, PayStatus status) throws Exception {
         PayRecord record = findByOrderNo(result.getOrderNo());
         if (record == null || status == null) {
             logger.error("不存在与{}匹配的充值记录", result.getOrderNo());
@@ -108,6 +98,44 @@ public class PayRecordService {
         record.setTpp(result.getApiType().getCode());
         record.setTradeNo(StringUtils.defaultIfBlank(result.getTradeNo(), ""));
         record.setUpdatedAt(new Date());
+        mapper.updateOne(record);
+        logger.error("用户充值构造的内容：{}", record);
+        return record;
+    }
+
+
+    /**
+     * BeeCloud 充值成功回调
+     *
+     * @param result
+     * @param status
+     * @return
+     */
+    @Transactional
+    public PayRecord updateOne(BeeCloudResult result, PayStatus status) throws Exception {
+        PayRecord record = findByOrderNo(result.getOptional().get("orderNo").toString());
+        if (record == null || status == null) {
+        }
+        logger.info("orderNo , record {} | {}", result.getOptional().get("orderNo").toString(), record.getId());
+        logger.info("record status {} | {}",record.getStatus(), status);
+        if (record.getStatus() == status) {
+            logger.warn("充值记录状态与要更新到的状态相同！");
+            // do nothing
+            return null;
+        }
+
+        // 更新充值记录
+        record.setAmount(new BigDecimal(result.getOptional().get("amount").toString()));
+        record.setBankCode(
+                StringUtils.defaultIfBlank(result.getMessage_detail().get("bank_type").toString(), ""));
+        record.setCallbackAt(new Date());
+        record.setCardType(CardType.UNDEFINED);
+        record.setCardNo(StringUtils.defaultIfBlank(result.getMessage_detail().get("cardNo").toString(), ""));
+        record.setPayAt(new Date());
+        record.setStatus(status);
+        record.setTpp(result.getChannel_type());
+        record.setTradeNo(StringUtils.defaultIfBlank(result.getTransaction_id(), ""));
+        record.setUpdatedAt(new Date(result.getTimestamp()));
         mapper.updateOne(record);
         logger.error("用户充值构造的内容：{}", record);
         return record;
@@ -180,8 +208,6 @@ public class PayRecordService {
     /**
      * 生成支付单号，仅支付与对账使用
      * 
-     * @param pId：产品ID
-     * @return
      */
     public String makeChargeNo(long uid) {
         String pHex = Long.toHexString(uid);

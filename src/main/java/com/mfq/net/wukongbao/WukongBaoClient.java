@@ -92,7 +92,7 @@ public class WukongBaoClient {
 	
 	/**
 	 * 退保 请求
-	 * @param request
+	 * @param request   请求
 	 * @return
 	 */
 	public Map<String, Object> getPolicyBackRequest(PolicyBackRequest request){
@@ -201,7 +201,6 @@ public class WukongBaoClient {
 	/**
 	 * 保单 请求
 	 * @param order
-	 * @param productName
 	 * @param waiterId
 	 * @return
 	 */
@@ -302,7 +301,8 @@ public class WukongBaoClient {
 	
 	public static void main(String[] args) throws Exception {
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml"); 
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+
 		WukongBaoClient client = (WukongBaoClient)context.getBean("wukongBaoClient");
 		OrderService orderService = (OrderService)context.getBean("orderService");
 		
@@ -330,7 +330,7 @@ public class WukongBaoClient {
 //		InsureOrder order = client.getInsureOrder(info, hospital,"双眼皮手术",2798,  0l);
 		
 		Map<String, Object> map = client.getInsureRequest(info, hospital, "双眼皮手术", 2798, 0l);
-		
+
 		System.out.println("业务数据："+JSONObject.fromObject(map).toString());
 		
 //		Map<String, Object> map = getWuKongBaoRequest(JSONObject.fromObject(order));

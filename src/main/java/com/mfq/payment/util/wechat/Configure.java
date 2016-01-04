@@ -57,5 +57,8 @@ public class Configure {
 
     //7) 统计上报API
     public static String REPORT_API = "https://api.mch.weixin.qq.com/payitil/report";
-    
+
+    public static void main(String[] args) {
+        System.out.println(Configure.appID);
+    }
 }

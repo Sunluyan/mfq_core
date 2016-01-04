@@ -117,6 +117,7 @@ public class NotificationService {
 			Map<String,Object> count = Maps.newHashMap();
 			count.put("notification_count", noticount);
 			count.put("msg_count", msgcount);
+
 			data.put("notification", notis);
 			data.put("msg", uMsg);
 		}
