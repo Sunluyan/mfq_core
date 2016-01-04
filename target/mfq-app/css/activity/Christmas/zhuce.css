@@ -1,0 +1,200 @@
+body{
+	margin: 0;
+	background-image: url(/images/activity/Christmas/zhuce-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+a{
+	text-decoration: none;
+}
+input::-webkit-input-placeholder,input::-moz-placeholder,input:-ms-input-placeholder{
+color: #fdd47a; 
+}
+
+.box{
+	width: 60%;
+	margin: 54% 0 0 14%;
+}
+input{
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background: transparent;
+	width: 100%;
+	height: 1.2rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #fdd47a;
+	margin-top: 10px;
+	outline:none;
+}
+.yaoqingma{
+	font-size: 1rem;
+	color: #fdd47a;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.box01{
+	width: 110%;
+	overflow: hidden;
+}
+.yanzhengma{
+	width: 45%;
+	float: left;
+}
+.huoqu{
+	float: right;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 35%;
+	height: 2.5rem;
+	line-height: 1.2rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+	text-align: center;
+}
+.queren{
+	display: block;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 50%;
+	height: 2.4rem;
+	line-height: 1.2rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+	margin-left: 20%;
+	text-align: center;
+}
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+	.box{
+	width: 60%;
+	margin: 54% 0 0 14%;
+}
+	.box01{
+	width: 112%;
+	overflow: hidden;
+}
+	input{
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background: transparent;
+	width: 94%;
+	height: 1.2rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 15px;
+}
+	.yaoqingma{
+	font-size: 1.2rem;
+	color: #fdd47a;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+	.box01{
+	width: 100%;
+	overflow: hidden;
+}
+	.yanzhengma{
+	width: 50%;
+	float: left;
+}
+	.huoqu{
+	float: right;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 30%;
+	height: 1.2rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 15px;
+	text-align: center;
+	line-height: 1.2rem;
+}
+	.queren{
+	display: block;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 50%;
+	height: 2.4rem;
+	line-height: 1.2rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+	margin-left: 20%;
+	text-align: center;
+}
+}
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+	.box{
+	width: 60%;
+	margin: 54% 0 0 14%;
+}
+	.box01{
+	width: 120%;
+	overflow: hidden;
+}
+	input{
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background: transparent;
+	width: 94%;
+	height: 1.8rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+}
+	.yaoqingma{
+	font-size: 1.2rem;
+	color: #fdd47a;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+	.box01{
+	width: 100%;
+	overflow: hidden;
+}
+	.yanzhengma{
+	width: 50%;
+	float: left;
+}
+	.huoqu{
+	float: right;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 35%;
+	height: 3rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+	text-align: center;
+	line-height: 1.8rem;
+}
+	.queren{
+	display: block;
+	border-radius: 50px;
+	border: solid 2px #fdd47a;
+	background-color: #fdd803;
+	width: 50%;
+	height: 3rem;
+	line-height: 1.8rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	color: #553564;
+	margin-top: 10px;
+	margin-left: 20%;
+	text-align: center;
+}
+}

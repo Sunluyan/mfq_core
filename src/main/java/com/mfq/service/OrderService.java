@@ -169,7 +169,7 @@ public class OrderService {
 		String orderNo = makeOrderNo(p.getId());
 
 		OrderInfo order = new OrderInfo(orderNo, amount, uid, pid, t.getId(), period, periodPay,
-				OrderStatus.BOOK_OK.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
+				OrderStatus.PAY_OK.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
 		
 		
 		//购买保险
@@ -415,7 +415,6 @@ public class OrderService {
 	 * 我的订单
 	 * 
 	 * @param uid
-	 * @param status
 	 */
 
 	public String queryOrdersByUidAndStatus(long uid) {

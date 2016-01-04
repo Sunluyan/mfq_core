@@ -191,15 +191,7 @@ public class PayService {
 	}
 	
 	
-	public static void main(String[] args) throws Exception {
-		ApplicationContext ac =new  ClassPathXmlApplicationContext("spring/spring.xml");
-		PayService payService = ac.getBean(PayService.class);
-		PayCallbackResult result = new PayCallbackResult();
-		result.setAmount(BigDecimal.valueOf(1000));
-		result.setApiType(PayAPIType.INNER);
-		payService.updateOrderPayOk(result);
-	
-	}
+
 	
 	
 	/**
@@ -266,10 +258,15 @@ public class PayService {
 				logger.warn("回调更新充值记录失败，需要报警（请拨打报警电话110）！payCallbackResult={}", result);
 				smsService.sendSysSMS("订单回调更新充值记录失败,order:" + result.getOrderNo());
 			}
-			
-			long count = quotaService.updateUserBalance(record.getUid(), result.getAmount());
-			if(count!=1)
-				throw new Exception("用户余额更新失败");
+
+            //如果是用余额支付该订单,更新下用户余额
+			if(result.getApiType() == PayAPIType.INNER){
+                long count = quotaService.updateUserBalance(record.getUid(), result.getAmount());
+                if(count!=1)
+                    throw new Exception("用户余额更新失败");
+            }
+
+
 			
 			//BigDecimal couponQuota = new BigDecimal(0);
 
@@ -370,9 +367,7 @@ public class PayService {
                 smsService.sendSysSMS("订单回调更新充值记录失败,order:" + result.getOptional().get("orderNo").toString());
             }
 
-            long count = quotaService.updateUserBalance(record.getUid(), new BigDecimal(result.getOptional().get("amount").toString()));
-            if(count!=1)
-                throw new Exception("用户余额更新失败");
+
 
             //BigDecimal couponQuota = new BigDecimal(0);
 
@@ -472,7 +467,7 @@ public class PayService {
             if (r == null) {
                 throw new Exception("更新充值记录失败！");
             }
-            quotaService.updateUserBalance((long)result.getOptional().get("uid"),
+            quotaService.updateUserBalance(Long.valueOf(result.getOptional().get("uid").toString()),
                     new BigDecimal(result.getTransaction_fee().toString()).divide(BigDecimal.valueOf(100)).negate());
             // 成功发送短信
             sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));

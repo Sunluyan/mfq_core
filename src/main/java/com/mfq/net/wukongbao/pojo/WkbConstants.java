@@ -9,15 +9,15 @@ public class WkbConstants {
 	
 	
 	//悟空保参数
-	public static String INSURE_URL =Config.getItem("insure_url");
-
+	public static String INSURE_URL =Config.getItem("insure_url");  
+	
 	public static String QUERY_POLICY = "http://open.wkbins.com/openapiMFQ/policyQuery";  //查询保单
 	
 	public static String SETTLECLAIM = "http://open.wkbins.com/openapiMFQ/settleClaimQuery";  //理赔查询
 	
 	public static String APP_KEY = Config.getItem("policy_key");
 	
-	public static String INSURE_PRODUCT =  Config.getItem("policy_product");
+	public static String INSURE_PRODUCT =  Config.getItem("policy_product"); 
 	
 	public static String SERVICE_NAME = "meifenqi";
 	
@@ -35,8 +35,8 @@ public class WkbConstants {
 	
 	public static String HOSPITAL_LEVEL = "医院";
 	
-	public static String WKB_PUK_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLzNfn38TGSIb3DQEBAQUAA4GNADCBiQKBgQCj0SfLvqKDEYzLk+cN7K+8aVfH4dZ8RfQLgUhisuo5lsFDuOBhDNELKcmxMO5gDYd6Np6yZ91eww1V8zmYTkRqGpsCvj9L1vHqkYtKy6q9g7nlQpvl+c543ZFvp6a8XilR0O0xBDDQWhSJ8JCZpMXYuAgt/UGxAYTV/ncGS4VBtQIDAQAB";
-
+	public static String WKB_PUK_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCj0SfLvqKDEYzLk+cN7K+8aVfH4dZ8RfQLgUhisuo5lsFDuOBhDNELKcmxMO5gDYd6Np6yZ91eww1V8zmYTkRqGpsCvj9L1vHqkYtKy6q9g7nlQpvl+c543ZFvp6a8XilR0O0xBDDQWhSJ8JCZpMXYuAgt/UGxAYTV/ncGS4VBtQIDAQAB";
+	
 	public static String DEV_PRI_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMvM1+ffxP4wcVIHyUSnrTFZNd7S"
 	+"/jzV8yHnt6v1t/Lg5cHh3BsoDv4eiACxW7MGB1h5L8X6me7eB/LV2Oheo6Nd6aREvzN8DeQ6Qhy5"
 	+"jKlwd6QeFerc0mNzkk1oslcnsTyVPTUeOiTVJUNCtL3KXNS4Osg+jP7on46PcKx3moSPAgMBAAEC"

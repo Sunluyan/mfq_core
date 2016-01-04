@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.FavoritesMapper">
+	<sql id="selectsql">
+		uid, pid, updated
+	</sql>
+	<sql id="insertsql">
+		uid, pid, updated
+	</sql>
+
+	<select id="findByUid" resultType="Favorites">
+		select
+		<include refid="selectsql" />
+		from favorites where uid=#{uid} order by updated desc
+	</select>
+	
+	<select id="findByUidAndPid" resultType="Favorites">
+		select
+		<include refid="selectsql" />
+		from favorites where uid=#{uid} and pid=#{pid} order by updated desc
+	</select>
+
+	<delete id="deleteByPids">
+		delete from favorites where uid=#{uid} and pid in
+        <foreach collection="list" open="(" separator="," close=")"
+                 item="id">
+            #{id}
+        </foreach>
+	</delete>
+	
+	<update id="updateUpdateTime">
+		update favorites set updated = now() where uid=#{uid} and pid=#{pid}
+	</update>
+	
+	<insert id="insertFavorites"
+		useGeneratedKeys="true" keyProperty="uid">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert ignore into favorites(
+		<include refid="insertsql" />
+		)values 
+		<foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.uid},#{item.pid},#{item.updated})  
+    	</foreach>
+	</insert>
+	
+	<insert id="insertFavorite"
+		useGeneratedKeys="true" keyProperty="uid">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert ignore into favorites(
+		<include refid="insertsql" />
+		)values (#{uid}, #{pid}, #{updated})  
+	</insert>
+
+</mapper>

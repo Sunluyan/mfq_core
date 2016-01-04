@@ -121,30 +121,44 @@ public String getBCSign(String app_id,String app_secret,long timestamp){
 }
 
 
-
+    /**
+     * {sign='da802f76badf55900fd9b6d6ae1956b0', timestamp=1451545260000, channel_type='UN',
+     * sub_channel_type='UN_APP', transaction_type='PAY', transaction_id='cz2015123115001581820c26',
+     * transaction_fee=100, trade_success=true,
+     * message_detail={bizType=000201, orderId=cz2015123115001581820c26,
+     * txnSubType=01,
+     * signature=A9YU0G0U0/WtEZmhoRTBrWpP5wncplRR7WYJBge8jDVBtw3izW4Nk1AJdjds3QQIhOu1g9SW4zuHJiMezG32zdt/tO4OqvLzQZQz8A6yFzdb/CmrH9THlm0VGJr5rpK/83iOPS88v6GCLY+890D9xUgKlhBB40WlrGaMrszvCacfmtUUNIK4jaWyu7TY+YL1lLM64yb6Ct2HndwQE0zI/AwScaaBSuRkZRJY6FHZUIn+bFa79MCmTf+l3EnFLaVG+mqdoAYrsaphXs17CiWZZEB+uaNOe1I9uPJJbwVotn6jbCPOcxaOQ2q9+wY3YI3X1aEO1tSZuPP2vb3IMj7E1Q==,
+     * traceNo=913940, settleAmt=100, settleCurrencyCode=156, settleDate=1231, txnType=01, certId=69597475696,
+     * encoding=UTF-8, version=5.0.0, queryId=201512311500239139408, accessType=0, tradeSuccess=true, respMsg=Success!,
+     * traceTime=1231150023, txnTime=20151231150023, merId=898111448161528, currencyCode=156, respCode=00, signMethod=01, txnAmt=100},
+     * optional={uid=3110, amount=1, orderNo=cz2015123115001581820c26}}
+     */
     public void testBeeCloud(){
-        String app_secret = "31b648a9-2837-461d-a129-e46a5bab5fca";
 
         Map<String, Object> params = Maps.newHashMap();
         //开始制作请求报文
-        String app_id = "967f5a80-ae09-4c46-b29e-cb0843887eed";
 
-        long timestamp = new Date().getTime();
-        String sign = getBCSign(app_id,app_secret,timestamp);
+        long timestamp = 1451545260000l;
+        String sign = "da802f76badf55900fd9b6d6ae1956b0";
         String channel_type = "UN";
         String sub_channel_type = "UN_APP";
         String transaction_type = "PAY";
-        String transaction_id = "201506101035040000001";
-        Integer transaction_fee = 1;
-        String bill_no = "mn20151230162149038300a5";
-        String title = "用户xx购买了xxx产品";
+        String transaction_id = "cz2015123115001581820c26";
+        Integer transaction_fee = 100;
         boolean trade_success = true;
+
         Map<String,Object> optional =  new HashMap<>();
         optional.put("uid",3110);
-        optional.put("orderNo","mn20151230162149038300a5");
-        optional.put("amount",0.01);
+        optional.put("orderNo","cz2015123115001581820c26");
+        optional.put("amount",1);
+
         Map<String,Object> message_detail = new HashMap<>();
-        message_detail.put("uid",3110);
+        message_detail.put("bizType",000201);
+        message_detail.put("orderId","cz2015123115001581820c26");
+        message_detail.put("txnSubType",01);
+        message_detail.put("signature","A9YU0G0U0/WtEZmhoRTBrWpP5wncplRR7WYJBge8jDVBtw3izW4Nk1AJdjds3QQIhOu1g9SW4zuHJiMezG32zdt/tO4OqvLzQZQz8A6yFzdb/CmrH9THlm0VGJr5rpK/83iOPS88v6GCLY+890D9xUgKlhBB40WlrGaMrszvCacfmtUUNIK4jaWyu7TY+YL1lLM64yb6Ct2HndwQE0zI/AwScaaBSuRkZRJY6FHZUIn+bFa79MCmTf+l3EnFLaVG+mqdoAYrsaphXs17CiWZZEB+uaNOe1I9uPJJbwVotn6jbCPOcxaOQ2q9+wY3YI3X1aEO1tSZuPP2vb3IMj7E1Q==");
+        message_detail.put("traceNo",913940);
+        message_detail.put("settleAmt",100);
 
         params.put("timestamp",timestamp);
         params.put("sign",sign);
@@ -153,30 +167,21 @@ public String getBCSign(String app_id,String app_secret,long timestamp){
         params.put("transaction_type",transaction_type);
         params.put("transaction_id",transaction_id);
         params.put("transaction_fee",transaction_fee);
-        params.put("bill_no",bill_no);
-        params.put("title",title);
         params.put("trade_success",trade_success);
         params.put("optional",optional);
         params.put("message_detail",message_detail);
 
 
 
-        String url = "http://localhost:7777/pay/mobile_callback/beecloud.do";
-
+        String url = "http://i.5imfq.com/pay/mobile_callback/beecloud.do";
         String body = JsonUtil.writeToJson(params);
         System.out.println(body);
         String resp = HttpUtil.postJson(url, body, true);
+        System.out.println("begen print response");
         System.out.println(resp);
     }
 
-    /**
-     *
-     * {sign='805bed572972b72382f852c30abb6819',
-     * timestamp=1451472540000,
-     * channel_type='UN',
-     * sub_channel_type='UN_APP', transaction_type='PAY', transaction_id='mn20151230184514638700a5', transaction_fee=100, trade_success=true, message_detail={bizType=000201, orderId=mn20151230184514638700a5, txnSubType=01, signature=Rr5YW6VNlkynWxrhJ/hqLEIOht47S1o/1Aadh7gvRlDOvJju7fM+Kifoeql2bCxX2IXFL25dfY6wNKNJVV1lkG2GN1K9boA1o3E4x6ys/OQjPaCQAEOduqeFxgsGqkKPAbw2OTpmVr++J5xfqcaAstPTHhOP1XVbB1upLlWdIn379iFoKKVuHvQDXnOzBBUg0PalP6To/m/it3anXf+qv13x+4503lDGFY0iARHMV9Ae3D+LOIY2omVFQ7G2fdcpQGygLrTM9g5aycw9ggCFit7GnHib+qWzAjuqHkOnciC9yxMZ9KCQfkpO2j6x2+VjAYE7uD8ASYbelFST8VKVIA==, traceNo=085620, settleAmt=100, settleCurrencyCode=156, settleDate=1230, txnType=01, certId=69597475696, encoding=UTF-8, version=5.0.0, queryId=201512301845180856208, accessType=0, tradeSuccess=true, respMsg=Success!, traceTime=1230184518, txnTime=20151230184518, merId=898111448161528, currencyCode=156, respCode=00, signMethod=01, txnAmt=100}, optional={}}
-     * @param args
-     */
+
 
     public static void main(String[] args) {
         TestController test = new TestController();

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.SysConfigMapper">
+	<sql id="selectsql">
+		`id`, `key`, `value`, `desc`, `index`
+	</sql>
+	<sql id="insertsql">
+		`id`, `key`, `value`, `desc`, `index`
+	</sql>
+
+	<insert id="setConfig" parameterType="SysConfig"
+		useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into system_config(
+		<include refid="insertsql" />
+		)values (
+		#{id}, #{key}, #{value}, #{desc}, #{index}
+		)
+	</insert>
+	
+	<update id="updateConfigByKey">
+		update system_config set value=#{value} where `key`=#{key}
+	</update>
+	
+	<select id="getConfig" resultType="SysConfig">
+		select
+		<include refid="selectsql" />
+		from system_config where `key` = #{key} order by id desc limit 1
+	</select>
+
+</mapper>

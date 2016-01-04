@@ -126,11 +126,10 @@ public class PayRecordService {
 
         // 更新充值记录
         record.setAmount(new BigDecimal(result.getOptional().get("amount").toString()));
-        record.setBankCode(
-                StringUtils.defaultIfBlank(result.getMessage_detail().get("bank_type").toString(), ""));
+        record.setBankCode("");
         record.setCallbackAt(new Date());
         record.setCardType(CardType.UNDEFINED);
-        record.setCardNo(StringUtils.defaultIfBlank(result.getMessage_detail().get("cardNo").toString(), ""));
+        record.setCardNo("");
         record.setPayAt(new Date());
         record.setStatus(status);
         record.setTpp(result.getChannel_type());

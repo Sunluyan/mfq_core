@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.FeedbackMapper">
+
+	<sql id="insertsql">
+		id, uid, check_flag, check_user, content, created, updated
+	</sql>
+
+	<insert id="insertFeedback" parameterType="Feedback"
+		useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="long" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into feedback(
+		<include refid="insertsql" />
+		)values (
+		#{id}, #{uid}, #{checkFlag}, #{checkUser}, #{content},  now(), now()
+		)
+	</insert>
+
+</mapper>

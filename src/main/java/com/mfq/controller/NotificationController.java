@@ -89,7 +89,6 @@ public class NotificationController {
 		}catch(Exception e){
 			logger.info("this is error {}",e);
 		}
-		logger.info("notification read ret is {}", ret);
 		return ret;
 		
 		

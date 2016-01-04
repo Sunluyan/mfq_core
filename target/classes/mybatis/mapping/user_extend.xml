@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.UserExtendMapper">
+	<sql id="selectsql">
+		uid, invite_code as inviteCode, promotion_code as promotionCode, channel_id as channelId, mobile_type as mobileType, is_bind as isBind, open_id as openId, remark, created_at as createdAt, updated_at as updatedAt
+	</sql>
+
+	<sql id="insertsql">
+		uid, invite_code, promotion_code, channel_id, mobile_type, is_bind, open_id, remark, created_at, updated_at
+	</sql>
+
+	<insert id="insertUserExtend" parameterType="UserExtend">
+		insert into users_extend(
+		<include refid="insertsql" />
+		)values (
+		#{uid}, #{inviteCode}, #{promotionCode}, #{channelId}, #{mobileType}, #{isBind}, #{openId},
+		#{remark}, now(), now()
+		)
+	</insert>
+	
+	<select id="queryUserExtendByUid" resultType="UserExtend">
+		select <include refid="selectsql" /> from users_extend where uid=#{uid}
+	</select>
+	
+	<update id="updateUserExtend">
+		update users_extend set invite_code=#{inviteCode}, open_id = #{openId}, remark = #{remark}, updated=now() where uid=#{uid}
+	</update>
+	
+	<update id="bindInviteCode">
+		update users_extend set is_bind=true where uid=#{uid}
+	</update>
+	
+	<update id="updateChannelId">
+		update users_extend set channel_id = #{channelId}, mobile_type = #{mobileType} where uid=#{uid}
+	</update>
+
+</mapper>

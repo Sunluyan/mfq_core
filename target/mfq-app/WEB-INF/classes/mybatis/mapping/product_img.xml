@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.ProductImgMapper">
+	<sql id="selectsql">
+		`id`, `pid`, `img`, `desc`, `index`, `flag`
+	</sql>
+
+	<sql id="insertsql">
+		`pid`, `img`, `desc`, `index`, `flag`
+	</sql>
+
+	<select id="findByPid" resultType="ProductImg">
+		select
+		<include refid="selectsql" />
+		from product_img where pid=#{pid}
+	</select>
+
+
+	<insert id="insertImg" parameterType="ProductImg">
+		insert into product_img(
+		<include refid="insertsql" />
+		)values (
+		#{pid}, #{img}, #{desc}, #{index}, #{flag}
+		)
+	</insert>
+
+	<select id="updateOne" resultType="ProductImg">
+		update product_img set `pid`=#{pid}, `img`=#{img},
+		`desc`=#{desc}, `index`=#{index}, `flag`=#{flag} where pid=#{pid}
+	</select>
+
+</mapper>

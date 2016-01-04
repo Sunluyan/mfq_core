@@ -187,8 +187,8 @@ public class PaymentController {
 			 * lock.unlock(lockFlag);
 			 */
         }
-		
-	     try {
+
+        try {
 	    	 //如果ret还是""的话，就说明是正确的，设置为正确的样子
 	    	if(ret.equals("")){
 	    		ret = JsonUtil.successResultJson();
@@ -226,18 +226,21 @@ public class PaymentController {
     @RequestMapping(value = "/pay/mobile_callback/beecloud.do",method={RequestMethod.POST,RequestMethod.GET})
     public void BCCallback(HttpServletRequest request,HttpServletResponse response){
         String ret = "";
-        logger.info("enter mobile_callback/beecloud.do,request = {}",request);
+
         try {
             BeeCloudResult result = new BeeCloudResult(request);
             logger.info("BeeCloudResult : {}",result);
-            System.out.println(result);
+            //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
+            if(result.getTrade_success()){
+                response.getWriter().append("success");
+                response.getWriter().flush();
+                response.getWriter().close();
+            }
+
             if(! UnionpayServiceImpl.checkSign(result. getTimestamp(),result.getSign())){
                 throw new Exception("签名不正确!");
             }
-            //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
-            response.setCharacterEncoding("utf-8");
-            response.setContentType("text/plain");
-            response.getWriter().write("success");
+
 
             if(! result.getTrade_success()){
                 throw new Exception("用户付款失败");

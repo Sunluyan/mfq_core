@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mfq.dao.PolicyInsureMapper" >
+  <resultMap id="BaseResultMap" type="com.mfq.bean.PolicyInsure" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="service_stime" property="serviceStime" jdbcType="DATE" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="hospital_name" property="hospitalName" jdbcType="VARCHAR" />
+    <result column="order_sum" property="orderSum" jdbcType="BIGINT" />
+    <result column="order_pay_type" property="orderPayType" jdbcType="VARCHAR" />
+    <result column="nurse_id" property="nurseId" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="policy_pid" property="policyPid" jdbcType="VARCHAR" />
+    <result column="policy_id" property="policyId" jdbcType="BIGINT" />
+    <result column="request_str" property="requestStr" jdbcType="VARCHAR" />
+    <result column="reponse_str" property="reponseStr" jdbcType="VARCHAR" />
+    <result column="request_time" property="requestTime" jdbcType="TIMESTAMP" />
+    <result column="reponse_time" property="reponseTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, order_no, order_time, service_stime, product_name, hospital_name, order_sum, 
+    order_pay_type, nurse_id, uid, policy_pid, policy_id, request_str, reponse_str, request_time, 
+    reponse_time, status, created_at, updated_at
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mfq.bean.PolicyInsureExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from policy_insure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from policy_insure
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from policy_insure
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mfq.bean.PolicyInsureExample" >
+    delete from policy_insure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mfq.bean.PolicyInsure" >
+    insert into policy_insure (id, order_no, order_time, 
+      service_stime, product_name, hospital_name, 
+      order_sum, order_pay_type, nurse_id, 
+      uid, policy_pid, policy_id, 
+      request_str, reponse_str, request_time, 
+      reponse_time, status, created_at, 
+      updated_at)
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{serviceStime,jdbcType=DATE}, #{productName,jdbcType=VARCHAR}, #{hospitalName,jdbcType=VARCHAR}, 
+      #{orderSum,jdbcType=BIGINT}, #{orderPayType,jdbcType=VARCHAR}, #{nurseId,jdbcType=BIGINT}, 
+      #{uid,jdbcType=BIGINT}, #{policyPid,jdbcType=VARCHAR}, #{policyId,jdbcType=BIGINT}, 
+      #{requestStr,jdbcType=VARCHAR}, #{reponseStr,jdbcType=VARCHAR}, #{requestTime,jdbcType=TIMESTAMP}, 
+      #{reponseTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mfq.bean.PolicyInsure" >
+    insert into policy_insure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="serviceStime != null" >
+        service_stime,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name,
+      </if>
+      <if test="orderSum != null" >
+        order_sum,
+      </if>
+      <if test="orderPayType != null" >
+        order_pay_type,
+      </if>
+      <if test="nurseId != null" >
+        nurse_id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="policyPid != null" >
+        policy_pid,
+      </if>
+      <if test="policyId != null" >
+        policy_id,
+      </if>
+      <if test="requestStr != null" >
+        request_str,
+      </if>
+      <if test="reponseStr != null" >
+        reponse_str,
+      </if>
+      <if test="requestTime != null" >
+        request_time,
+      </if>
+      <if test="reponseTime != null" >
+        reponse_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceStime != null" >
+        #{serviceStime,jdbcType=DATE},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalName != null" >
+        #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSum != null" >
+        #{orderSum,jdbcType=BIGINT},
+      </if>
+      <if test="orderPayType != null" >
+        #{orderPayType,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseId != null" >
+        #{nurseId,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="policyPid != null" >
+        #{policyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="policyId != null" >
+        #{policyId,jdbcType=BIGINT},
+      </if>
+      <if test="requestStr != null" >
+        #{requestStr,jdbcType=VARCHAR},
+      </if>
+      <if test="reponseStr != null" >
+        #{reponseStr,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null" >
+        #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reponseTime != null" >
+        #{reponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mfq.bean.PolicyInsureExample" resultType="java.lang.Integer" >
+    select count(*) from policy_insure
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update policy_insure
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNo != null" >
+        order_no = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderTime != null" >
+        order_time = #{record.orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.serviceStime != null" >
+        service_stime = #{record.serviceStime,jdbcType=DATE},
+      </if>
+      <if test="record.productName != null" >
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hospitalName != null" >
+        hospital_name = #{record.hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderSum != null" >
+        order_sum = #{record.orderSum,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderPayType != null" >
+        order_pay_type = #{record.orderPayType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseId != null" >
+        nurse_id = #{record.nurseId,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.policyPid != null" >
+        policy_pid = #{record.policyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policyId != null" >
+        policy_id = #{record.policyId,jdbcType=BIGINT},
+      </if>
+      <if test="record.requestStr != null" >
+        request_str = #{record.requestStr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reponseStr != null" >
+        reponse_str = #{record.reponseStr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTime != null" >
+        request_time = #{record.requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reponseTime != null" >
+        reponse_time = #{record.reponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update policy_insure
+    set id = #{record.id,jdbcType=BIGINT},
+      order_no = #{record.orderNo,jdbcType=VARCHAR},
+      order_time = #{record.orderTime,jdbcType=TIMESTAMP},
+      service_stime = #{record.serviceStime,jdbcType=DATE},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      hospital_name = #{record.hospitalName,jdbcType=VARCHAR},
+      order_sum = #{record.orderSum,jdbcType=BIGINT},
+      order_pay_type = #{record.orderPayType,jdbcType=VARCHAR},
+      nurse_id = #{record.nurseId,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      policy_pid = #{record.policyPid,jdbcType=VARCHAR},
+      policy_id = #{record.policyId,jdbcType=BIGINT},
+      request_str = #{record.requestStr,jdbcType=VARCHAR},
+      reponse_str = #{record.reponseStr,jdbcType=VARCHAR},
+      request_time = #{record.requestTime,jdbcType=TIMESTAMP},
+      reponse_time = #{record.reponseTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.PolicyInsure" >
+    update policy_insure
+    <set >
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceStime != null" >
+        service_stime = #{serviceStime,jdbcType=DATE},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalName != null" >
+        hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSum != null" >
+        order_sum = #{orderSum,jdbcType=BIGINT},
+      </if>
+      <if test="orderPayType != null" >
+        order_pay_type = #{orderPayType,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseId != null" >
+        nurse_id = #{nurseId,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="policyPid != null" >
+        policy_pid = #{policyPid,jdbcType=VARCHAR},
+      </if>
+      <if test="policyId != null" >
+        policy_id = #{policyId,jdbcType=BIGINT},
+      </if>
+      <if test="requestStr != null" >
+        request_str = #{requestStr,jdbcType=VARCHAR},
+      </if>
+      <if test="reponseStr != null" >
+        reponse_str = #{reponseStr,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null" >
+        request_time = #{requestTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reponseTime != null" >
+        reponse_time = #{reponseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.PolicyInsure" >
+    update policy_insure
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      service_stime = #{serviceStime,jdbcType=DATE},
+      product_name = #{productName,jdbcType=VARCHAR},
+      hospital_name = #{hospitalName,jdbcType=VARCHAR},
+      order_sum = #{orderSum,jdbcType=BIGINT},
+      order_pay_type = #{orderPayType,jdbcType=VARCHAR},
+      nurse_id = #{nurseId,jdbcType=BIGINT},
+      uid = #{uid,jdbcType=BIGINT},
+      policy_pid = #{policyPid,jdbcType=VARCHAR},
+      policy_id = #{policyId,jdbcType=BIGINT},
+      request_str = #{requestStr,jdbcType=VARCHAR},
+      reponse_str = #{reponseStr,jdbcType=VARCHAR},
+      request_time = #{requestTime,jdbcType=TIMESTAMP},
+      reponse_time = #{reponseTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

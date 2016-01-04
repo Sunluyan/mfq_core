@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="Vcode" type="com.mfq.bean.Vcode"/>
+		<typeAlias alias="SMSLog" type="com.mfq.bean.sms.SMSLog"/>
+		<typeAlias alias="SMSConfig" type="com.mfq.bean.sms.SMSConfig"/>
+		<typeAlias alias="Product" type="com.mfq.bean.Product"/>
+		<typeAlias alias="ProductDetail" type="com.mfq.bean.ProductDetail"/>
+		<typeAlias alias="ProductClassify" type="com.mfq.bean.ProductClassify"/>
+		<typeAlias alias="User" type="com.mfq.bean.user.User"/>
+		<typeAlias alias="UserLogin" type="com.mfq.bean.user.UserLogin"/>
+		<typeAlias alias="UserQuota" type="com.mfq.bean.user.UserQuota"/>
+		<typeAlias alias="PresentRecord" type="com.mfq.bean.user.PresentRecord"/>
+		<typeAlias alias="Hospital" type="com.mfq.bean.Hospital"/>
+		<typeAlias alias="Installation" type="com.mfq.bean.Installation"/>
+		<typeAlias alias="FinanceBill" type="com.mfq.bean.FinanceBill"/>
+		<typeAlias alias="ProductClassify" type="com.mfq.bean.ProductClassify"/>
+		<typeAlias alias="OrderInfo" type="com.mfq.bean.OrderInfo"/>
+		<typeAlias alias="Passport" type="com.mfq.bean.passport.Passport"/>
+		<typeAlias alias="PassportOauth" type="com.mfq.bean.passport.PassportOauth"/>
+		<typeAlias alias="Favorites" type="com.mfq.bean.Favorites"/>
+		<typeAlias alias="PayRecord" type="com.mfq.bean.PayRecord"/>
+		<typeAlias alias="Feedback" type="com.mfq.bean.Feedback"/>
+		<typeAlias alias="CouponBatchInfo" type="com.mfq.bean.coupon.CouponBatchInfo"/>
+		<typeAlias alias="Coupon" type="com.mfq.bean.coupon.Coupon"/>
+		<typeAlias alias="WeChatMsg" type="com.mfq.bean.wechat.WeChatMsg"/>
+		<typeAlias alias="SysConfig" type="com.mfq.bean.SysConfig"/>
+		<typeAlias alias="UserExtend" type="com.mfq.bean.user.UserExtend"/>
+		<typeAlias alias="Notification" type="com.mfq.bean.notification.Notification"/>
+		<typeAlias alias="MsgRead" type="com.mfq.bean.notification.MsgRead"/>
+		<typeAlias alias="ProductImg" type="com.mfq.bean.ProductImg"/>
+		<typeAlias alias="HomeBanner" type="com.mfq.bean.HomeBanner"/>
+		<typeAlias alias="City" type="com.mfq.bean.area.City"/>
+		<typeAlias alias="HomeClassify" type="com.mfq.bean.HomeClassify"/>
+		<typeAlias alias="Nurse" type="com.mfq.bean.user.Nurse"/>
+		<typeAlias alias="UserAuthPic" type="com.mfq.bean.user.UsersAuthPic"/>
+	</typeAliases>
+	
+	<typeHandlers>
+		<typeHandler javaType="com.mfq.bean.sms.SMSSendStatus" 
+						handler="com.mfq.handler.SMSSendStatusEnumHandler"/>
+		<typeHandler javaType="com.mfq.bean.sms.SMSSendType"
+						handler="com.mfq.handler.SMSSendTypeEnumHandler"/>
+		<typeHandler javaType="com.mfq.bean.passport.ConnectSite"
+						handler="com.mfq.handler.ConnectSiteEnumHandler"/>
+		<typeHandler javaType="com.mfq.bean.user.Status"
+						handler="com.mfq.handler.UserStatusEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.PresentType"
+						handler="com.mfq.handler.PresentTypeHandler"/>
+		<typeHandler javaType="com.mfq.bean.user.Gender"
+						handler="com.mfq.handler.GenderEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.BillStatus"
+						handler="com.mfq.handler.BillStatusEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.PayStatus"
+						handler="com.mfq.handler.PayStatusHandler"/>
+		<typeHandler javaType="com.mfq.constants.CardType"
+						handler="com.mfq.handler.CardTypeEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.PayStatus"
+						handler="com.mfq.handler.PayStatusHandler"/>
+		<typeHandler javaType="com.mfq.constants.CouponStatus"
+						handler="com.mfq.handler.CouponStatusHandler"/>
+		<typeHandler javaType="com.mfq.constants.Grade"
+						handler="com.mfq.handler.GradeEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.OrderType"
+						handler="com.mfq.handler.OrderTypeEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.ProductType"
+						handler="com.mfq.handler.ProductTypeEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.BannerType"
+						handler="com.mfq.handler.BannerTypeEnumHandler"/>
+		<typeHandler javaType="com.mfq.constants.PolicyStatus"
+						handler="com.mfq.handler.PolicyStatusEnumHandler"/>
+	</typeHandlers>
+	
+	<mappers>
+		<mapper resource="mybatis/mapping/vcode.xml" />
+		<mapper resource="mybatis/mapping/sms.xml" />
+		<mapper resource="mybatis/mapping/sms_config.xml" />
+		<mapper resource="mybatis/mapping/product.xml" />
+		<mapper resource="mybatis/mapping/product_detail.xml" />
+		<mapper resource="mybatis/mapping/product_classify.xml" />
+		<mapper resource="mybatis/mapping/user_login.xml" />
+		<mapper resource="mybatis/mapping/user.xml" />
+		<mapper resource="mybatis/mapping/user_quota.xml" />
+		<mapper resource="mybatis/mapping/present_record.xml"/>
+		<mapper resource="mybatis/mapping/hospital.xml" />
+		<mapper resource="mybatis/mapping/ms_installation.xml" />
+		<mapper resource="mybatis/mapping/finance_bill.xml" />
+		<mapper resource="mybatis/mapping/forbidden_word.xml" />
+		<mapper resource="mybatis/mapping/product_classify.xml" />
+		<mapper resource="mybatis/mapping/order_info.xml" />
+		<mapper resource="mybatis/mapping/passport.xml" />
+		<mapper resource="mybatis/mapping/passport_oauth.xml" />
+		<mapper resource="mybatis/mapping/favorites.xml"/>
+		<mapper resource="mybatis/mapping/pay_record.xml"/>
+		<mapper resource="mybatis/mapping/feedback.xml"/>
+		<mapper resource="mybatis/mapping/coupon.xml"/>
+		<mapper resource="mybatis/mapping/coupon_batch_info.xml"/>
+		<mapper resource="mybatis/mapping/wechat_msg.xml"/>
+		<mapper resource="mybatis/mapping/sys_config.xml"/>
+		<mapper resource="mybatis/mapping/user_extend.xml"/>
+		<mapper resource="mybatis/mapping/notification.xml"/>
+		<mapper resource="mybatis/mapping/msg_read.xml"/>
+		<mapper resource="mybatis/mapping/product_img.xml" />
+		<mapper resource="mybatis/mapping/home_banner.xml" />
+		<mapper resource="mybatis/mapping/city.xml" />
+		<mapper resource="mybatis/mapping/home_classify.xml" />
+		<mapper resource="mybatis/mapping/PolicyInfoMapper.xml"/>
+		<mapper resource="mybatis/mapping/PolicyInsureMapper.xml"/>
+		<mapper resource="mybatis/mapping/Nurse.xml"/>
+		<mapper resource="mybatis/mapping/UsersAuthPicMapper.xml"/>
+	</mappers>
+
+</configuration>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.ProductDetailMapper">
+	<sql id="selectsql">
+		pid, consume_step as consumeStep, reserve, special_note as
+		specialNote, warning, crowd, body, cure_means as cureMeans, cure_dur as cureDur, cure_hospital as cureHospital, recover_dur as recoverDur,
+		merit, cure_method as cureMethod, taboo_crowd as tabooCrowd, cure_num as cureNum, anes_method as anesMethod, doctor_level as doctorLevel,
+		cure_cycle as cureCycle
+	</sql>
+
+	<sql id="insertsql">
+		pid, consume_step, reserve, special_note, body, cure_means, cure_dur, cure_hospital, recover_dur, merit, cure_method, taboo_crowd, cure_num, anes_method, doctor_level,
+		cure_cycle
+	</sql>
+
+	<select id="findByPid" resultType="ProductDetail">
+		select
+		<include refid="selectsql" />
+		from product_detail where pid=#{pid}
+	</select>
+
+
+	<insert id="insertDetail" parameterType="ProductDetail">
+		insert into product_detail(
+		<include refid="insertsql" />
+		)values (
+		#{pid}, #{consumeStep}, #{reserve}, #{specialNote}, #{body}, #{cureMeans}, #{cureDur}, #{cureHospital}, #{recoverDur}, #{merit}, #{cureMethod},
+		#{tabooCrowd}, #{cureNum}, #{anesMethod}, #{doctorLevel}, #{cureCycle}
+		)
+	</insert>
+
+</mapper>

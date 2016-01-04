@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mfq.dao.UsersAuthPicMapper" >
+  <resultMap id="BaseResultMap" type="com.mfq.bean.user.UsersAuthPic" >
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="id_card_f" property="idCardF" jdbcType="VARCHAR" />
+    <result column="id_card_r" property="idCardR" jdbcType="VARCHAR" />
+    <result column="social" property="social" jdbcType="VARCHAR" />
+    <result column="social_f" property="socialF" jdbcType="VARCHAR" />
+    <result column="social_r" property="socialR" jdbcType="VARCHAR" />
+    <result column="work_permit" property="workPermit" jdbcType="VARCHAR" />
+    <result column="work_permit_f" property="workPermitF" jdbcType="VARCHAR" />
+    <result column="work_permit_r" property="workPermitR" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, id_card, id_card_f, id_card_r, social, social_f, social_r, work_permit, work_permit_f, 
+    work_permit_r
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mfq.bean.user.UsersAuthPicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from users_auth_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mfq.bean.user.UsersAuthPicExample" >
+    delete from users_auth_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mfq.bean.user.UsersAuthPic" >
+    insert into users_auth_pic (uid, id_card, id_card_f, 
+      id_card_r, social, social_f, 
+      social_r, work_permit, work_permit_f, 
+      work_permit_r)
+    values (#{uid,jdbcType=BIGINT}, #{idCard,jdbcType=VARCHAR}, #{idCardF,jdbcType=VARCHAR}, 
+      #{idCardR,jdbcType=VARCHAR}, #{social,jdbcType=VARCHAR}, #{socialF,jdbcType=VARCHAR}, 
+      #{socialR,jdbcType=VARCHAR}, #{workPermit,jdbcType=VARCHAR}, #{workPermitF,jdbcType=VARCHAR}, 
+      #{workPermitR,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mfq.bean.user.UsersAuthPic" >
+    insert into users_auth_pic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="idCardF != null" >
+        id_card_f,
+      </if>
+      <if test="idCardR != null" >
+        id_card_r,
+      </if>
+      <if test="social != null" >
+        social,
+      </if>
+      <if test="socialF != null" >
+        social_f,
+      </if>
+      <if test="socialR != null" >
+        social_r,
+      </if>
+      <if test="workPermit != null" >
+        work_permit,
+      </if>
+      <if test="workPermitF != null" >
+        work_permit_f,
+      </if>
+      <if test="workPermitR != null" >
+        work_permit_r,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardF != null" >
+        #{idCardF,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardR != null" >
+        #{idCardR,jdbcType=VARCHAR},
+      </if>
+      <if test="social != null" >
+        #{social,jdbcType=VARCHAR},
+      </if>
+      <if test="socialF != null" >
+        #{socialF,jdbcType=VARCHAR},
+      </if>
+      <if test="socialR != null" >
+        #{socialR,jdbcType=VARCHAR},
+      </if>
+      <if test="workPermit != null" >
+        #{workPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="workPermitF != null" >
+        #{workPermitF,jdbcType=VARCHAR},
+      </if>
+      <if test="workPermitR != null" >
+        #{workPermitR,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mfq.bean.user.UsersAuthPicExample" resultType="java.lang.Integer" >
+    select count(*) from users_auth_pic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update users_auth_pic
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.idCard != null" >
+        id_card = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardF != null" >
+        id_card_f = #{record.idCardF,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardR != null" >
+        id_card_r = #{record.idCardR,jdbcType=VARCHAR},
+      </if>
+      <if test="record.social != null" >
+        social = #{record.social,jdbcType=VARCHAR},
+      </if>
+      <if test="record.socialF != null" >
+        social_f = #{record.socialF,jdbcType=VARCHAR},
+      </if>
+      <if test="record.socialR != null" >
+        social_r = #{record.socialR,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workPermit != null" >
+        work_permit = #{record.workPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workPermitF != null" >
+        work_permit_f = #{record.workPermitF,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workPermitR != null" >
+        work_permit_r = #{record.workPermitR,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update users_auth_pic
+    set uid = #{record.uid,jdbcType=BIGINT},
+      id_card = #{record.idCard,jdbcType=VARCHAR},
+      id_card_f = #{record.idCardF,jdbcType=VARCHAR},
+      id_card_r = #{record.idCardR,jdbcType=VARCHAR},
+      social = #{record.social,jdbcType=VARCHAR},
+      social_f = #{record.socialF,jdbcType=VARCHAR},
+      social_r = #{record.socialR,jdbcType=VARCHAR},
+      work_permit = #{record.workPermit,jdbcType=VARCHAR},
+      work_permit_f = #{record.workPermitF,jdbcType=VARCHAR},
+      work_permit_r = #{record.workPermitR,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

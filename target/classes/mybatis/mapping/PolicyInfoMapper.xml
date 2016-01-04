@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mfq.dao.PolicyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.mfq.bean.PolicyInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="insurance_code" property="insuranceCode" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="policy_holder" property="policyHolder" jdbcType="VARCHAR" />
+    <result column="policy_no" property="policyNo" jdbcType="VARCHAR" />
+    <result column="premium" property="premium" jdbcType="INTEGER" />
+    <result column="sum_insured" property="sumInsured" jdbcType="INTEGER" />
+    <result column="policy_bdate" property="policyBdate" jdbcType="TIMESTAMP" />
+    <result column="policy_edate" property="policyEdate" jdbcType="TIMESTAMP" />
+    <result column="policy_status" property="policyStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, order_no, product_no, insurance_code, phone, policy_holder, policy_no, premium, 
+    sum_insured, policy_bdate, policy_edate, policy_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mfq.bean.PolicyInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from policy_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from policy_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from policy_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mfq.bean.PolicyInfoExample" >
+    delete from policy_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mfq.bean.PolicyInfo" >
+    insert into policy_info (id, order_no, product_no, 
+      insurance_code, phone, policy_holder, 
+      policy_no, premium, sum_insured, 
+      policy_bdate, policy_edate, policy_status
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{productNo,jdbcType=VARCHAR}, 
+      #{insuranceCode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{policyHolder,jdbcType=VARCHAR}, 
+      #{policyNo,jdbcType=VARCHAR}, #{premium,jdbcType=INTEGER}, #{sumInsured,jdbcType=INTEGER}, 
+      #{policyBdate,jdbcType=TIMESTAMP}, #{policyEdate,jdbcType=TIMESTAMP}, #{policyStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mfq.bean.PolicyInfo" >
+    insert into policy_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="productNo != null" >
+        product_no,
+      </if>
+      <if test="insuranceCode != null" >
+        insurance_code,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="policyHolder != null" >
+        policy_holder,
+      </if>
+      <if test="policyNo != null" >
+        policy_no,
+      </if>
+      <if test="premium != null" >
+        premium,
+      </if>
+      <if test="sumInsured != null" >
+        sum_insured,
+      </if>
+      <if test="policyBdate != null" >
+        policy_bdate,
+      </if>
+      <if test="policyEdate != null" >
+        policy_edate,
+      </if>
+      <if test="policyStatus != null" >
+        policy_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCode != null" >
+        #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="policyHolder != null" >
+        #{policyHolder,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        #{premium,jdbcType=INTEGER},
+      </if>
+      <if test="sumInsured != null" >
+        #{sumInsured,jdbcType=INTEGER},
+      </if>
+      <if test="policyBdate != null" >
+        #{policyBdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyEdate != null" >
+        #{policyEdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyStatus != null" >
+        #{policyStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mfq.bean.PolicyInfoExample" resultType="java.lang.Integer" >
+    select count(*) from policy_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update policy_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNo != null" >
+        order_no = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productNo != null" >
+        product_no = #{record.productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insuranceCode != null" >
+        insurance_code = #{record.insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policyHolder != null" >
+        policy_holder = #{record.policyHolder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policyNo != null" >
+        policy_no = #{record.policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.premium != null" >
+        premium = #{record.premium,jdbcType=INTEGER},
+      </if>
+      <if test="record.sumInsured != null" >
+        sum_insured = #{record.sumInsured,jdbcType=INTEGER},
+      </if>
+      <if test="record.policyBdate != null" >
+        policy_bdate = #{record.policyBdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.policyEdate != null" >
+        policy_edate = #{record.policyEdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.policyStatus != null" >
+        policy_status = #{record.policyStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update policy_info
+    set id = #{record.id,jdbcType=BIGINT},
+      order_no = #{record.orderNo,jdbcType=VARCHAR},
+      product_no = #{record.productNo,jdbcType=VARCHAR},
+      insurance_code = #{record.insuranceCode,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      policy_holder = #{record.policyHolder,jdbcType=VARCHAR},
+      policy_no = #{record.policyNo,jdbcType=VARCHAR},
+      premium = #{record.premium,jdbcType=INTEGER},
+      sum_insured = #{record.sumInsured,jdbcType=INTEGER},
+      policy_bdate = #{record.policyBdate,jdbcType=TIMESTAMP},
+      policy_edate = #{record.policyEdate,jdbcType=TIMESTAMP},
+      policy_status = #{record.policyStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.PolicyInfo" >
+    update policy_info
+    <set >
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCode != null" >
+        insurance_code = #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="policyHolder != null" >
+        policy_holder = #{policyHolder,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        policy_no = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null" >
+        premium = #{premium,jdbcType=INTEGER},
+      </if>
+      <if test="sumInsured != null" >
+        sum_insured = #{sumInsured,jdbcType=INTEGER},
+      </if>
+      <if test="policyBdate != null" >
+        policy_bdate = #{policyBdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyEdate != null" >
+        policy_edate = #{policyEdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyStatus != null" >
+        policy_status = #{policyStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.PolicyInfo" >
+    update policy_info
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      product_no = #{productNo,jdbcType=VARCHAR},
+      insurance_code = #{insuranceCode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      policy_holder = #{policyHolder,jdbcType=VARCHAR},
+      policy_no = #{policyNo,jdbcType=VARCHAR},
+      premium = #{premium,jdbcType=INTEGER},
+      sum_insured = #{sumInsured,jdbcType=INTEGER},
+      policy_bdate = #{policyBdate,jdbcType=TIMESTAMP},
+      policy_edate = #{policyEdate,jdbcType=TIMESTAMP},
+      policy_status = #{policyStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
