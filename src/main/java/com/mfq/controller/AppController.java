@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.utils.Config;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,9 @@ public class AppController {
     @Resource
     CityMapper cityMapper;
 
+    private static Integer android_version= Config.getInt("android_version", "0");
+    private static String appAndroidUrl = Config.getItem("android_download_url");
+
     @RequestMapping(value = "/app/download/", method = { RequestMethod.GET,
             RequestMethod.POST }, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -46,10 +50,10 @@ public class AppController {
 
             Map<String, Object> map = Maps.newHashMap();
             if (StringUtils.equalsIgnoreCase(appName, "mfq")) { // 临时写为固定值
-                Integer version = 5; // 从数据库根据iosUrlKey获取appName对应的版本号，注意是int类型
-                String appAndroidUrl = "http://www.5imfq.com/download/meifenqi_v1.1_F201510311630m_0.apk"; // 从数据库根据iosUrlKey获取appName对应的
+                //Integer version = 8; // 从数据库根据iosUrlKey获取appName对应的版本号，注意是int类型
+                //String appAndroidUrl = "http://www.5imfq.com/download/meifenqi_v1.1_F201510311630m_0.apk"; // 从数据库根据iosUrlKey获取appName对应的
                 String appIosUrl = "";
-                map.put("version", version);
+                map.put("version", android_version);
                 map.put("appName", appName);
                 map.put("appAndroidUrl", appAndroidUrl);
                 map.put("appIosUrl", appIosUrl);
