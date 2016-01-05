@@ -21,6 +21,12 @@ public class AppContext {
     //这个订单号只能在写日志时候使用
     public final static ThreadLocal<String> orderNo = new ThreadLocal<String>();
 
+
+
+
+
+
+
     public static String getIp() {
         return ip.get();
     }

@@ -32,7 +32,6 @@ public class FQUtil {
     
     /**
      * 根据金额获取分期
-     * @param quota
      * @param baseFQMoney
      * @return
      */
@@ -40,9 +39,7 @@ public class FQUtil {
         Map<String, Object> o = Maps.newTreeMap();
         int max = periodMax(baseFQMoney);
 		if (max < 3) {
-			o.put("p_num", 0);
-	        o.put("p_price", BigDecimal.valueOf(0));
-        	return o;
+        	return null;
         }
         BigDecimal v = computePeriodPay(max, baseFQMoney);
 
@@ -53,7 +50,6 @@ public class FQUtil {
     
     /**
      * 根据金额获取分期
-     * @param quota
      * @param baseFQMoney
      * @return
      */
@@ -102,7 +98,7 @@ public class FQUtil {
 
     public static boolean fenqiIsOk(UserQuota quota, BigDecimal baseFQMoney,
             int period, BigDecimal periodPay) {
-        int max = periodMax(quota, baseFQMoney);
+        int max = 24;
         logger.info("period {}, max {}", period, max);
         if (period > max) {
             logger.warn("最大分期数不满足要求！");
@@ -174,8 +170,7 @@ public class FQUtil {
      * 最大分期数 ，按照分期金额来看： 100-499元 5期 500-998元 9期 999-1498元 12期 1499-1998元
      * 15期 1999-不限 24期
      * 
-     * @param max
-     * @param 
+     * @param
      * @return
      */
     public static int periodMax(BigDecimal baseMoney) {

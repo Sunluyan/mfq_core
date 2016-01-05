@@ -110,6 +110,7 @@ public class OrderService {
 		if (p == null || user == null) {
 			throw new Exception("无法找到此用户或产品。");
 		}
+
 		boolean flag = validBeforeCreate(uid, p, amount, onlinePay,
 				hospitalPay, balancePay, period, periodPay, t, couponNum, policy_status);
 		
@@ -217,18 +218,14 @@ public class OrderService {
 			return false;
 		}
 
-		if (ProductType.SECKILLING == p.getType()) {
-			if (onlinePay.compareTo(p.getPrice()) < 0) {
-				logger.warn("在线支付<产品要求的在线支付金额");
-				return false;
-			}
-		} else if (PayType.FINANCING != t) {
 
-			// 在线支付<产品要求的在线支付金额
-			if (onlinePay.compareTo(p.getOnlinePay()) < 0) {
-				logger.warn("在线支付<产品要求的在线支付金额");
-				return false;
-			}
+		if (ProductType.SECKILLING == p.getType() && onlinePay.compareTo(p.getPrice()) < 0) {
+			logger.warn("在线支付<产品要求的在线支付金额");
+			return false;
+		}
+
+
+		if (PayType.FINANCING != t) { // 分期订单的话
 
 			BigDecimal checkM = amount.subtract(onlinePay).subtract(hospitalPay);
 			if(policy_status > 0){  //是否投保

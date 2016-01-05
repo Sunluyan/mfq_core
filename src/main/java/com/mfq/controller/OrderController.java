@@ -119,11 +119,7 @@ public class OrderController {
     }
 
     /**
-     * 生单Action－submit
-     * 总价格＝总在线支付（包含帐户余额）＋总须到院支付(仅到院支付的有)＋分期总金额
-     * onlinepay:实际在线支付金额
-     * balancepay:余额支付部分
-     * coupon_num：使用优惠券号码
+     *
      * @param request
      * @param response
      * @return
@@ -140,12 +136,12 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
                         null);
             }
-            
             Integer t = (Integer) params.get("type");
             PayType payType = PayType.fromId(t);
             Long uid = Long.parseLong(params.get("uid").toString());
             Long pid = Long.parseLong(params.get("pid").toString());
             BigDecimal amount = new BigDecimal(params.get("amount").toString());
+
             if (UserIdHolder.isLogin() && UserIdHolder.getLongUid() != uid
                     || pid == null) {
                 logger.error("系统非法请求！ATTENTION_UNLAWFULL_ACCESS");
@@ -154,20 +150,16 @@ public class OrderController {
             }
             
             
-            BigDecimal onlinePay = new BigDecimal(0);
-
-            BigDecimal balancePay = new BigDecimal(0);
-            
-            BigDecimal periodPay = new BigDecimal(0);
-            
-            BigDecimal hospitalPay = new BigDecimal(0);
+            BigDecimal onlinePay = new BigDecimal(0), balancePay = new BigDecimal(0), periodPay = new BigDecimal(0), hospitalPay = new BigDecimal(0);
             
             int period = 0;
             
             logger.info("下单类别:{}", payType);
             
-            
             String couponNum = null;
+            if(params.get("coupon_num")!=null){
+                couponNum = params.get("coupon_num").toString();
+            }
             
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
             if(operation_time.length()!=13){

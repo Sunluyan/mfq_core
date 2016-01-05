@@ -71,6 +71,7 @@ public class RedisCacheManipulater extends BaseCache implements IRedis, RedisCac
 
         List<JedisShardInfo> shards = new ArrayList<JedisShardInfo>();
         String[] servers = StringUtils.split(addrs, ",");
+
         for (String addr : servers) {
             String[] server = StringUtils.split(addr, ":");
             JedisShardInfo shard = new JedisShardInfo(server[0], server[1]);
