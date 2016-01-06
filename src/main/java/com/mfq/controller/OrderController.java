@@ -137,7 +137,13 @@ public class OrderController {
                         null);
             }
             Integer t = (Integer) params.get("type");
+
             PayType payType = PayType.fromId(t);
+
+            logger.info("--------------t:{},payType:{}",t,payType.getName());
+            if(t == null){
+                payType = PayType.FULL;
+            }
             Long uid = Long.parseLong(params.get("uid").toString());
             Long pid = Long.parseLong(params.get("pid").toString());
             BigDecimal amount = new BigDecimal(params.get("amount").toString());

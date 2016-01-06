@@ -168,10 +168,12 @@ public class OrderService {
 //		}
 		
 		String orderNo = makeOrderNo(p.getId());
-		OrderStatus toStatus = OrderStatus.PAY_OK;
+		OrderStatus toStatus = OrderStatus.BOOK_OK;
+
 		if(t == PayType.FINANCING){
-			toStatus = OrderStatus.BOOK_OK;
+			toStatus = OrderStatus.PAY_OK;
 		}
+		logger.info("t in orderService createOrder:{} , toStatus:{}",t,toStatus);
 		OrderInfo order = new OrderInfo(orderNo, amount, uid, pid, t.getId(), period, periodPay,
 				toStatus.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
 		
@@ -195,7 +197,7 @@ public class OrderService {
 		String SecurityCode = SecurityCodeUtil.getSecurityCode(orderNo);
 		order.setSecurityCode(SecurityCode);
 		long insertOrder = insertOrder(order);
-		
+		logger.info("创建订单的类型是:{},订单的详情为:{}",t.getName(),order.toString());
 		if (insertOrder != 1) {
 			throw new Exception("插入订单失败！请重试");
 		}
