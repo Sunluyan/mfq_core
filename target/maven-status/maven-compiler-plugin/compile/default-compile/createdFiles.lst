@@ -87,6 +87,7 @@ com\mfq\net\wukongbao\WukongBaoClient2$RequestCallable.class
 com\mfq\net\wukongbao\WukongBaoClient$RequestCallable.class
 com\mfq\payment\impl\UnionpayServiceImpl.class
 com\mfq\task\base\DefaultTask.class
+com\mfq\bean\PresentalExample.class
 com\mfq\bean\sms\SMSSendType.class
 com\mfq\utils\FQUtil.class
 com\mfq\cache\IPRateLimiter.class
@@ -117,6 +118,7 @@ com\mfq\controller\RechargeController.class
 com\mfq\annotation\PayAPIImpl.class
 com\mfq\bean\PayRecord.class
 com\mfq\controller\wechat\WeChatController.class
+com\mfq\bean\PresentalExample$GeneratedCriteria.class
 com\mfq\utils\DateUtil.class
 com\mfq\servlet\CaptchaImgServlet.class
 com\mfq\dataservice\cache\impl\RedisCacheManipulater$53.class
@@ -261,6 +263,7 @@ com\mfq\bean\Installation.class
 com\mfq\bean\page\SimplePage.class
 com\mfq\utils\HttpUtil.class
 com\mfq\net\wukongbao\WukongBaoClient.class
+com\mfq\bean\PresentalExample$Criterion.class
 com\mfq\handler\CouponStatusHandler.class
 com\mfq\dataservice\cache\impl\RedisCacheManipulater$63.class
 com\mfq\dao\PassportOauthMapper.class
@@ -301,6 +304,7 @@ com\mfq\utils\XBase64Utils$InputStream.class
 com\mfq\exception\BadCredentialsException.class
 com\mfq\bean\user\BasicUser.class
 com\mfq\dataservice\cache\impl\RedisCacheMBean.class
+com\mfq\dao\PresentalMapper.class
 com\mfq\constants\ErrorCodes.class
 com\mfq\service\sms\MobileMessageClient$2.class
 com\mfq\handler\CardTypeEnumHandler.class
@@ -389,6 +393,7 @@ com\mfq\dao\MsgReadMapper.class
 com\mfq\dataservice\cache\impl\RedisCacheManipulater$9.class
 com\mfq\service\wechat\WeChatService.class
 com\mfq\listener\StartListener$1.class
+com\mfq\bean\Presental.class
 com\mfq\service\HomeBannerService.class
 com\mfq\net\wukongbao\pojo\TimeSync$TimeSyncResponse.class
 com\mfq\bean\HomeBanner.class
@@ -440,6 +445,7 @@ com\mfq\bean\PolicyInfoExample$GeneratedCriteria.class
 com\mfq\exception\CredentialsExpiredException.class
 com\mfq\controller\InterViewController.class
 com\mfq\dataservice\cache\impl\RedisCacheManipulater$41.class
+com\mfq\bean\PresentalExample$Criteria.class
 com\mfq\bean\user\User.class
 com\mfq\bean\TemplateSMS.class
 com\mfq\utils\RequestUtils.class

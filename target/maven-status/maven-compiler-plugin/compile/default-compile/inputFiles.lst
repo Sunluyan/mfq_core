@@ -102,6 +102,7 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\net\wukongbao\pojo\QueryP
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\exception\BadCredentialsException.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\servlet\SecurityFilter.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\wechat\message\AccessToken.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\PresentalExample.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\app\ProductInfo2App.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service\FavoritesService.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\PayCallbackResult.java
@@ -223,6 +224,7 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\PassportOauthMapper.j
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\PaymentController.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\MsInstallationMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service\RegisterService.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\Presental.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\handler\CardTypeEnumHandler.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\HttpUtil.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\PolicyController.java
@@ -342,6 +344,7 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\net\tongdun\pojo\TongdunP
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service\LoginService.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\passport\ConnectSite.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\coupon\CouponBatchInfo.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\PresentalMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\UserTraceLogger.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\UserExtendMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\payment\PayFactory.java
