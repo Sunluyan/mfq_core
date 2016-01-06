@@ -180,7 +180,7 @@ public class PaymentController {
 			logger.info("result.getApiType().getCode():{}",result.getApiType().getCode());
 		}catch (Exception e) {
 			logger.error("MOBILE_CALLBACK_EXCEPTION", e);
-			e.printStackTrace();
+			e.printStackTrace();   
 			ret = JsonUtil.toJson(9999,e.getMessage(),null);
 		}finally {
             // 释放分布式锁
