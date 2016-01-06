@@ -7,8 +7,21 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import ch.qos.logback.classic.jul.JULHelper;
+import com.mfq.bean.Presental;
+import com.mfq.bean.coupon.Coupon;
+import com.mfq.bean.coupon.CouponBatchInfo;
+import com.mfq.bean.user.PresentRecord;
+import com.mfq.constants.*;
+import com.mfq.dao.CouponBatchInfoMapper;
+import com.mfq.dao.CouponMapper;
+import com.mfq.dao.PresentalMapper;
+import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.TestOnly;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
@@ -20,10 +33,6 @@ import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.bean.app.ProductInfoItem;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserExtend;
-import com.mfq.constants.ErrorCodes;
-import com.mfq.constants.OrderType;
-import com.mfq.constants.PayType;
-import com.mfq.constants.ProductType;
 import com.mfq.dao.UserExtendMapper;
 import com.mfq.dataservice.context.UserIdHolder;
 import com.mfq.payment.BasePaymentService;
@@ -61,6 +70,12 @@ public class ActivityService {
     PayService payService;
     @Resource
     PayRecordService payRecordService;
+    @Resource
+    PresentalMapper presentalMapper;
+    @Resource
+    CouponMapper couponMapper;
+    @Resource
+    CouponBatchInfoMapper couponBatchInfoMapper;
 
 	public List<ProductInfoItem> getItemsByType(ProductType type) {
 		List<Product> plist = productService.queryProductsByType(type);
@@ -134,6 +149,65 @@ public class ActivityService {
 		String result = service.goPay(null, null, params, orderType);
 		return result;
 	}
+
+
+	/**
+	 * 礼品券兑换活动,通过code验证,换取500元优惠券
+	 * @param uid
+	 * @param code
+     * @return
+     */
+    @Transactional
+	public String presentCode(long uid , String code) throws Exception{
+        Presental presental = presentalMapper.selectByPrimaryKey(code);
+        if(presental == null){
+            return JsonUtil.toJson(9999,"没有该验证码",null);
+        }
+        else if(StringUtils.isBlank(presental.getUid().toString())){
+            return JsonUtil.toJson(8989,"验证码已被使用",null);
+        }
+
+        //验证码可用
+        presental.setUid((int)uid);
+        presental.setUpdatetime(new Date());
+        int count = presentalMapper.updateByPrimaryKey(presental);
+        if(count != 1){
+            logger.error("更新验证码出错!");
+            throw new Exception("更新验证码出错");
+        }
+        Coupon coupon = new Coupon();
+        coupon.setUid(uid);
+        coupon.setMoney(BigDecimal.valueOf(500));
+        coupon.setBatchId(2);
+        coupon.setCouponNum(code);
+        coupon.setStatus(CouponStatus.INIT);
+        count = (int)couponMapper.insertOne(coupon);
+        if(count != 1){
+            logger.error("插入优惠券出错!");
+            throw new Exception("插入优惠券出错");
+        }
+        return JsonUtil.successResultJson("领取成功~");
+	}
+
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        PresentalMapper mapper = ac.getBean(PresentalMapper.class);
+        Presental p = new Presental();
+
+
+        for (int i = 0; i < 10000; i++) {
+            String num = i+"";
+            if(num.length()<4){
+                for(int j = num.length();j<4;j++){
+                    num = "0"+num;
+                }
+            }
+            p.setCode(num);
+            mapper.insert(p);
+            System.out.println(num);
+        }
+
+    }
 
 
 }

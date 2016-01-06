@@ -39,6 +39,7 @@
 		<typeAlias alias="HomeClassify" type="com.mfq.bean.HomeClassify"/>
 		<typeAlias alias="Nurse" type="com.mfq.bean.user.Nurse"/>
 		<typeAlias alias="UserAuthPic" type="com.mfq.bean.user.UsersAuthPic"/>
+
 	</typeAliases>
 	
 	<typeHandlers>
@@ -113,6 +114,7 @@
 		<mapper resource="mybatis/mapping/PolicyInsureMapper.xml"/>
 		<mapper resource="mybatis/mapping/Nurse.xml"/>
 		<mapper resource="mybatis/mapping/UsersAuthPicMapper.xml"/>
+		<mapper resource="mybatis/mapping/PresentalMapper.xml"/>
 	</mappers>
 
 </configuration>

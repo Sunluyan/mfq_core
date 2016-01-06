@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
+import com.mfq.helper.SignHelper;
 import com.mfq.service.user.UserQuotaService;
 import com.qiniu.util.Json;
 import org.apache.commons.lang.StringUtils;
@@ -432,5 +433,43 @@ public class ActivityController {
         }
         return ret;
     }
+
+
+    /**
+     * 礼品券号码兑换优惠券
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/present/code")
+    @ResponseBody
+    public String presentCode(HttpServletRequest request, HttpServletResponse response){
+        String ret = "";
+        try {
+            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+            }
+
+            if(params.get("uid") == null || params.get("code") == null){
+                logger.error("系统非法请求！ATTENTION_UNLAWFULL_ACCESS");
+                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
+                        null);
+            }
+
+            long uid = Long.parseLong(params.get("uid").toString());
+            String code = params.get("code").toString();
+            ret = activityService.presentCode(uid,code);
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            ret = JsonUtil.toJson(9999,e.getMessage(),null);
+        }
+        return ret;
+    }
+
+
+
 
 }

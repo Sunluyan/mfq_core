@@ -159,6 +159,7 @@ public class OrderController {
             String couponNum = null;
             if(params.get("coupon_num")!=null){
                 couponNum = params.get("coupon_num").toString();
+
             }
             
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间

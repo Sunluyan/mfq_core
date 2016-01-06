@@ -84,7 +84,7 @@ public class PaymentController {
 			BigDecimal amount = new BigDecimal(params.get("amount").toString()); // 充值额度或实际需支付金额
 																				 // 或 还款金额
 
-
+			//TODO 支付的时候 要减去优惠券的价格
 			
 			PayAPIType apiType = PayAPIType.fromCode(tpp);
 	        if (apiType == null) {

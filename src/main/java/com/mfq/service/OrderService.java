@@ -128,7 +128,7 @@ public class OrderService {
 		
 		
 		couponNum = StringUtils.defaultIfBlank(couponNum, "");
-		
+		//TODO 创建订单时要判断金额能否使用优惠券,如果不能,返回错误.如果能,在金额上减去优惠券.
 		/**
 		 * 仅分期订单：下单后，优惠券被冻结，订单取消后会被标注为释放；订单推开，同样须将优惠券释放为初始状态。 支付回调时，优惠券被标记为使用
 		 */
@@ -168,9 +168,12 @@ public class OrderService {
 //		}
 		
 		String orderNo = makeOrderNo(p.getId());
-
+		OrderStatus toStatus = OrderStatus.PAY_OK;
+		if(t == PayType.FINANCING){
+			toStatus = OrderStatus.BOOK_OK;
+		}
 		OrderInfo order = new OrderInfo(orderNo, amount, uid, pid, t.getId(), period, periodPay,
-				OrderStatus.PAY_OK.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
+				toStatus.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
 		
 		
 		//购买保险
@@ -256,7 +259,7 @@ public class OrderService {
 					.subtract(couponMoney);
 
 			if (amount.subtract(baseFQMoney).compareTo(BigDecimal.valueOf(0)) < 0) {
-				logger.warn("订单金额<错误");
+				logger.warn("订单金额 < 0 ");
 				return false;
 			}
 
