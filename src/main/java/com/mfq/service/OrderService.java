@@ -2,14 +2,11 @@ package com.mfq.service;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.app.CouponInfo2App;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -128,7 +125,6 @@ public class OrderService {
 		
 		
 		couponNum = StringUtils.defaultIfBlank(couponNum, "");
-		//TODO 创建订单时要判断金额能否使用优惠券,如果不能,返回错误.如果能,在金额上减去优惠券.
 		/**
 		 * 仅分期订单：下单后，优惠券被冻结，订单取消后会被标注为释放；订单推开，同样须将优惠券释放为初始状态。 支付回调时，优惠券被标记为使用
 		 */
@@ -140,33 +136,16 @@ public class OrderService {
 			if(periodPay.divide(BigDecimal.valueOf(period),2, BigDecimal.ROUND_HALF_EVEN).compareTo(BigDecimal.valueOf(100))<0){
 				throw new Exception("每月还款金额不能低于100元哦");
 			}
-			
 			if (quota.getBalance().compareTo(balancePay) >= 0) {
 				logger.info("分期 ——余额支付！！ balance ={} , balancePay={}",
 						quota.getBalance(), balancePay);
-				// 优先使用正常余额帐户
+				// 使用正常余额帐户
 				userQuotaService.updateUserBalance(uid, balancePay.negate());
-			} else if (quota.getBalance().add(quota.getPresent())
-					.compareTo(balancePay) >= 0) {
-				logger.info("分期 ——余额+赠送额度支付！！ balance ={} , balancePay={}",
-						quota.getBalance(), balancePay);
-				BigDecimal temp = balancePay.subtract(quota.getBalance());
-				userQuotaService.updateUserBalance(uid, quota.getBalance()
-						.negate());
-				userQuotaService.updateUserPresent(uid, temp.negate()); // 其次使用赠送余额帐户
 			} else { //
-				throw new Exception("余额不够支付此订单");
-			}
-			
+                throw new Exception("余额不够支付此订单");
+            }
 		}
 
-
-//		if(ProductType.SECKILLING == p.getType()){
-//			//减少产品数量 -1
-//			logger.info("秒杀减轻 产品数量");
-//			productService.updateProductRemainNum(uid, pid, -1);
-//		}
-		
 		String orderNo = makeOrderNo(p.getId());
 		OrderStatus toStatus = OrderStatus.BOOK_OK;
 
@@ -174,6 +153,15 @@ public class OrderService {
 			toStatus = OrderStatus.PAY_OK;
 		}
 		logger.info("t in orderService createOrder:{} , toStatus:{}",t,toStatus);
+        //之前在创建分期订单的时候,把amount减少了优惠券的优惠金额(比如3000的amount,优惠券是满1000-500,刚才把amount减到了2500)
+        //现在需要把amount改回来
+        if(t == PayType.FINANCING && StringUtils.isNotBlank(couponNum)){
+            Coupon coupon = couponService.findByCouponNum(couponNum);
+            List<Coupon> couponList = new ArrayList<>();
+            couponList.add(coupon);
+            CouponInfo2App couponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
+            amount = amount.add(couponInfo2App.getMoney());
+        }
 		OrderInfo order = new OrderInfo(orderNo, amount, uid, pid, t.getId(), period, periodPay,
 				toStatus.getValue(), onlinePay, hospitalPay, couponNum, balancePay, operation_time);
 		
@@ -333,7 +321,6 @@ public class OrderService {
 						"产品下单失败", null);
 			}
 		} else {
-
 			if (!(product != null
 					&& DateUtil.getDayBetweenD(product.getDateStart(),
 							new Date()) >= 0 && DateUtil.getDayBetweenD(
@@ -366,8 +353,9 @@ public class OrderService {
 		Map<String, Object> map = Maps.newHashMap();
 		// 可用余额－－会包含部分赠送金额，可用余额是小于总金额的（总金额＝帐户余额＋赠送代金券）
 		map.put("balance", getValidBalance(uid));
+
 		map.put("coupon",
-				couponService.findValidCoupon(uid, product.getPrice()));
+				couponService.findValidCoupon(uid));
 		return JsonUtil.successResultJson(map);
 	}
 

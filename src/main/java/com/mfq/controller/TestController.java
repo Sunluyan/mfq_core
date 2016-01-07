@@ -565,7 +565,7 @@ public class TestController {
         System.out.println(resp);
     }
     public static void testAdultInfo(){
-    	String url = purl+"/auth/adult/info/";
+        String url = purl+"/auth/adult/info/";
         Map<String, Object> params = Maps.newHashMap();
         params.put("uid", 2798);
         params.put("company", "大公司");
@@ -580,13 +580,24 @@ public class TestController {
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
     }
-   
+    public static void testPresent(){
+        String url = purl+"/activity/present/code";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("uid", 2798);
+        params.put("code", "7865");
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
     
-    private final static String purl="http://i.5imfq.com/";
+//    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
 //	private final static String purl="http://m.5imfq.com/";
 //	private final static String purl="http://localhost:8080/mfq-app";
   //  private final static String purl="http://localhost:7777/";
+    private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
 //		testOrderCreate();
@@ -600,7 +611,8 @@ public class TestController {
 //    	testLogin();
 //    	testCreateFinance();
  //   	testFinanceList();
-    	testAdultInfo();
+    	//testAdultInfo();
+        testPresent();
 
     	
 

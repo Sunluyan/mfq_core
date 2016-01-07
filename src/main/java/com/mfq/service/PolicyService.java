@@ -125,8 +125,6 @@ public class PolicyService {
 	}
 	/**
 	 * 投保
-	 * @param orderInfo
-	 * @param quota
      * @return
      */
 	@Transactional

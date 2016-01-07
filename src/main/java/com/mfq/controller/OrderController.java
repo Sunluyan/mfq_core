@@ -1,7 +1,9 @@
 package com.mfq.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -9,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import com.mfq.bean.app.CouponInfo2App;
+import com.mfq.bean.coupon.Coupon;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -70,8 +75,7 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
                         null);
             }
-            
-            
+
             ret = orderService.bookingOrder(uid, pid);
             
             
@@ -163,14 +167,28 @@ public class OrderController {
             logger.info("下单类别:{}", payType);
             
             String couponNum = null;
+            //-------------------如果有优惠券的话,基本上什么都不用做,应该在支付的时候,考虑到优惠券的优惠,而不是在这里修改amount的值.
             if(params.get("coupon_num")!=null){
                 couponNum = params.get("coupon_num").toString();
+                Coupon coupon = couponService.findByCouponNum(params.get("coupon_num").toString());
+                List<Coupon> couponList = new ArrayList<>();
+                couponList.add(coupon);
+                CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
 
+                if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
+                    ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
+                    return ret;
+                }
+                if(CouponInfo2App.getCondition().compareTo(amount) <= 0){//如果优惠价格比总价还低
+                    ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
+                    return ret;
+                }
             }
-            
+            //--------------------优惠券结束
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
             if(operation_time.length()!=13){
                 ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不是时间戳", null);
+                return ret;
             }
             Date operationT = new Date(Long.parseLong(operation_time));
             
@@ -230,6 +248,26 @@ public class OrderController {
             if(amount.compareTo(new BigDecimal(100))<=0){
             	return JsonUtil.toJson(ErrorCodes.ORDER_MONEY_TOOLOW, "订单金额小于100", null); 
             }
+
+            // MARK 如果有优惠券的话,应该先把amount减掉相应的金额,然后该干嘛干嘛,最后把金额给amout加上.
+            String couponNum = null;
+            if(params.get("coupon_num")!=null){
+                couponNum = params.get("coupon_num").toString();
+                Coupon coupon = couponService.findByCouponNum(params.get("coupon_num").toString());
+                List<Coupon> couponList = new ArrayList<>();
+                couponList.add(coupon);
+                CouponInfo2App couponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
+
+                //如果减免金额比总价多,减完成负数了,就不能给丫减. 如果优惠条件比总价低,就不能优惠
+                if(amount.compareTo(couponInfo2App.getMoney()) <= 0 ||
+                        amount.compareTo(couponInfo2App.getCondition()) >= 0){
+                    ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,"金额不符合优惠券条件",null);
+                    return ret;
+                }
+                //!!!!!!这里非常重要.需要先把 amount-money ,然后最后在生成的 order_info 中把order的amount加上.
+                amount = amount.subtract(couponInfo2App.getMoney());
+            }
+            // MARK  优惠券结束
             
             int period = 0;
             logger.info("下单类别:{}", "分期付款");
@@ -241,20 +279,25 @@ public class OrderController {
             	return JsonUtil.toJson(ErrorCodes.USER_QUOTALEFT_TOO_LOW, "用户剩余额度小于100", null);
             }
             
-            BigDecimal periodPay = new BigDecimal(0);
-            
+            BigDecimal periodPay;
+
+            if(params.get("coupon_num")!=null){
+
+            }
+
             if(quotaLeft.compareTo(amount)<0){
             	periodPay = quotaLeft;
             }else{
             	periodPay = amount;
             }
             
-            
-            
+
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
             if(operation_time.length()!=13){
                 ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "时间戳不对", null);
             }
+
+
             
             Date operationT = new Date(Long.parseLong(operation_time));
             int policy = 0;
@@ -267,7 +310,7 @@ public class OrderController {
             BigDecimal balancePay = BigDecimal.valueOf(0);
             
             OrderInfo2App order = orderService.createOrder(PayType.FINANCING, uid, pid,amount, onlinePay, hospitalPay, 
-            												balancePay, period, periodPay,null, policy, operationT);
+            												balancePay, period, periodPay,couponNum, policy, operationT);
             
             
             if (order != null) {
@@ -277,6 +320,8 @@ public class OrderController {
                 ret = JsonUtil.successResultJson(order);
                 logger.info("Order_Create_Ret is:{}", ret);
             }
+
+
             
         } catch (Exception e) {
             logger.error("Exception OrderCreate Process!", e);

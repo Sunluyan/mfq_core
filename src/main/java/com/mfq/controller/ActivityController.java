@@ -460,11 +460,13 @@ public class ActivityController {
 
             long uid = Long.parseLong(params.get("uid").toString());
             String code = params.get("code").toString();
+            logger.info("uid:{},code:{}",uid,code);
             ret = activityService.presentCode(uid,code);
 
         } catch (Exception e) {
             logger.error(e.getMessage());
-            ret = JsonUtil.toJson(9999,e.getMessage(),null);
+            e.printStackTrace();
+            ret = JsonUtil.toJson(9999,"系统错误",null);
         }
         return ret;
     }

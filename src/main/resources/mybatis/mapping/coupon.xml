@@ -17,8 +17,10 @@
 	<select id="findByUid" resultType="Coupon">
 		select
 		<include refid="selectsql" />
-		from coupon where uid=#{uid} order by updated_at desc
+		from coupon where uid=#{uid} and status =  order by updated_at desc
 	</select>
+
+
 
 	<select id="findUserValid" resultType="Coupon">
 		select

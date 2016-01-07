@@ -31,7 +31,6 @@ import com.mfq.constants.PayStatus;
 import com.mfq.constants.PayType;
 import com.mfq.constants.PolicyStatus;
 import com.mfq.dao.PolicyInfoMapper;
-import com.mfq.net.wukongbao.WukongBaoClient;
 import com.mfq.payment.PayAPIType;
 import com.mfq.service.sms.SMSService;
 import com.mfq.service.user.PresentRecordService;

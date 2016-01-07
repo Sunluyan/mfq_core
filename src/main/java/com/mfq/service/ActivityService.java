@@ -163,10 +163,10 @@ public class ActivityService {
         if(presental == null){
             return JsonUtil.toJson(9999,"没有该验证码",null);
         }
-        else if(StringUtils.isBlank(presental.getUid().toString())){
+        else if(null != presental.getUid()){
             return JsonUtil.toJson(8989,"验证码已被使用",null);
         }
-
+        logger.info("presental.getUid:{}",presental.getUid());
         //验证码可用
         presental.setUid((int)uid);
         presental.setUpdatetime(new Date());
