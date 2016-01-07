@@ -14,55 +14,77 @@ public class Coupon {
     long batchId; // 批次ID
     String couponNum; // 优惠券编码
     BigDecimal money; // 优惠券金额
+    int flag;  //标识
     CouponStatus status; // 状态 0初始状态 1冻结 2已使用
     Date updatedAt; // 最后更新时间
-    
+
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     public long getUid() {
         return uid;
     }
+
     public void setUid(long uid) {
         this.uid = uid;
     }
+
     public long getBatchId() {
         return batchId;
     }
+
     public void setBatchId(long batchId) {
         this.batchId = batchId;
     }
+
     public String getCouponNum() {
         return couponNum;
     }
+
     public void setCouponNum(String couponNum) {
         this.couponNum = couponNum;
     }
+
     public BigDecimal getMoney() {
         return money;
     }
+
     public void setMoney(BigDecimal money) {
         this.money = money;
     }
+
     public CouponStatus getStatus() {
         return status;
     }
+
     public void setStatus(CouponStatus status) {
         this.status = status;
     }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
     public Date getUpdatedAt() {
         return updatedAt;
     }
+
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
-    
+
 }

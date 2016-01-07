@@ -39,7 +39,7 @@ public class CouponController {
      */
     @RequestMapping(value = { "/list", "/list/" }, method = RequestMethod.POST)
     @ResponseBody
-    public String booking(HttpServletRequest request,
+    public String list(HttpServletRequest request,
             HttpServletResponse response) {
         String ret = "";
         try {
@@ -66,6 +66,40 @@ public class CouponController {
         logger.info("CouponList_Ret is:{}", ret);
         return ret;
     }
+
+    /**
+     * 优惠券列表
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = { "/del", "/del/" }, method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public String delCounpon(HttpServletRequest request,
+                          HttpServletResponse response) {
+        String ret = "";
+        try{
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+            }
+            if(params.get("couponNum") == null || params.get("uid")==null){
+                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
+                        null);
+            }
+            String couponNum = params.get("couponNum").toString();
+            Long uid = Long.parseLong(params.get("uid").toString());
+            long uNum = couponService.delCoupon(couponNum, uid);
+            ret = JsonUtil.successResultJson(uNum);
+        }catch (Exception e){
+            logger.error(" conpon del is error {}", e);
+        }
+        logger.info("conpon del ret is {}", ret);
+        return ret;
+    }
+
 
 
 }

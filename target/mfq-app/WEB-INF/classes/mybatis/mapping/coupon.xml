@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mfq.dao.CouponMapper">
 	<sql id="selectsql">
-		id, uid, batch_id as batchId, coupon_num as couponNum, money, status, updated_at as updatedAt
+		id, uid, batch_id as batchId, coupon_num as couponNum, money, status, `flag`, updated_at as updatedAt
 	</sql>
 	<sql id="insertsql">
-		uid, batch_id, coupon_num, money, status, updated_at
+		uid, batch_id, coupon_num, money, status, flag, updated_at
 	</sql>
 
 	<select id="findByCouponNum" resultType="Coupon">
 		select
 		<include refid="selectsql" />
-		from coupon where coupon_num=#{couponNum}
+		from coupon where coupon_num=#{couponNum} and flag!=1
 	</select>
 
 	<select id="findByUid" resultType="Coupon">
 		select
 		<include refid="selectsql" />
-		from coupon where uid=#{uid} order by updated_at desc
+		from coupon where uid=#{uid} and flag != 1 order by updated_at desc
 	</select>
 
 	<select id="findUserValid" resultType="Coupon">
@@ -27,20 +27,27 @@
 		<foreach collection="list" open="(" separator="," close=")" item="id">
             #{id}
         </foreach>
+		and flag != 1
 		order by updated_at desc
 	</select>
 	
-	
+	<select id="findByUserAndNum" resultType="Coupon">
+		select <include refid="selectsql"/> from coupon where uid=#{uid} and coupon_num=#{couponNum}
+	</select>
 	
 	<select id="findCouponsByUidAndStatus" resultType="Coupon">
 		select
 		<include refid="selectsql" />
-		from coupon where uid=#{uid} and status=#{status} 
+		from coupon where uid=#{uid} and status=#{status} and flag != 1
 		order by updated_at desc
 	</select>
 	
 	<update id="updateStatus">
 		update coupon set status=#{status} where coupon_num=#{couponNum}
+	</update>
+
+	<update id="delCoupon">
+		update coupon set flag=1 where coupon_num=#{couponNum}
 	</update>
 
 	<insert id="insertOne" useGeneratedKeys="true" keyProperty="id">
@@ -49,7 +56,7 @@
 		</selectKey>
 		insert ignore into coupon(
 			<include refid="insertsql" />
-		) values (#{uid}, #{batchId}, #{couponNum}, #{money}, #{status}, #{updatedAt})
+		) values (#{uid}, #{batchId}, #{couponNum}, #{money}, #{status}, 0, #{updatedAt})
 	</insert>
 
 </mapper>

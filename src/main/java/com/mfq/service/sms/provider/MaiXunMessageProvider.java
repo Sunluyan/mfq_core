@@ -167,9 +167,9 @@ public class MaiXunMessageProvider extends MessageProvider {
         MaiXunMessageProvider m = new MaiXunMessageProvider();
         String content = "测试。。。";
         //System.out.println(content);
-        String result = m.sendBatchMessage(content, "15910812061;15910812061;15910812061");
-        m.getBalance();
-        System.out.println(result);
+//        String result = m.sendBatchMessage(content, "15910812061;15910812061;15910812061");
+//        m.getBalance();
+//        System.out.println(result);
         // 测试群发
         // String result2=m.sendBatchMessage("测试",
         // "18612258336;15910812061");

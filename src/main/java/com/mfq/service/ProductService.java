@@ -106,7 +106,7 @@ public class ProductService {
     	}
     	List<Integer> categorys = classifyService.findClassIdsByRootId(category);
     	categorys.add(category);
-        List<Product> list = mapper.findByClass(city, categorys, pType);
+        List<Product> list = mapper.findByClass(city, categorys, null);  //productType传人null ，所有类型
         List<ProductListItem2App> lists=convert2AppList(list);
         
         try{
@@ -127,7 +127,7 @@ public class ProductService {
 		if(productType == null){
 			productType = ProductType.fromId(0);
 		}
-        List<Product> list = mapper.findByFlag(city, recommend.getId(), productType);
+        List<Product> list = mapper.findByFlag(city, recommend.getId(), null);
         return convert2AppList(list);
     }
 
