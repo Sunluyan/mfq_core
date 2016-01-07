@@ -28,7 +28,6 @@ import com.mfq.dao.CouponMapper;
  * 二、分期订单 可能会分为几种情况：0支付申请分期、余额支付申请分期、余额支付＋优惠券支付申请分期 1.订单金额大于5000
  * 
  * @author xingyongshan
- *
  */
 @Service
 public class CouponService {
@@ -174,8 +173,23 @@ public class CouponService {
 		app.coupon_num = c.getCouponNum();
 		return app;
 	}
-	
-	class CouponForApp{
+
+    /***
+     * 删除coupon
+     * @param couponNum
+     * @param uid
+     * @return
+     */
+    public long delCoupon(String couponNum, Long uid) {
+        long updateNum = 0;
+        Coupon coupon = couponMapper.findByUserAndNum(uid, couponNum);
+        if(coupon !=null) {
+            updateNum = couponMapper.delCoupon(couponNum);
+        }
+        return updateNum;
+    }
+
+    class CouponForApp{
 		BigDecimal money;
 		String coupon_num;
 		public BigDecimal getMoney() {
@@ -190,5 +204,12 @@ public class CouponService {
 		public void setCoupon_num(String coupon_num) {
 			this.coupon_num = coupon_num;
 		}
+	}
+    
+    public static void main(String[] args) {
+    	 ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+    	 CouponService service =(CouponService) ac.getBean("couponService");
+         service.delCoupon("1", 2798l);
+         
 	}
 }

@@ -27,8 +27,11 @@
 		now() BETWEEN product.date_start AND  product.date_end AND online = true
 		<if test="city_id != 0">
 		and city_id=#{city_id} 
-		</if> 
-		and type = #{type} and tid in
+		</if>
+		<if test="type !=null">
+			and type = #{type}
+		</if>
+		 and tid in
 		<foreach collection="list" open="(" separator="," close=")"
                  item="tid">
             #{tid}
@@ -50,7 +53,11 @@
 		<if test="city_id != 0">
 		AND city_id=#{city_id} 
 		</if> 
-	    AND online = true AND type = #{type} order by id desc
+	    AND online = true
+		<if test="type != null">
+		AND type = #{type}
+		</if>
+		order by id desc
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product"

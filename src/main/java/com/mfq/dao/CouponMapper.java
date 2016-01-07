@@ -23,6 +23,10 @@ public interface CouponMapper {
 
     public long updateStatus(@Param("couponNum") String couponNum, @Param("status") CouponStatus status);
 
+    public Coupon findByUserAndNum(@Param("uid")long uid, @Param("couponNum")String couponNum);
+
+    public long delCoupon(@Param("couponNum")String couponNum);
+
 	public List<Coupon> findCouponsByUidAndStatus(@Param("uid") long uid, @Param("status") CouponStatus couponStatus);
 
 }

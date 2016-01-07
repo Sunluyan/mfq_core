@@ -251,6 +251,9 @@ public class PayService {
 			record.setStatus(PayStatus.PAID); // 是否应该写在这儿？
 			record.setCallbackAt(result.getPayAt() == null ? new Date() : result.getPayAt());
 			record.setTpp(result.getApiType().getCode());
+			record.setTradeNo(result.getTradeNo());
+			record.setBankCode(result.getBankCode());
+			record.setPayAt(result.getPayAt());
 			
 			long m = payRecordService.updateOne(record);
 			if (m <= 0) {
