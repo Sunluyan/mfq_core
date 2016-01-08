@@ -63,7 +63,6 @@ public class CouponController {
             logger.error("Exception CouponList Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
         }
-        logger.info("CouponList_Ret is:{}", ret);
         return ret;
     }
 

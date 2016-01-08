@@ -2,6 +2,8 @@ package com.mfq.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -9,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mfq.bean.BeeCloudResult;
+import com.mfq.bean.OrderInfo;
+import com.mfq.bean.app.CouponInfo2App;
+import com.mfq.bean.coupon.Coupon;
 import com.mfq.payment.impl.UnionpayServiceImpl;
+import com.mfq.service.*;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,10 +36,6 @@ import com.mfq.helper.SignHelper;
 import com.mfq.payment.BasePaymentService;
 import com.mfq.payment.PayAPIType;
 import com.mfq.payment.PayFactory;
-import com.mfq.service.FinanceBillService;
-import com.mfq.service.OrderService;
-import com.mfq.service.PayRecordService;
-import com.mfq.service.PayService;
 import com.mfq.service.user.UserQuotaService;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.RequestUtils;
@@ -55,6 +57,8 @@ public class PaymentController {
 	FinanceBillService financeBillService;
     @Resource
     UnionpayServiceImpl unionpayService;
+	@Resource
+	CouponService couponService;
 	
 	
 	/**
@@ -84,7 +88,7 @@ public class PaymentController {
 			BigDecimal amount = new BigDecimal(params.get("amount").toString()); // 充值额度或实际需支付金额
 																				 // 或 还款金额
 
-			//TODO 支付的时候 要减去优惠券的价格
+
 			
 			PayAPIType apiType = PayAPIType.fromCode(tpp);
 	        if (apiType == null) {
@@ -105,7 +109,28 @@ public class PaymentController {
 				logger.warn("Unsupported tpp: {}", tpp);
 				return ret;
 			}
-			
+			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
+			//TODO 支付的时候 要减去优惠券的价格
+			if(orderInfo.getCouponNum()!=null || orderInfo.getCouponNum() != ""){
+				Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
+				List<Coupon> couponList = new ArrayList<>();
+				couponList.add(coupon);
+				CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+
+				if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
+					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
+					return ret;
+				}
+				if(CouponInfo2App.getCondition().compareTo(amount) >= 0){//如果优惠价格比总价还低
+					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
+					return ret;
+				}
+
+				//减掉应该支付的金额.
+				amount = amount.subtract(CouponInfo2App.getMoney());
+			}
+			//优惠券完成
+
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
 			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount);
 			logger.info("save2PayRecord! orderNo={}, count={}", orderNo, s);

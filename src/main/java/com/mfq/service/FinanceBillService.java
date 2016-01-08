@@ -157,10 +157,10 @@ public class FinanceBillService {
 
 	@Transactional
 	public boolean createFinance(OrderInfo orderInfo) throws Exception {
+
 		Integer period = orderInfo.getPeriod();
-		BigDecimal everyMonthPay = orderInfo.getPeriodPay();
-		everyMonthPay = orderInfo.getPeriodPay().multiply(new BigDecimal("0.0125")) 
-            	.add(orderInfo.getPeriodPay().divide(new BigDecimal(period),2,BigDecimal.ROUND_HALF_EVEN)).setScale(2, BigDecimal.ROUND_HALF_EVEN);
+		BigDecimal everyMonthPay = BigDecimal.valueOf(0);
+		everyMonthPay = orderInfo.getPeriodPay().divide(new BigDecimal(period),2,BigDecimal.ROUND_HALF_EVEN);
 		long pid = orderInfo.getPid();
 		Date now = new Date(System.currentTimeMillis());
 		

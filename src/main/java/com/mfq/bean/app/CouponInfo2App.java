@@ -13,7 +13,6 @@ public class CouponInfo2App {
     BigDecimal money; // 优惠券金额
     int status; // 状态 0初始状态 1冻结 2已使用
     Date updatedAt; // 最后更新时间
-   
     String batch; // 批次说明
     Date periodBeg; // 有效开始日期
     Date periodEnd; // 有效结束日期
@@ -21,7 +20,7 @@ public class CouponInfo2App {
 
 
 	public CouponInfo2App() {
-
+		super();
 	}
 
 	public CouponInfo2App(com.mfq.bean.coupon.Coupon coupon, com.mfq.bean.coupon.CouponBatchInfo couponBatchInfo) {
@@ -37,6 +36,23 @@ public class CouponInfo2App {
 		this.periodEnd = couponBatchInfo.getPeriodEnd();
 		this.condition = couponBatchInfo.getCondition();
 		
+	}
+
+	@Override
+	public String toString() {
+		return "CouponInfo2App{" +
+				"id=" + id +
+				", uid=" + uid +
+				", batchId=" + batchId +
+				", couponNum='" + couponNum + '\'' +
+				", money=" + money +
+				", status=" + status +
+				", updatedAt=" + updatedAt +
+				", batch='" + batch + '\'' +
+				", periodBeg=" + periodBeg +
+				", periodEnd=" + periodEnd +
+				", condition=" + condition +
+				'}';
 	}
 
 	public long getId() {

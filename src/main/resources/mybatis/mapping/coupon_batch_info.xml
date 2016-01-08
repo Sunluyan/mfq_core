@@ -20,10 +20,10 @@
 		from coupon_batch_info where batch=#{batch}
 	</select>
 
-	<select id="findValidByCondition" resultType="CouponBatchInfo">
+	<select id="findByBatchs" resultType="CouponBatchInfo">
 		select
 		<include refid="selectsql" />
-		from coupon_batch_info where coupon_batch_info.`condition` &lt; #{condition} and period_beg &lt; now() and period_end &gt; now()
+		from coupon_batch_info where id in ${batchs}
 	</select>
 
 	<insert id="insertOne" useGeneratedKeys="true" keyProperty="id">

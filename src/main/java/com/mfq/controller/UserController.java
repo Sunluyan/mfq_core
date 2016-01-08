@@ -167,8 +167,10 @@ public class UserController {
  		   long uid = Long.parseLong(params.get("uid").toString());
  		   UserQuota userQuota = userQuotaService.queryUserQuota(uid);
  		   
- 		   if(userQuota==null)ret=JsonUtil.toJson(ErrorCodes.USER_NOT_FIND,"用户不存在",null);
- 		   
+ 		   if(userQuota==null){
+               ret=JsonUtil.toJson(ErrorCodes.USER_NOT_FIND,"用户不存在",null);
+               return null;
+           }
  		   Map<String,Object> result = new HashMap<String, Object>();
  		   result.put("auth_status", userQuota.getAuthStatus());
  		   result.put("user_type", userQuota.getUserType());

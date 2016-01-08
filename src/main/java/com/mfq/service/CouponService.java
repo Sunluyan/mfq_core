@@ -1,6 +1,7 @@
 package com.mfq.service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -23,9 +24,6 @@ import com.mfq.dao.CouponBatchInfoMapper;
 import com.mfq.dao.CouponMapper;
 
 /**
- * 优惠券 使用场景： 一、团购订单 1.全款支付，单价大于10000可用500 2.在线＋到院支付方式，优惠券仅用于冲抵到院支付部分（实际到院支付－优惠券）
- * 二、分期订单 可能会分为几种情况：0支付申请分期、余额支付申请分期、余额支付＋优惠券支付申请分期 1.订单金额大于5000
- * 
  * @author xingyongshan
  */
 @Service
@@ -70,31 +68,55 @@ public class CouponService {
         return couponMapper.findByCouponNum(couponNum);
     }
 
-    public Coupon findValidCoupon(long uid, BigDecimal amount) {
-        List<CouponBatchInfo> lbi = batchMapper.findValidByCondition(amount);
-        if (CollectionUtils.isEmpty(lbi)) {
+
+    /**
+     * 该方法用来查询用户的优惠券,并封装成 CouponInfo2App 对象返回
+     * @param uid
+     * @return List<CouponINfo>
+     */
+    public List<CouponInfo2App> findValidCoupon(long uid) {
+		List<Coupon> coupons = couponMapper.findCouponsByUidAndStatus(uid,CouponStatus.INIT);
+        if (CollectionUtils.isEmpty(coupons)) {
             return null;
         }
-        List<Long> batchs = Lists.newArrayList();
-        for (CouponBatchInfo batch : lbi) {
-            batchs.add(batch.getId());
-        }
-        List<Coupon> list = couponMapper.findUserValid(uid, CouponStatus.INIT,
-                batchs);
-        if (CollectionUtils.isEmpty(list)) {
-            return null;
-        }
-        // 取一个最大的优惠券? 这里取的是最接近amount的券
-        Coupon ret = null;
-        for (Coupon coupon : list) {
-            if (ret == null) {
-                ret = coupon;
-            } else if (coupon.getMoney().compareTo(ret.getMoney()) > 0) {
-                ret = coupon;
+        //封装查询条件,弄成 ('1','2','3') 的样子
+		String batchs = "(";
+		for (Coupon coupon : coupons) {
+			batchs += "'"+coupon.getBatchId()+"',";
+		}
+		batchs = batchs.substring(0,batchs.length()-1);
+		batchs += ")";
+
+        //查询优惠券详情
+		List<CouponBatchInfo> couponBatchInfos = batchMapper.findByBatchs(batchs);
+        //创建一个要发送给客户端的 CouponInfo2App 集合,等会用
+        List<CouponInfo2App> couponInfo2Apps = new ArrayList<>();
+
+        for (Coupon coupon : coupons) {
+
+            CouponBatchInfo  couponBatchInfo = new CouponBatchInfo();
+            for (CouponBatchInfo batchInfo : couponBatchInfos) {
+                if(batchInfo.getId() == coupon.getBatchId()){
+                    couponBatchInfo = batchInfo;
+                    break;
+                }
             }
+
+            CouponInfo2App couponInfo2App = new CouponInfo2App(coupon,couponBatchInfo);
+            couponInfo2Apps.add(couponInfo2App);
         }
-        return ret;
+
+        return couponInfo2Apps;
     }
+
+	public static void main(String[] args) {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		CouponService service = ac.getBean(CouponService.class);
+		List<CouponInfo2App> list = service.findValidCoupon(2798);
+        for (CouponInfo2App couponInfo2App : list) {
+			System.out.println(couponInfo2App);
+		}
+	}
 
     public long updateCouponStatus(String couponNum, CouponStatus status) {
         return couponMapper.updateStatus(couponNum, status);
@@ -118,7 +140,7 @@ public class CouponService {
 		return convert2AppList(list);
 	}
 	
-	private List<CouponInfo2App> convert2AppList(List<Coupon> clist) {
+	public List<CouponInfo2App> convert2AppList(List<Coupon> clist) {
 		if (CollectionUtils.isEmpty(clist)) {
 			return null;
 		}
@@ -131,25 +153,9 @@ public class CouponService {
 		return cinfolist;
 	}
 
-	public List<Coupon> findValidCoupons(long uid, BigDecimal amount) {
-        List<CouponBatchInfo> lbi = batchMapper.findValidByCondition(amount);
-        if (CollectionUtils.isEmpty(lbi)) {
-            return null;
-        }
-        List<Long> batchs = Lists.newArrayList();
-        for (CouponBatchInfo batch : lbi) {
-            batchs.add(batch.getId());
-        }
-        List<Coupon> list = couponMapper.findUserValid(uid, CouponStatus.INIT,
-                batchs);
-        if (CollectionUtils.isEmpty(list)) {
-            return null;
-        }
 
-        return list;
-		
-	}
-	
+
+
 	public List<CouponForApp> coverToApp(List<Coupon> list){
 		List<CouponForApp> data = Lists.newArrayList();
 		for(Coupon c:list){
@@ -197,10 +203,4 @@ public class CouponService {
 		}
 	}
     
-    public static void main(String[] args) {
-    	 ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-    	 CouponService service =(CouponService) ac.getBean("couponService");
-         service.delCoupon("1", 2798l);
-         
-	}
 }
