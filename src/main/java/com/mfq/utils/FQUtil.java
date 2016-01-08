@@ -77,13 +77,13 @@ public class FQUtil {
     /**
      * 后台配置录入原始值：团购价、贷款月利率（1.33%） 原始录入价格——团购价 每月应还金额：a*[i*(1+i)^n]/[(1+i)^n-1]
      * （注：a：贷款本金 ，i：贷款月利率， n：贷款月数 ）
-     * 
+     *
      * @param period
      * @param base
      * @return
      */
     public static BigDecimal computePeriodPay(int period, BigDecimal base) {
-        double rate = 0.0125; // 月利率1.25%
+        double rate = 0; // 月利率1.25%
         return base.multiply(new BigDecimal(rate * Math.pow(1 + rate, period)))
                 .divide(new BigDecimal(Math.pow(1 + rate, period) - 1), 2,
                         BigDecimal.ROUND_HALF_UP);
@@ -175,21 +175,8 @@ public class FQUtil {
      */
     public static int periodMax(BigDecimal baseMoney) {
         
-        // 按价格的最大值
-        int pmax = 0;
-        if (baseMoney.compareTo(new BigDecimal(1999)) >= 0) {
-            pmax = 24;
-        } else if (baseMoney.compareTo(new BigDecimal(1499)) >= 0) {
-            pmax = 15;
-        } else if (baseMoney.compareTo(new BigDecimal(999)) >= 0) {
-            pmax = 12;
-        } else if (baseMoney.compareTo(new BigDecimal(500)) >= 0) {
-            pmax = 9;
-        } else if (baseMoney.compareTo(new BigDecimal(100)) >= 0) {
-            pmax = 5;
-        }
-        logger.info("product's max period is {}",pmax);
-        return pmax;
+
+        return 24;
     }
 
     

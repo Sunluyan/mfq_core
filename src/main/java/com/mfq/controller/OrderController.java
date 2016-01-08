@@ -78,7 +78,7 @@ public class OrderController {
             }
 
             ret = orderService.bookingOrder(uid, pid);
-            
+            logger.info("ret : {}",ret);
         } catch (Exception e) {
             logger.error("Exception PreBuy Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
@@ -179,7 +179,7 @@ public class OrderController {
                     ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
                     return ret;
                 }
-                if(CouponInfo2App.getCondition().compareTo(amount) <= 0){//如果优惠价格比总价还低
+                if(CouponInfo2App.getCondition().compareTo(amount) >= 0){//如果优惠价格比总价还低
                     ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
                     return ret;
                 }
