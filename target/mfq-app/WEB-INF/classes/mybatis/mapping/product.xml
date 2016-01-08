@@ -17,7 +17,7 @@
 	<select id="findById" resultType="Product">
 		select
 		<include refid="selectsql" />
-		from product where id=#{id}
+		from product where id=#{id} and `flag` != -1
 	</select>
 	
 	<select id="findByClass" resultType="Product">
@@ -36,14 +36,15 @@
                  item="tid">
             #{tid}
         </foreach>
-		
+		and `flag` != -1
+		<!-- flag =-1 is delete product-->
 	</select>
 	
 	<select id="queryProductsByType" resultType="Product">
 		select
 		<include refid="selectsql"/>
 		from product where type = #{type} AND now() BETWEEN product.date_start AND  product.date_end
-		AND online = true order by order_no desc
+		AND online = true and `flag` != -1 order by order_no desc
 	</select>
 	
 	<select id="findByFlag" resultType="Product">
@@ -57,6 +58,7 @@
 		<if test="type != null">
 		AND type = #{type}
 		</if>
+		and `flag` != -1
 		order by id desc
 	</select>
 	

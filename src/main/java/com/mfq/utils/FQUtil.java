@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Maps;
 import com.mfq.bean.user.UserQuota;
 
+import static java.math.BigDecimal.ROUND_HALF_UP;
+
 public class FQUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(FQUtil.class);
@@ -39,7 +41,9 @@ public class FQUtil {
         Map<String, Object> o = Maps.newTreeMap();
         int max = periodMax(baseFQMoney);
 		if (max < 3) {
-        	return null;
+            o.put("p_num", 0);
+            o.put("p_price", 0);
+        	return o;
         }
         BigDecimal v = computePeriodPay(max, baseFQMoney);
 
@@ -83,10 +87,12 @@ public class FQUtil {
      * @return
      */
     public static BigDecimal computePeriodPay(int period, BigDecimal base) {
-        double rate = 0; // 月利率1.25%
-        return base.multiply(new BigDecimal(rate * Math.pow(1 + rate, period)))
-                .divide(new BigDecimal(Math.pow(1 + rate, period) - 1), 2,
-                        BigDecimal.ROUND_HALF_UP);
+//        double rate = 0; // 月利率1.25%
+//        return base.multiply(new BigDecimal(rate * Math.pow(1 + rate, period)))
+//                .divide(new BigDecimal(Math.pow(1 + rate, period) - 1), 2,
+//                        BigDecimal.ROUND_HALF_UP);
+        System.out.println("i="+period+", base ="+base);
+        return base.divide(new BigDecimal(period), 2, BigDecimal.ROUND_HALF_UP);
     }
     
     public static BigDecimal getFinanceAmount(UserQuota quota, BigDecimal price){
