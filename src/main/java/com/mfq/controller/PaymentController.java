@@ -111,7 +111,7 @@ public class PaymentController {
 			}
 			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
 			//TODO 支付的时候 要减去优惠券的价格
-			if(orderInfo.getCouponNum()!=null || orderInfo.getCouponNum() != ""){
+			if(orderInfo.getCouponNum()!=null && orderInfo.getCouponNum() != ""){
 				Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
 				List<Coupon> couponList = new ArrayList<>();
 				couponList.add(coupon);
@@ -128,6 +128,7 @@ public class PaymentController {
 
 				//减掉应该支付的金额.
 				amount = amount.subtract(CouponInfo2App.getMoney());
+
 			}
 			//优惠券完成
 

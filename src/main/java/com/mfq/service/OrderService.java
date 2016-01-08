@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -430,6 +431,12 @@ public class OrderService {
 		return JsonUtil.successResultJson(bean);
 	}
 
+	public static void main(String[] args) throws Exception {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		OrderService orderService = ac.getBean(OrderService.class);
+		orderService.queryOrderDetailByOid(2798l,"mn20160108190407429100a4");
+	}
+
 	private List<OrderInfo2App> makeAppOrdersByOrderList(List<OrderInfo> orders) {
 		if (CollectionUtils.isEmpty(orders)) {
 			return null;
@@ -444,6 +451,14 @@ public class OrderService {
 			Hospital hospital = hospitalService.findById(product.getHospitalId());
 
 			OrderInfo2App bean = new OrderInfo2App(product, order, new FinanceBill(),hospital.getName(), order.getPolicyStatus());
+			//减去优惠券的价格
+			if(StringUtils.isNotBlank(bean.getCouponNum())){
+				Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
+				List<Coupon> couponList = new ArrayList<>();
+				couponList.add(coupon);
+				CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+				bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
+			}
 
 			list.add(bean);
 		}
@@ -459,6 +474,16 @@ public class OrderService {
 		Hospital hospital = hospitalService.findById(product.getHospitalId());
 		FinanceBill finance = financeBillService.findFinanceDetailById(order.getOrderNo());
 		OrderInfo2App bean = new OrderInfo2App(product, order, finance, hospital.getName(), order.getPolicyStatus());
+		//减去优惠券的价格
+		if(StringUtils.isNotBlank(bean.getCouponNum())){
+			Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
+			List<Coupon> couponList = new ArrayList<>();
+			couponList.add(coupon);
+			CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+			bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
+		}
+
+
 		System.out.println(bean.toString());
 		return bean;
 	}
@@ -632,14 +657,7 @@ public class OrderService {
 		
 	}
 	
-	public static void main(String[] args) {
-		BigDecimal periodPay = BigDecimal.valueOf(2300);
-		int period = 24;
-		boolean isBig= periodPay.divide(BigDecimal.valueOf(period),2, BigDecimal.ROUND_HALF_EVEN).compareTo(BigDecimal.valueOf(100))<0;
-		System.out.println(periodPay.divide(BigDecimal.valueOf(period),2, BigDecimal.ROUND_HALF_EVEN));
-		
-	}
-	
+
 	
 
 }

@@ -2,8 +2,12 @@ package com.mfq.bean.app;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.mfq.bean.coupon.Coupon;
+import com.mfq.service.CouponService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +17,14 @@ import com.mfq.constants.Constants;
 import com.mfq.constants.OrderStatus;
 import com.mfq.constants.PolicyStatus;
 import com.mfq.utils.JsonUtil;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
+@Component
 public class OrderInfo2App implements Serializable{
+	@Resource
+	CouponService couponService;
 
 	// 返回值json中data内容：
 	Long uid; // 用户
@@ -91,6 +101,7 @@ public class OrderInfo2App implements Serializable{
 		this.everyMonthPayTime = financeBill.getDueAt();
 		this.billNo = financeBill.getBillNo();
 		this.financeState = financeBill.getStatus();
+
 		this.need_pay = orderInfo.getPrice().subtract(orderInfo.getPeriodPay());
 		this.month_period = financeBill.getNewBalance();
 	}
