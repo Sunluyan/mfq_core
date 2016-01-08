@@ -1,46 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="提交">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/bean/coupon/Coupon.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/bean/coupon/Coupon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/CouponController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/CouponController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/dao/CouponMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/dao/CouponMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/CouponService$CouponForApp.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/CouponService$CouponForApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/CouponService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/CouponService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/PayService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/PayService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/provider/MaiXunMessageProvider.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/provider/MaiXunMessageProvider.class" />
+    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/SMSService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/SMSService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserQuotaService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserQuotaService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app.war" afterPath="$PROJECT_DIR$/target/mfq-app.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/bean/coupon/Coupon.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/bean/coupon/Coupon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/CouponController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/CouponController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/dao/CouponMapper.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/dao/CouponMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/CouponService$CouponForApp.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/CouponService$CouponForApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/CouponService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/CouponService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/provider/MaiXunMessageProvider.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/provider/MaiXunMessageProvider.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/SMSService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/SMSService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserQuotaService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserQuotaService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalina.base_IS_UNDEFINED/logs/mfq-app.log" afterPath="$PROJECT_DIR$/catalina.base_IS_UNDEFINED/logs/mfq-app.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/bean/coupon/Coupon.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/bean/coupon/Coupon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/dao/CouponMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/dao/CouponMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/CouponService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/CouponService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/PayService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/PayService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/provider/MaiXunMessageProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/provider/MaiXunMessageProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/product.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" afterPath="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config-override.properties" afterPath="$PROJECT_DIR$/target/classes/config-override.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis/mapping/coupon.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapping/coupon.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis/mapping/product.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapping/product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/classes/mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-override.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-override.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/coupon.xml" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/coupon.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/product.xml" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mysql.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config-common.properties" afterPath="$PROJECT_DIR$/src/main/resources/config-common.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" afterPath="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config-common.properties" afterPath="$PROJECT_DIR$/target/classes/config-common.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sms_tmpl.properties" afterPath="$PROJECT_DIR$/target/classes/sms_tmpl.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/sms_tmpl.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/sms_tmpl.properties" />
     </list>
     <ignored path="meifenqi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,131 +77,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CouponController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CouponController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51150894">
-              <caret line="91" column="66" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/TestController.java">
+      <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+              <caret line="462" column="39" selection-start-line="462" selection-start-column="39" selection-end-line="462" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java">
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
+              <caret line="205" column="20" selection-start-line="205" selection-start-column="20" selection-end-line="205" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CouponService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/CouponService.java">
+      <file leaf-file-name="AuthenticationController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AuthenticationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="174" column="27" selection-start-line="174" selection-start-column="27" selection-end-line="174" selection-end-column="27" />
-              <folding>
-                <element signature="e#2132#2133#0" expanded="true" />
-                <element signature="e#2194#2195#0" expanded="true" />
-                <element signature="e#3250#3251#0" expanded="true" />
-                <element signature="e#3303#3304#0" expanded="true" />
-                <element signature="e#5497#5498#0" expanded="true" />
-                <element signature="e#5518#5519#0" expanded="true" />
-                <element signature="e#5561#5562#0" expanded="true" />
-                <element signature="e#5588#5589#0" expanded="true" />
-                <element signature="e#5622#5623#0" expanded="true" />
-                <element signature="e#5648#5649#0" expanded="true" />
-                <element signature="e#5697#5698#0" expanded="true" />
-                <element signature="e#5734#5735#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PaymentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="176" column="37" selection-start-line="176" selection-start-column="37" selection-end-line="176" selection-end-column="37" />
+              <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/PayService.java">
+      <file leaf-file-name="UserQuotaService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.142857">
-              <caret line="267" column="28" selection-start-line="267" selection-start-column="28" selection-end-line="267" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.2966752">
+              <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coupon.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.484375">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <marker date="1452163779420" expanded="true" signature="473:555" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="473:564" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="473:567" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="627:735" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="799:1058" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="1126:1218" placeholder="select from ..." />
-                <marker date="1452163779420" expanded="true" signature="1295:1426" placeholder="select from ..coupon..." />
-                <marker date="1452163779420" expanded="true" signature="1470:1534" placeholder="update coupo..." />
-                <marker date="1452163779420" expanded="true" signature="1574:1628" placeholder="update coupo..." />
-                <marker date="1452163779420" expanded="true" signature="1884:1963" placeholder="values (#{ui..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/product.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3125">
-              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-              <folding>
-                <marker date="1452164267657" expanded="true" signature="944:1012" placeholder="select from ..product..." />
-                <marker date="1452164267657" expanded="true" signature="1545:1720" placeholder="select from ..product..." />
-                <marker date="1452164267657" expanded="true" signature="1783:2074" placeholder="select from ..product..." />
-                <marker date="1452164267657" expanded="true" signature="2665:2722" placeholder="update produ..." />
-                <marker date="1452164267657" expanded="true" signature="2773:2869" placeholder="update produ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/UserController.java">
+      <file leaf-file-name="InterViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/InterViewController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayRecordService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/PayRecordService.java">
+      <file leaf-file-name="SMSService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+              <caret line="260" column="19" selection-start-line="260" selection-start-column="19" selection-end-line="260" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="email_tmpl.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/email_tmpl.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sms_tmpl.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/sms_tmpl.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config-common.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="18" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -250,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/net/wukongbao/WukongBaoClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/net/wukongbao/pojo/WkbConstants.java" />
         <option value="$PROJECT_DIR$/src/main/resources-env/product/config-override.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/config-common.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java" />
         <option value="$PROJECT_DIR$/src/main/resources-env/dev/config-override.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java" />
@@ -269,6 +216,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapping/product.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/config-common.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" />
       </list>
     </option>
   </component>
@@ -436,6 +388,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meifenqi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mfq_core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources-env" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1311,7 +1285,7 @@
       <workItem from="1451281115603" duration="22876000" />
       <workItem from="1451871516425" duration="845000" />
       <workItem from="1451875882289" duration="20305000" />
-      <workItem from="1452051685939" duration="28677000" />
+      <workItem from="1452051685939" duration="31459000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1451275232090</created>
@@ -1343,7 +1317,13 @@
       <option name="project" value="LOCAL" />
       <updated>1452079412635</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="提交">
+      <created>1452165124470</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1452165124470</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1352,7 +1332,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75498000" />
+    <option name="totallyTimeSpent" value="78280000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1365,7 +1345,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66939443" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1377,7 +1357,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35515547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3715221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.5106383" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31260228" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31260228" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23053434" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="3" side_tool="true" content_ui="tabs" />
@@ -1422,60 +1402,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources-env/dev/config-override.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="57" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/constants/PayStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/cache/WeChatJsApiTicketCacheUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/UnionpayServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="37" selection-start-line="102" selection-start-column="29" selection-end-line="102" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/util/unionpay/BeeCloudConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/payment/beecloud/payapi.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1733,14 +1659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1781,14 +1699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="456" column="40" selection-start-line="456" selection-start-column="40" selection-end-line="456" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/dao/CouponMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1818,9 +1728,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
           <folding>
-            <element signature="e#1322#1323#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1391#1392#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="false" />
+            <element signature="e#1359#1360#0" expanded="false" />
+            <element signature="e#1391#1392#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1964,8 +1874,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51150894">
-          <caret line="91" column="66" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="462" column="39" selection-start-line="462" selection-start-column="39" selection-end-line="462" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="205" column="20" selection-start-line="205" selection-start-column="20" selection-end-line="205" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/email_tmpl.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sms_tmpl.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="260" column="19" selection-start-line="260" selection-start-column="19" selection-end-line="260" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/InterViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AuthenticationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2966752">
+          <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
           <folding />
         </state>
       </provider>

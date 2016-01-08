@@ -256,11 +256,11 @@ public class SMSService {
         }
     }
 
-	public void sendInterViewApplySMS(String[] params) throws Exception {
+	public void sendInterViewHint(String[] params) throws Exception {
 		if(filterMobiles(params))
     		return;
-    	String mobiles= StringUtils.stripToEmpty(Config.getItem("sms_interview_apply"));
-    	String msgTmpl = StringUtils.stripToEmpty(MsgTmplContext.getSmsTmpl("mobile_interview_apply"));
+    	String mobiles= StringUtils.stripToEmpty(Config.getItem("sms_interview_hint"));
+    	String msgTmpl = StringUtils.stripToEmpty(MsgTmplContext.getSmsTmpl("mobile_interview_hint"));
     	MessageFormat messageFormat = new MessageFormat(msgTmpl);
     	String message = messageFormat.format(params);
     	sendBatchSms(mobiles, message);

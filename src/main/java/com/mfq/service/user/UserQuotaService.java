@@ -25,7 +25,6 @@ import com.mfq.constants.ErrorCodes;
 import com.mfq.constants.Grade;
 import com.mfq.dao.UserQuotaMapper;
 import com.mfq.dataservice.context.AppContext;
-import com.mfq.helper.MobileHelper;
 import com.mfq.net.tongdun.FraudApiInvoker;
 import com.mfq.service.sms.SMSService;
 import com.mfq.utils.HttpUtil;
@@ -194,7 +193,7 @@ public class UserQuotaService {
             data.put("status", quota.getAuthStatus());
             
             String [] params = {realname ,contact};
-    		smsService.sendInterViewApplySMS(params);
+    		smsService.sendInterViewHint(params);
     		
             return JsonUtil.successResultJson(data);
         } else {
@@ -404,18 +403,23 @@ public class UserQuotaService {
         
         if (result > 0) {
             data.put("status", quota.getAuthStatus());
-             
-            //短信通知
-            
-//            User user = userService.queryUser(uid);
-//            String [] params = {realname ,user.getMobile()};
-//    		smsService.sendInterViewApplySMS(params);
+
+            //发送通知消息
+            sendNotificationSms(quota.getRealname(), user.getMobile());
     		
             return JsonUtil.successResultJson(data);
         } else {
             return JsonUtil.toJson(ErrorCodes.FAIL, "认证失败", data);
         }
 	}
+
+
+    private void sendNotificationSms(String realname, String mobile) throws Exception {
+        //短信通知
+
+        String [] params = {realname ,mobile};
+        smsService.sendInterViewHint(params);
+    }
 
 	/**
 	 * 保存白领信息
@@ -429,25 +433,48 @@ public class UserQuotaService {
 	 * @return
 	 */
 	public String saveAdultInfo(Long uid, String company, String position, String department, String salary,
-			String social_insurance, String work_years) {
+			String social_insurance, String work_years) throws Exception {
 		User user = userService.queryUser(uid);
 		if(user == null || user.getUid() <1){
 			return JsonUtil.toJson(1001, "用户不存在", null);
 		}
 		int result = mapper.updateAdultWorkInfo(uid, company, position, department, salary, social_insurance, work_years);
-		return JsonUtil.successResultJson(result);
+
+        if(result > 0) {
+            UserQuota quota = queryUserQuota(user.getUid());
+            //消息通知
+            sendNotificationSms(quota.getRealname(), user.getMobile());
+        }
+        return JsonUtil.successResultJson(result);
 		
 	}
 
+    /**
+     * 保存学生信息
+     * @param uid
+     * @param student_id
+     * @param school
+     * @param school_location
+     * @param grade
+     * @param school_level
+     * @param faculty
+     * @param speciality
+     * @param scholastic_years
+     * @return
+     */
 	public String saveStudentInfo(Long uid, String student_id, String school, String school_location, long grade,
-			String school_level, String faculty, String speciality, int scholastic_years) {
+			String school_level, String faculty, String speciality, int scholastic_years) throws Exception {
 		User user = userService.queryUser(uid);
 		if(user == null || user.getUid() <1){
 			return JsonUtil.toJson(1001, "用户不存在", null);
 		}
 		int result = mapper.updateStudentWorkInfo(uid, student_id, school, school_location, grade, school_level, faculty, speciality,
 				scholastic_years);
-		
+		if(result>0){
+            UserQuota quota = queryUserQuota(user.getUid());
+            //消息通知
+            sendNotificationSms(quota.getRealname(), user.getMobile());
+        }
 		return JsonUtil.successResultJson(result);
 	}
 	

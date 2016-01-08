@@ -184,7 +184,7 @@ public class ActivityService {
         count = (int)couponMapper.insertOne(coupon);
         if(count != 1){
             logger.error("插入优惠券出错!");
-            throw new Exception("插入优惠券出错");
+            throw new Exception("优惠券无效");
         }
         return JsonUtil.successResultJson("领取成功~");
 	}
