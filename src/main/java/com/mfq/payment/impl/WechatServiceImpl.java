@@ -67,7 +67,7 @@ public class WechatServiceImpl extends BasePaymentService {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
             } else if(orderType ==  OrderType.REFUND){
             	pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
-            }else {
+            } else {
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
                 pname = product.getName();

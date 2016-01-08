@@ -142,9 +142,11 @@ public class PaymentController {
 			logger.error("Exception", e);
 			ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统错误", null);
 		} finally {
-			
+
 			long end = System.currentTimeMillis();
 			logger.info("goPay spend:{}s", end - start);
+			logger.info("ret in goPay: {}",ret);
+
 		}
 		return ret;
 	}
