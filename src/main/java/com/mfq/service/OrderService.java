@@ -370,6 +370,7 @@ public class OrderService {
 		City city = cityMapper.findById(hospital.getCityId());
 		fm.put("hospital_addr", city.getName());
 		fm.put("amount", product.getPrice());
+        fm.put("coupons",couponService.findValidCoupon(quota.getUid()));
 		
 		
 		if (product.getType() == ProductType.SECKILLING) { // 秒杀

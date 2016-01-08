@@ -75,8 +75,7 @@ public class WechatServiceImpl extends BasePaymentService {
             String nonce_str = genNonceStr();
             int amount = (int)(Float.parseFloat(params.get("amount").toString())*100);//按分计算
             PayReqData reqBean = new PayReqData(AppContext.getUuid(), nonce_str,
-                    pname, orderNo,
-                    amount,
+                    pname, orderNo, amount,
                     AppContext.getIp(), buildPayCallbackURL());
             String sign = SignHelper.makeWxSign(reqBean.toMap(), Configure.key);
             reqBean.setSign(sign);

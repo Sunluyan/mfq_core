@@ -24,9 +24,6 @@ import com.mfq.dao.CouponBatchInfoMapper;
 import com.mfq.dao.CouponMapper;
 
 /**
- * 优惠券 使用场景： 一、团购订单 1.全款支付，单价大于10000可用500 2.在线＋到院支付方式，优惠券仅用于冲抵到院支付部分（实际到院支付－优惠券）
- * 二、分期订单 可能会分为几种情况：0支付申请分期、余额支付申请分期、余额支付＋优惠券支付申请分期 1.订单金额大于5000
- * 
  * @author xingyongshan
  */
 @Service
@@ -206,10 +203,4 @@ public class CouponService {
 		}
 	}
     
-    public static void main(String[] args) {
-    	 ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-    	 CouponService service =(CouponService) ac.getBean("couponService");
-         service.delCoupon("1", 2798l);
-         
-	}
 }

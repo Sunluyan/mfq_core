@@ -116,6 +116,18 @@ public class PaymentController {
 				List<Coupon> couponList = new ArrayList<>();
 				couponList.add(coupon);
 				CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+
+				if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
+					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
+					return ret;
+				}
+				if(CouponInfo2App.getCondition().compareTo(amount) <= 0){//如果优惠价格比总价还低
+					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
+					return ret;
+				}
+
+				//减掉应该支付的金额.
+				amount = amount.subtract(CouponInfo2App.getMoney());
 			}
 			//优惠券完成
 

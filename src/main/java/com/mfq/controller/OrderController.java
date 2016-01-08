@@ -64,6 +64,7 @@ public class OrderController {
             HttpServletResponse response) {
         String ret = "";
         try {
+
             Map<String, Object> params = JsonUtil.readMapFromReq(request);
             Long uid = Long.parseLong(params.get("uid").toString());
             Long pid = Long.parseLong(params.get("pid").toString());
@@ -77,7 +78,6 @@ public class OrderController {
             }
 
             ret = orderService.bookingOrder(uid, pid);
-            
             
         } catch (Exception e) {
             logger.error("Exception PreBuy Process!", e);
