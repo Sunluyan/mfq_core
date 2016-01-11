@@ -53,7 +53,7 @@ public class CouponController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
                         null);
             }
-            int status = -1;
+            int status = 0;
             if(params.get("status") != null){
             	status = Integer.parseInt(params.get("status").toString());
             }

@@ -163,7 +163,6 @@ public class PasswordController {
             String code) {
         CodeMsg codeMsg = vcodeService.validate(key, code);
 
-        // todo forword url
         Map<String, Object> result = Maps.newHashMap();
         result.put("forward_url",
                 "/password/reset/form/?vcode=" + SecretDesUtils.encrypt(code)

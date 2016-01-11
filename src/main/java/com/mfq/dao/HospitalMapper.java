@@ -18,4 +18,6 @@ public interface HospitalMapper {
     public long insertHospital(Hospital hospital);  
     
     public List<Map<String,Object>> findProCount(@Param("hosid")List<Long> hosid);
+
+    List<Hospital> selectByKeywords(@Param("keywords")String[] keywords);
 }

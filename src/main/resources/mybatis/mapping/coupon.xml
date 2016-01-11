@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="findByUserAndNum" resultType="Coupon">
-		select <include refid="selectsql"/> from coupon where uid=#{uid} and coupon_num=#{couponNum}
+		select <include refid="selectsql"/> from coupon where uid=#{uid} and coupon_num=#{couponNum} and flag!= 1
 	</select>
 	
 	<select id="findCouponsByUidAndStatus" resultType="Coupon">

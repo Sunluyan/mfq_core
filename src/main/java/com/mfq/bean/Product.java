@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.mfq.constants.ProductType;
 
-public class Product {
+public class Product implements Comparable{
     long id;            // 产品ID
     String name;        // 产品名称
     int tid;            // 产品类别
@@ -174,5 +174,52 @@ public class Product {
     }
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tid=" + tid +
+                ", hospitalId=" + hospitalId +
+                ", price=" + price +
+                ", marketPrice=" + marketPrice +
+                ", onlinePay=" + onlinePay +
+                ", hospitalPay=" + hospitalPay +
+                ", pPrice=" + pPrice +
+                ", type=" + type +
+                ", pNum=" + pNum +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", totalNum=" + totalNum +
+                ", remainNum=" + remainNum +
+                ", viewNum=" + viewNum +
+                ", saleNum=" + saleNum +
+                ", cityId=" + cityId +
+                ", flag=" + flag +
+                ", img='" + img + '\'' +
+                ", orderNo=" + orderNo +
+                ", online=" + online +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(!(o instanceof Product))
+            throw new RuntimeException("对象不正确！！");
+        Product product = (Product)o;
+
+        if(this.saleNum>product.saleNum){
+            return -1;
+        }else if(this.saleNum < product.saleNum){
+            return 1;
+        }else if(this.id == product.id){
+            return 0;
+        }
+        return 1;
     }
 }

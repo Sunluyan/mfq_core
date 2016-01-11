@@ -1,15 +1,16 @@
 package com.mfq.service;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
+import com.mfq.dao.HospitalMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -56,6 +57,12 @@ public class ProductService {
     
     @Resource
     CityMapper cityMapper;
+
+    @Resource
+    HospitalMapper hospitalMapper;
+    @Resource
+    ProductMapper productMapper;
+
 
     public ProductInfo2App buildInfo(long pid) {
         Product product = findById(pid);
@@ -134,7 +141,7 @@ public class ProductService {
     /**
      * 封装product
      * 
-     * @param plist
+     * @param ps
      * @return
      */
     public List<ProductListItem2App> convert2AppList(List<Product> ps) {
@@ -157,6 +164,37 @@ public class ProductService {
             list.add(bean);
         }
         return list;
+    }
+
+    /**
+     * 通过关键字搜索 产品名称和医院名
+     * 第一步,先通过key搜索医院名
+     * 第二步,再通过 key,医院id 搜索产品名
+     * @param keyword
+     * @param page
+     * @return
+     *
+     */
+    public List<Product> findProductByKeyword(String keyword,long page){
+        // 搜索产品分页
+        long pagesize = 20;
+        long start = (page-1)*pagesize;
+        String[] keywords = keyword.split(" ");
+        List<Hospital> hospitals = hospitalMapper.selectByKeywords(keywords);
+        List<Product> productsByPro = productMapper.selectByKeywordsAndHospitalIds(keywords,hospitals,start,pagesize);
+
+        return productsByPro;
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        ProductService service = ac.getBean(ProductService.class);
+        service.findProductByKeyword("北京",1);
+    }
+
+
+    public long addSaleNum(long pid){
+        return mapper.updateProcuctSaleNum(pid);
     }
 
 	public long addViewNum(long pidNo) {

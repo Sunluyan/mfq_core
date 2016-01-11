@@ -259,8 +259,8 @@ public class OrderController {
                 CouponInfo2App couponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
 
                 //如果减免金额比总价多,减完成负数了,就不能给丫减. 如果优惠条件比总价低,就不能优惠
-                if(amount.compareTo(couponInfo2App.getMoney()) <= 0 ||
-                        amount.compareTo(couponInfo2App.getCondition()) >= 0){
+                if(amount.compareTo(couponInfo2App.getMoney()) < 0 ||
+                        amount.compareTo(couponInfo2App.getCondition()) < 0){
                     ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,"金额不符合优惠券条件",null);
                     return ret;
                 }

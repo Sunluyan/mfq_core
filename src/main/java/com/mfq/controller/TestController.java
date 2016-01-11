@@ -151,8 +151,8 @@ public class TestController {
     public static void testOrderBook(){
         String url = purl+"/order/book";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("uid", 201);
-        params.put("pid", 12);
+        params.put("uid", 3110);
+        params.put("pid", 206);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -611,8 +611,10 @@ public class TestController {
 //    	testLogin();
 //    	testCreateFinance();
  //   	testFinanceList();
-    	//testAdultInfo();
-        testPresent();
+    	//testAdultInfo();'
+
+        testOrderBook();
+        //testPresent();
 
     	
 

@@ -55,4 +55,16 @@ public class Hospital {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "Hospital{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", address='" + address + '\'' +
+                ", cityId=" + cityId +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
