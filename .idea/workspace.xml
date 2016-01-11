@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/SMSService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/sms/SMSService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserQuotaService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserQuotaService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app.war" afterPath="$PROJECT_DIR$/target/mfq-app.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/SMSService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/sms/SMSService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserQuotaService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserQuotaService.class" />
+    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/mfq/controller/ProductController.java&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config-common.properties" afterPath="$PROJECT_DIR$/src/main/resources/config-common.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" afterPath="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config-common.properties" afterPath="$PROJECT_DIR$/target/classes/config-common.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sms_tmpl.properties" afterPath="$PROJECT_DIR$/target/classes/sms_tmpl.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/sms_tmpl.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/sms_tmpl.properties" />
     </list>
     <ignored path="meifenqi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,11 +61,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CouponController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/CouponController.java">
+      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.6803069">
+              <caret line="296" column="23" selection-start-line="296" selection-start-column="23" selection-end-line="296" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -117,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserQuotaService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserQuotaService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2966752">
-              <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="471" column="34" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -171,7 +155,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="18" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -221,6 +205,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/sms_tmpl.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/sms/SMSService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" />
       </list>
     </option>
   </component>
@@ -280,7 +265,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1370" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -310,7 +295,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -493,6 +477,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -506,130 +491,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="Console.TableResult.DefaultCopyAction" value="Tab Separated Values (TSV)" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/pom.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/cache/WeChatJsApiTicketCacheUtils.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/dataservice/cache/impl/RedisCacheManipulater.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/dataservice/context/AppContext.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/service/ActivityService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/service/OrderService.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/utils/FQUtil.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/mybatis/sql-map-config.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/bean/Presental.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/bean/PresentalExample.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/dao/PresentalMapper.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/mybatis/mapping/PresentalMapper.xml</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.CouponService">
     <configuration default="false" name="PolicyService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -1252,9 +1113,9 @@
       <method />
     </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Application.PolicyService" />
-      <item index="1" class="java.lang.String" itemvalue="Maven.tomcat7:run" />
-      <item index="2" class="java.lang.String" itemvalue="Maven.pacakge" />
+      <item index="0" class="java.lang.String" itemvalue="Maven.tomcat7:run" />
+      <item index="1" class="java.lang.String" itemvalue="Maven.pacakge" />
+      <item index="2" class="java.lang.String" itemvalue="Application.PolicyService" />
       <item index="3" class="java.lang.String" itemvalue="Application.TestController" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.TestController" />
       <item index="5" class="java.lang.String" itemvalue="Application.TestController (1)" />
@@ -1286,6 +1147,7 @@
       <workItem from="1451871516425" duration="845000" />
       <workItem from="1451875882289" duration="20305000" />
       <workItem from="1452051685939" duration="31459000" />
+      <workItem from="1452478742852" duration="240000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1451275232090</created>
@@ -1332,7 +1194,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78280000" />
+    <option name="totallyTimeSpent" value="78520000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1344,36 +1206,36 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66939443" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35515547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3715221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.5106383" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31260228" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23053434" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22995462" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.4893617" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31260228" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31260228" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3715221" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.5106383" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3666121" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1421,7 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1440,78 +1301,74 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.passports_oauth">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.passports">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.coupon_batch_info">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.coupon">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.sys_acl">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.sys_permission">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1519,88 +1376,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#849#850#0" expanded="false" />
-            <element signature="e#874#875#0" expanded="false" />
-            <element signature="e#908#909#0" expanded="false" />
-            <element signature="e#936#937#0" expanded="false" />
-            <element signature="e#979#980#0" expanded="false" />
-            <element signature="e#1002#1003#0" expanded="false" />
-            <element signature="e#1052#1053#0" expanded="false" />
-            <element signature="e#1085#1086#0" expanded="false" />
-            <element signature="e#1116#1117#0" expanded="false" />
-            <element signature="e#1146#1147#0" expanded="false" />
-            <element signature="e#1192#1193#0" expanded="false" />
-            <element signature="e#1230#1231#0" expanded="false" />
-            <element signature="e#1264#1265#0" expanded="false" />
-            <element signature="e#1294#1295#0" expanded="false" />
-            <element signature="e#1340#1341#0" expanded="false" />
-            <element signature="e#1378#1379#0" expanded="false" />
-            <element signature="e#1415#1416#0" expanded="false" />
-            <element signature="e#1444#1445#0" expanded="false" />
-            <element signature="e#1492#1493#0" expanded="false" />
-            <element signature="e#1528#1529#0" expanded="false" />
-            <element signature="e#1566#1567#0" expanded="false" />
-            <element signature="e#1596#1597#0" expanded="false" />
-            <element signature="e#1646#1647#0" expanded="false" />
-            <element signature="e#1684#1685#0" expanded="false" />
-            <element signature="e#1722#1723#0" expanded="false" />
-            <element signature="e#1752#1753#0" expanded="false" />
-            <element signature="e#1802#1803#0" expanded="false" />
-            <element signature="e#1840#1841#0" expanded="false" />
-            <element signature="e#1868#1869#0" expanded="false" />
-            <element signature="e#1894#1895#0" expanded="false" />
-            <element signature="e#1930#1931#0" expanded="false" />
-            <element signature="e#1960#1961#0" expanded="false" />
-            <element signature="e#1990#1991#0" expanded="false" />
-            <element signature="e#2016#2017#0" expanded="false" />
-            <element signature="e#2054#2055#0" expanded="false" />
-            <element signature="e#2084#2085#0" expanded="false" />
-            <element signature="e#2119#2120#0" expanded="false" />
-            <element signature="e#2150#2151#0" expanded="false" />
-            <element signature="e#2198#2199#0" expanded="false" />
-            <element signature="e#2238#2239#0" expanded="false" />
-            <element signature="e#2275#2276#0" expanded="false" />
-            <element signature="e#2306#2307#0" expanded="false" />
-            <element signature="e#2356#2357#0" expanded="false" />
-            <element signature="e#2396#2397#0" expanded="false" />
-            <element signature="e#2429#2430#0" expanded="false" />
-            <element signature="e#2458#2459#0" expanded="false" />
-            <element signature="e#2502#2503#0" expanded="false" />
-            <element signature="e#2538#2539#0" expanded="false" />
-            <element signature="e#2574#2575#0" expanded="false" />
-            <element signature="e#2603#2604#0" expanded="false" />
-            <element signature="e#2650#2651#0" expanded="false" />
-            <element signature="e#2686#2687#0" expanded="false" />
-            <element signature="e#2716#2717#0" expanded="false" />
-            <element signature="e#2744#2745#0" expanded="false" />
-            <element signature="e#2784#2785#0" expanded="false" />
-            <element signature="e#2818#2819#0" expanded="false" />
-            <element signature="e#2853#2854#0" expanded="false" />
-            <element signature="e#2886#2887#0" expanded="false" />
-            <element signature="e#2936#2937#0" expanded="false" />
-            <element signature="e#2980#2981#0" expanded="false" />
-            <element signature="e#3014#3015#0" expanded="false" />
-            <element signature="e#3046#3047#0" expanded="false" />
-            <element signature="e#3094#3095#0" expanded="false" />
-            <element signature="e#3136#3137#0" expanded="false" />
-            <element signature="e#3182#3183#0" expanded="false" />
-            <element signature="e#3245#3246#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.pay_record">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1608,22 +1395,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="393" column="66" selection-start-line="393" selection-start-column="62" selection-end-line="393" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/789ebeb3/cf5bdd85-108c-4fd5-9939-6c5965d0394d/meifenqi.sys_passport">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1631,7 +1414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="326" column="16" selection-start-line="326" selection-start-column="16" selection-end-line="326" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1679,15 +1461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.9411764">
           <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="174" column="43" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1703,7 +1476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="34" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1727,11 +1499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-          <folding>
-            <element signature="e#1322#1323#0" expanded="false" />
-            <element signature="e#1359#1360#0" expanded="false" />
-            <element signature="e#1391#1392#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1739,7 +1506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1747,10 +1513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1448421065569" expanded="true" signature="427:504" placeholder="select from ..product_classify..." />
-            <marker date="1448421065569" expanded="true" signature="576:662" placeholder="select from ..product_classify..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1766,7 +1528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1782,7 +1543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1814,18 +1574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.484375">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <marker date="1452163779420" expanded="true" signature="473:555" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="473:564" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="473:567" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="627:735" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="799:1058" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="1126:1218" placeholder="select from ..." />
-            <marker date="1452163779420" expanded="true" signature="1295:1426" placeholder="select from ..coupon..." />
-            <marker date="1452163779420" expanded="true" signature="1470:1534" placeholder="update coupo..." />
-            <marker date="1452163779420" expanded="true" signature="1574:1628" placeholder="update coupo..." />
-            <marker date="1452163779420" expanded="true" signature="1884:1963" placeholder="values (#{ui..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1833,13 +1581,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3125">
           <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-          <folding>
-            <marker date="1452164267657" expanded="true" signature="944:1012" placeholder="select from ..product..." />
-            <marker date="1452164267657" expanded="true" signature="1545:1720" placeholder="select from ..product..." />
-            <marker date="1452164267657" expanded="true" signature="1783:2074" placeholder="select from ..product..." />
-            <marker date="1452164267657" expanded="true" signature="2665:2722" placeholder="update produ..." />
-            <marker date="1452164267657" expanded="true" signature="2773:2869" placeholder="update produ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1848,18 +1590,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="174" column="27" selection-start-line="174" selection-start-column="27" selection-end-line="174" selection-end-column="27" />
           <folding>
-            <element signature="e#2132#2133#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#3250#3251#0" expanded="true" />
-            <element signature="e#3303#3304#0" expanded="true" />
-            <element signature="e#5497#5498#0" expanded="true" />
-            <element signature="e#5518#5519#0" expanded="true" />
-            <element signature="e#5561#5562#0" expanded="true" />
-            <element signature="e#5588#5589#0" expanded="true" />
             <element signature="e#5622#5623#0" expanded="true" />
-            <element signature="e#5648#5649#0" expanded="true" />
-            <element signature="e#5697#5698#0" expanded="true" />
-            <element signature="e#5734#5735#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1915,7 +1646,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="18" />
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1946,8 +1677,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/user/UserQuotaService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2966752">
-          <caret line="473" column="38" selection-start-line="473" selection-start-column="38" selection-end-line="473" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="471" column="34" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6803069">
+          <caret line="296" column="23" selection-start-line="296" selection-start-column="23" selection-end-line="296" selection-end-column="23" />
           <folding />
         </state>
       </provider>
