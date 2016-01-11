@@ -8,7 +8,6 @@ import com.mfq.helper.SignHelper;
 public class weSignTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Map<String, Object> map = Maps.newHashMap();
         map.put("appid", "wx1c8dcf726a7d540e");
         map.put("partnerid", "1268884501");

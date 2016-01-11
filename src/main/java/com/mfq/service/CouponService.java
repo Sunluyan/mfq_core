@@ -8,6 +8,8 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import com.mfq.constants.ErrorCodes;
+import com.mfq.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -147,6 +149,7 @@ public class CouponService {
 		List<CouponInfo2App> cinfolist= Lists.newArrayList();
 		
 		for(Coupon coupon:clist){
+            logger.info("coupon:{}",coupon.toString());
 			CouponBatchInfo couponBatchInfo = batchMapper.findById(coupon.getBatchId());
 			cinfolist.add(new CouponInfo2App(coupon, couponBatchInfo));
 		}
@@ -184,6 +187,23 @@ public class CouponService {
             updateNum = couponMapper.delCoupon(couponNum);
         }
         return updateNum;
+    }
+
+    public boolean checkCoupon(String coupon_num,BigDecimal amount) throws Exception{
+        String ret = "";
+        Coupon coupon = findByCouponNum(coupon_num);
+        List<Coupon> couponList = new ArrayList<>();
+        couponList.add(coupon);
+        CouponInfo2App CouponInfo2App = convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
+        if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
+            throw new Exception("优惠券 减免金额低于总价");
+        }
+        if(CouponInfo2App.getCondition().compareTo(amount) >= 0) {//如果优惠价格比总价还低
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
+            throw new Exception("优惠券 不满足优惠条件");
+        }
+        return true;
     }
 
     class CouponForApp{

@@ -17,6 +17,7 @@ import com.mfq.bean.coupon.Coupon;
 import com.mfq.payment.impl.UnionpayServiceImpl;
 import com.mfq.service.*;
 import org.apache.commons.lang.StringUtils;
+import org.jboss.netty.util.internal.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -110,27 +111,7 @@ public class PaymentController {
 				return ret;
 			}
 			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
-			// 支付的时候 要减去优惠券的价格
-			if(orderInfo.getCouponNum()!=null && orderInfo.getCouponNum() != ""){
-				Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
-				List<Coupon> couponList = new ArrayList<>();
-				couponList.add(coupon);
-				CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
 
-				if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
-					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
-					return ret;
-				}
-				if(CouponInfo2App.getCondition().compareTo(amount) >= 0){//如果优惠价格比总价还低
-					ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
-					return ret;
-				}
-
-				//减掉应该支付的金额.
-				amount = amount.subtract(CouponInfo2App.getMoney());
-
-			}
-			//优惠券完成
 
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
 			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount);
@@ -270,7 +251,6 @@ public class PaymentController {
             if(! UnionpayServiceImpl.checkSign(result. getTimestamp(),result.getSign())){
                 throw new Exception("签名不正确!");
             }
-
 
             if(! result.getTrade_success()){
                 throw new Exception("用户付款失败");

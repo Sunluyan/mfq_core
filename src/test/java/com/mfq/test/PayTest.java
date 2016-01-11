@@ -8,8 +8,6 @@ public class PayTest {
 
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		try{
 		 File file=new File("D:/apiclient_cert.p12");
          if(!file.exists()||file.isDirectory())

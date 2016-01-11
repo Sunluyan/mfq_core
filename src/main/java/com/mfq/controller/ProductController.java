@@ -85,6 +85,12 @@ public class ProductController {
         return ret;
     }
 
+    /**
+     * 搜索产品
+     * @param request`
+     * @param response
+     * @return
+     */
     @RequestMapping(value = {"/search","search/"},method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json;charset=utf-8")
     public @ResponseBody String searchProduct(HttpServletRequest request,HttpServletResponse response){
         String ret = "";
@@ -109,7 +115,8 @@ public class ProductController {
                 page = Long.parseLong(params.get("page").toString());
             }
 
-            productService.findProductByKeyword(keyword,page);
+            List<ProductListItem2App> list = productService.findProductByKeyword(keyword,page);
+            ret = JsonUtil.successResultJson(list);
         }catch(Exception e){
             logger.error("Exception ProductInfo Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);

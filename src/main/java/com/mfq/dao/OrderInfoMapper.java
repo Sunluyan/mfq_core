@@ -42,6 +42,5 @@ public interface OrderInfoMapper {
 	public int updateOnlinepayByOrderNo(@Param("orderNo")String orderNo,@Param("onlinePay")BigDecimal onlinePay);
 
 	public int updatePolicyStatusByStatus(@Param("newStatus")PolicyStatus insureEffect, @Param("oldStatus")PolicyStatus auditing, @Param("orderNo") String orderNo);
-
 }
 

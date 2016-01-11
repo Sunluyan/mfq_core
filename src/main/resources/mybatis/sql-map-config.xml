@@ -115,6 +115,7 @@
 		<mapper resource="mybatis/mapping/Nurse.xml"/>
 		<mapper resource="mybatis/mapping/UsersAuthPicMapper.xml"/>
 		<mapper resource="mybatis/mapping/PresentalMapper.xml"/>
+		<mapper resource="mybatis/mapping/OrderFreedomMapper.xml"/>
 	</mappers>
 
 </configuration>

@@ -6,6 +6,7 @@ import java.util.*;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -19,11 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mfq.bean.FinanceBill;
-import com.mfq.bean.Hospital;
-import com.mfq.bean.OrderInfo;
-import com.mfq.bean.PolicyInfo;
-import com.mfq.bean.Product;
 import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.bean.area.City;
 import com.mfq.bean.coupon.Coupon;
@@ -196,6 +192,16 @@ public class OrderService {
 			throw new Exception("插入订单失败！请重试");
 		}
 		//优惠券标记为已使用
+        if(StringUtils.isNotBlank(couponNum)){
+            long l = couponService.updateCouponStatus(couponNum,
+                    CouponStatus.USED);
+            if(l != 1){
+                logger.error("更新优惠券失败!");
+                throw new Exception("更新优惠券失败!");
+            }
+        }
+
+
 		// 生成账单
 		if (t == PayType.FINANCING) {
 			financeBillService.createFinance(order);
@@ -291,18 +297,28 @@ public class OrderService {
 		String randomStr = new DecimalFormat("0000").format(randomInt);
 		StringBuilder sb = new StringBuilder(Constants.ONLINE_ORDER_PREFIX);
 		sb.append(DateUtil.formatCurTimeLong());
-		sb.append(randomStr);
-		sb.append(StringUtils.leftPad(pHex, 4, "0"));
-		logger.info("After Make Order No is : {}", sb.toString());
+        sb.append(randomStr);
+        sb.append(StringUtils.leftPad(pHex, 4, "0"));
+        logger.info("After Make Order No is : {}", sb.toString());
 		return sb.toString();
 	}
 
-	public static void main(String[] args) throws Exception {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-		OrderService orderService = ac.getBean(OrderService.class);
-		String result = orderService.bookingOrder(3110l,206l);
-		System.out.println(result);
-	}
+    public static void main(String[] args) {
+        OrderService orderService = new OrderService();
+        orderService.makeOrderFreedomNo();
+
+    }
+    public String makeOrderFreedomNo(){
+        Integer randomInt = new Random().nextInt(99999999);
+        String randomStr = new DecimalFormat("00000000").format(randomInt);
+        StringBuilder sb = new StringBuilder(Constants.FREEDOM_ORDER_PREFIX);
+        sb.append(DateUtil.formatCurTimeLong());
+        sb.append(randomStr);
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+
+
 	public String bookingOrder(long uid, long pid) throws Exception {
 		User user = userService.queryUser(uid);
 		if (user == null || user.getUid() < 0) {
@@ -381,10 +397,11 @@ public class OrderService {
 		City city = cityMapper.findById(hospital.getCityId());
 		fm.put("hospital_addr", city.getName());
 		fm.put("amount", product.getPrice());
-        fm.put("coupons",couponService.findValidCoupon(quota.getUid()));
-		if(fm.get("coupons")==null){
-			fm.put("coupons","");
-		}
+        List<CouponInfo2App> coupons = couponService.findValidCoupon(quota.getUid());
+        if(coupons!=null && coupons.size()!=0){
+            fm.put("coupons",coupons);
+        }
+
 		
 		if (product.getType() == ProductType.SECKILLING) { // 秒杀
 			fm.put("online_pay", product.getPrice());
@@ -433,7 +450,6 @@ public class OrderService {
 		return JsonUtil.successResultJson(appOrders);
 	}
 
-
 	public String queryOrderDetailByOid(Long uid, String orderNo)
 			throws Exception {
 		OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
@@ -461,19 +477,27 @@ public class OrderService {
 
 			OrderInfo2App bean = new OrderInfo2App(product, order, new FinanceBill(),hospital.getName(), order.getPolicyStatus());
 			//减去优惠券的价格
-			if(StringUtils.isNotBlank(bean.getCouponNum())){
+			if(StringUtils.isNotBlank(bean.getCouponNum().trim())){
 				Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
-				List<Coupon> couponList = new ArrayList<>();
-				couponList.add(coupon);
-				CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
-				bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
-			}
+                if(coupon != null && StringUtils.isNotBlank(bean.getCouponNum())){
+                    List<Coupon> couponList = new ArrayList<>();
+                    couponList.add(coupon);
+                    CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+                    bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
+                }
 
+			}
 			list.add(bean);
 		}
 		return list;
 	}
 
+    /**
+     * 通过order制作OrderInfo2App
+     * @param order
+     * @return
+     * @throws Exception
+     */
 	public OrderInfo2App makeAppOrderByOrder(OrderInfo order) throws Exception {
 		if (order == null) {
 			return null;
@@ -665,8 +689,45 @@ public class OrderService {
 		return mapper.updatePolicyStatusByStatus(insureEffect, auditing, orderNo);
 		
 	}
-	
 
-	
+    /**
+     * 创建任意单
+     * 1.创建任意单订单
+     * 2.加入orderInfo2app
+     * @param uid
+     * @param amount
+     * @param operationTime
+     * @param couponNum
+     * @param policyNum
+     * @return
+     */
+    public OrderInfo2App createOrderFreedom(long uid,BigDecimal amount,Date operationTime,String couponNum ,int policyNum,int hosId,String proname) {
 
+        //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
+        // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
+        // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime) {
+        String orderNo = makeOrderFreedomNo();
+
+        OrderFreedom orderFreedom = new OrderFreedom(null,uid,orderNo,hosId,proname,amount,OrderStatus.BOOK_OK.getValue(),couponNum,);
+
+        return null;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

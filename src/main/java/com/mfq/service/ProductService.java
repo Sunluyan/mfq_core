@@ -175,15 +175,15 @@ public class ProductService {
      * @return
      *
      */
-    public List<Product> findProductByKeyword(String keyword,long page){
+    public List<ProductListItem2App> findProductByKeyword(String keyword,long page){
         // 搜索产品分页
         long pagesize = 20;
         long start = (page-1)*pagesize;
         String[] keywords = keyword.split(" ");
         List<Hospital> hospitals = hospitalMapper.selectByKeywords(keywords);
         List<Product> productsByPro = productMapper.selectByKeywordsAndHospitalIds(keywords,hospitals,start,pagesize);
-
-        return productsByPro;
+        List<ProductListItem2App> result = convert2AppList(productsByPro);
+        return result;
     }
 
     public static void main(String[] args) {

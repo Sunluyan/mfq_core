@@ -20,9 +20,10 @@ public class Constants {
     public static String ONLINE_ORDER_PREFIX = "mn";
     // 在线充值－仅充值订单前缀
     public static String RECHARGE_ORDER_PREFIX = "cz";
-    
     // 在线还款－仅还款订单前缀
     public static String REFUND_ORDER_PREFIX = "bl";
+    // 随意单前缀
+    public static String FREEDOM_ORDER_PREFIX = "fk";
     
     public static String SEC_KEY = "Xo+81y.0AA61j89],f|yu6";
     

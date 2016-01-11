@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.coupon.Coupon;
+import com.mfq.constants.PolicyStatus;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,7 +79,6 @@ public class OrderController {
             }
 
             ret = orderService.bookingOrder(uid, pid);
-            logger.info("ret : {}",ret);
         } catch (Exception e) {
             logger.error("Exception PreBuy Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
@@ -191,8 +191,8 @@ public class OrderController {
                 return ret;
             }
             Date operationT = new Date(Long.parseLong(operation_time));
-            
-            int policy = 0;
+
+            int policy = PolicyStatus.WITHOUT.getId();
             if(params.get("policy")!=null)policy = Integer.parseInt(params.get("policy").toString());
             
             //创建订单
@@ -210,6 +210,8 @@ public class OrderController {
         }
         return ret;
     }
+
+
     
     
     /**
@@ -300,7 +302,7 @@ public class OrderController {
 
             
             Date operationT = new Date(Long.parseLong(operation_time));
-            int policy = 0;
+            int policy = PolicyStatus.WITHOUT.getId();
             if(params.get("policy")!=null){
             	policy = Integer.parseInt(params.get("policy").toString());            	
             }
@@ -526,7 +528,70 @@ public class OrderController {
         logger.info("Order_Financing_Ret is:{}", ret);
     	return ret;
     }
-    
+
+
+
+
+    /**
+     * 创建任意单 , 目前只支持全款支付
+     * 传入 uid , amount , operation_time , hos_id , proname, [coupon_num] , [policy_num]
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = { "/create/freedom","/create/freedom/" }, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    @LoginRequired
+    public String createFreedom(HttpServletRequest request,
+                         HttpServletResponse response) {
+        String ret = "";
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+            }
+            if(params.get("uid") == null || params.get("amount") == null || params.get("hos_id") == null || params.get("proname") == null){
+                logger.error("参数缺失！CORE_PARAM_UNLAWFUL");
+                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL,"参数缺失",null);
+            }
+            //获取参数
+            long uid = Long.parseLong(params.get("uid").toString());
+            int hosId = Integer.parseInt(params.get("hos_id").toString());
+            BigDecimal amount = new BigDecimal(params.get("amount").toString());
+            String proname = params.get("proname").toString();
+
+            //验证优惠券
+            String couponNum = null;
+            if(params.get("coupon_num")!=null){
+                couponNum = params.get("coupon_num").toString();
+            }
+            couponService.checkCoupon(couponNum,amount);    //我们的设计是 如果在checkCoupon中出错的话,会直接抛出异常,所有不对返回值做判断
+
+            //验证时间戳
+            String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
+            if(operation_time.length()!=13){
+                ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不是时间戳", null);
+                return ret;
+            }
+
+            Date operationT = new Date(Long.parseLong(operation_time));
+
+            //保单状态
+            int policyNum = PolicyStatus.WITHOUT.getId();//-1
+            if(params.get("policy")!=null)policyNum = Integer.parseInt(params.get("policy").toString());
+
+
+            //创建任意单
+            OrderInfo2App order = orderService.createOrderFreedom(uid,amount,operationT,couponNum,policyNum,hosId,proname);
+
+            ret = JsonUtil.successResultJson(order);
+        } catch (Exception e) {
+            logger.error("Exception OrderCreateAny Process!", e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, e.getMessage(), null);
+        }
+        return ret;
+    }
     
 
 }

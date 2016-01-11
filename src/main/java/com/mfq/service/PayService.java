@@ -297,8 +297,8 @@ public class PayService {
 			//给产品加一个sale_num
 			long count = productService.addSaleNum(order.getPid());
 			if(count!=1){
-				logger.error("更新产品销售已数量出错!");
-				throw new Exception("更新产品已销售数量出错!");
+				logger.error("更新产品销售数量出错!");
+				throw new Exception("更新产品销售数量出错!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

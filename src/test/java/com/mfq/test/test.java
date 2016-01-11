@@ -14,8 +14,7 @@ import com.mfq.dao.PolicyInfoMapper;
 public class test {
 
 	public static void main(String[] args) throws MalformedURLException, UnsupportedEncodingException {
-		// TODO Auto-generated method stub
-		
+
 		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
 		PolicyInfo p = new PolicyInfo();
 		

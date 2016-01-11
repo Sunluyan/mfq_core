@@ -186,7 +186,7 @@ public class FinanceController {
 			List<OrderInfo2App> realresult = new ArrayList<OrderInfo2App>();
 			
 			
-			for (String orderNo : orderNoSet) {//循环订单号	
+			for (String orderNo : orderNoSet) {	//循环订单号
 				OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
 				OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
 				logger.info("OrderInfo2App at FinanceController :{}",data);

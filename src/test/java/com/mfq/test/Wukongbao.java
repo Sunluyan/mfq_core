@@ -44,7 +44,6 @@ public class Wukongbao {
 			System.out.println("prv:"+t.get(PRIVATE_KEY).toString());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
