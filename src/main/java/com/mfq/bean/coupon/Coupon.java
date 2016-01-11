@@ -14,7 +14,7 @@ public class Coupon {
     long batchId; // 批次ID
     String couponNum; // 优惠券编码
     BigDecimal money; // 优惠券金额
-    int flag;  //标识
+    int flag;  //标识 0 未删除 1已删除
     CouponStatus status; // 状态 0初始状态 1冻结 2已使用
     Date updatedAt; // 最后更新时间
 

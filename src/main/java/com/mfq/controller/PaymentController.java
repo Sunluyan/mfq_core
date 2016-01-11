@@ -110,7 +110,7 @@ public class PaymentController {
 				return ret;
 			}
 			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
-			//TODO 支付的时候 要减去优惠券的价格
+			// 支付的时候 要减去优惠券的价格
 			if(orderInfo.getCouponNum()!=null && orderInfo.getCouponNum() != ""){
 				Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
 				List<Coupon> couponList = new ArrayList<>();
@@ -200,6 +200,7 @@ public class PaymentController {
 				//还款，修改financeBill状态
 				payService.updateOrderRefundOk(result);
 			}
+
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.ONLINE){
 				//订单支付
 				payService.updateOrderPayOk(result);

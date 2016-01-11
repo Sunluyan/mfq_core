@@ -257,7 +257,6 @@ public class MobileMessageClient {
                         log.warn("no config for this provider, ignore config!");
                         continue;
                     }
-                    // todo 抽出factory
                     MessageProvider provider;
                     if (config.getName().equalsIgnoreCase("maixun")) {
                         provider = new MaiXunMessageProvider();

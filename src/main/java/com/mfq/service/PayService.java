@@ -69,6 +69,8 @@ public class PayService {
 	PolicyService policyService;
 	@Resource
 	PolicyInfoMapper policyInfoMapper;
+	@Resource
+	ProductService productService;
 
 
 	/**
@@ -195,7 +197,7 @@ public class PayService {
 	
 	/**
 	 * 如果是用于支付订单的，进入到这里。
-	 * 1、需要判断支付的方式是支付平台，还是余额、优惠券等方式支付
+	 * 1.需要给product加上一个sale_num TODO
 	 * @param result
 	 * @throws Exception
 	 */
@@ -264,21 +266,22 @@ public class PayService {
             //如果是用余额支付该订单,更新下用户余额
 			if(result.getApiType() == PayAPIType.INNER){
                 long count = quotaService.updateUserBalance(record.getUid(), result.getAmount());
-                if(count!=1)
-                    throw new Exception("用户余额更新失败");
+                if(count!=1){
+					throw new Exception("用户余额更新失败");
+				}
             }
 
 
-			
+
 			//BigDecimal couponQuota = new BigDecimal(0);
 
-						
+
 			//User user = userService.queryUser(order.getUid());
 			//UserQuota quota = quotaService.queryUserQuota(user.getUid());
 			//String [] params = {"".equals(quota.getRealname())?"未设置用户名":quota.getRealname(), user.getMobile(), order.getOrderNo()};
 			//smsService.sendFinishOrderSMS(params);
-			
-			
+
+
 			//悟空保
 			if(order.getPolicyStatus() == PolicyStatus.AUDITING){
 				String ret = policyService.insure(order.getOrderNo());
@@ -289,6 +292,13 @@ public class PayService {
 				}else{
 					orderService.updatePolicyStatusByStatus(PolicyStatus.INSURE_EFFECT,PolicyStatus.AUDITING, order.getOrderNo());
 				}
+			}
+
+			//给产品加一个sale_num
+			long count = productService.addSaleNum(order.getPid());
+			if(count!=1){
+				logger.error("更新产品销售已数量出错!");
+				throw new Exception("更新产品已销售数量出错!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

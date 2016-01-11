@@ -85,6 +85,40 @@ public class ProductController {
         return ret;
     }
 
+    @RequestMapping(value = {"/search","search/"},method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json;charset=utf-8")
+    public @ResponseBody String searchProduct(HttpServletRequest request,HttpServletResponse response){
+        String ret = "";
+        try{
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+                logger.error("签名验证失败！ret={}", ret);
+                return ret;
+            }
+
+            if(params.get("keyword") == null){
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+                logger.error("参数不合法！ret={}", ret);
+                return ret;
+            }
+            String keyword = params.get("keyword").toString();
+
+            long page = 1;
+            if(params.get("page") != null){
+                page = Long.parseLong(params.get("page").toString());
+            }
+
+            productService.findProductByKeyword(keyword,page);
+        }catch(Exception e){
+            logger.error("Exception ProductInfo Process!", e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+        }
+        return ret;
+    }
+
+    
+
     /**
      * 获取推荐列表
      * 

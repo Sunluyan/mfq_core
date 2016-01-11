@@ -277,7 +277,6 @@ public final class Base64 {
             s = s.replaceAll("[\\n|\\r]", "");
             ;
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             return "";
         }
         return s;

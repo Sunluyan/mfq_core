@@ -150,8 +150,13 @@ public class OrderService {
 		String orderNo = makeOrderNo(p.getId());
 		OrderStatus toStatus = OrderStatus.BOOK_OK;
 
-		if(t == PayType.FINANCING){
-			toStatus = OrderStatus.PAY_OK;
+		if(t == PayType.FINANCING ){
+			if(policy_status == -1){
+				if(amount.compareTo(periodPay) >= 0 ){
+					toStatus = OrderStatus.PAY_OK;
+				}
+			}
+
 		}
 		logger.info("t in orderService createOrder:{} , toStatus:{}",t,toStatus);
         //之前在创建分期订单的时候,把amount减少了优惠券的优惠金额(比如3000的amount,优惠券是满1000-500,刚才把amount减到了2500)
@@ -190,6 +195,7 @@ public class OrderService {
 		if (insertOrder != 1) {
 			throw new Exception("插入订单失败！请重试");
 		}
+		//优惠券标记为已使用
 		// 生成账单
 		if (t == PayType.FINANCING) {
 			financeBillService.createFinance(order);
@@ -261,9 +267,7 @@ public class OrderService {
 				logger.info("quota_left baseFQMoney, period, periodPay {}|{}|{}|{}",quota.getQuotaLeft(), baseFQMoney, period, periodPay);
 				boolean fqOK = FQUtil.fenqiIsOk(quota, baseFQMoney, period,
 						periodPay);
-//				if (!fqOK) {	不明白fuckqOK是什么意思，TODO by 刘志国
-//					return false;
-//				}
+
 			}
 		}
 		return true;
@@ -293,6 +297,12 @@ public class OrderService {
 		return sb.toString();
 	}
 
+	public static void main(String[] args) throws Exception {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		OrderService orderService = ac.getBean(OrderService.class);
+		String result = orderService.bookingOrder(3110l,206l);
+		System.out.println(result);
+	}
 	public String bookingOrder(long uid, long pid) throws Exception {
 		User user = userService.queryUser(uid);
 		if (user == null || user.getUid() < 0) {
@@ -372,7 +382,9 @@ public class OrderService {
 		fm.put("hospital_addr", city.getName());
 		fm.put("amount", product.getPrice());
         fm.put("coupons",couponService.findValidCoupon(quota.getUid()));
-		
+		if(fm.get("coupons")==null){
+			fm.put("coupons","");
+		}
 		
 		if (product.getType() == ProductType.SECKILLING) { // 秒杀
 			fm.put("online_pay", product.getPrice());
@@ -421,6 +433,7 @@ public class OrderService {
 		return JsonUtil.successResultJson(appOrders);
 	}
 
+
 	public String queryOrderDetailByOid(Long uid, String orderNo)
 			throws Exception {
 		OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
@@ -431,11 +444,7 @@ public class OrderService {
 		return JsonUtil.successResultJson(bean);
 	}
 
-	public static void main(String[] args) throws Exception {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-		OrderService orderService = ac.getBean(OrderService.class);
-		orderService.queryOrderDetailByOid(2798l,"mn20160108190407429100a4");
-	}
+
 
 	private List<OrderInfo2App> makeAppOrdersByOrderList(List<OrderInfo> orders) {
 		if (CollectionUtils.isEmpty(orders)) {

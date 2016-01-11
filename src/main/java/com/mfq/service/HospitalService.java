@@ -32,7 +32,7 @@ public class HospitalService {
     }
 
 	public List<Map<String,Object>> findAll() {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		List<Hospital> hospitals = mapper.findAll();
 		List<Long> names = new ArrayList<Long>();
 		for (Hospital hos : hospitals) {

@@ -2,6 +2,7 @@ package com.mfq.dao;
 
 import java.util.List;
 
+import com.mfq.bean.Hospital;
 import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
@@ -24,5 +25,12 @@ public interface ProductMapper {
 	public List<Product> queryProductsByType(@Param("type") ProductType type);
 
 	public long updateProductRemain(@Param("pid") long pid, @Param("num") int num, @Param("remain") long remainNum);
+
+	long updateProcuctSaleNum(@Param("pid")long pid);
+
+	List<Product> selectByHospitals(@Param("hospitals")List<Hospital> hospitals);
+
+	List<Product> selectByKeywordsAndHospitalIds(@Param("keywords")String[] keywords,@Param("hospitals")List<Hospital> hospitals,
+												 @Param("start")long start,@Param("pagesize")long pagesize);
 
 }
