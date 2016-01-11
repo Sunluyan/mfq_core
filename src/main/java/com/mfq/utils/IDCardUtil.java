@@ -7,7 +7,6 @@ import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public class IDCardUtil {
     /*********************************** 身份证验证开始 ****************************************/
@@ -31,7 +30,7 @@ public class IDCardUtil {
      * @throws ParseException
      */
     @SuppressWarnings("unchecked")
-    public static String IDCardValidate(String IDStr) throws ParseException {
+    public static String IDCardValidate(String IDStr) {
         String errorInfo = "";// 记录错误信息
         String[] ValCodeArr = { "1", "0", "x", "9", "8", "7", "6", "5", "4",
                 "3", "2" };
@@ -204,7 +203,7 @@ public class IDCardUtil {
      * @throws ParseException
      */
     @SuppressWarnings("static-access")
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         // String IDCardNum="210102820826411";
         // String IDCardNum="210102198208264114";
         String IDCardNum = "421181199308122316";

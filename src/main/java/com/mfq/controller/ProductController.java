@@ -84,8 +84,6 @@ public class ProductController {
         }
         return ret;
     }
-    
-    
 
     /**
      * 获取推荐列表

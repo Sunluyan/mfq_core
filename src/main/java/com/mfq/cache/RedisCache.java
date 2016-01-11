@@ -1,7 +1,5 @@
 package com.mfq.cache;
 
-import java.util.List;
-
 import com.mfq.dataservice.cache.IRedis;
 import com.mfq.dataservice.cache.impl.RedisCacheManipulater;
 

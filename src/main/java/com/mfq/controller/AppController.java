@@ -102,6 +102,31 @@ public class AppController {
     public String act() throws Exception {
     	return "activity/mxa/guide";
     }
+
+
+    /**
+     * 检索热词
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = {"/hot/word/" , "/hot/word"}, method = { RequestMethod.GET},produces = "application/json;charset=utf-8")
+    public @ResponseBody String hotWord() throws Exception {
+        String ret = "";
+        List<String> wordsData = Lists.newArrayList();
+//        words.add("祛眼袋");
+//        words.add("开眼角");
+//        words.add("隆鼻");
+//        words.add("瘦脸针");
+//        words.add("玻尿酸");
+
+        String wordItem = Config.getItem("hot_words");
+        String [] words = wordItem.split(",");
+        for(String word : words){
+            wordsData.add(word);
+        }
+        ret = JsonUtil.successResultJson(words);
+        return ret;
+    }
     
     private List<City> qcf(List<City> list){
     	
