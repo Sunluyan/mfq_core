@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.HospitalMapper">
+	<sql id="selectsql">
+		id, name, img, address, city_id as cityId, created_at as createdAt, updated_at as updatedAt
+	</sql>
+	<sql id="insertsql">
+		name, img, address, city_id, created_at, updated_at
+	</sql>
+
+	<select id="findById" resultType="Hospital">
+		select
+		<include refid="selectsql" />
+		from hospital where 1=1
+		<if test="id != null and id != 0">
+			and id=#{id}
+		</if>
+		
+	</select>
+	<select id="findAll" resultType="Hospital">
+		select
+		<include refid="selectsql" />
+		from hospital
+		
+	</select>
+	
+
+	<insert id="insertDetail" parameterType="Hospital">
+		insert into hospital(
+		<include refid="insertsql" />
+		)values (
+		#{name}, #{img}, #{address}, #{cityId}, now(), now()
+		)
+	</insert>
+	
+	
+	<select id="findProCount" resultType="map">
+	
+	select hospital_id as id,count(*) as total  from product
+		where 1=1 
+		<if test = "hosid!=null">
+			and hospital_id in 
+		</if>
+		<foreach collection="hosid" open="(" close=")" separator="," item="id">
+			#{id}
+		</foreach>
+		group by hospital_id
+		
+		
+	</select>
+
+	<select id="selectByKeywords" resultType="Hospital">
+		select
+          <include refid="selectsql" />
+        from hospital
+        where 1=1
+        <foreach collection="keywords" item="keyword">
+            and name like CONCAT(CONCAT('%', #{keyword}), '%')
+        </foreach>
+
+    </select>
+
+</mapper>
