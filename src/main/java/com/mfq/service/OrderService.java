@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
+import com.mfq.dao.OrderFreedomMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +66,8 @@ public class OrderService {
 	HospitalService hospitalService;
 	@Resource
 	OrderInfoMapper mapper;
+    @Resource
+    OrderFreedomMapper orderFreedomMapper;
 	@Resource
 	SMSService smsService;
 	@Resource
@@ -73,6 +76,7 @@ public class OrderService {
 	PolicyService policyService;
 	@Resource
 	FinanceBillService financeBillService;
+    @
 
 	/**
 	 * 
@@ -303,11 +307,7 @@ public class OrderService {
 		return sb.toString();
 	}
 
-    public static void main(String[] args) {
-        OrderService orderService = new OrderService();
-        orderService.makeOrderFreedomNo();
 
-    }
     public String makeOrderFreedomNo(){
         Integer randomInt = new Random().nextInt(99999999);
         String randomStr = new DecimalFormat("00000000").format(randomInt);
@@ -707,10 +707,19 @@ public class OrderService {
         // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
         // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime) {
         String orderNo = makeOrderFreedomNo();
+        String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
+        OrderFreedom orderFreedom = new OrderFreedom(null,uid,orderNo,hosId,proname,amount,OrderStatus.BOOK_OK.getValue(),couponNum, BigDecimal.valueOf(0),securityCode,
+                policyNum,null,null,null,null);
 
-        OrderFreedom orderFreedom = new OrderFreedom(null,uid,orderNo,hosId,proname,amount,OrderStatus.BOOK_OK.getValue(),couponNum,);
+        long count = orderFreedomMapper.insert(orderFreedom);
 
         return null;
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        OrderService service = ac.getBean(OrderService.class);
+        //service.createOrderFreedom(2798, BigDecimal.valueOf(1000),DateUtil.formatCurTimeLong(),"gdfaaf",);
     }
 }
 
