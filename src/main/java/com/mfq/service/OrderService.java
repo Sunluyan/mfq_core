@@ -10,6 +10,7 @@ import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.constants.*;
 import com.mfq.dao.OrderFreedomMapper;
+import org.apache.commons.collections.list.LazyList;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -737,16 +738,6 @@ public class OrderService {
     }
 
     /**
-     * @return
-     */
-    public BigDecimal getValidBalance(UserQuota quota) {
-        if (quota == null || quota.getUid() <= 0) {
-            return BigDecimal.valueOf(0);
-        }
-        return quota.getBalance().add(quota.getPresent());
-    }
-
-    /**
      * 计算分期
      *
      * @param uid
@@ -864,7 +855,8 @@ public class OrderService {
 
         //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
         // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
-        // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime) {
+        // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime)
+
         String orderNo = makeOrderFreedomNo();
         String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
         OrderFreedom orderFreedom = new OrderFreedom(null, uid, orderNo, hosId, proname, amount, OrderStatus.BOOK_OK.getValue(), couponNum, BigDecimal.valueOf(0), securityCode,
@@ -880,7 +872,31 @@ public class OrderService {
         return orderInfo2App;
     }
 
+    /**
+     * 进入随意单时需要的数据
+     *
+     * @param uid
+     * @return 医院列表 优惠券列表
+     */
+    public String bookingOrderFreedom(Long uid) throws Exception{
+        //获取医院列表
+        List<Hospital> hosList = hospitalService.queryHospitals();
+        List<CouponInfo2App> couponList = couponService.findValidCoupon(uid);
+        List<Map<String,Object>> hosMaps = new ArrayList<>();
 
+        for (Hospital hospital : hosList) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("hosname",hospital.getName());
+            map.put("hosid",hospital.getId());
+            hosMaps.add(map);
+        }
+        Map<String,Object> result = new HashMap<>();
+        result.put("hospitals",hosMaps);
+        result.put("coupons",couponList);
+
+        String ret = JsonUtil.successResultJson(result);
+        return ret;
+    }
 }
 
 

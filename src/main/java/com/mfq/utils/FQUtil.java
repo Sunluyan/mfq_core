@@ -181,7 +181,7 @@ public class FQUtil {
     public static int periodMax(BigDecimal baseMoney) {
         
 
-        return 24;
+        return 12;
     }
 
     

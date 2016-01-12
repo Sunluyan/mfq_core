@@ -374,13 +374,13 @@ body {
 			document.location.href=url;
 		}</script>
 <div style="width:100%; height:4px;"></div>
-<c:if test="${fq_6!= ''}">
+<c:if test="${fq_3!= ''}">
 	<div style="background-color:#ffffff; width:100%; text-align:center; vertical-align: middle;padding:4px auto;border-top: 1px solid #eee; border-bottom:1px solid #eee;" >分期详情</div>
 	<div style="background-color:#ffffff; width:65%; text-align:left; vertical-align: middle; padding:4px auto; position:absolute; overflow:hidden;float: left; height:auto; min-height: 58px;border-bottom: 1px solid #eee;">
-		<ul style="text-align:left; vertical-align: middle;"><span class="STYLE75"><c:if test="${fq_6 != '' }"><span class="STYLE76">&nbsp;&nbsp;￥</span>${fq_6}<span class="STYLE76"> x 6期</span></c:if></span></ul>
+		<ul style="text-align:left; vertical-align: middle;"><span class="STYLE75"><c:if test="${fq_3 != '' }"><span class="STYLE76">&nbsp;&nbsp;￥</span>${fq_3}<span class="STYLE76"> x 3期</span></c:if></span></ul>
 		<ul style="text-align:left; vertical-align: middle;">
-			<c:if test="${fq_12 != '' }">&nbsp;￥${fq_12 }x12期 </c:if>
-			<c:if test="${fq_24 != '' }">/ ￥${fq_24 }x24期</c:if>
+			<c:if test="${fq_6 != '' }">&nbsp;￥${fq_6 }x6期 </c:if>
+			<c:if test="${fq_12 != '' }">/ ￥${fq_12 }x12期</c:if>
 		</ul>
 	</div>
 	<div style="background-color:#FF5254;text-align:center; vertical-align:middle; position:relative;right:0px; bottom:0px; left:64%;height:58px; width:35%;float:left">

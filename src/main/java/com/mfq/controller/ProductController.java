@@ -276,7 +276,7 @@ public class ProductController {
                 	model.put("cureMeans", productDetail.getCureMeans());
                 	model.put("p", productDetail);
                 	
-                	Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(product.getPrice());// 分期得计算规则
+                	Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(product.getMarketPrice());// 分期得计算规则
                     
                 	Map<Integer, BigDecimal> f = Maps.newHashMap();
                 	if(fqs.containsKey(6)){
@@ -291,10 +291,10 @@ public class ProductController {
                 		model.put("fq_12", "");
                 	}
                 	
-                	if(fqs.containsKey(24)){
-                		model.put("fq_24", fqs.get(24));
+                	if(fqs.containsKey(3)){
+                		model.put("fq_3", fqs.get(3));
                 	}else{
-                		model.put("fq_24", "");
+                		model.put("fq_3", "");
                 	}
                 	BigDecimal t = product.getMarketPrice().subtract(product.getPrice());
                 	model.put("bt", myformat.format(t));
