@@ -13,11 +13,13 @@ import com.mfq.constants.OrderStatus;
 import com.mfq.constants.PayType;
 import com.mfq.constants.PolicyStatus;
 import com.mfq.constants.ProductType;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface OrderInfoMapper {
 
-    public List<OrderInfo> findIdsByTypeAndStatus(@Param("type") ProductType type,
+    public List<OrderInfo> findByTypeAndStatus(@Param("type") ProductType type,
             @Param("status") OrderStatus status);
 
     public OrderInfo findByOrderNo(@Param("orderNo") String orderNo);

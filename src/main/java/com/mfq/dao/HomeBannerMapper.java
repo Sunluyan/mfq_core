@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.HomeBanner;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface HomeBannerMapper {
 
     public long insertHomeBanner(HomeBanner banner);

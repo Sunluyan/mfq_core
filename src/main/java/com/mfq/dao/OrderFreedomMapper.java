@@ -5,8 +5,10 @@ import com.mfq.bean.OrderFreedom;
 import com.mfq.bean.OrderFreedomExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface OrderFreedomMapper {
     int countByExample(OrderFreedomExample example);
 

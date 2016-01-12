@@ -197,7 +197,6 @@ public class PayService {
 	
 	/**
 	 * 如果是用于支付订单的，进入到这里。
-	 * 1.需要给product加上一个sale_num TODO
 	 * @param result
 	 * @throws Exception
 	 */
@@ -208,7 +207,6 @@ public class PayService {
 		try {
 			OrderInfo order = orderService.findByOrderNo(result.getOrderNo());
 			OrderStatus toStatus = OrderStatus.PAY_OK;
-			
 			if (order.getStatus() == toStatus.getValue()) {
 				logger.warn("数据库中本订单状态与目标状态相同，skip后续流程！");
 				throw new Exception("数据库中本订单状态与目标状态相同，skip后续流程！");

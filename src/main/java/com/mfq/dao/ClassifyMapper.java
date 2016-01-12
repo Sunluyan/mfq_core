@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.ProductClassify;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface ClassifyMapper {
 
     public long insertOne(ProductClassify productClassify);

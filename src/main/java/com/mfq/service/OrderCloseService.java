@@ -38,7 +38,7 @@ public class OrderCloseService {
      */
     public void handleGeneralOrder() {
         try {
-            List<OrderInfo> list = orderService.findIdsByTypeAndStatus(
+            List<OrderInfo> list = orderService.findByTypeAndStatus(
                     ProductType.NORMAL, OrderStatus.BOOK_OK);
             if (CollectionUtils.isEmpty(list)) {
                 logger.info("general_order_size is:{}", 0);
@@ -63,7 +63,7 @@ public class OrderCloseService {
      */
     public void handleSecKillOrder() {
         try {
-            List<OrderInfo> list = orderService.findIdsByTypeAndStatus(
+            List<OrderInfo> list = orderService.findByTypeAndStatus(
                     ProductType.SECKILLING, OrderStatus.BOOK_OK);
             if (CollectionUtils.isEmpty(list)) {
                 logger.info("seckill_order_size is:{}", 0);
@@ -88,7 +88,7 @@ public class OrderCloseService {
      */
     public void handleSpecialOrder() {
         try {
-            List<OrderInfo> list = orderService.findIdsByTypeAndStatus(
+            List<OrderInfo> list = orderService.findByTypeAndStatus(
                     ProductType.SPECIAL, OrderStatus.BOOK_OK);
             if (CollectionUtils.isEmpty(list)) {
                 logger.info("special_order_size is:{}", 0);

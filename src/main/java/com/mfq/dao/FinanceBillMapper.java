@@ -8,7 +8,9 @@ import org.apache.ibatis.annotations.Param;
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.FinanceBill;
 import com.mfq.constants.BillStatus;
+import org.springframework.stereotype.Component;
 
+@Component
 @MFQDao
 public interface FinanceBillMapper {
 

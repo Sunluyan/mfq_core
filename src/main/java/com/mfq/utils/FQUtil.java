@@ -91,7 +91,6 @@ public class FQUtil {
 //        return base.multiply(new BigDecimal(rate * Math.pow(1 + rate, period)))
 //                .divide(new BigDecimal(Math.pow(1 + rate, period) - 1), 2,
 //                        BigDecimal.ROUND_HALF_UP);
-        System.out.println("i="+period+", base ="+base);
         return base.divide(new BigDecimal(period), 2, BigDecimal.ROUND_HALF_UP);
     }
     

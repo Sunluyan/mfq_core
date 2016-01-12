@@ -24,7 +24,7 @@
 		refund_type, created_at,updated_at , service_start_time
 	</sql>
 	
-	<select id="findIdsByTypeAndStatus" resultType="OrderInfo">
+	<select id="findByTypeAndStatus" resultType="OrderInfo">
 		select 
 		<include refid="selectsqld" />
 		from order_info o, product p where p.id=o.pid and o.status=#{status} and p.type=#{type}

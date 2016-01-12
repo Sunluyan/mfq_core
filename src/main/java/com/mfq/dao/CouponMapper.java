@@ -7,8 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.constants.CouponStatus;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface CouponMapper {
 
     public long insertOne(Coupon coupon);
