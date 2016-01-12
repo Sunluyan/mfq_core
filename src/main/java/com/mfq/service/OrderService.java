@@ -856,7 +856,7 @@ public class OrderService {
         //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
         // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
         // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime)
-
+        
         String orderNo = makeOrderFreedomNo();
         String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
         OrderFreedom orderFreedom = new OrderFreedom(null, uid, orderNo, hosId, proname, amount, OrderStatus.BOOK_OK.getValue(), couponNum, BigDecimal.valueOf(0), securityCode,
@@ -878,7 +878,7 @@ public class OrderService {
      * @param uid
      * @return 医院列表 优惠券列表
      */
-    public String bookingOrderFreedom(Long uid) throws Exception{
+    public Map<String,Object> bookingOrderFreedom(Long uid) throws Exception{
         //获取医院列表
         List<Hospital> hosList = hospitalService.queryHospitals();
         List<CouponInfo2App> couponList = couponService.findValidCoupon(uid);
@@ -894,8 +894,7 @@ public class OrderService {
         result.put("hospitals",hosMaps);
         result.put("coupons",couponList);
 
-        String ret = JsonUtil.successResultJson(result);
-        return ret;
+        return result;
     }
 }
 

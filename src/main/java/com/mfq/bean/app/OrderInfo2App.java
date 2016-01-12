@@ -151,7 +151,11 @@ public class OrderInfo2App implements Serializable{
 		this.update_time = orderFreedom.getUpdateTime();
 		this.security_code = orderFreedom.getSecurityCode();
 		this.serviceStartTime = orderFreedom.getServiceTime();
-		this.need_pay = orderFreedom.getPrice();
+		if(PolicyStatus.AUDITING.getId() == orderFreedom.getPolicyStatus()){
+			this.need_pay = orderFreedom.getPrice().add(BigDecimal.valueOf(19));
+		}else{
+			this.need_pay = orderFreedom.getPrice();
+		}
 	}
 
 

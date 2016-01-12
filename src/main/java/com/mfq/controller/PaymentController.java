@@ -95,7 +95,8 @@ public class PaymentController {
 	        if (apiType == null) {
 	            return null;
 	        }
-	        
+
+
 			ret = payService.beforeGoPayCheck(orderType, amount, orderNo, apiType);
 			if (StringUtils.isNotBlank(ret)) {
 				logger.warn("Gopay前订单校验失败！");
@@ -110,7 +111,6 @@ public class PaymentController {
 				logger.warn("Unsupported tpp: {}", tpp);
 				return ret;
 			}
-			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
 
 
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
@@ -185,6 +185,10 @@ public class PaymentController {
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.ONLINE){
 				//订单支付
 				payService.updateOrderPayOk(result);
+			}
+
+			else if(payService.getOrderType(result.getOrderNo()) == OrderType.FREEDOM){
+				payService.updateOrderFreedomPayOk(result);
 			}
 			
 			logger.info("result.getApiType().getCode():{}",result.getApiType().getCode());
@@ -262,9 +266,12 @@ public class PaymentController {
                 throw new Exception("参数错误!");
             }
             //验证付款金额是否和订单需要付款的金额相等
-
-
-
+			BigDecimal totalFee = BigDecimal.valueOf(result.getTransaction_fee());
+			BigDecimal amount = BigDecimal.valueOf(Integer.parseInt(result.getOptional().get("amount").toString()));
+			if(totalFee.compareTo(amount) != 0){
+				logger.error("应支付金额与实际支付不相等!totalFee:{},amount{}",totalFee,amount);
+				throw new Exception("应支付金额与实际支付不相等!");
+			}
 
 
             //如果是银联付款的话
@@ -278,7 +285,6 @@ public class PaymentController {
            logger.error("BeeCloud error",e);
             ret = JsonUtil.toJson(9999,e.toString(),null);
         }
-
 
 
     }

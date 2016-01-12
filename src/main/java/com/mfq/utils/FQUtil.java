@@ -15,7 +15,7 @@ public class FQUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(FQUtil.class);
 
-    private final static int [] nums= {6,12,24};
+    private final static int [] nums= {3,6,12};
     
     public static Map<Integer, BigDecimal> fenqiCompute(UserQuota quota,
             BigDecimal baseFQMoney) {

@@ -5,8 +5,10 @@ import com.mfq.bean.PolicyInfo;
 import com.mfq.bean.PolicyInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface PolicyInfoMapper {
     int countByExample(PolicyInfoExample example);
 

@@ -173,6 +173,9 @@ public class UnionpayServiceImpl extends BasePaymentService{
                 else if(payService.getOrderType(orderNo) == OrderType.ONLINE){//订单支付
                     payService.updateOrderPayOk(result);
                 }
+                else if(payService.getOrderType(orderNo) == OrderType.FREEDOM){
+                    payService.updateOrderFreedomPayOk(result);
+                }
             }else{
                 throw new Exception("支付未成功");
             }

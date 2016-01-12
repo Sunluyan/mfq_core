@@ -523,7 +523,7 @@ body {
 </table>
 <table width="100%"  border="0" cellpadding="0" cellspacing="0">
   <tr>
-<c:if test="${s }">
+<c:if test="${s}">
     <td align="center" valign="top" bgcolor="#FFFFFF"><a href="http://www.5imfq.com/download/app.html">
 <img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="4" /><br />
 <img src="${pageContext.request.contextPath}/images/app/home/gg_download.png" width="100%" border="0" /></a>

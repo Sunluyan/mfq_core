@@ -48,9 +48,7 @@ public class BeeCloudResult {
             this.transaction_fee = Integer.parseInt(params.get("transaction_fee").toString());
             this.trade_success = Boolean.parseBoolean(params.get("trade_success").toString());
             this.message_detail = (Map)params.get("message_detail");
-            System.out.println(params.get("optional"));
-            this.optional = (Map)params.get("optional");
-
+            this.optional = (Map)params.get("optional");//orderNo 和 uid
 
         }catch (Exception e) {
             this.sign = null;

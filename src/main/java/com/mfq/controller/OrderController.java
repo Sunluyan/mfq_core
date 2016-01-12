@@ -83,7 +83,6 @@ public class OrderController {
             logger.error("Exception PreBuy Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
         }
-        logger.info("Order_PreBuy_Ret is:{}", ret);
         return ret;
     }
 
@@ -113,7 +112,7 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
                         null);
             }
-
+            
             ret = JsonUtil.successResultJson(orderService.bookingOrderFreedom(uid));
         } catch (Exception e) {
             logger.error("Exception PreBuy Process!", e);
@@ -616,8 +615,12 @@ public class OrderController {
             Date operationT = new Date(Long.parseLong(operation_time));
 
             //保单状态
-            int policyNum = PolicyStatus.WITHOUT.getId();//-1
-            if(params.get("policy")!=null)policyNum = Integer.parseInt(params.get("policy").toString());
+            int policyNum = -1;//-1
+
+            if(params.get("policy_num")!=null){
+                policyNum = Integer.parseInt(params.get("policy_num").toString());
+                policyNum--;
+            }
 
 
             //创建任意单

@@ -114,7 +114,7 @@ public class CouponService {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
 		CouponService service = ac.getBean(CouponService.class);
-		List<CouponInfo2App> list = service.findValidCoupon(2798);
+		List<CouponInfo2App> list = service.findValidCoupon(2936);
         for (CouponInfo2App couponInfo2App : list) {
 			System.out.println(couponInfo2App);
 		}

@@ -9,7 +9,8 @@ public enum OrderType {
 
 	ONLINE(1, "订单"),
     RECHARGE(2, "充值"),
-    REFUND(3, "还款");
+    REFUND(3, "还款"),
+    FREEDOM(4,"随意单");
     
 	
     int id;
