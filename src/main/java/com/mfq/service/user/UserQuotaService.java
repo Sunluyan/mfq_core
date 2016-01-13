@@ -192,8 +192,8 @@ public class UserQuotaService {
         if (result > 0) {
             data.put("status", quota.getAuthStatus());
             
-            String [] params = {realname ,contact};
-    		smsService.sendInterViewHint(params);
+//            String [] params = {realname ,contact};
+//    		smsService.sendInterViewHint(params);
     		
             return JsonUtil.successResultJson(data);
         } else {
@@ -359,7 +359,6 @@ public class UserQuotaService {
         
         int authStatus = AuthStatus.UNREAL.getId();
         
-        //实名认证  没有充钱  暂时关闭
         
         //校验身份证是否正确
         String vStr = IDCardUtil.IDCardValidate(idCard);
@@ -404,9 +403,6 @@ public class UserQuotaService {
         if (result > 0) {
             data.put("status", quota.getAuthStatus());
 
-            //发送通知消息
-            sendNotificationSms(quota.getRealname(), user.getMobile());
-    		
             return JsonUtil.successResultJson(data);
         } else {
             return JsonUtil.toJson(ErrorCodes.FAIL, "认证失败", data);

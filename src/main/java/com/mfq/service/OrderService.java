@@ -852,7 +852,7 @@ public class OrderService {
         //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
         // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
         // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime)
-        logger.info(uid+"\t"+amount+"\t"+operationTime+"\t"+couponNum+"\t"+policyNum+"\t"+hosId+"\t"+proname);
+        
         String orderNo = makeOrderFreedomNo();
         String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
         OrderFreedom orderFreedom = new OrderFreedom(null, uid, orderNo, hosId, proname, amount, OrderStatus.BOOK_OK.getValue(), couponNum, BigDecimal.valueOf(0), securityCode,

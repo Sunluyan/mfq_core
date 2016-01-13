@@ -24,6 +24,8 @@ public class CouponInfo2App {
 	}
 
 	public CouponInfo2App(com.mfq.bean.coupon.Coupon coupon, com.mfq.bean.coupon.CouponBatchInfo couponBatchInfo) {
+		if(coupon==null||couponBatchInfo==null)
+			return;
 		this.id = coupon.getId();
 		this.uid = coupon.getUid();
 		this.batchId = coupon.getBatchId();

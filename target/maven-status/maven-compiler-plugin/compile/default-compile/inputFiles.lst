@@ -146,10 +146,12 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\Vcode.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\annotation\MFQDao.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\DnsUtil.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\Product.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\OrderFreedomExample.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\app\UserProfile2App.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\payment\BasePaymentService.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\Installation.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\exception\AuthenticationException.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service\OrderFreedomService.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\constants\SmsConstants.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\VcodeController.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\NotificationMapper.java
@@ -176,6 +178,7 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\net\tongdun\pojo\Policy.j
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\UserMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\ProductClassify.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service\mail\MailService.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\OrderFreedom.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dataservice\cache\impl\transcoders\SerializingTranscoder.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\constants\Grade.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\handler\PolicyStatusEnumHandler.java
@@ -187,8 +190,8 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\constants\ProductType.jav
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\wechat\message\ImageMessage.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\SpringUtil.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\handler\ConnectSiteEnumHandler.java
-D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\MailHomeUtils.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\annotation\LoginRequired.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\utils\MailHomeUtils.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\FavoritesMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\IndexController.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\FinanceBillMapper.java
@@ -231,6 +234,7 @@ D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\PolicyControll
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\sms\SMSLog.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\FeedbackController.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\payment\util\yeepay\encrypt\Digest.java
+D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\dao\OrderFreedomMapper.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\bean\Favorites.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\controller\FavoritesController.java
 D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\exception\AccountExpiredException.java

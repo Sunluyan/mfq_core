@@ -84,4 +84,40 @@
 		update product set remain_num = remain_num + #{num} where id = #{pid} and remain_num = #{remain}
 	</update>
 
+	<update id="updateProcuctSaleNum">
+		update product set sale_num = sale_num where id = #{pid}
+	</update>
+	
+	<select id="selectByHospitals" resultType="Product">
+		select
+			<include refid="selectsql"/>
+		from product
+		where 1=1
+		and hospital_id in
+		<foreach collection="hospitals" open="(" close=")" separator=","  item="hospital">
+			#{hospital.id}
+		</foreach>
+
+	</select>
+
+	<select id="selectByKeywordsAndHospitalIds" resultType="Product">
+		select
+		<include refid="selectsql"/>
+		from product
+		where 1=1
+		<foreach collection="keywords" item="keyword">
+			and name like CONCAT(CONCAT('%', #{keyword}), '%')
+		</foreach>
+
+		<if test="hospitals.size()!=0">
+			or hospital_id in
+			<foreach collection="hospitals" open="(" close=")" separator="," item="hospital">
+				#{hospital.id}
+			</foreach>
+		</if>
+		order by sale_num desc
+
+		limit #{start},#{pagesize}
+	</select>
+
 </mapper>
