@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 	<style>
 /* 		@font-face{
 	font-family:xueyafei;
-	src: url(); 
+	src: url();
 } */
 		*{
 			padding:0;
@@ -55,28 +55,28 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 			 /*兼容 */
 			transform-origin: right bottom;
 			/* 兼容 */
 				-ms-transform-origin: right bottom;/* IE 9 */
 				-moz-transform-origin: right bottom;/* Firefox */
 				-webkit-transform-origin: right bottom;/* Safari and Chrome */
-				-o-transform-origin: right bottom; /* Opera */ 
+				-o-transform-origin: right bottom; /* Opera */
 			 /*兼容 */
 			animation: roll 3s linear 0s ;
 			 /* 兼容 */
 				-ms-animation: roll 3s linear 0s ;/* IE 9 */
 				-moz-animation: roll 3s linear 0s ;/* Firefox */
 				-webkit-animation: roll 3s linear 0s ;/* Safari and Chrome */
-				-o-animation: roll 3s linear 0s ; /* Opera */ 
+				-o-animation: roll 3s linear 0s ; /* Opera */
 			 /*兼容 */
 			animation-fill-mode : both;
 			/* 兼容 */
 				-ms-animation-fill-mode : both;/* IE 9 */
 				-moz-animation-fill-mode : both;/* Firefox */
 				-webkit-animation-fill-mode : both;/* Safari and Chrome */
-				-o-animation-fill-mode : both; /* Opera */ 
+				-o-animation-fill-mode : both; /* Opera */
 			 /*兼容 */
 		}
 
@@ -84,7 +84,7 @@ pageEncoding="UTF-8"%>
 		 			-ms-transform:rotate(30deg); IE 9
 		 			-moz-transform:rotate(30deg); Firefox
 		 			-webkit-transform:rotate(30deg); Safari and Chrome
-		 			-o-transform:rotate(30deg); Opera 
+		 			-o-transform:rotate(30deg); Opera
 		 兼容 */
 		@keyframes roll{
 			from{
@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 				/*兼容*/
 			}
 			to{
@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(47deg);/* IE 9 */
 				-moz-transform: rotate(47deg);/* Firefox */
 				-webkit-transform: rotate(47deg);/* Safari and Chrome */
-				-o-transform: rotate(47deg); /* Opera */ 
+				-o-transform: rotate(47deg); /* Opera */
 				/*兼容*/
 			}
 		}
@@ -114,7 +114,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 				/*兼容*/
 			}
 			to{
@@ -123,7 +123,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(47deg);/* IE 9 */
 				-moz-transform: rotate(47deg);/* Firefox */
 				-webkit-transform: rotate(47deg);/* Safari and Chrome */
-				-o-transform: rotate(47deg); /* Opera */ 
+				-o-transform: rotate(47deg); /* Opera */
 				/*兼容*/
 			}
 		} /* IE 9 */
@@ -134,7 +134,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 				/*兼容*/
 			}
 			to{
@@ -143,7 +143,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(47deg);/* IE 9 */
 				-moz-transform: rotate(47deg);/* Firefox */
 				-webkit-transform: rotate(47deg);/* Safari and Chrome */
-				-o-transform: rotate(47deg); /* Opera */ 
+				-o-transform: rotate(47deg); /* Opera */
 				/*兼容*/
 			}
 		}/* Firefox */
@@ -154,7 +154,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 				/*兼容*/
 			}
 			to{
@@ -163,7 +163,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(47deg);/* IE 9 */
 				-moz-transform: rotate(47deg);/* Firefox */
 				-webkit-transform: rotate(47deg);/* Safari and Chrome */
-				-o-transform: rotate(47deg); /* Opera */ 
+				-o-transform: rotate(47deg); /* Opera */
 				/*兼容*/
 			}
 		} /* Safari and Chrome */
@@ -174,7 +174,7 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(0deg);/* IE 9 */
 				-moz-transform: rotate(0deg);/* Firefox */
 				-webkit-transform: rotate(0deg);/* Safari and Chrome */
-				-o-transform: rotate(0deg); /* Opera */ 
+				-o-transform: rotate(0deg); /* Opera */
 				/*兼容*/
 			}
 			100%{
@@ -183,10 +183,10 @@ pageEncoding="UTF-8"%>
 				-ms-transform: rotate(47deg);/* IE 9 */
 				-moz-transform: rotate(47deg);/* Firefox */
 				-webkit-transform: rotate(47deg);/* Safari and Chrome */
-				-o-transform: rotate(47deg); /* Opera */ 
+				-o-transform: rotate(47deg); /* Opera */
 				/*兼容*/
 			}
-		} /* Opera */ 
+		} /* Opera */
 		 /*兼容 */
 		.after{
 			width:100%;
@@ -197,15 +197,15 @@ pageEncoding="UTF-8"%>
 			background:url(/images/activity/Christmas/after-2.jpg);
 			background-size:cover;
 			background-position: 50% 50%;
-			
+
 			/*animation:state 4s linear 0s ;*/
 			opacity:0;
-			transition: all 1s; 
+			transition: all 1s;
 			/* 兼容 */
 				-ms-transition:all 1s; /* IE 9 */
 				-moz-transition:all 1s;/* Firefox */
 				-webkit-transition:all 1s;/* Safari and Chrome */
-				-o-transition:all 1s;/* Opera */ 
+				-o-transition:all 1s;/* Opera */
 			 /*兼容 */
 
 		}
@@ -224,7 +224,7 @@ pageEncoding="UTF-8"%>
 		@-webkit-keyframes state{
 			from{
 				opacity:0;
-				
+
 			}
 			to{
 				opacity:0;
@@ -251,10 +251,10 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 5s; /* IE 9 */
 				-moz-transition:all 5s;/* Firefox */
 				-webkit-transition:all 5s;/* Safari and Chrome */
-				-o-transition:all 5s;/* Opera */ 
+				-o-transition:all 5s;/* Opera */
 			 /*兼容 */
 		}
-		
+
 		@-webkit-keyframes T1-out{
 			from{
 				opacity:0;
@@ -275,7 +275,7 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 5s; /* IE 9 */
 				-moz-transition:all 5s;/* Firefox */
 				-webkit-transition:all 5s;/* Safari and Chrome */
-				-o-transition:all 5s;/* Opera */ 
+				-o-transition:all 5s;/* Opera */
 			 /*兼容 */
 		}
 		.wenzi-3{
@@ -291,7 +291,7 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 5s; /* IE 9 */
 				-moz-transition:all 5s;/* Firefox */
 				-webkit-transition:all 5s;/* Safari and Chrome */
-				-o-transition:all 5s;/* Opera */ 
+				-o-transition:all 5s;/* Opera */
 			 /*兼容 */
 		}
 		.xiaomei{
@@ -308,7 +308,7 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 5s; /* IE 9 */
 				-moz-transition:all 5s;/* Firefox */
 				-webkit-transition:all 5s;/* Safari and Chrome */
-				-o-transition:all 5s;/* Opera */ 
+				-o-transition:all 5s;/* Opera */
 			 /*兼容 */
 		}
 		.right{
@@ -323,7 +323,7 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 3s; /* IE 9 */
 				-moz-transition:all 3s;/* Firefox */
 				-webkit-transition:all 3s;/* Safari and Chrome */
-				-o-transition:all 3s;/* Opera */ 
+				-o-transition:all 3s;/* Opera */
 			 /*兼容 */
 
 		}
@@ -340,7 +340,7 @@ pageEncoding="UTF-8"%>
 				-ms-transition:all 3s; /* IE 9 */
 				-moz-transition:all 3s;/* Firefox */
 				-webkit-transition:all 3s;/* Safari and Chrome */
-				-o-transition:all 3s;/* Opera */ 
+				-o-transition:all 3s;/* Opera */
 			 /*兼容 */
 			 }
 		}
@@ -358,15 +358,15 @@ pageEncoding="UTF-8"%>
 			width:100%;
 			height:40%;
 			background:url(images/arrow_19.png) top center no-repeat;
-		
+
 			-background-size:cover;
 			-position:absolute;
 			margin-left:-5px;
 			margin-bottom:3%;
-		
+
 		} */
 		.btn{
-			
+
 			border:none;
 			background:#fdd803;
 			border-radius:100px;
@@ -404,7 +404,7 @@ pageEncoding="UTF-8"%>
 	</style>
 	<script>
 		$(function() {
-			
+
 		});
 	</script>
 </head>
@@ -412,12 +412,12 @@ pageEncoding="UTF-8"%>
 	<div class="now">
 		<div class="shizhong">
 			<div class="fenzhen">
-			
+
 			</div>
 		</div>
-		
+
 		<div class="after after-2">
-			
+
 		</div>
 
 		<div class="wenzi">

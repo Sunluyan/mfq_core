@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 import com.mfq.constants.ErrorCodes;
 import com.mfq.utils.JsonUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -149,7 +150,6 @@ public class CouponService {
 		List<CouponInfo2App> cinfolist= Lists.newArrayList();
 		
 		for(Coupon coupon:clist){
-            logger.info("coupon:{}",coupon.toString());
 			CouponBatchInfo couponBatchInfo = batchMapper.findById(coupon.getBatchId());
 			cinfolist.add(new CouponInfo2App(coupon, couponBatchInfo));
 		}
@@ -191,6 +191,9 @@ public class CouponService {
 
     public boolean checkCoupon(String coupon_num,BigDecimal amount) throws Exception{
         String ret = "";
+        if(StringUtils.isBlank(coupon_num)){
+            return true;
+        }
         Coupon coupon = findByCouponNum(coupon_num);
         List<Coupon> couponList = new ArrayList<>();
         couponList.add(coupon);

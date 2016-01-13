@@ -283,7 +283,6 @@ public class PaymentController {
 
         } catch (Exception e) {
            logger.error("BeeCloud error",e);
-            ret = JsonUtil.toJson(9999,e.toString(),null);
         }
 
 

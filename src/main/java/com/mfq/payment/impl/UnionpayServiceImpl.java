@@ -2,10 +2,7 @@ package com.mfq.payment.impl;
 
 import com.google.common.collect.Maps;
 import com.mfq.annotation.PayAPIImpl;
-import com.mfq.bean.BeeCloudResult;
-import com.mfq.bean.OrderInfo;
-import com.mfq.bean.PayCallbackResult;
-import com.mfq.bean.Product;
+import com.mfq.bean.*;
 import com.mfq.constants.ErrorCodes;
 import com.mfq.constants.OrderType;
 import com.mfq.constants.PayStatus;
@@ -18,10 +15,7 @@ import com.mfq.payment.util.unionpay.BeeCloudConfigure;
 import com.mfq.payment.util.wechat.Configure;
 import com.mfq.payment.util.wechat.HttpsUtil;
 import com.mfq.payment.util.wechat.PayReqData;
-import com.mfq.service.OrderService;
-import com.mfq.service.PayRecordService;
-import com.mfq.service.PayService;
-import com.mfq.service.ProductService;
+import com.mfq.service.*;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.MD5Util;
@@ -46,9 +40,9 @@ import java.util.Map;
  */
 @PayAPIImpl(payAPIType = PayAPIType.UNIONPAY)
 @Service
-public class UnionpayServiceImpl extends BasePaymentService{
+public class UnionpayServiceImpl extends BasePaymentService {
     public static final Logger logger =
-                LoggerFactory.getLogger(UnionpayServiceImpl.class);
+            LoggerFactory.getLogger(UnionpayServiceImpl.class);
 
 
     @Resource
@@ -59,17 +53,21 @@ public class UnionpayServiceImpl extends BasePaymentService{
     PayRecordService payRecordService;
     @Resource
     PayService payService;
+    @Resource
+    OrderFreedomService orderFreedomService;
 
 
-    public String genNonceStr(){return "123";}
+    public String genNonceStr() {
+        return "123";
+    }
 
-    public static String getBCAppSign(String app_id,long timestamp,String app_secret){
-        String sign = MD5Util.md5Digest(app_id+timestamp+app_secret).toLowerCase();
+    public static String getBCAppSign(String app_id, long timestamp, String app_secret) {
+        String sign = MD5Util.md5Digest(app_id + timestamp + app_secret).toLowerCase();
         return sign;
     }
 
-    public static String getBCWebhookSign(String app_id,long timestamp,String app_secret){
-        String sign = MD5Util.md5Digest(app_id+app_secret+timestamp).toLowerCase();
+    public static String getBCWebhookSign(String app_id, long timestamp, String app_secret) {
+        String sign = MD5Util.md5Digest(app_id + app_secret + timestamp).toLowerCase();
         return sign;
     }
 
@@ -79,18 +77,21 @@ public class UnionpayServiceImpl extends BasePaymentService{
         try {
             String orderNo = (String) params.get("order_no");
             String pname = "";
-            Map<String,Object> optional = new HashMap<>();
-            optional.put("orderNo",orderNo);
-            optional.put("amount",params.get("amount"));
+            Map<String, Object> optional = new HashMap<>();
+            optional.put("orderNo", orderNo);
+            optional.put("amount", params.get("amount"));
             optional.put("uid", UserIdHolder.getLongUid());
-            if (orderType ==  OrderType.RECHARGE) {
+            if (orderType == OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
-            } else if(orderType ==  OrderType.REFUND){
+            } else if (orderType == OrderType.REFUND) {
                 pname = "美分期还款－" + String.valueOf(params.get("amount"));
-            }else {
+            } else if(orderType == OrderType.ONLINE){
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
                 pname = product.getName();
+            }else{
+                OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(orderNo);
+                pname = orderFreedom.getProname();
             }
 
             //报文前准备
@@ -99,28 +100,28 @@ public class UnionpayServiceImpl extends BasePaymentService{
             //开始制作请求报文
             String app_id = BeeCloudConfigure.APPID;
             long timestamp = new Date().getTime();
-            String app_sign = getBCAppSign(app_id,timestamp,app_secret);
+            String app_sign = getBCAppSign(app_id, timestamp, app_secret);
             String channel = BeeCloudConfigure.CHANNEL;
-            Integer total_fee = (int)(Float.parseFloat(params.get("amount").toString())*100);
+            Integer total_fee = (int) (Float.parseFloat(params.get("amount").toString()) * 100);
             String bill_no = orderNo;
             String title = pname;
-            if(title.length()>16){
-                title.substring(0,16);
+            if (title.length() > 16) {
+                title.substring(0, 16);
             }
 
 
-            Map<String,Object> httpParams = new HashMap<>();
-            httpParams.put("app_id",app_id);
-            httpParams.put("timestamp",timestamp);
-            httpParams.put("app_sign",app_sign);
-            httpParams.put("channel",channel);
-            httpParams.put("total_fee",total_fee);
-            httpParams.put("bill_no",bill_no);
-            httpParams.put("title",title);
-            httpParams.put("optional",optional);//发过去的豹纹中有 orderNo 和 uid
+            Map<String, Object> httpParams = new HashMap<>();
+            httpParams.put("app_id", app_id);
+            httpParams.put("timestamp", timestamp);
+            httpParams.put("app_sign", app_sign);
+            httpParams.put("channel", channel);
+            httpParams.put("total_fee", total_fee);
+            httpParams.put("bill_no", bill_no);
+            httpParams.put("title", title);
+            httpParams.put("optional", optional);//发过去的豹纹中有 orderNo 和 uid
 
             ret = JsonUtil.successResultJson(httpParams);
-            logger.info("ret = {}",ret);
+            logger.info("ret = {}", ret);
         } catch (Exception e) {
             logger.error("UnionpayERROR", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "UnionpayError",
@@ -134,7 +135,6 @@ public class UnionpayServiceImpl extends BasePaymentService{
 
         return null;
     }
-
 
 
     @Override
@@ -154,46 +154,44 @@ public class UnionpayServiceImpl extends BasePaymentService{
 
     /**
      * beeCloud的回调Service
+     *
      * @param result
      * @return
      */
-    public String beeCloudCallback(BeeCloudResult result,HttpServletRequest request,HttpServletResponse response){
+    public String beeCloudCallback(BeeCloudResult result, HttpServletRequest request, HttpServletResponse response) throws Exception {
         String ret = "";
-        try{
-            logger.info("BeeCloudResult : {}",result);
-            //1,支付成功.2,付款是为了做什么.3,根据不同的目的修改不同的东西
-            if(result.getTrade_success()){
-                String orderNo = result.getOptional().get("orderNo").toString();
-                if(payService.getOrderType(orderNo) == OrderType.RECHARGE){//充值
-                    payService.updateRechargePayOk(result, PayStatus.PAID);
-                }
-                else if(payService.getOrderType(orderNo) == OrderType.REFUND){//分期还款
-                    payService.updateOrderRefundOk(result);
-                }
-                else if(payService.getOrderType(orderNo) == OrderType.ONLINE){//订单支付
-                    payService.updateOrderPayOk(result);
-                }
-                else if(payService.getOrderType(orderNo) == OrderType.FREEDOM){
-                    payService.updateOrderFreedomPayOk(result);
-                }
-            }else{
-                throw new Exception("支付未成功");
+        logger.info("BeeCloudResult : {}", result);
+        //1,支付成功.2,付款是为了做什么.3,根据不同的目的修改不同的东西
+        if (result.getTrade_success()) {
+            String orderNo = result.getOptional().get("orderNo").toString();
+            if (payService.getOrderType(orderNo) == OrderType.RECHARGE) {//充值
+
+                payService.updateRechargePayOk(result, PayStatus.PAID);
+
+            } else if (payService.getOrderType(orderNo) == OrderType.REFUND) {//分期还款
+
+                payService.updateOrderRefundOk(result);
+
+            } else if (payService.getOrderType(orderNo) == OrderType.ONLINE) {//订单支付
+
+                payService.updateOrderPayOk(result);
+
+            } else if (payService.getOrderType(orderNo) == OrderType.FREEDOM) {
+
+                payService.updateOrderFreedomPayOk(result);
+
             }
-
-
-        }catch(Exception e){
-            logger.error(""+e);
-            ret = JsonUtil.toJson(9999,e.toString(),null);
+        } else {
+            throw new Exception("支付未成功");
         }
-
         return ret;
     }
 
     //检查BeeCloud的签名是否正确
-    public static boolean checkSign(Long timestamp,String signFromServer){
+    public static boolean checkSign(Long timestamp, String signFromServer) {
         String appid = BeeCloudConfigure.APPID;
         String app_secret = BeeCloudConfigure.APPSECRET;
-        String sign = getBCWebhookSign(appid,timestamp,app_secret);
+        String sign = getBCWebhookSign(appid, timestamp, app_secret);
         return sign.equals(signFromServer);
     }
 
@@ -201,13 +199,12 @@ public class UnionpayServiceImpl extends BasePaymentService{
 //        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         //UnionpayServiceImpl service = ac.getBean(UnionpayServiceImpl.class);
 //        String sign="e427a5facfc899d06a97b651606de80f";
-       long timestamp=1451471248000l;
+        long timestamp = 1451471248000l;
 //        service.checkSign(timestamp,sign);
-        System.out.println(getBCWebhookSign("967f5a80-ae09-4c46-b29e-cb0843887eed",timestamp,"31b648a9-2837-461d-a129-e46a5bab5fca"));
+        System.out.println(getBCWebhookSign("967f5a80-ae09-4c46-b29e-cb0843887eed", timestamp, "31b648a9-2837-461d-a129-e46a5bab5fca"));
 
 
     }
-
 
 
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
+import com.mfq.payment.util.wechat.HttpsUtil;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.MFQAdminUtil;
@@ -591,6 +592,23 @@ public class TestController {
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
     }
+
+    public static void testCreateFreedom(){
+        String url = purl+"/order/create/freedom";
+        Map<String,Object> params = Maps.newHashMap();
+        //{"amount":9000,"hos_id":1,"operation_time":1452700800000,"policy_num":0,"proname":"哈哈哈","sign":"08AF04F51EF2BCF40FB1FEF3B058CC18","uid":2936}
+        params.put("amount",9000);
+        params.put("hos_id",1);
+        params.put("operation_time",1452700800000l);
+        params.put("policy_num",0);
+        params.put("proname","哈哈哈");
+        params.put("uid",2936);
+        params.put("sign",SignHelper.makeSign(params));
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url,body,true);
+        System.out.println(resp);
+
+    }
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -613,9 +631,9 @@ public class TestController {
  //   	testFinanceList();
     	//testAdultInfo();'
 
-        testOrderBook();
+        //testOrderBook();
         //testPresent();
-
+        testCreateFreedom();
     	
 
     }

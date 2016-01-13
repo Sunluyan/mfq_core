@@ -1,5 +1,6 @@
 package com.mfq.helper;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -109,6 +110,19 @@ public class SignHelper {
         String sign = MessageDigestUtils.sha1(signBuffer.toString());
         logger.info("Make signature:{}, signBuffer:{}", sign,signBuffer.toString() );
         return sign;
+    }
+
+    public static void main(String[] args) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("amount",9000);
+        map.put("hos_id",1);
+        map.put("operation_time",1452700800000l);
+        map.put("policy_num",0);
+        map.put("proname","双眼皮");
+        map.put("uid",2936);
+        map.put("sign","264C6C546E06F34A712A289F18E2A16F");
+        String sign = makeSign(map);
+        System.out.println(sign);
     }
 
     public static String fetchSign(Map<String, Object> map){

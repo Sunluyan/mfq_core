@@ -511,25 +511,21 @@ public class OrderService {
         List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUid(uid);
         //TODO 制作随意单的orderinfo2app
         List<OrderInfo2App> appOrdersFreedom = makeAppOrderByOrderFreedomList(orderFreedoms);
-        for (OrderInfo2App orderInfo2App : appOrdersFreedom) {
-            appOrders.add(orderInfo2App);
+        if(CollectionUtils.isNotEmpty(appOrdersFreedom)){
+            for (OrderInfo2App orderInfo2App : appOrdersFreedom) {
+                appOrders.add(orderInfo2App);
+            }
         }
+
         // 排序
         if (!CollectionUtils.isEmpty(appOrders)) {
             ListSortUtil<OrderInfo2App> sortList = new ListSortUtil<OrderInfo2App>();
             sortList.sort(appOrders, "update_time", "desc");
         }
-        for (OrderInfo2App appOrder : appOrders) {
-            System.out.println(appOrder);
-        }
         return JsonUtil.successResultJson(appOrders);
     }
 
-    public static void main(String[] args) throws Exception {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        OrderService service = ac.getBean(OrderService.class);
-        service.queryOrdersByUid(2798);
-    }
+
 
 
     /**
@@ -856,13 +852,13 @@ public class OrderService {
         //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
         // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
         // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime)
-        
+        logger.info(uid+"\t"+amount+"\t"+operationTime+"\t"+couponNum+"\t"+policyNum+"\t"+hosId+"\t"+proname);
         String orderNo = makeOrderFreedomNo();
         String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
         OrderFreedom orderFreedom = new OrderFreedom(null, uid, orderNo, hosId, proname, amount, OrderStatus.BOOK_OK.getValue(), couponNum, BigDecimal.valueOf(0), securityCode,
                 policyNum, new Date(), null, new Date(), operationTime);
 
-        long count = orderFreedomMapper.insert(orderFreedom);
+        long count = orderFreedomMapper.insertSelective(orderFreedom);
         if (count != 1) {
             logger.error("创建随意单失败!请重试");
             throw new Exception("创建随意单失败!请重试");
@@ -870,6 +866,12 @@ public class OrderService {
         //开始创建orderInfo2App
         OrderInfo2App orderInfo2App = makeAppOrderByOrderFreedom(orderFreedom);
         return orderInfo2App;
+    }
+
+    public static void main(String[] args) throws Exception {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        OrderService service = ac.getBean(OrderService.class);
+        service.createOrderFreedom(2936, BigDecimal.valueOf(9000),new Date(1452700800000l),null,0,1,"脱毛");
     }
 
     /**

@@ -599,7 +599,7 @@ public class OrderController {
             String proname = params.get("proname").toString();
 
             //验证优惠券
-            String couponNum = null;
+            String couponNum = "";
             if(params.get("coupon_num")!=null){
                 couponNum = params.get("coupon_num").toString();
             }
@@ -627,6 +627,7 @@ public class OrderController {
             OrderInfo2App order = orderService.createOrderFreedom(uid,amount,operationT,couponNum,policyNum,hosId,proname);
 
             ret = JsonUtil.successResultJson(order);
+
         } catch (Exception e) {
             logger.error("Exception OrderCreateAny Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, e.getMessage(), null);
