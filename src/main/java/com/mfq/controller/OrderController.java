@@ -364,7 +364,7 @@ public class OrderController {
             Long uid = Long.parseLong(params.get("uid").toString());
             
             
-            ret = orderService.queryOrdersByUidAndStatus(uid);
+            ret = orderService.queryOrdersByUid(uid);
         }catch (Exception e) {
             logger.error("Exception OrderList Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
