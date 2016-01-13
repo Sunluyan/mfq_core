@@ -62,7 +62,7 @@ public class OrderController {
     @ResponseBody
     @LoginRequired
     public String booking(HttpServletRequest request,
-                          HttpServletResponse response) {
+            HttpServletResponse response) {
         String ret = "";
         try {
 
@@ -83,46 +83,9 @@ public class OrderController {
             logger.error("Exception PreBuy Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
         }
-        return ret;
-    }
-
-
-    /**
-     * 随意单的预订数据
-     * 传入uid ,返回 医院列表(hospitals) 和 优惠券列表(coupons)
-     * @param request
-     * @param response
-     * @return
-     */
-    @RequestMapping(value = { "/book/freedom", "/book/freedom/" }, method = RequestMethod.POST)
-    @ResponseBody
-    @LoginRequired
-    public String bookingFreedom(HttpServletRequest request,
-                          HttpServletResponse response) {
-        String ret = "";
-        try {
-
-            Map<String, Object> params = JsonUtil.readMapFromReq(request);
-            Long uid = Long.parseLong(params.get("uid").toString());
-            if (!SignHelper.validateSign(params)) { // 签名验证失败
-                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
-                        null);
-            }
-            if (uid == null || uid == 0 ) { // 参数异常
-                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
-                        null);
-            }
-            
-            ret = JsonUtil.successResultJson(orderService.bookingOrderFreedom(uid));
-        } catch (Exception e) {
-            logger.error("Exception PreBuy Process!", e);
-            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
-        }
         logger.info("Order_PreBuy_Ret is:{}", ret);
         return ret;
     }
-
-
 
     /**
      * 根据用户、订单ID获取可用余额（包含优惠券）
@@ -401,7 +364,7 @@ public class OrderController {
             Long uid = Long.parseLong(params.get("uid").toString());
             
             
-            ret = orderService.queryOrdersByUid(uid);
+            ret = orderService.queryOrdersByUidAndStatus(uid);
         }catch (Exception e) {
             logger.error("Exception OrderList Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
