@@ -19,6 +19,7 @@ import com.mfq.dataservice.cache.impl.transcoders.CachedData;
 import com.mfq.dataservice.cache.impl.transcoders.SerializingTranscoder;
 import com.mfq.utils.Config;
 
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Client;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPoolConfig;

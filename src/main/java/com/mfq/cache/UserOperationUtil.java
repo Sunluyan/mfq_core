@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by liuzhiguo1 on 16/1/14.
  */
-@Component
+
 public class UserOperationUtil {
 
     public static final Logger logger = LoggerFactory.getLogger(UserOperationUtil.class);
