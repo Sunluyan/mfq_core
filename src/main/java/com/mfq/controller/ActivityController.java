@@ -471,6 +471,12 @@ public class ActivityController {
         return ret;
     }
 
+    @RequestMapping("/testname")
+    public String nameTest(){
+
+        return "nametest";
+    }
+
 
 
 

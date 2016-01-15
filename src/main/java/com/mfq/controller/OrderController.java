@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mfq.annotation.LoginRequired;
-import com.mfq.bean.OrderInfo;
 import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.constants.ErrorCodes;
@@ -33,8 +32,6 @@ import com.mfq.helper.SignHelper;
 import com.mfq.service.CouponService;
 import com.mfq.service.OrderService;
 import com.mfq.service.user.UserQuotaService;
-import com.mfq.service.user.UserService;
-import com.mfq.utils.DateUtil;
 import com.mfq.utils.JsonUtil;
 
 @Controller
@@ -597,7 +594,46 @@ public class OrderController {
         }
         return ret;
     }
-    
+
+
+    /**
+     * 随意单的预订数据
+     * 传入uid ,返回 医院列表(hospitals) 和 优惠券列表(coupons)
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = { "/book/freedom", "/book/freedom/" }, method = RequestMethod.POST)
+    @ResponseBody
+    @LoginRequired
+    public String bookingFreedom(HttpServletRequest request,
+                                 HttpServletResponse response) {
+        String ret = "";
+        try {
+
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            Long uid = Long.parseLong(params.get("uid").toString());
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+            }
+            if (uid == null || uid == 0 ) { // 参数异常
+                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
+                        null);
+            }
+
+            ret = JsonUtil.successResultJson(orderService.bookingOrderFreedom(uid));
+        } catch (Exception e) {
+            logger.error("Exception PreBuy Process!", e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+        }
+        logger.info("Order_PreBuy_Ret is:{}", ret);
+        return ret;
+    }
+
+
+
+
 
 }
 

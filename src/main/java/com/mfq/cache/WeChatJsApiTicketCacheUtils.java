@@ -3,6 +3,9 @@ package com.mfq.cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 缓存js ticket  2小时过期  redis缓存
  * 
@@ -44,6 +47,8 @@ public class WeChatJsApiTicketCacheUtils {
         if (value != null || "".equals(value)) {
             cache.setWithExpiration(TICKET_KEY, value, exp);
         }
+        List<Exception> list = new ArrayList<>();
+
     }
 
 }
