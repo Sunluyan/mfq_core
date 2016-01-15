@@ -35,4 +35,12 @@ public class UserExtendService {
     	return mapper.updateChannelId(channelId, mobileType, uid);
     }
 
+    public int updateUserInviteCode(long uid ,String inviteCode){
+        return mapper.updateUserInviteCode(uid,inviteCode);
+    }
+
+    public UserExtend getUserExtendByInviteCode(String inviteCode){
+        return mapper.queryUserExtendByInviteCode(inviteCode);
+    }
+
 }

@@ -510,8 +510,9 @@ public class OrderService {
         List<OrderInfo2App> appOrders = makeAppOrdersByOrderList(data);
         List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUid(uid);
         //TODO 制作随意单的orderinfo2app
+
         List<OrderInfo2App> appOrdersFreedom = makeAppOrderByOrderFreedomList(orderFreedoms);
-        if(CollectionUtils.isNotEmpty(appOrdersFreedom)){
+        if(appOrdersFreedom!=null && CollectionUtils.isNotEmpty(appOrdersFreedom)){
             for (OrderInfo2App orderInfo2App : appOrdersFreedom) {
                 appOrders.add(orderInfo2App);
             }

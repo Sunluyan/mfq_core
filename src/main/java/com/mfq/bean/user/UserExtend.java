@@ -18,7 +18,7 @@ public class UserExtend {
     public UserExtend(long uid, String promotionCode){
     	this.uid = uid;
     	this.inviteCode = "";
-    	this.promotionCode = promotionCode;
+    	this.promotionCode = "";
     	this.mobileType = "";
     	this.channelId = "";
     	this.isBind = false;

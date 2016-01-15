@@ -55,12 +55,12 @@ public class RegisterController {
             String nick = (String) params.get("nick");
             String password = (String) params.get("password");
             String vcode = (String) params.get("vcode");
-            String promotion_code = StringUtils.stripToEmpty((String)params.get("p_code"));
+            String invite_code = StringUtils.stripToEmpty((String)params.get("p_code"));
             
             int career = (Integer) params.get("role") == null? 0 : (Integer) params.get("role");
             
             String result = registerService.reg(email, mobile, nick, password,
-                    vcode, request.getRemoteAddr(), "", "", "asid:" + asid, career, promotion_code,
+                    vcode, request.getRemoteAddr(), "", "", "asid:" + asid, career, invite_code,
                     request, response,params);
 
             Map<String, Object> loginResultMap = JsonUtil

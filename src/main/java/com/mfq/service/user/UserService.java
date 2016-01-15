@@ -7,6 +7,10 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.InviteRecord;
+import com.mfq.bean.InviteRecordExample;
+import com.mfq.dao.InviteRecordMapper;
+import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +46,10 @@ public class UserService {
     UserExtendService userExtendService;
     @Resource
     UserMapper mapper;
+    @Resource
+    InviteRecordMapper inviteRecordMapper;
+
+
     
 	private static final Logger logger = LoggerFactory
             .getLogger(UserService.class);
@@ -57,7 +65,7 @@ public class UserService {
      */
     @Transactional
     public long createUser(Status status, String nick,String realName, String email,
-            String mobile, int job, String promotion_code, SignIndex... indexs) {
+            String mobile, int job, String invite_code, SignIndex... indexs) {
         if (StringUtils.isBlank(email) && StringUtils.isBlank(mobile)) {
             throw new RuntimeException("email and mobile both are empty");
         }
@@ -82,10 +90,12 @@ public class UserService {
         if(num > 0){
             UserQuota quota = buildDefaultQuota(user.getUid(), realName);
             userQuotaService.insertUserQuota(quota);
-            logger.info("insert extend {}|{}", user.getUid(),promotion_code);
-            UserExtend extend = new UserExtend(user.getUid(), promotion_code);
+            logger.info("insert extend {}|{}", user.getUid(),invite_code);
+            UserExtend extend = new UserExtend(user.getUid(), "");
+            extend.setInviteCode(UserUtils.makeInviteCode(user.getUid()));
             userExtendService.insertUserExtend(extend);
             userId = user.getUid();
+
         }
         return userId;
     }
@@ -275,7 +285,21 @@ public class UserService {
     
     public int updateUserPresent(String mobile){
        return mapper.updatePresentByMobile(mobile);
+    }
 
+    @Transactional
+    public String getInviteCode(long uid) throws Exception{
+        UserExtend userExtend = userExtendService.getUserExtendByUid(uid);
+        if(userExtend.getInviteCode()!=null && !userExtend.getInviteCode().equals("")){
+            return userExtend.getInviteCode();
+        }else{
 
+            String inviteCode = UserUtils.makeInviteCode(uid);
+            long count = userExtendService.updateUserInviteCode(uid,inviteCode);
+            if(count != 1){
+                throw  new Exception("更新邀请码出错");
+            }
+            return inviteCode;
+        }
     }
 }
