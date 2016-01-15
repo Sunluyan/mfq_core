@@ -52,4 +52,16 @@ public class OperationRecord {
     public void setOperationDate(Date operationDate) {
         this.operationDate = operationDate;
     }
+
+    public OperationRecord(Long id, Long uid, Integer proId, Integer typeId, Date operationDate) {
+        this.id = id;
+        this.uid = uid;
+        this.proId = proId;
+        this.typeId = typeId;
+        this.operationDate = operationDate;
+    }
+
+    public OperationRecord() {
+        super();
+    }
 }
