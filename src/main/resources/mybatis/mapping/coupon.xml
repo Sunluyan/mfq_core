@@ -59,4 +59,20 @@
 		) values (#{uid}, #{batchId}, #{couponNum}, #{money}, #{status}, 0, #{updatedAt})
 	</insert>
 
+	<select id="findByUidAndBatchId" resultType="Coupon">
+		SELECT <include refid="selectsql"/>
+		FROM coupon where 1=1
+		<if test="uid != 0 and uid != null">
+			and uid =#{uid}
+		</if>
+		<if test="batchId != 0 and batchId != null">
+			and batch_id = #{batchId}
+		</if>
+		<if test="status != 0 and status != null">
+
+			and status = #{status}
+		</if>
+
+	</select>
+
 </mapper>

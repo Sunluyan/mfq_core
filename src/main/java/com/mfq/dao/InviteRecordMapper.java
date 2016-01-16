@@ -1,10 +1,12 @@
 package com.mfq.dao;
 
+import com.mfq.annotation.MFQDao;
 import com.mfq.bean.InviteRecord;
 import com.mfq.bean.InviteRecordExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+@MFQDao
 public interface InviteRecordMapper {
     int countByExample(InviteRecordExample example);
 
