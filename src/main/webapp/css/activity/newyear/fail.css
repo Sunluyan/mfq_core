@@ -1,0 +1,60 @@
+body{
+	margin: 0;
+	text-align: center;
+	padding-top: 60%;
+	padding-left: 10%;
+	background-image: url(/images/activity/newyear/img/fail-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+a{
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	margin: 57% 0 0 -5%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 0.9rem;
+}
+/* iphone 6 */
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+body{
+	margin: 0;
+	text-align: center;
+	padding-top: 60%;
+	padding-left: 10%;
+	background-image: url(/images/activity/newyear/img/ail-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+a{
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	margin: 56% 0 0 -5%;
+	font-size: 1rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+}
+}
+/* iphone 6 plus */
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+body{
+	margin: 0;
+	text-align: center;
+	padding-top: 60%;
+	padding-left: 10%;
+	background-image: url(/images/activity/newyear/img/fail-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+a{
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	margin: 57% 0 0 -5%;
+	font-size: 1.1rem;
+	height: 2.4rem;
+	line-height: 2.4rem;
+}
+}

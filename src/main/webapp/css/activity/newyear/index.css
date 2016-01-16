@@ -1,0 +1,26 @@
+body{
+	margin: 0;
+	text-align: center;
+	background-image: url(/images/activity/newyear/img/guagua-bg.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+/*刮奖区*/
+.demoBox{
+	width: 82%;
+	height: auto;
+	margin: 62% auto 0;
+	background-color: #a82c11;
+	border-radius: 10px;
+	border: solid 1px #969696;
+	overflow: hidden;
+}
+.demoBox .demo canvas{
+	padding-top: 2px;
+	width: 99%;
+	height: auto;
+}
+.demoBox .demo canvas img{
+	width: 99%;
+	height: auto;
+}
