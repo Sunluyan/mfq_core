@@ -5,8 +5,10 @@ import org.apache.ibatis.annotations.Param;
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.user.Status;
 import com.mfq.bean.user.User;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface UserMapper {
 
     public long insertUser(User user);

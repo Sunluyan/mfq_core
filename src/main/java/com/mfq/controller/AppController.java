@@ -109,7 +109,7 @@ public class AppController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = {"/hot/word/" , "/hot/word"}, method = { RequestMethod.GET},produces = "application/json;charset=utf-8")
+    @RequestMapping(value = {"/hot/word/" , "/hot/word"}, method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json;charset=utf-8")
     public @ResponseBody String hotWord() throws Exception {
         String ret = "";
         List<String> wordsData = Lists.newArrayList();

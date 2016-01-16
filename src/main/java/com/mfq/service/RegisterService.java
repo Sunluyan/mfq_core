@@ -56,7 +56,7 @@ public class RegisterService {
     @Resource
     FraudApiInvoker fraudApiInvoker;
     @Resource
-    InviteRecordMapper inviteRecordMapper;
+    InviteService inviteService;
 
     @Transactional
     public String reg(long uid, long end) {
@@ -154,7 +154,7 @@ public class RegisterService {
                 msg = codeMsg.getMsg();
             }
         } else if (invite_code.length() != 7) {
-            //todo 如果邀请码没有对应的邀请人,就返回邀请码错误
+            // 如果邀请码没有对应的邀请人,就返回邀请码错误
             userExtend = userExtendService.getUserExtendByInviteCode(invite_code);
             if (userExtend == null) {
                 code = 1105;
@@ -182,7 +182,7 @@ public class RegisterService {
             inviteRecord.setUid(userExtend.getUid());
             inviteRecord.setInvitedTime(new Date());
             inviteRecord.setInvitedUid(userId);
-            inviteRecordMapper.insertSelective(inviteRecord);
+            inviteService.insertSelective(inviteRecord);
 
 
             Passport passport = passportService.createPassport(userId,

@@ -1,10 +1,14 @@
 package com.mfq.dao;
 
+import com.mfq.annotation.MFQDao;
 import com.mfq.bean.InviteRecord;
 import com.mfq.bean.InviteRecordExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@MFQDao
+@Component
 public interface InviteRecordMapper {
     int countByExample(InviteRecordExample example);
 

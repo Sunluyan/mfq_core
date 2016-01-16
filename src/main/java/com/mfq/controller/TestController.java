@@ -621,14 +621,9 @@ public class TestController {
         System.out.println(resp);
     }
     public static void testHotWords(){
-        String url = purl+"/hot/word";
-        Map<String,Object> params = Maps.newHashMap();
-        //{"amount":9000,"hos_id":1,"operation_time":1452700800000,"policy_num":0,"proname":"哈哈哈","sign":"08AF04F51EF2BCF40FB1FEF3B058CC18","uid":2936}
-        params.put("keyword","北京");
-        params.put("page",1);
-        params.put("sign",SignHelper.makeSign(params));
-        String body = JsonUtil.writeToJson(params);
-        String resp = HttpUtil.postJson(url,body,true);
+        String url = purl+"hot/word";
+        System.out.println(url);
+        String resp = HttpUtil.postJson(url,"",true);
         System.out.println(resp);
     }
 
@@ -657,7 +652,8 @@ public class TestController {
         //testOrderBook();
         //testPresent();
        // testCreateFreedom();
-        testProductSearch();
+        //testProductSearch();
+        testHotWords();
     	
 
     }

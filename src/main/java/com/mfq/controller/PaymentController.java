@@ -10,8 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mfq.bean.BeeCloudResult;
-import com.mfq.bean.OrderInfo;
+import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.payment.impl.UnionpayServiceImpl;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mfq.annotation.LoginRequired;
-import com.mfq.bean.PayCallbackResult;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.constants.ErrorCodes;
 import com.mfq.constants.OrderType;
@@ -60,6 +58,8 @@ public class PaymentController {
     UnionpayServiceImpl unionpayService;
 	@Resource
 	CouponService couponService;
+    @Resource
+    InviteService inviteService;
 	
 	
 	/**
@@ -192,6 +192,10 @@ public class PaymentController {
 			}
 			
 			logger.info("result.getApiType().getCode():{}",result.getApiType().getCode());
+
+            //开始插入提成
+            inviteService.inviteMoneyRecordOperation(result);
+
 		}catch (Exception e) {
 			logger.error("MOBILE_CALLBACK_EXCEPTION", e);
 			e.printStackTrace();   
@@ -202,6 +206,7 @@ public class PaymentController {
 			 * lock.unlock(lockFlag);
 			 */
         }
+
 
         try {
 	    	 //如果ret还是""的话，就说明是正确的，设置为正确的样子
@@ -279,7 +284,7 @@ public class PaymentController {
                 ret = unionpayService.beeCloudCallback(result,request,response);
             }
 
-
+            inviteService.inviteMoneyRecordOperation(result);
 
         } catch (Exception e) {
            logger.error("BeeCloud error",e);

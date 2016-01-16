@@ -11,6 +11,7 @@ import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.constants.*;
 import com.mfq.dao.OrderFreedomMapper;
 import org.apache.commons.collections.list.LazyList;
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -509,7 +510,6 @@ public class OrderService {
         List<OrderInfo> data = mapper.findByUid(uid);
         List<OrderInfo2App> appOrders = makeAppOrdersByOrderList(data);
         List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUid(uid);
-        //TODO 制作随意单的orderinfo2app
 
         List<OrderInfo2App> appOrdersFreedom = makeAppOrderByOrderFreedomList(orderFreedoms);
         if(appOrdersFreedom!=null && CollectionUtils.isNotEmpty(appOrdersFreedom)){
