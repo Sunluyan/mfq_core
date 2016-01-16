@@ -337,7 +337,7 @@ public class ActivityController {
         return "/activity/s/seckiling_product";
     }
 
-    @RequestMapping(value="/Christmas/{page}")
+    @RequestMapping(value="/newyear/{page}")
     public ModelAndView ChristmasPage(@PathVariable String page, HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("title", "会员注册");
@@ -350,10 +350,10 @@ public class ActivityController {
         } catch (Exception e) {
             logger.error("WeiXin_REGISTER_Exception", e);
         }
-        return new ModelAndView("/activity/Christmas/"+page, model);
+        return new ModelAndView("/activity/newyear/"+page, model);
     }
 
-    @RequestMapping("/Christmas/register/")
+    @RequestMapping("/newyear/register/")
     @ResponseBody
     public String ChristmasRegister(HttpServletRequest request, HttpServletResponse response){
         String passwd = request.getParameter("passwd");
@@ -392,9 +392,15 @@ public class ActivityController {
                         ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
                         return ret;
                     }
+
+                    //校验优惠券
+                    if(userService.isHavePresentCoupon(user.getUid())){
+                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+                        return ret;
+                    }
                 }
-                userService.updateUserPresent(mobile);
-                ret = JsonUtil.toJson(0,"注册成功",null);
+                userService.updateUserPresentCoupon(user.getUid());
+                return JsonUtil.toJson(0,"注册成功",null);
 
             }else if(code == 1001){
                 logger.error("Exception WeChatRegister Progress!",
@@ -414,9 +420,14 @@ public class ActivityController {
                         ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
                         return ret;
                     }
+                    //校验优惠券
+                    if(userService.isHavePresentCoupon(user.getUid())){
+                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+                        return ret;
+                    }
                 }
-                userService.updateUserPresent(mobile);
-                ret= JsonUtil.toJson(code,"此手机号已注册",null);
+                userService.updateUserPresentCoupon(user.getUid());
+                return JsonUtil.toJson(code,"此手机号已注册",null);
             }
             else {
                 logger.error("Exception WeChatRegister Progress!",
@@ -425,7 +436,8 @@ public class ActivityController {
             }
 
             if(code == 0 || code == 1104){
-                userService.updateUserPresent(mobile);
+                User user = userService.queryUserByMobile(mobile);
+                userService.updateUserPresentCoupon(user.getUid());
             }
         } catch (Exception e) {
             logger.error("Exception WeChatRegister Progress!", e);

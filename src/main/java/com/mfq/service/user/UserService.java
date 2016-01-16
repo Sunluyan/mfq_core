@@ -2,6 +2,7 @@ package com.mfq.service.user;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -9,7 +10,10 @@ import javax.annotation.Resource;
 
 import com.mfq.bean.InviteRecord;
 import com.mfq.bean.InviteRecordExample;
+import com.mfq.bean.coupon.Coupon;
+import com.mfq.bean.coupon.CouponBatchInfo;
 import com.mfq.dao.InviteRecordMapper;
+import com.mfq.service.CouponService;
 import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -48,9 +52,11 @@ public class UserService {
     UserMapper mapper;
     @Resource
     InviteRecordMapper inviteRecordMapper;
+    @Resource
+    CouponService couponService;
 
 
-    
+    private final long PERSENTCOUPON = 7;
 	private static final Logger logger = LoggerFactory
             .getLogger(UserService.class);
 
@@ -301,5 +307,32 @@ public class UserService {
             }
             return inviteCode;
         }
+    }
+
+    public boolean isHavePresentCoupon(long uid) {
+        CouponBatchInfo info = couponService.findBatchInfoById(PERSENTCOUPON);
+        if(info==null){
+            // TODO: 16/1/16
+        }
+        User user = queryUser(uid);
+        if(user == null){
+            // TODO: 16/1/16
+        }
+        List<Coupon> list = couponService.findCouponsByBatchAndUid(uid, PERSENTCOUPON);
+        if(list.size() > 0){
+            return true;
+        }
+        return  false;
+
+
+    }
+
+    public long updateUserPresentCoupon(long uid) {
+        CouponBatchInfo info = couponService.findBatchInfoById(PERSENTCOUPON);
+        if(info==null){
+            // TODO: 16/1/16
+        }
+        couponService.makeAndSaveCouponByBatch(uid,info.getId());
+        return 1;
     }
 }

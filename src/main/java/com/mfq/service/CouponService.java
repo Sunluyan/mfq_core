@@ -226,5 +226,13 @@ public class CouponService {
 			this.coupon_num = coupon_num;
 		}
 	}
+
+    public CouponBatchInfo findBatchInfoById(long id){
+        return batchMapper.findById(id);
+    }
+
+    public List<Coupon> findCouponsByBatchAndUid(long uid, long batchId){
+        return couponMapper.findByUidAndBatchId(uid,batchId, null);
+    }
     
 }

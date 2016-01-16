@@ -31,4 +31,5 @@ public interface CouponMapper {
 
 	public List<Coupon> findCouponsByUidAndStatus(@Param("uid") long uid, @Param("status") CouponStatus couponStatus);
 
+    List<Coupon> findByUidAndBatchId(@Param("uid") long uid,@Param("batchId") long batchId, @Param("status") Integer status);
 }

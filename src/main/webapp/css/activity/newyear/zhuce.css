@@ -1,0 +1,189 @@
+body{
+	margin: 0;
+	background-image: url(/images/activity/newyear/img/zhuce-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	padding-left: 3rem;
+}
+a{
+	text-decoration: none;
+}
+input::-webkit-input-placeholder,-moz-placeholder,-ms-input-placeholder,-o-input-placeholder{ 
+color: #eb6100; 
+} 
+.box{
+	width: 80%;
+	height: auto;
+	margin: 80% auto 0;
+	/*margin: 65% 0 0 18%;*/
+}
+input{
+	border-radius: 50px;
+	border: solid 2px #eb6100;
+	background: transparent;
+	width: 70%;
+	height: 0.8rem;
+	line-height: 1.8rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #eb6100;
+	margin-top: 10px;
+	outline: none;
+}
+.yaoqingma{
+	font-size: 1rem;
+	color: #eb6100;
+	margin-top: 1rem;
+}
+.box01{
+	width: 77%;
+	overflow: hidden;
+}
+.yanzhengma{
+	width: 42%;
+	float: left;
+}
+.huoqu{
+	float: right;
+	border-radius: 50px;
+	border: solid 2px #eb6100;
+	background: transparent;
+	width: 40%;
+	height: 2.0rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #eb6100;
+	line-height: 50%;
+	cursor: pointer;
+	margin-top: 10px;
+	text-align: center;
+}
+.queren{
+	border: none;
+	display: block;
+	width: 72%;
+	height: 2.4rem;
+	line-height: 1.4rem;
+	font-size: 1rem;
+	padding: 0.5rem;
+	color: #fff;
+	margin-top: 14%;
+	background:url(/images/activity/newyear/img/btn-bg_03.png);
+	background-size: cover;
+}
+/* iphone 6 */
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+		.box{
+		width: 80%;
+		height: auto;
+		margin: 80% auto 0;
+		/*margin: 65% 0 0 18%;*/
+	}
+	input{
+		border-radius: 50px;
+		border: solid 2px #eb6100;
+		background: transparent;
+		width: 75%;
+		height: 1.2rem;
+		line-height: 2.2rem;
+		font-size: 1.2rem;
+		padding: 0.5rem;
+		color: #eb6100;
+		margin-top: 10px;
+		outline: none;
+	}
+	.yaoqingma{
+		font-size: 1.2rem;
+		color: #eb6100;
+		margin-top: 1rem;
+	}
+	.box01{
+		width: 82%;
+		overflow: hidden;
+	}
+	.yanzhengma{
+		width: 45%;
+		float: left;
+	}
+	.huoqu{
+		float: right;
+		border-radius: 50px;
+		border: solid 2px #eb6100;
+		background: transparent;
+		width: 30%;
+		height: 1.2rem;
+		font-size: 1.2rem;
+		padding: 0.5rem;
+		color: #eb6100;
+		margin-top: 10px;
+		text-align: center;
+	}
+	.queren{
+		display: block;
+		width: 70%;
+		height: 2.5rem;
+		font-size: 1.2rem;
+		padding: 0.5rem;
+		color: #fff;
+		margin-top: 10%;
+		background:url(../img/btn-bg_03.png);
+		background-size: cover;
+	}
+}
+/* iphone 6 plus */
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+		.box{
+		width: 80%;
+		height: auto;
+		margin: 78% auto 0;
+		/*margin: 65% 0 0 18%;*/
+	}
+	input{
+		border-radius: 50px;
+		border: solid 2px #eb6100;
+		background: transparent;
+		width: 75%;
+		height: 1.6rem;
+		font-size: 1.4rem;
+		padding: 0.5rem;
+		color: #eb6100;
+		margin-top: 10px;
+		outline: none;
+	}
+	.yaoqingma{
+		font-size: 1.4rem;
+		color: #eb6100;
+		margin-top: 1.5rem;
+	}
+	.box01{
+		width: 82%;
+		overflow: hidden;
+	}
+	.yanzhengma{
+		width: 48%;
+		float: left;
+	}
+	.huoqu{
+		float: right;
+		border-radius: 50px;
+		border: solid 2px #fff;
+		background: transparent;
+		width: 30%;
+		height: 1.6rem;
+		font-size: 1.4rem;
+		padding: 0.5rem;
+		color: #fff;
+		margin-top: 10px;
+		text-align: center;
+	}
+	.queren{
+		border: none;
+		display: block;
+		width: 65%;
+		height: 2.5rem;
+		font-size: 1.4rem;
+		padding: 0.5rem;
+		color: #fff;
+		margin-top: 5%;
+	}
+}

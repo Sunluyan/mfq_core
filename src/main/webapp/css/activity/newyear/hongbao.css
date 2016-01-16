@@ -1,0 +1,48 @@
+body{
+	margin: 0;
+	padding-top: 20%;
+	background-image: url(../img/hongbao-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.box{
+	width: 76%;
+	margin: 50% auto;
+	text-align: center;
+}
+.img01{
+	width: 76%;
+	height: auto;
+}
+a{
+	text-decoration: none;
+	margin-top: -17.5%;
+	display: block;
+	line-height: 30px;
+	color: white;
+	font-family: "Microsoft Yahei";
+}
+/* iphonr 6 */
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+	a{
+		text-decoration: none;
+		margin-top: -16.5%;
+		display: block;
+		line-height: 30px;
+		color: white;
+		font-size: 1.2rem;
+		font-family: "Microsoft Yahei";
+	}
+}
+/* iphonr 6 plus */
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+	a{
+		text-decoration: none;
+		margin-top: -16%;
+		display: block;
+		line-height: 30px;
+		color: white;
+		font-size: 1.3rem;
+		font-family: "Microsoft Yahei";
+	}
+}
