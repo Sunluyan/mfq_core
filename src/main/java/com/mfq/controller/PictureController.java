@@ -97,6 +97,9 @@ public class PictureController {
         Map<String, String> data = Maps.newHashMap();
         try {
         	String type = StringUtils.stripToEmpty(request.getParameter("t"));
+			if ("".equals(type)){
+				type = StringUtils.stripToEmpty(request.getParameter("f"));
+			}
         	int t = 0;
         	if(StringUtils.isNotBlank(type))
         		t = Integer.parseInt(type);

@@ -17,5 +17,6 @@ public interface NotificationMapper {
     public int updateNotificationStatus(@Param("msgId") long msg_id, @Param("status") int status);
 
 	public long queryNotificationCountByType(@Param("uid") long uid, @Param("type")int type);
-    
+
+    public List<Notification> queryNotificationByTypeAndUid(@Param("type") int i,@Param("uid") long uid);
 }

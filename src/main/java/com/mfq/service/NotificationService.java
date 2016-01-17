@@ -174,4 +174,38 @@ public class NotificationService {
 		}
 	}
 
+	/**
+	 *
+	 * @param uid
+	 * @return
+     */
+	public String isNewMessage(long uid) {
+		Map<String,Long> countMsgs = Maps.newHashMap();
+		long notisCount=0, msgCount=0;
+		List<Notification> notis = mapper.queryNotificationByTypeAndUid(1,0);
+		for(Notification n: notis){
+			MsgRead read = msgReadMapper.queryMsgRead(uid, n.getId());
+			if(read != null){
+				notisCount+=1;
+			}
+
+		}
+
+		List<Notification> msgs = mapper.queryNotificationByTypeAndUid(2,uid);
+		for (Notification n: msgs){
+			if(n.getStatus() ==  1){
+				msgCount +=1 ;
+			}
+		}
+
+		countMsgs.put("notification_count", notisCount);
+		countMsgs.put("msg_count", msgCount);
+		if(notisCount>0||msgCount>0){
+			countMsgs.put("have_new", 1l);
+		}else {
+			countMsgs.put("have_new",0l);
+		}
+
+		return JsonUtil.successResultJson(countMsgs);
+	}
 }

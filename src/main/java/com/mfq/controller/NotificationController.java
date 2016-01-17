@@ -93,5 +93,31 @@ public class NotificationController {
 		
 		
 	}
+
+
+	@RequestMapping( value = {"/new/count/","/new/count"}, method = {RequestMethod.GET,RequestMethod.POST} )
+	@ResponseBody
+	public String haveNew(HttpServletRequest request){
+		String ret = "";
+		try{
+			Map<String, Object> params = JsonUtil.readMapFromReq(request);
+			if (!SignHelper.validateSign(params)) { // 签名验证失败
+				ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",null);
+				logger.error("签名验证失败！ret={}", ret);
+				return ret;
+			}
+			if(params.get("uid") == null){
+				ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+				logger.error("参数不合法！ret={}", ret);
+				return ret;
+			}
+			long uid = Long.parseLong(params.get("uid").toString());
+			ret = notificationService.isNewMessage(uid);
+		}catch (Exception e){
+			logger.error("is new msagges is  {}",e);
+		}
+		logger.info("is new massage ret = {}", ret);
+		return ret;
+	}
 	
 }
