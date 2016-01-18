@@ -8,8 +8,11 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.user.User;
 import com.mfq.constants.ErrorCodes;
+import com.mfq.service.user.UserService;
 import com.mfq.utils.JsonUtil;
+import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +42,9 @@ public class CouponService {
 
     @Resource
     CouponBatchInfoMapper batchMapper;
+
+    @Resource
+    UserService userService;
 
     /**
      * 构造用户优惠券，并入库
@@ -112,14 +118,7 @@ public class CouponService {
         return couponInfo2Apps;
     }
 
-	public static void main(String[] args) {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-		CouponService service = ac.getBean(CouponService.class);
-		List<CouponInfo2App> list = service.findValidCoupon(2936);
-        for (CouponInfo2App couponInfo2App : list) {
-			System.out.println(couponInfo2App);
-		}
-	}
+
 
     public long updateCouponStatus(String couponNum, CouponStatus status) {
         return couponMapper.updateStatus(couponNum, status);
@@ -234,5 +233,10 @@ public class CouponService {
     public List<Coupon> findCouponsByBatchAndUid(long uid, long batchId){
         return couponMapper.findByUidAndBatchId(uid,batchId, null);
     }
-    
+
+    public static void main(String[] args) {
+        for(int i = 0;i<3311;i++){
+            System.out.println(UserUtils.makeInviteCode(i+10));
+        }
+    }
 }

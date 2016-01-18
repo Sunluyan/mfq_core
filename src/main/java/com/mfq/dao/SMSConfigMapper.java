@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.sms.SMSConfig;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface SMSConfigMapper {
 
     public boolean insertSMSConfig(SMSConfig config);

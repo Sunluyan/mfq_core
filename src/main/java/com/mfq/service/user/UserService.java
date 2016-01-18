@@ -323,8 +323,6 @@ public class UserService {
             return true;
         }
         return  false;
-
-
     }
 
     public long updateUserPresentCoupon(long uid) {
@@ -334,5 +332,9 @@ public class UserService {
         }
         couponService.makeAndSaveCouponByBatch(uid,info.getId());
         return 1;
+    }
+
+    public List<User> queryAllUser(){
+        return mapper.queryAllUser();
     }
 }

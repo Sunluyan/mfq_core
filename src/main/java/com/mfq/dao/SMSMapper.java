@@ -7,8 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.sms.SMSLog;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface SMSMapper {
 
     public long addSMSLog(SMSLog sms);

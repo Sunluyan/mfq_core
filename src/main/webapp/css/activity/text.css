@@ -1,0 +1,177 @@
+*{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+html,body{
+	width:100%;
+	height:100%;
+	background:#f7ecec;
+	font-size:12px;
+	font-family: "微软雅黑";
+	font-weight: normal;
+}
+.two .banner{
+	width:100%;
+	height:12rem;
+	background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/face.jpg) no-repeat center;
+	background-size: cover;
+	background-origin: 0.5 0.5 ;
+}
+.two .check,.check-son{
+	text-align: left;
+	color:#333;
+	font-size: 1.6rem;
+	margin:1rem 0;
+	padding-left: 10px;
+}
+.two .check-son{
+	font-size:1.2rem;
+	padding-right:0.6rem;
+}
+.two .name,.begin{
+	width:15rem;
+	height:3rem;
+	background:#d33c01;
+	display: block;
+	margin:2rem auto;
+	border:none;
+	color:#fff;
+}
+.two .name{
+	border:1px solid #000;
+	color:#999;
+	background:#fff;
+	padding-left:1rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-sizing: border-box;
+}
+
+.two .people{
+	text-align: center;
+	font-size:1rem;
+	color:#333;
+	margin-bottom: 3rem;
+}
+.two .people span{
+	color:#c23802;
+}
+
+ .news{
+	width:100%;
+	height:5rem;
+	line-height: 5rem;
+	background:url(http://7xlcaq.com2.z0.glb.qiniucdn.com/1.png) no-repeat;
+	background-size: cover;
+	position:fixed;
+	bottom:0;
+	left:0;
+	color:#fff;
+	font-size: 1.3rem;
+
+}
+.news-l{
+	float: left;
+	width:65%;
+	text-align: center;
+
+}
+ .news-r{
+	float: left;
+	width:35%;
+	height:100%;
+	position:relative;
+}
+.download-left{
+	float: left;
+	width:50%;
+	height:80%;
+	position: absolute;
+	top:50%;
+	margin-top:-22.5px;
+}
+.download-left .logo{
+	width:45px;
+	height:45px;
+}
+
+.download-right{
+	float:left;
+	height:100%;
+	margin-top: -2px;
+	margin-left: 50px;
+	font-size: 13px;
+}
+.download-right-top{
+	width:100%;
+	height:30%;
+	margin-left: 15px;
+}
+.download-right-down{
+	width:100%;
+	height:50%;
+	margin-top: -3px;
+}
+
+
+ .download-right-top img{
+	width:20px;
+	height:20px;
+	animation: tiao 1s linear  infinite alternate;
+	-moz-animation: tiao 1s linear  infinite alternate;
+	-webkit-animation: tiao 1s linear  infinite alternate;
+	-o-box-animation: tiao 1s linear  infinite alternate;
+	-ms-animation: tiao 1s linear  infinite alternate;
+}
+/*  Firefox:-moz-box-shadow
+ Safari:-webkit-box-shadow
+ Opera:-o-box-shadow
+ IE:-ms-box-shadow  */ 
+.news .down span{
+
+}
+@keyframes tiao{
+	from{
+		transform: scale(1,1);
+	}
+	to{
+		transform: scale(0.7,0.7);
+	}
+}
+@-moz-keyframes tiao{
+	from{
+		transform: scale(1,1);
+	}
+	to{
+		transform: scale(0.7,0.7);
+	}
+}
+@-webkit-keyframes tiao{
+	from{
+		transform: scale(1,1);
+	}
+	to{
+		transform: scale(0.7,0.7);
+	}
+}
+@-ms-keyframes tiao{
+	from{
+		transform: scale(1,1);
+	}
+	to{
+		transform: scale(0.7,0.7);
+	}
+}
+@-o-keyframes tiao{
+	from{
+		transform: scale(1,1);
+	}
+	to{
+		transform: scale(0.7,0.7);
+	}
+}
+.kong{
+	width:100%;
+	height:5rem;
+}

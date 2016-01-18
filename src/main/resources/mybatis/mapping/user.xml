@@ -81,4 +81,10 @@
 
 		where users_quota.uid = users.uid and users.mobile = #{mobile}
 	</update>
+
+	<select id="queryAllUser" resultType="User">
+		select
+		<include refid="selectsql" />
+		from users where status in (0,1)
+	</select>
 </mapper>

@@ -7,12 +7,14 @@ import com.mfq.bean.user.Status;
 import com.mfq.bean.user.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @MFQDao
 @Component
 public interface UserMapper {
 
     public long insertUser(User user);
-    
+
     public User queryUser(@Param("uid") long uid);
     
     public User queryUserByEmail(@Param("email") String email);
@@ -37,4 +39,6 @@ public interface UserMapper {
     public boolean updatePic(@Param("uid") long uid, @Param("pic") String pic);
 
     public int updatePresentByMobile(@Param("mobile")String  mobile);
+
+    public List<User> queryAllUser();
 }

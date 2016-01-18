@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.cache.UserOperationUtil;
+import com.mfq.dataservice.context.UserIdHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -225,7 +227,7 @@ public class ProductController {
                 return new ModelAndView("/app/product/detail", model);
             }
             long id = Long.parseLong(pid);
-            productService.addViewNum(id);  //添加浏览数
+            UserOperationUtil.setProduct(UserIdHolder.getLongUid(),(int)id);  //添加浏览数
             ProductDetail productDetail = null;
             
             
@@ -312,10 +314,8 @@ public class ProductController {
             	}else{
             		model.put("s", false);
             	}
-            } 
-            
-            
-            
+            }
+
         } catch (Exception e) {
             logger.error("Exception ProductInfo Process!", e);
             model.put("error", "系统异常");

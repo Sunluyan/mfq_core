@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.user.User;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.mfq.cache.MsgTmplContext;
@@ -70,6 +74,7 @@ public class SMSService {
     public void sendSms(String mobile, String message) throws Exception {
         sendSMS(mobile, message, null, false);
     }
+
     
     public void sendSysSMS(String message) throws Exception{
         sendSms(Config.getItem("sms_alarm"), message);
@@ -109,7 +114,7 @@ public class SMSService {
     
     /**
      * 过滤测试手机号
-     * @param mobiles
+     * @param params
      * @return
      */
     private boolean filterMobiles(String[] params){
@@ -141,8 +146,8 @@ public class SMSService {
     /**
      * 批量发布短信
      * 
-     * @param mobiles手机号码
-     * @param message消息体
+     * @param mobiles 手机号码
+     * @param message 消息体
      * @throws Exception
      */
     public void sendBatchSms(String mobiles, String message) throws Exception {
@@ -189,6 +194,16 @@ public class SMSService {
                 Arrays.asList(mobilelist));
 
         writeCodeMsg(code, msg);
+    }
+
+    public static void main(String[] args) throws Exception {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        SMSService smsService = ac.getBean(SMSService.class);
+        UserService userService = ac.getBean(UserService.class);
+        List<User> users = userService.queryAllUser();
+        //for (User user : users) {
+            smsService.sendSms("18338751231","fuck it all");
+        //}
     }
 
     /**

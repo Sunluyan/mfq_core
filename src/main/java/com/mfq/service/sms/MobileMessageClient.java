@@ -10,10 +10,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.user.User;
+import com.mfq.service.user.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -59,6 +63,8 @@ public class MobileMessageClient {
     SMSConfigMapper smsConfigMapper;
     @Resource
     SMSMapper smsMapper;
+    @Resource
+    UserService userService;
 
     enum MessageType {
         Vcode, Normal, Batch, Backup
@@ -189,6 +195,15 @@ public class MobileMessageClient {
                     0, true);
         }
         return result;
+    }
+
+    public static void main(String[] args) {//// TODO: 16/1/16 发送消息
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        MobileMessageClient mobileMessageClient = ac.getBean(MobileMessageClient.class);
+        mobileMessageClient.loadConfiguration(true);
+        MessageProvider p = mobileMessageClient.getProvider(MessageType.Vcode);
+        String result = p.sendSingleMessage("【美分期】500元优惠券已放入您的美分期APP账户中，使用时间有限，快快登录使用 （link）。<美分期专注于微整形的团购与分期，0息分期，先整形后付款>。", "18338751231");
+        System.out.println(result);
     }
 
     /**
@@ -567,16 +582,5 @@ public class MobileMessageClient {
         }
     }
 
-    public static void main(String[] args) {
-        // String dbstr =
-        // "{\"messageTypes\":{\"Batch\":\"md\",\"Vcode\":\"md\",\"Normal\":\"md\"
-        // }, \"defaultSid\":\"md\",\"servers\":[
-        // {\"sid\":\"md\",\"stype\":\"mandao\",\"serviceURL\":
-        // \"http://sdk105.entinfo.cn/webservice.asmx\",\"parallelServiceURL\":\"http://sdk2.entinfo.cn:8061/webservice.asmx\",
-        // \"sn\":\"SDK-BBX-010-15145\",\"password\":\"Ca9ab-d5\",\"batchext\":\"99\",\"batchPrefix\":\"【世界邦】\"},
-        // {\"sid\":\"th\",\"stype\":\"tianhan\",\"serverURL\":
-        // \"http://59.173.12.127:8081/interface/\",\"corpID4Message\":\"FG000049\",
-        // \"pwd4Message\":\"123456\",\"cropID4AD\":\"FG000050\",\"pwd4AD\":\"123456\"}
-        // ] }";
-    }
+
 }

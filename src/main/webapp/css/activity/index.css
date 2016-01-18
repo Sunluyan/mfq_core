@@ -1,0 +1,79 @@
+*{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+html,body{
+	width:100%;
+	height:100%;
+	background:#f7ecec;
+	font-size:12px;
+	font-family: "微软雅黑";
+	font-weight: normal;
+	-text-align: center;
+}
+.one .money{
+	width:24rem;
+	height:24rem;
+	border-radius: 50%;
+	margin:2rem auto;
+	-background:lightblue;
+	background: url(image/十元.png) no-repeat ;
+	background-size:cover;
+	box-shadow: 0 1rem 2rem rgba(211,60,1,0.15);
+
+
+}
+.one .can{
+	text-align: center;
+	font-size: 1.7rem;
+	color:#333;
+	margin-bottom:0.5rem;
+}
+.one .ten{
+	text-align: center;
+	font-size: 1.8rem;
+	color:#070c5f;
+}
+.one .want{
+	width:20rem;
+	height:4rem;
+	background:#d33c01;
+	display: block;
+	margin:2rem auto 2rem;
+	border:none;
+	color:#fff;
+}
+.one .news{
+	width:100%;
+	height:5rem;
+	line-height: 5rem;
+	background:rgba(0,0,0,0.5);
+	position:fixed;
+	bottom:0;
+	left:0;
+	color:#fff;
+	font-size: 1.3rem;
+	text-align: center;
+
+}
+.one .news  .logo{
+	width:3rem;
+	height:3rem;
+	display: inline-block;
+	position:absolute;
+	margin-top:-0.8rem;
+}
+.one .people{
+	text-align: center;
+	font-size:1rem;
+	color:#333;
+	margin-bottom: 1rem;
+}
+.one .people span{
+	color:#c23802;
+}
+.kong{
+	width:100%;
+	height:4rem;
+}
