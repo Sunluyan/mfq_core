@@ -227,7 +227,7 @@ public class ProductController {
                 return new ModelAndView("/app/product/detail", model);
             }
             long id = Long.parseLong(pid);
-            //UserOperationUtil.setProduct(UserIdHolder.getLongUid(),(int)id);  //添加浏览数
+            UserOperationUtil.setProduct(UserIdHolder.getLongUid(),(int)id);  //添加浏览数
             ProductDetail productDetail = null;
             
             

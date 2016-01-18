@@ -353,7 +353,7 @@ body {
 			</c:forEach>
 			</div>
 		<script type="text/javascript">banner()</script>
-<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block;"> <strong style="margin:8px; "><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
+<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; "><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
 </div>
 
 <div style="background-color:#ffffff; width:100%; text-align:left;vertical-align: middle;">
