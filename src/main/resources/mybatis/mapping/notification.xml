@@ -40,4 +40,15 @@
 		update notification set status = #{status} where id =#{msgId}
 	</update>
 
+	<select id="queryNotificationByTypeAndUid" resultType="Notification">
+		SELECT <include refid="selectsql"/> from notification
+		where 1=1
+		<if test="uid != 0">
+			and uid=#{uid}
+		</if>
+		<if test="type != 0">
+			and type=#{type}
+		</if>
+	</select>
+
 </mapper>

@@ -20,10 +20,11 @@ public class TestController {
 	private final static String purl="http://i.5imfq.com/";
 
     public void testOrderCreate(){
-        String url = purl+"/coupon/del/";
+        String url = purl+"/noti/msg";
         Map<String, Object> params = Maps.newHashMap();
         params.put("uid", 2798);
-        params.put("coupon_num", '3');
+        params.put("type", '1');
+        params.put("page", 1);
 
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
