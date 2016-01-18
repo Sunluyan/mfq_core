@@ -1,14 +1,6 @@
 package com.mfq.test;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
-
-import com.mfq.utils.MD5Util;
-import org.junit.Assert;
-import org.junit.Test;
 
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
@@ -17,12 +9,12 @@ import com.mfq.utils.JsonUtil;
 
 public class TestController {
 	
-	private final static String purl="http://i.5imfq.com/";
+	private final static String purl="http://t.5imfq.com:8080/";
 
     public void testOrderCreate(){
-        String url = purl+"/noti/msg";
+        String url = purl+"/noti/new/count/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("uid", 2798);
+        params.put("uid", 2527);
         params.put("type", '1');
         params.put("page", 1);
 

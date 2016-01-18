@@ -227,7 +227,7 @@ public class ProductController {
                 return new ModelAndView("/app/product/detail", model);
             }
             long id = Long.parseLong(pid);
-            UserOperationUtil.setProduct(UserIdHolder.getLongUid(),(int)id);  //添加浏览数
+            //UserOperationUtil.setProduct(UserIdHolder.getLongUid(),(int)id);  //添加浏览数
             ProductDetail productDetail = null;
             
             
@@ -268,6 +268,7 @@ public class ProductController {
                 model.put("p_num", String.valueOf(fq.get("p_num")));
                 
                 Hospital hospital = hospitalService.findById(product.getHospitalId());
+                model.put("hid", String.valueOf(hospital.getId()));
                 model.put("hospital_name", hospital.getName());
                 model.put("hospital_addr", hospital.getAddress());
                 model.put("hospital_img", hospital.getImg());

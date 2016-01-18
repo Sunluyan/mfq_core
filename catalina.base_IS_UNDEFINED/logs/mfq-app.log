@@ -514,3 +514,360 @@ Caused by: java.net.ConnectException: Connection refused
 [2016-01-16 17:08:44  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
 [2016-01-16 17:08:44  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
 [2016-01-16 17:08:46  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 09:59:45  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 09:59:45  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 09:59:48  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:17:24  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:17:24  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:A3810F774AB1070403E62A640444D40D, org string is:keyword=北京page=1
+[2016-01-18 10:17:27  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:17:39  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:17:39  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:A3810F774AB1070403E62A640444D40D, org string is:keyword=北京page=1
+[2016-01-18 10:17:40  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:18:14  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:18:14  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:A3810F774AB1070403E62A640444D40D, org string is:keyword=北京page=1
+[2016-01-18 10:18:15  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:18:56  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:18:56  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:18:58 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com//new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+org.apache.http.conn.HttpHostConnectException: Connect to t.5imfq.com:80 [t.5imfq.com/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134) ~[httpclient-4.4.1.jar:4.4.1]
+	... 17 common frames omitted
+[2016-01-18 10:19:14  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:19:14  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:19:15  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:19:36  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:19:36  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:19:37  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 10:20:05  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:20:06  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:20:17 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:20:52  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:20:52  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:21:07  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:21:07  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:21:19 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:21:31  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:21:31  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:21:42 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:23:28  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:23:28  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:23:39 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:27:27  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:27:27  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:27:38 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:30:30  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:30:30  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:30:41 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2798,"sign":"17E32AF93A672C9DC83C97F9560882BD","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:32) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:38) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 10:54:58  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 10:54:58  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:17E32AF93A672C9DC83C97F9560882BD, org string is:page=1type=1uid=2798
+[2016-01-18 10:54:59  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 15:09:45  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 15:09:45  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:45459875594633D403534DE5E09DA72D, org string is:page=1type=1uid=2527
+[2016-01-18 15:09:48  INFO com.mfq.utils.HttpUtil:206] [] [] [] [] push response result:null
+[2016-01-18 15:10:23  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 15:10:23  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:45459875594633D403534DE5E09DA72D, org string is:page=1type=1uid=2527
+[2016-01-18 15:10:24 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2527,"sign":"45459875594633D403534DE5E09DA72D","page":1,"type":"1"}
+org.apache.http.conn.HttpHostConnectException: Connect to t.5imfq.com:8080 [t.5imfq.com/127.0.0.1] failed: Connection refused
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:24) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:30) [test-classes/:na]
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_65]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_65]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_65]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_65]
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134) ~[httpclient-4.4.1.jar:4.4.1]
+	... 12 common frames omitted
+[2016-01-18 15:11:08  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 15:11:08  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:45459875594633D403534DE5E09DA72D, org string is:page=1type=1uid=2527
+[2016-01-18 15:11:19 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2527,"sign":"45459875594633D403534DE5E09DA72D","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:24) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:30) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
+[2016-01-18 15:11:32  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-01-18 15:11:32  INFO com.mfq.helper.SignHelper:52] [] [] [] [] Make sign:45459875594633D403534DE5E09DA72D, org string is:page=1type=1uid=2527
+[2016-01-18 15:11:44 ERROR com.mfq.utils.HttpUtil:216] [] [] [] [] push fail: url=http://t.5imfq.com:8080//noti/new/count/, body={"uid":2527,"sign":"45459875594633D403534DE5E09DA72D","page":1,"type":"1"}
+java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:170) ~[na:1.8.0_65]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_65]
+	at org.apache.http.impl.conn.LoggingInputStream.read(LoggingInputStream.java:87) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:139) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:155) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:284) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:165) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:167) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124) ~[httpcore-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:271) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82) ~[httpclient-4.4.1.jar:4.4.1]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107) ~[httpclient-4.4.1.jar:4.4.1]
+	at com.mfq.utils.HttpUtil.postJson(HttpUtil.java:195) ~[classes/:na]
+	at com.mfq.test.TestController.testOrderCreate(TestController.java:24) [test-classes/:na]
+	at com.mfq.test.TestController.main(TestController.java:30) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_65]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_65]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_65]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_65]
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144) [idea_rt.jar:na]
