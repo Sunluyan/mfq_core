@@ -484,9 +484,15 @@ public class ActivityController {
     }
 
     @RequestMapping("/testname")
-    public String nameTest(){
+    public ModelAndView nameTest(HttpServletRequest request,HttpServletResponse response){
+        Map<String, Object> model = new HashMap<String, Object>();
+        return new ModelAndView("/activity/testname/nametest", model);
+    }
 
-        return "nametest";
+    @RequestMapping("/addOperation")
+    public @ResponseBody String addOperation(HttpServletRequest request,HttpServletResponse response){
+
+        return null;
     }
 
 

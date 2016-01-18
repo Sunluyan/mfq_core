@@ -36,7 +36,7 @@
 		.line{
 			width:87%;
 			height:46%;
-			-background:url(../../images/activity/mc/line-bg_03.png);
+			-background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/line-bg_03.png);
 			background-size:contain;
 			position:absolute;
 			left:50%;
@@ -118,17 +118,17 @@
 			top:11%;
 			width:36px;
 			height:36px;
-			background-image:url(../../images/activity/mc/num-1_03.png);
+			background-image:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/num-1_03.png);
 			background-size:contain;
 		}
 		.num-2{
-			background-image:url(../../images/activity/mc/num-2_03.png);
+			background-image:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/num-2_03.png);
 		}
 		.num-3{
-			background-image:url(../../images/activity/mc/num-3_03.png);
+			background-image:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/num-3_03.png);
 		}
 		.num-4{
-			background-image:url(../../images/activity/mc/num-4_03.png);
+			background-image:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/num-4_03.png);
 		}
 	</style>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/activity/jquery-1.8.2.min.js"></script>
@@ -200,27 +200,27 @@
 	<div class="container">
 		<div class="page page0 cur"><!-- <h1>你好，我是0号屏幕</h1> -->
 			<div class="line">
-				<img src="../../images/activity/mc/bg-1_03.png" height="474" width="540" alt="">
+				<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/bg-1_03.png" height="474" width="540" alt="">
 			</div>
 			<div class="num">
 				
 			</div>
-			<img  class="xiangxiatishi" src="../../images/activity/mc/s/prompt.png" height="36" width="54" />
+			<img  class="xiangxiatishi" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/prompt.png" height="36" width="54" />
 		</div>
 		<div class="page page1">
 			<!-- <h1>你好，我是1号屏幕</h1> -->
 			<div class="line">
-				<img src="../../images/activity/mc/bg-2_03.png" height="474" width="540" alt="">
+				<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/bg-2_03.png" height="474" width="540" alt="">
 			</div>
 			<div class="num num-2">
 				
 			</div>
-			<img  class="xiangxiatishi" src="../../images/activity/mc/s/prompt.png" height="36" width="54" />
+			<img  class="xiangxiatishi" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/prompt.png" height="36" width="54" />
 			
 		</div>
 		<!-- <div class="page page2"><h1>你好，我是2号屏幕</h1>
 			<div class="line">
-				<img src="../../images/activity/mc/bg-3_03.png" height="474" width="540" alt="">
+				<img src="../..http://7xlb4j.com2.z0.glb.qiniucdn.com/activity/mc/bg-3_03.png" height="474" width="540" alt="">
 			</div>
 			<div class="num num-3">
 				
@@ -229,18 +229,18 @@
 		<div class="page page3">
 			<!-- <h1>你好，我是3号屏幕</h1> -->
 			<div class="line">
-				<img src="../../images/activity/mc/bg-3_03.png" height="474" width="540" alt="">
+				<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/bg-3_03.png" height="474" width="540" alt="">
 			</div>
 			<div class="num num-3">
 				
 			</div>
-			<img  class="xiangxiatishi" src="../../images/activity/mc/s/prompt.png" height="36" width="54" />
+			<img  class="xiangxiatishi" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/prompt.png" height="36" width="54" />
 		</div>
 
 		<div class="page page4">
 			<!-- <h1>你好，我是4号屏幕</h1> -->
 			<div class="line line-4">
-				<img src="../../images/activity/mc/bg-4_03.png" height="560" width="616" alt="">
+				<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/bg-4_03.png" height="560" width="616" alt="">
 			</div>
 			<div class="num num-4">
 				

@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class="box">
-	<img class="img01" src="/images/activity/Christmas/hongbao.png" height="304" width="399">
-	<a href="/activity/Christmas/four"><img src="/images/activity/Christmas/button.png" height="69" width="258"></a>
+	<img class="img01" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hongbao.png" height="304" width="399">
+	<a href="/activity/Christmas/four"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/christmas-button.png" height="69" width="258"></a>
 </div>
 </body>
 </html>

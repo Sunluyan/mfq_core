@@ -3,7 +3,7 @@ body{
 	text-align: center;
 	padding-top: 60%;
 	padding-left: 10%;
-	background-image: url(/images/activity/Christmas/file-bg.png);
+	background-image: url(http://7xlb4j.com2.z0.glb.qiniucdn.com/file-bg.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -37,7 +37,7 @@ body{
 	text-align: center;
 	padding-top: 60%;
 	padding-left: 10%;
-	background-image: url(../img/file-bg.png);
+	background-image: url(http://7xlb4j.com2.z0.glb.qiniucdn.com/file-bg.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -48,7 +48,6 @@ a{
 @font-face {
     /* font-properties */
     font-family: new-size;
-    src:url('font/方正正准黑简体.jpg.TTF');
 }
 .size-01{
 	font-family: "new-size";

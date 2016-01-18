@@ -8,8 +8,8 @@
 	<title>颜值测试</title>
 	<script src="${pageContext.request.contextPath}/js/activity/jquery-1.8.2.min.js"></script>
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/text.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/activity/index.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/activity/text.css">
 	<script src="${pageContext.request.contextPath}/js/activity/text.js"></script>
 </head>
 <body>

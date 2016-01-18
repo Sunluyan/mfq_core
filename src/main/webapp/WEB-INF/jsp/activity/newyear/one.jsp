@@ -6,8 +6,8 @@
 	<meta charset="UTF-8">
 	<title>丑女小美变美记</title>
 	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
-	<link rel="stylesheet" type="text/css" href="css/loading.css">
-	<script type="text/javascript" src="/js/activity/jquery-1.8.2.min.js""></script>
+	<link rel="stylesheet" type="text/css" href="/css/activity/newyear/loading.css">
+	<script type="text/javascript" src="/js/activity/jquery-1.8.2.min.js"></script>
 	<style>
 		/* 		@font-face{
             font-family:xueyafei;
@@ -24,7 +24,7 @@
 		.now{
 			width:100%;
 			height:100%;
-			background:url(/images/activity/newyear/before.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2before.png);
 			background-size:cover;
 			position:relative;
 			background-position: 50% 50%;
@@ -32,7 +32,7 @@
 		.shizhong{
 			width:96px;
 			height:96px;
-			background:url(/images/activity/newyear/shizhong_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2shizhong_03.png);
 			position:absolute;
 			left:50%;
 			margin-left:-48px;
@@ -44,7 +44,7 @@
 		.fenzhen{
 			width:25px;
 			height:25px;
-			background:url(/images/activity/newyear/fenzhen_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2fenzhen_03.png);
 			position:absolute;
 			left:36.1%;
 			top:39%;
@@ -194,7 +194,7 @@
 			position:absolute;
 			left:0;
 			top:0;
-			background:url(/images/activity/newyear/after.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2after.png);
 			background-size:cover;
 			background-position: 50% 50%;
 
@@ -240,7 +240,7 @@
 		.wenzi-1{
 			width:128px;
 			height:28px;
-			background:url(/images/activity/newyear/T-1_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-1_03.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -266,7 +266,7 @@
 		.wenzi-2{
 			width:234px;
 			height:25px;
-			background:url(/images/activity/newyear/T-2_07.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-2_07.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -282,7 +282,7 @@
 			width:74px;
 			height:24px;
 			float:left;
-			background:url(/images/activity/newyear/T-3_11.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-3_11.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -297,7 +297,7 @@
 		.xiaomei{
 			width:70%;
 			height:60%;
-			background:url(/images/activity/newyear/xiaomei_14.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2xiaomei_14.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -346,7 +346,7 @@
 		}
 		.please{
 
-			background:url(/images/activity/newyear/help_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2help_03.png);
 			background-size:cover;
 			width:117%;
 			height:44%;
@@ -388,7 +388,7 @@
 		.audio .icon{
 			width:100%;
 			height:100%;
-			background:url(/images/activity/newyear/music-2.png) center center no-repeat;
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2music-2.png) center center no-repeat;
 			position:absolute;
 		}
 	</style>
@@ -469,7 +469,7 @@
 	</div>
 	<div class="audio">
 		<div class="icon"></div>
-		<audio src="/images/activity/newyear/happy newyear.mp3" autoplay></audio>
+		<audio src="http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2happy newyear.mp3" autoplay></audio>
 	</div>
 </div>
 <script type="text/javascript">
