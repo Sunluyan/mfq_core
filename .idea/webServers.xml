@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c1d57432-8eb7-4e0c-89b3-4eba32bf28cb" name="线上TEST 1" url="http://123.59.51.3">
+        <fileTransfer host="123.59.51.3" port="22" rootFolder="/home/work" accessType="SFTP" password="dfc7dfccdfdbdf87dfd3dfdbdfcedfd9df8bdf8bdf8b" username="work">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="d90658cd-af70-4252-92be-865e6c63aa28" name="线上环境 2" url="http://123.59.51.4">
+        <fileTransfer host="123.59.51.4" port="22" rootFolder="/home/work" accessType="SFTP" password="dfc7dfccdfdbdf87dfd3dfdbdfcedfd9df8bdf8bdf8b" username="work">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

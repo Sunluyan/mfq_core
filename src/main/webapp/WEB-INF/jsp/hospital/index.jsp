@@ -14,10 +14,7 @@
         font-family: "NewFont";
     }
 
-    @font-face {
-        font-family: "NewFont";
-        src: url('../../images/hospital/font/Hiragino_Sans_GB_W3.otf');
-    }
+
 
     a {
         text-decoration: none;

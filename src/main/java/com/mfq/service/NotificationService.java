@@ -100,7 +100,7 @@ public class NotificationService {
 				}else{
 					noti.add(n);
 				}
-				
+
 			}
 			if(!CollectionUtils.isEmpty(noti)){
 	        	ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();
@@ -185,7 +185,7 @@ public class NotificationService {
 		List<Notification> notis = mapper.queryNotificationByTypeAndUid(1,0);
 		for(Notification n: notis){
 			MsgRead read = msgReadMapper.queryMsgRead(uid, n.getId());
-			if(read != null){
+			if(read == null){
 				notisCount+=1;
 			}
 
@@ -193,8 +193,9 @@ public class NotificationService {
 
 		List<Notification> msgs = mapper.queryNotificationByTypeAndUid(2,uid);
 		for (Notification n: msgs){
-			if(n.getStatus() ==  1){
-				msgCount +=1 ;
+			MsgRead read = msgReadMapper.queryMsgRead(uid, n.getId());
+			if(read == null){
+				msgCount +=1;
 			}
 		}
 

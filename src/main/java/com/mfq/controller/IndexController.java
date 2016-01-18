@@ -143,13 +143,16 @@ public class IndexController {
 	@RequestMapping(value = {"/hospital/{hid}/","/hospital/{hid}"})
 	public String hospitalSdy(@PathVariable("hid") int hid, Model model){
 		String tpp = "error";
-		if(hid == 8){
-			tpp = "sdy";
+		if(hid == 0){
+			// TODO: 16/1/18
 		}
+		tpp = "hospital_"+hid;
+
 		model.addAttribute("static_url",QiniuBucketEnum.STATIC.getDomain());
 		return "/hospital/"+tpp;
 	}
-	
+
+
 	
 	
     

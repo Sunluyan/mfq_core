@@ -14,6 +14,7 @@ String p_price = (String) request.getAttribute("p_price");
 String p_num = (String) request.getAttribute("p_num");
 
 String hospital_name = (String) request.getAttribute("hospital_name");
+String hid = (String) request.getAttribute("hid");
 String hospital_addr = (String) request.getAttribute("hospital_addr");
 String hospital_img = (String) request.getAttribute("hospital_img");
 
@@ -352,7 +353,7 @@ body {
 			</c:forEach>
 			</div>
 		<script type="text/javascript">banner()</script>
-<strong style="margin:8px; "><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong>
+<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block;"> <strong style="margin:8px; "><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
 </div>
 
 <div style="background-color:#ffffff; width:100%; text-align:left;vertical-align: middle;">
