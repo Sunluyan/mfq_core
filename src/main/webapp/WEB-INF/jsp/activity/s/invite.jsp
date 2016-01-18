@@ -36,8 +36,8 @@
   </div>
   <div class="inv_center">
       
-      <img src="${pageContext.request.contextPath}/images/activity/s/images2.png">
-      <img src="${pageContext.request.contextPath}/images/activity/s/images1.png">
+      <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-images2.png">
+      <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-images1.png">
       
   </div>
   <div class="inv_bottom">注：秒杀时请注意产品所在地，秒杀完成后请在规定时间内到指定医院完成项目，过期无效。</div>

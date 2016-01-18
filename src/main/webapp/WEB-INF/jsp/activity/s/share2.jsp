@@ -10,6 +10,6 @@
 </head>
 
 <body>
-<img src="${pageContext.request.contextPath}/images/activity/s/activity_share.jpg" class="img-responsive center-block">
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-activity_share.jpg" class="img-responsive center-block">
 </body>
 </html>

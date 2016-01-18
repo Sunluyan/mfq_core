@@ -27,7 +27,7 @@
 <span id="countdown"></span>
 </div>
 <div class="col-xs-12">
-<img src="${pageContext.request.contextPath}/images/activity/s/ts.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ts.png" class="img-responsive center-block"/>
 </div>
 
 </div>

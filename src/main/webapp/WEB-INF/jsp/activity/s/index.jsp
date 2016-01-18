@@ -9,14 +9,14 @@
 
 <body>
 <div>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd1.png" class="img-responsive center-block"/>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd2.png" class="img-responsive center-block"/>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd3.png" class="img-responsive center-block"/>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd4.png" class="img-responsive center-block"/>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd5.png" class="img-responsive center-block"/>
-<img src="${pageContext.request.contextPath}/images/activity/s/hd6.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd1.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd2.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd3.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd4.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd5.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd6.png" class="img-responsive center-block"/>
 <div style="position:relative">
-<img src="${pageContext.request.contextPath}/images/activity/s/hd7.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hd7.png" class="img-responsive center-block"/>
 <a href="${pageContext.request.contextPath}/activity/invite/"><span class="click_box"></span></a>
 </div>
 

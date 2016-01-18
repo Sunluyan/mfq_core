@@ -44,7 +44,7 @@ body {
 			<input type="hidden" value="${UID}" name="uid" id="uid" />
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td bgcolor="ea093f"><img src="${pageContext.request.contextPath}/images/activity/s/zdms_01.png" width="100%" /></td>
+    <td bgcolor="ea093f"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-zdms_01.png" width="100%" /></td>
   </tr>
   <tr>
     <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -92,7 +92,7 @@ body {
     </td>
   </tr>
   <tr>
-    <td valign="bottom"><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_10.png" width="100%" /></td>
+    <td valign="bottom"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_10.png" width="100%" /></td>
   </tr>
 </table>
 		</form>

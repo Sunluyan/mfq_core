@@ -15,7 +15,7 @@
 	<div class="container">
 		<div class="bg">
 			<div class="line">
-				<img src="${pageContext.request.contextPath}/images/activity/mc/line-bg_03.png" height="290" width="500" alt="">
+				<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/line-bg_03.png" height="290" width="500" alt="">
 			</div>
 		</div>
 	</div>

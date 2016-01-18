@@ -43,7 +43,7 @@ a:link,a:visited{
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td bgcolor="ea093f"><img src="${pageContext.request.contextPath}/images/activity/s/zdms_01.png" width="100%" /></td>
+    <td bgcolor="ea093f"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-zdms_01.png" width="100%" /></td>
   </tr>
   <tr>
     <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -52,10 +52,10 @@ a:link,a:visited{
         <div style="width: 245px;"> 
         <span style="float:left; margin-left: 33px;">
         <c:if test="${code == 0 }">
-        <img src="${pageContext.request.contextPath }/images/activity/s/dui.png" width="36"/>
+        <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-dui.png" width="36"/>
         </c:if>
         <c:if test="${code != 0 }">
-        <img src="${pageContext.request.contextPath }/images/activity/s/cuowu.png" width="36"/>
+        <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-cuowu.png" width="36"/>
         </c:if>
         </span>
         <span class="STYLE9">
@@ -67,7 +67,7 @@ a:link,a:visited{
           <span class="STYLE2">还差一步即可参与[1元秒杀活动]<br />
           </span><span class="STYLE11">更多微整形精彩活动，尽在[美分期APP]</span><br />
           <br />
-          <span class="STYLE7"><img src="${pageContext.request.contextPath }/images/activity/s/down.png" width="23"/></span></td>
+          <span class="STYLE7"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-down.png" width="23"/></span></td>
       </tr>
       <tr>
         <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFF00">
@@ -84,7 +84,7 @@ a:link,a:visited{
     </td>
   </tr>
   <tr>
-    <td valign="bottom"><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_10.png" width="100%" /></td>
+    <td valign="bottom"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_10.png" width="100%" /></td>
   </tr>
 </table>
 

@@ -73,13 +73,13 @@ body,td,th {
       <tr>
         <td align="left">
         <c:if test="${is_start }">
-        <img src="${pageContext.request.contextPath}/images/activity/s/seckiling/ms_14.png" width="180" class="inv_fast" />
+        <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-seckiling-ms_14.png" width="180" class="inv_fast" />
         </c:if>
         <c:if test="${!is_start }">
-        <img src="${pageContext.request.contextPath}/images/activity/s/seckiling/gray_button.png" width="180" />
+        <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-seckiling-gray_button.png" width="180" />
         </c:if>
         </td>
-        <td align="right"><a href="${pageContext.request.contextPath}/activity/f_share"><img src="${pageContext.request.contextPath}/images/activity/s/seckiling/ms_16.png" width="120" /></a></td>
+        <td align="right"><a href="${pageContext.request.contextPath}/activity/f_share"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-seckiling-ms_16.png" width="120" /></a></td>
       </tr>
     </table></td>
   </tr>

@@ -14,7 +14,7 @@
 <!-- 刮奖区 -->
 <div class="demoBox">
     <div class="demo">
-        <canvas><img id="lamp" src="/images/activity/newyear/img/chou.png" height="546" width="537"></canvas>
+        <canvas><img id="lamp" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2Fimgchou.png" height="546" width="537"></canvas>
     </div>
 </div>
 <script type="text/javascript">
@@ -29,7 +29,7 @@
     canvas.style.backgroundRepeat='no-repeat';
     canvas.style.margin='0';
     // canvas.style.position = 'absolute';
-    var imgs = '/images/activity/newyear/img/mei.png';  //刮开后显示的底图
+    var imgs = "http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2Fimgmei.png";  //刮开后显示的底图
     // var num = Math.floor(Math.random()*2);  //2张刮开后图片 随机
     img.src = imgs;
     img.addEventListener('load', function(e){

@@ -50,7 +50,7 @@ a:link,a:visited{
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><img src="${pageContext.request.contextPath}/images/activity/s/xsg_banner.png" width="100%" /></td>
+    <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-xsg_banner.png" width="100%" /></td>
   </tr>
   <tr>
     <td height="50" align="center" valign="middle" bgcolor="#FFF41A"><span class="STYLE1"><span id="countdown">00 : 00 : 00</span></span></td>

@@ -1,6 +1,6 @@
 body{
 	margin: 0;
-	background-image: url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2imgzhuce-bg.jpg);
+	background-image: url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2Fimgzhuce-bg.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	padding-left: 3rem;
@@ -68,7 +68,7 @@ input{
 	padding: 0.5rem;
 	color: #fff;
 	margin-top: 14%;
-	background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2imgbtn-bg_03.png);
+	background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2Fimgbtn-bg_03.png);
 	background-size: cover;
 }
 /* iphone 6 */
@@ -126,7 +126,7 @@ input{
 		padding: 0.5rem;
 		color: #fff;
 		margin-top: 10%;
-		background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2imgbtn-bg_03.png);
+		background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2Fimgbtn-bg_03.png);
 		background-size: cover;
 	}
 }

@@ -33,13 +33,13 @@ a:link,a:visited{
   <tr>
     <td bgcolor="ea093f">
     <a href="${pageContext.request.contextPath}/activity/register">
-    <img src="${pageContext.request.contextPath}/images/activity/s/zdms_01.png" width="100%" />
+    <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-zdms_01.png" width="100%" />
     </a>
     </td>
   </tr>
   <tr>
   	<td bgcolor="ea093f" style="font-weight:bold; cursor:pointer;text-align: center; color:#FFF; font-size:16px;" onclick="window.location.href='${pageContext.request.contextPath}/activity/f_share';">
-		<img src="${pageContext.request.contextPath}/images/activity/s/mss.png"  width="100%"/>
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-mss.png"  width="100%"/>
   	</td>
   </tr>
   <tr>
@@ -48,7 +48,7 @@ a:link,a:visited{
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
       <tr>
-        <td colspan="2" bgcolor="f03548"><img src="${pageContext.request.contextPath}/images/activity/s/ml_hlyj.jpg" width="100%" border="0" /></td>
+        <td colspan="2" bgcolor="f03548"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ml_hlyj.jpg" width="100%" border="0" /></td>
       </tr>
       <tr>
         <td width="35%" height="30" align="center" bgcolor="f77487"><span class="STYLE1">秒杀倒计时</span></td>
@@ -66,7 +66,7 @@ a:link,a:visited{
           <td height="10" colspan="2" bgcolor="f03548">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="2" bgcolor="f03548"><img src="${pageContext.request.contextPath}/images/activity/s/hm_csjb.jpg" width="100%" /></td>
+          <td colspan="2" bgcolor="f03548"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-hm_csjb.jpg" width="100%" /></td>
         </tr>
         <tr>
           <td width="35%" height="30" align="center" bgcolor="f77487"><span class="STYLE1">秒杀倒计时</span></td>
@@ -84,7 +84,7 @@ a:link,a:visited{
           <td height="10" colspan="2" bgcolor="f03548">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="2" bgcolor="f03548"><img src="${pageContext.request.contextPath}/images/activity/s/ml_qm.jpg" width="100%" /></td>
+          <td colspan="2" bgcolor="f03548"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ml_qm.jpg" width="100%" /></td>
         </tr>
         <tr>
           <td width="35%" height="30" align="center" bgcolor="f77487"><span class="STYLE1">秒杀倒计时</span></td>
@@ -102,7 +102,7 @@ a:link,a:visited{
           <td height="10" colspan="2" bgcolor="f03548">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="2" bgcolor="f03548"><img src="${pageContext.request.contextPath}/images/activity/s/jh_wm.jpg" width="100%" /></td>
+          <td colspan="2" bgcolor="f03548"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-jh_wm.jpg" width="100%" /></td>
         </tr>
         <tr>
           <td width="35%" height="30" align="center" bgcolor="f77487"><span class="STYLE1">秒杀倒计时</span></td>
@@ -117,7 +117,7 @@ a:link,a:visited{
       </td>
   </tr>
   <tr>
-    <td valign="bottom"><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_10.png" width="100%" /></td>
+    <td valign="bottom"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_10.png" width="100%" /></td>
   </tr>
 </table>
 <script>

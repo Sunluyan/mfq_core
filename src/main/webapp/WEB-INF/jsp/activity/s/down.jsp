@@ -11,15 +11,15 @@
 
 <body style="background-color:#b0040a;">
 <div>
-<img src="${pageContext.request.contextPath}/images/activity/s/share/app_down_01.gif" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-share-app_down_01.gif" class="img-responsive center-block"/>
 <a href="http://www.5imfq.com/download/app.html">
-<img src="${pageContext.request.contextPath}/images/activity/s/share/app_down_02.gif" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-share-app_down_02.gif" class="img-responsive center-block"/>
 </a>
-<img src="${pageContext.request.contextPath}/images/activity/s/share/app_down_03.gif" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-share-app_down_03.gif" class="img-responsive center-block"/>
 <a href="http://www.5imfq.com/download/app.html">
-<img src="${pageContext.request.contextPath}/images/activity/s/share/app_down_04.gif" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-share-app_down_04.gif" class="img-responsive center-block"/>
 </a>
-<img src="${pageContext.request.contextPath}/images/activity/s/share/app_down_05.gif" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-share-app_down_05.gif" class="img-responsive center-block"/>
 </div>
 </body>
 </html>

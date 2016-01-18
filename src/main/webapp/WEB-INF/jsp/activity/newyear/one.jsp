@@ -24,7 +24,7 @@
 		.now{
 			width:100%;
 			height:100%;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2before.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearbefore.png);
 			background-size:cover;
 			position:relative;
 			background-position: 50% 50%;
@@ -32,7 +32,7 @@
 		.shizhong{
 			width:96px;
 			height:96px;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2shizhong_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearshizhong_03.png);
 			position:absolute;
 			left:50%;
 			margin-left:-48px;
@@ -44,7 +44,7 @@
 		.fenzhen{
 			width:25px;
 			height:25px;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2fenzhen_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearfenzhen_03.png);
 			position:absolute;
 			left:36.1%;
 			top:39%;
@@ -194,7 +194,7 @@
 			position:absolute;
 			left:0;
 			top:0;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2after.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearafter.png);
 			background-size:cover;
 			background-position: 50% 50%;
 
@@ -240,7 +240,7 @@
 		.wenzi-1{
 			width:128px;
 			height:28px;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-1_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearT-1_03.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -266,7 +266,7 @@
 		.wenzi-2{
 			width:234px;
 			height:25px;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-2_07.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearT-2_07.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -282,7 +282,7 @@
 			width:74px;
 			height:24px;
 			float:left;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2T-3_11.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearT-3_11.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -297,7 +297,7 @@
 		.xiaomei{
 			width:70%;
 			height:60%;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2xiaomei_14.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearxiaomei_14.png);
 			background-size:cover;
 			opacity:0;
 			transition: all 5s;
@@ -346,7 +346,7 @@
 		}
 		.please{
 
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2help_03.png);
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearhelp_03.png);
 			background-size:cover;
 			width:117%;
 			height:44%;
@@ -388,7 +388,7 @@
 		.audio .icon{
 			width:100%;
 			height:100%;
-			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2music-2.png) center center no-repeat;
+			background:url(http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearmusic-2.png) center center no-repeat;
 			position:absolute;
 		}
 	</style>
@@ -469,7 +469,7 @@
 	</div>
 	<div class="audio">
 		<div class="icon"></div>
-		<audio src="http://7xlb4j.com2.z0.glb.qiniucdn.com/newyear%2happy newyear.mp3" autoplay></audio>
+		<audio src="http://7xlb4j.com2.z0.glb.qiniucdn.com/newyearhappy%20newyear.mp3" autoplay></audio>
 	</div>
 </div>
 <script type="text/javascript">

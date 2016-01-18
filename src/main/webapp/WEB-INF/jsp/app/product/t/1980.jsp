@@ -20,8 +20,7 @@ body{
 }
 @font-face { 
   	font-family: "NewFont"; 
-  	src: url('fonts/Hiragino Sans GB W3.otf'); 
-} 
+}
 a{
 	text-decoration: none;
 }

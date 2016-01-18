@@ -17,20 +17,20 @@
 
 <body style="background-color:#b0040a;">
 <div>
-<img src="${pageContext.request.contextPath}/images/activity/s/shuangshyi.jpg" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-shuangshyi.jpg" class="img-responsive center-block"/>
 <div id="doc_d">
 <div id="er">
-<img src="${pageContext.request.contextPath}/images/activity/s/changan.png" width="100%"/>
-<span><img alt="download" src="${pageContext.request.contextPath}/images/activity/s/download_d.png" width="100%"></span>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-changan.png" width="100%"/>
+<span><img alt="download" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-download_d.png" width="100%"></span>
 </div>
 <div style="width:40%; margin-left:3%;">
 <a href="${pageContext.request.contextPath}/activity/download">
-<img src="${pageContext.request.contextPath}/images/activity/s/download.png" width="100%"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-download.png" width="100%"/>
 </a>
 </div>
 <div style="clear:both;"></div>
 </div>
-<img src="${pageContext.request.contextPath}/images/activity/s/bottom.png" class="img-responsive center-block"/>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-bottom.png" class="img-responsive center-block"/>
 </div>
 </body>
 </html>

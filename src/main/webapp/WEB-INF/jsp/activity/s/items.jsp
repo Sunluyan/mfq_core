@@ -43,18 +43,18 @@ a:link,a:visited{
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_01.png" width="100%" /></td>
+    <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_01.png" width="100%" /></td>
   </tr>
   <tr>
     <td align="center" valign="top" bgcolor="#FFE303"><table width="80%" height="50" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="40%" align="right" valign="middle" bgcolor="#0373FD"><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_03.png" width="100" /></td>
+          <td width="40%" align="right" valign="middle" bgcolor="#0373FD"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_03.png" width="100" /></td>
           <td align="center" bgcolor="#0373FD"><span class="STYLE5" id="countdown">00:00:00</span></td>
         </tr>
       </table></td>
   </tr>
   <tr>
-    <td><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_06.png" width="100%" /></td>
+    <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_06.png" width="100%" /></td>
   </tr>
 	<c:forEach items="${products }" var="product">
   <tr>
@@ -86,7 +86,7 @@ a:link,a:visited{
     <td height="20" align="center" valign="middle">&nbsp;</td>
   </tr>
   <tr>
-    <td><span style="width:100%; height:146px; z-index:0;position:relative;"><img src="${pageContext.request.contextPath}/images/activity/s/ms_zhu_10.png" width="100%" /></span></td>
+    <td><span style="width:100%; height:146px; z-index:0;position:relative;"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_zhu_10.png" width="100%" /></span></td>
   </tr>
 </table>
 </body>

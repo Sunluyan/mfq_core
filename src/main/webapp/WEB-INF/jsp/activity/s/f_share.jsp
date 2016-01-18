@@ -31,7 +31,7 @@ body {
 </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><img src="${pageContext.request.contextPath}/images/activity/s/ms_hdxq_07.png" width="100%" border="0" usemap="#Map" /></td>
+    <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/s-ms_hdxq_07.png" width="100%" border="0" usemap="#Map" /></td>
     
   </tr>
   <tr>
