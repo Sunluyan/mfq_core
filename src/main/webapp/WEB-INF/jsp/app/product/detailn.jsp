@@ -353,14 +353,14 @@ body {
 			</c:forEach>
 			</div>
 		<script type="text/javascript">banner()</script>
-<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; "><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
+<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; "><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
 </div>
 
 <div style="background-color:#ffffff; width:100%; text-align:left;vertical-align: middle;">
 <ul class="name" style="margin:8px 0 0 8px;"><%=name %></ul>
 <ul><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-			 <td valign="bottom"><span class="pri_s"> &nbsp;&nbsp;<img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_41.png" width="18" />￥</span><span class="STYLE3"><span class="pri_l"><%=price %></span></span> <span class="STYLE76"><del>原价￥<%=market_price %></del></span></td>
+			 <td valign="bottom"><span class="pri_s"> &nbsp;&nbsp;<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_41.png" width="18" />￥</span><span class="STYLE3"><span class="pri_l"><%=price %></span></span> <span class="STYLE76"><del>原价￥<%=market_price %></del></span></td>
 			<td align="right" style="padding:10px;"><table border="0" cellpadding="1" cellspacing="0" class="round_l21">
           <tr>
             <td width="30" align="center" valign="middle" bgcolor="#FF5254"><span class="STYLE9"><span class="STYLE11">补贴</span></span></td>
@@ -403,22 +403,22 @@ body {
 
 <div class="table" style="background-color:#FFFFFF; padding:10px 0 10px 0">
 	<div class="a1">
-	    <div class="r1"><img src="${pageContext.request.contextPath}/images/app/home/icon.png" width="13" /></div>
+	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
 		<div class="r2"><span class="STYLE71 STYLE48"><strong>治疗手段:</strong></span></div>
 		<div class="r3">${p.cureMeans }</div>
 	</div>
 	<div class="a1">
-	    <div class="r1"><img src="${pageContext.request.contextPath}/images/app/home/icon.png" width="13" /></div>
+	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
 		<div class="r2"><span class="STYLE71 STYLE48"><strong>治疗时长:</strong></span></div>
 		<div class="r3">${p.cureDur }</div>
 	</div>
 	<div class="a1">
-	    <div class="r1"><img src="${pageContext.request.contextPath}/images/app/home/icon.png" width="13" /></div>
+	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
 		<div class="r2"><span class="STYLE71 STYLE48"><strong>住院治疗:</strong></span></div>
 		<div class="r3">${p.cureHospital }</div>
 	</div>
 	<div class="a1">
-	    <div class="r1"><img src="${pageContext.request.contextPath}/images/app/home/icon.png" width="13" /></div>
+	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
 		<div class="r2"><span class="STYLE71 STYLE48"><strong>恢复时间:</strong></span></div>
 		<div class="r3">${p.recoverDur }</div>
 	</div>
@@ -428,20 +428,20 @@ body {
   <tr>
     <td align="center" valign="middle" bgcolor="#f4f4f4">
 		<!--  <div class="banner" id="banner" >
-			<img class="d1" src="${pageContext.request.contextPath}/images/app/home/banner01.png" background:center no-repeat;/>
-			<img class="d1" src="${pageContext.request.contextPath}/images/app/home/banner2.jpg" background:center no-repeat;/>
-			<img class="d1" src="${pageContext.request.contextPath}/images/app/home/banner3.jpg" background:center no-repeat;/>		</div>
+			<img class="d1" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-banner01.png" background:center no-repeat;/>
+			<img class="d1" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-banner2.jpg" background:center no-repeat;/>
+			<img class="d1" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-banner3.jpg" background:center no-repeat;/>		</div>
 		<script type="text/javascript">banner()</script>--></td>
   </tr>
 
   <tr>
-    <td height="3"><img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1"/></td>
+    <td height="3"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1"/></td>
   </tr>
 
   <tr>
     <td height="90" align="center" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="6">
       <tr>
-        <td><img src="${pageContext.request.contextPath}/images/app/home/splc.png" width="100%" /></td>
+        <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-splc.png" width="100%" /></td>
       </tr>
     </table></td>
   </tr>
@@ -526,8 +526,8 @@ body {
   <tr>
 <c:if test="${s}">
     <td align="center" valign="top" bgcolor="#FFFFFF"><a href="http://www.5imfq.com/download/app.html">
-<img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="4" /><br />
-<img src="${pageContext.request.contextPath}/images/app/home/gg_download.png" width="100%" border="0" /></a>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="4" /><br />
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-gg_download.png" width="100%" border="0" /></a>
 		<br /><br /></td>
 </c:if>
 

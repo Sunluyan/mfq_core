@@ -50,7 +50,7 @@
 </head>
 
 <body>
-<img src="/images/hospital/meilai/meilai_02.png" width="100%" />
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_02.png" width="100%" />
 <table width="100%" border="0" cellpadding="4" cellspacing="4">
 
     <tr>
@@ -64,17 +64,17 @@
         <td align="left" class="d_l">医院环境</td>
     </tr>
     <tr>
-        <td align="center" valign="top"><img src="/images/hospital/meilai/meilai_05.png" width="80%" /><br />
+        <td align="center" valign="top"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_05.png" width="80%" /><br />
             <br />
-            <img src="/images/hospital/meilai/meilai_08.png" width="80%" />      <br />
+            <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_08.png" width="80%" />      <br />
             <br />
-            <img src="/images/hospital/meilai/meilai_10.png" width="80%" /></td>
+            <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_10.png" width="80%" /></td>
     </tr>
     <tr class="d_l">
         <td align="left" class="d_l">医生团队</td>
     </tr>
     <tr>
-        <td align="center" valign="top"><img src="/images/hospital/meilai/meilai_15.png" width="80%" /></td>
+        <td align="center" valign="top"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_15.png" width="80%" /></td>
     </tr>
     <tr class="d_l">
         <td align="left" class="d_l">整形团队</td>
@@ -87,12 +87,12 @@
         <td class="d_l">整形案例</td>
     </tr>
     <tr class="STYLE1">
-        <td align="center" valign="top" class="STYLE1"><img src="/images/hospital/meilai/meilai_18.png" width="80%" /></td>
+        <td align="center" valign="top" class="STYLE1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_18.png" width="80%" /></td>
     </tr>
 </table>
 <table width="100%%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td align="center"><img src="/images/hospital/meilai/meilai_21.png" width="80%" /></td>
+        <td align="center"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-meilaimeilai_21.png" width="80%" /></td>
     </tr>
 </table>
 <p>&nbsp;</p>

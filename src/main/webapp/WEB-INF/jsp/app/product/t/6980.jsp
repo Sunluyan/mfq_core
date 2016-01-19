@@ -19,8 +19,7 @@ body{
 }
 @font-face { 
   	font-family: "NewFont"; 
-  	src: url('fonts/Hiragino Sans GB W3.otf'); 
-} 
+}
 a{
 	text-decoration: none;
 }
@@ -90,11 +89,11 @@ img{
 </style>
 </head>
 <body>
-<img src="${pageContext.request.contextPath}/images/app/product/6980/6980ka.png" class="banner">
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-6980ka.png" class="banner">
 <a href="sdy_yyjj.html">
 	<div class="yiyuan">
 		<!-- <span>三亚圣迪亚美容整形医院</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp医院详情>> -->
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/yiyuan.png">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-yiyuan.png">
 	</div>
 </a>
 <div class="bigContainer">
@@ -111,51 +110,51 @@ img{
 	<div class="orange_biaoti">包含项目内容：</div>
 	<span>1.游艇出游奢华之旅&nbsp<span class="money">3980</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/11.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-11.jpg">
 	</div>
 	<span>2.价值&nbsp<span class="money">5000</span>元&nbsp亚洲顶级整形美容专家亲诊费</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/10.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-10.jpg">
 	</div>
 	<span>3.形象美学设计总监&nbsp医美专属订制&nbsp<span class="money">3980</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/9.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-9.jpg">
 	</div>
 	<span>4.瑞士羊胎素口服液(豪装版)&nbsp<span class="money">16800</span>元/套</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/8.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-8.jpg">
 	</div>
 	<span>5.祛痘/祛斑/脱毛(最高价值&nbsp<span class="money">3800</span>元)三选一</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/7.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-7.jpg">
 	</div>
 	<span>6.光子嫩肤皮肤护理&nbsp<span class="money">3000</span>元/次</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/6.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-6.jpg">
 	</div>
 	<span>7.倒转时光•水光针(订制版)&nbsp<span class="money">7980</span>元/次</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/5.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-5.jpg">
 	</div>
 	<span>8.价值&nbsp<span class="money">5000</span>元&nbsp超声刀现金抵用券</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/4.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-4.jpg">
 	</div>
 	<span>9.价值&nbsp<span class="money">3000</span>元&nbsp项目现金抵用券(仅限手术类，特价项目除外)</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/3.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-3.jpg">
 	</div>
 	<span>10.订制宴会造型&nbsp<span class="money">680</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/2.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-2.jpg">
 	</div>
 	<span>11.名家手工缝制，量身订制款 私属奢华贵族名媛风旗袍&nbsp<span class="money">8800</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/1.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-1.jpg">
 	</div>
 	<span>12.圣迪亚(国际)2015魅力名媛旗袍风尚盛典入场券&nbsp<span class="money">880</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/6980/0.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-6980-0.jpg">
 	</div>
 </div>
 </body>

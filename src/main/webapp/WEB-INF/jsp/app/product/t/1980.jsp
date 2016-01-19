@@ -90,11 +90,11 @@ img{
 </style>
 </head>
 <body>
-<img src="${pageContext.request.contextPath}/images/app/product/1980/1980ka.png" class="banner">
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-1980ka.png" class="banner">
 <a href="sdy_yyjj.html">
 	<div class="yiyuan">
 		<!-- <span>三亚圣迪亚美容整形医院</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp医院详情>> -->
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/yiyuan.png">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-yiyuan.png">
 	</div>
 </a>
 <div class="bigContainer">
@@ -111,35 +111,35 @@ img{
 	<div class="orange_biaoti">包含项目内容：</div>
 	<span>1.祛痘/祛斑/脱毛(最高价值<span class="money">3800</span>元)三选一</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/7.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-7.jpg">
 	</div>
 	<span>2.光子嫩肤皮肤护理&nbsp<span class="money">3000</span>元/次</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/6.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-6.jpg">
 	</div>
 	<span>3.露水红颜•水光针(升级版)&nbsp<span class="money">3980</span>元/次</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/5.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-5.jpg">
 	</div>
 	<span>4.价值<span class="money">5000</span>元&nbsp超声刀现金抵用券</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/4.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-4.jpg">
 	</div>
 	<span>5.价值<span class="money">1000</span>元，项目现金抵用券(仅限手术类，除特价项目外)</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/3.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-3.jpg">
 	</div>
 	<span>6.订制宴会造型&nbsp<span class="money">680</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/2.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-2.jpg">
 	</div>
 	<span>7.订制款&nbsp名媛风旗袍&nbsp<span class="money">1980</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/1.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-1.jpg">
 	</div>
 	<span>8.圣迪亚(国际)2015魅力名媛旗袍风尚盛典入场券<span class="money">880</span>元</span>
 	<div>
-		<img src="${pageContext.request.contextPath}/images/app/product/1980/0.jpg">
+		<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-product-1980-0.jpg">
 	</div>
 </div>
 </body>

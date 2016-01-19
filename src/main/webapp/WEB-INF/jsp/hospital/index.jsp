@@ -102,12 +102,12 @@
     <div class="boxs">
         <script type="text/javascript" src="/js/activity/jquery-1.8.2.min.js"></script>
         <div class="box">
-            <img class="bg hosimg" src="../../images/hospital/img/mei-bg.jpg" alt="背景" draggable="false">
+            <img class="bg hosimg" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-imgmei-bg.jpg" alt="背景" draggable="false">
 
             <div class="point">
                 <div class="left"><span class="hosname">上海艺星医疗美容医院</span>
                     <div>
-                        <img src="../../images/hospital/img/add_01.png" class="add-icon"/>
+                        <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-imgadd_01.png" class="add-icon"/>
                         <span class="hosaddress">地址：上海市长宁区虹桥路1165号</span>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
         </div>
         <div class="boxs-icon">
             <div class="boxs-fix">
-                <img src="../../images/hospital/img/mei-icon1.png" alt="icon" draggable="false">
+                <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-imgmei-icon1.png" alt="icon" draggable="false">
 
                 <div class="boxs-text">项目 | <span class="total">300</span></div>
             </div>

@@ -191,24 +191,24 @@ body {
   </tr>
 </table>
 
-<img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="3">
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="3">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td class="down_line"></td>
   </tr>
 </table>
-<img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="5">
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="5">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
   <tr>
-    <td align="center" valign="middle" class="down_line"><img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="8">
+    <td align="center" valign="middle" class="down_line"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="8">
 <table width="97%" border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF">
       <tr>
-        <td width="20" valign="middle"><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_26.png" width="20"></td>
+        <td width="20" valign="middle"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_26.png" width="20"></td>
         <td align="left" valign="middle" class="title"><span class="STYLE1">精品推荐</span></td>
-        <td width="53" align="right" valign="middle"><img style="visibility: hidden" src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_29.png" width="53" border="0"></td>
+        <td width="53" align="right" valign="middle"><img style="visibility: hidden" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_29.png" width="53" border="0"></td>
       </tr>
     </table>
-<img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="5"> </td>
+<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="5"> </td>
   </tr>
 </table>
 
@@ -216,20 +216,20 @@ body {
 <a href="product:${product.id }-${product.name}" style="text-decoration:none;">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
   <tr>
-    <td align="center" valign="bottom" class="down_line"><img src="${pageContext.request.contextPath}/images/app/home/1px.png" width="1" height="8"> <br>
+    <td align="center" valign="bottom" class="down_line"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1" height="8"> <br>
     <img src="${product.img }" width="96%"></td>
   </tr>
   <tr>
     <td height="60" align="center" valign="middle" class="down_line"><table width="96%" border="0" cellspacing="0" cellpadding="3">
       <tr>
         <td valign="bottom" class="name">${product.name }</td>
-        <td align="right" valign="bottom"><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_37.png" width="9">${product.city }</td>
-        <td width="20" rowspan="2" align="right" class="left_line"><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_34.png" width="25"></td>
+        <td align="right" valign="bottom"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_37.png" width="9">${product.city }</td>
+        <td width="20" rowspan="2" align="right" class="left_line"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_34.png" width="25"></td>
       </tr>
       <tr>
         <td valign="middle"><table width="0" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top"><img src="${pageContext.request.contextPath}/images/app/home/mfq_qqqindex_41.png" width="18"></td>
+            <td valign="top"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_41.png" width="18"></td>
             <td valign="bottom"><span class="pri_s">￥</span><span class="STYLE3">
             <span class="pri_l"><fmt:formatNumber  value="${product.price }" pattern="###,###"/></span>
             </span><span class="pri_s">.00 </span><del>原价￥<fmt:formatNumber  value="${product.marketPrice }" pattern="###,###"/>.00</del></td>
