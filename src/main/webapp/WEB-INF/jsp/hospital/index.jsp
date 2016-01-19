@@ -98,8 +98,9 @@
         padding-right: .6rem;
     }
 </style>
-<a href="#">
+
     <div class="boxs">
+        <a href="#" class="links">
         <script type="text/javascript" src="/js/activity/jquery-1.8.2.min.js"></script>
         <div class="box">
             <img class="bg hosimg" src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-imgmei-bg.jpg" alt="背景" draggable="false">
@@ -120,8 +121,9 @@
                 <div class="boxs-text">项目 | <span class="total">300</span></div>
             </div>
         </div>
+        </a>
     </div>
-</a>
+
 
 </body>
 </html>
@@ -140,7 +142,8 @@
             $box.find(".hosname").html(json[i].name);
             $box.find(".hosaddress").html(json[i].address.substr(0, 15) + '...');
             $box.find(".total").html(json[i].total);
-
+            var url = "/hospital/"+json[i].id;
+            $box.find(".links").attr("href", url);
             $box.show();
             $("body").append($box);
         }
