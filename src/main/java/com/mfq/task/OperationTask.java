@@ -35,31 +35,36 @@ public class OperationTask extends DefaultTask{
 
     @Override
     public String getTaskName() {
-        return "OpeationTask";
+        return "OperationTask";
     }
 
     //可能这一步需要做的比较多,所以需要防止并发出现.(其实并发也没事)
     @Override
     public synchronized void doTask() throws Exception {
+        logger.info("operation_task begin.....");
         List<OperationRecord> proOperation = UserOperationUtil.getProOperation();
+        logger.info("operation_task proOperation begin.....");
         if(CollectionUtils.isNotEmpty(proOperation)){
             for (OperationRecord record : proOperation) {
                 recordMapper.insertSelective(record);
             }
         }
+        logger.info("operation_task typeOperation begin.....");
         List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
         if(CollectionUtils.isNotEmpty(proOperation)){
             for (OperationRecord record : typeOperation) {
                 recordMapper.insertSelective(record);
             }
         }
-
+        logger.info("operation_task searchOperation begin.....");
         List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
         if(CollectionUtils.isNotEmpty(proOperation)){
             for (OperationRecord record : searchOperation) {
                 recordMapper.insertSelective(record);
             }
         }
+        logger.info("operation_task perfect end.....");
+
     }
 
     public static void main(String[] args) {

@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.mfq.dataservice.context.SpringWrapper;
 import com.mfq.service.OrderCloseService;
 import com.mfq.task.base.DefaultTask;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class OrderCloseTask extends DefaultTask {
     
@@ -19,7 +20,7 @@ public class OrderCloseTask extends DefaultTask {
     @Override
     public void doTask() throws Exception {
     	logger.info("task  start....");
-        OrderCloseService service = (OrderCloseService) SpringWrapper
+        OrderCloseService service = (OrderCloseService) new ClassPathXmlApplicationContext("spring/spring")
                 .getBean("OrderCloseService");
         service.start();
     }
