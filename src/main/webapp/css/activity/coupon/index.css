@@ -1,0 +1,147 @@
+*{
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+html,body{
+	width: 100%;
+	height:100%;
+	font-family: "微软雅黑";
+}
+.body{
+	width:100%;
+	height:100%;
+	background:url(/images/activity/coupon/beijing.png) no-repeat bottom;
+	background-size: cover;
+
+}
+
+.body-top{
+	width:14rem;
+	height:14rem;
+	margin:0 auto;
+	padding-top:8rem;
+}
+
+.phone{
+	width:1.5rem;
+	height: 1.5rem;
+	background:url(/images/activity/coupon/手机号.png) no-repeat top center;
+	background-size: cover;
+	float:left;
+	margin-bottom: 1rem;
+
+}
+.password{
+	background: url(/images/activity/coupon/密码.png) no-repeat top center;
+	background-size: cover;
+}
+.input-phone,.input-check{
+	border:none;
+	width:12rem;
+	height: 1.5rem;
+	float: left;
+	margin-left:0.5rem;
+	padding-left: 0.5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background: url(/images/activity/coupon/input-password.png) no-repeat bottom center;
+	background-size:contain;
+	font-size: 0.5rem;
+	margin-bottom: 1rem;
+
+}
+.input-check{
+	width:7.5rem;
+}
+.check-num{
+	width:1.5rem;
+	height: 1.5rem;
+	background:url(/images/activity/coupon/验证.png) no-repeat top center;
+	background-size: cover;
+	float:left;
+}
+.have{
+	height: 1.5rem;
+	line-height: 1.5rem;
+	float: left;
+	border-radius: 0.2rem;
+	margin-left:0.2rem;
+	font-size: 0.5rem;
+	color:#fff;
+	padding:0 0.1rem;
+	background:#454579;
+	margin-bottom: 1rem;
+	border:none;
+	width:4.3rem;
+}
+
+.yaoqing{
+	clear:both;
+}
+
+.yaoqing input{
+	width:14rem;
+	margin:0;
+	text-align: center;
+}
+.yaoqing div{
+	text-align: center;
+	color:#454579;
+	font-size:0.5rem;
+	letter-spacing: 0.1rem;
+	margin-top: 10px;
+}
+
+.foot{
+	width: 16rem;
+	margin:0 auto;
+	text-align: center;
+}
+.zhuce{
+	width:15rem;
+	height: 2rem;
+	background:#454579;
+	text-align: center;
+	color:#fff;
+	border-radius: 5rem;
+	border:none;
+	font-size: 1rem;
+}
+
+label.radio {
+	-background:url(/images/activity/coupon/read.png) no-repeat;
+	background-size: contain;
+	height:0.4rem;
+	width:0.4rem;
+	font-size: 0.1rem;
+	vertical-align: 0.1rem;
+	color: #454579;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #454579;
+	font-family: "微软雅黑";
+	letter-spacing: 0.1rem;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #454579;
+	font-family: "微软雅黑";
+	letter-spacing: 0.1rem;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #454579;
+	font-family: "微软雅黑";
+	letter-spacing: 0.1rem;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #454579;
+	font-family: "微软雅黑";
+	letter-spacing: 0.1rem;
+}
+

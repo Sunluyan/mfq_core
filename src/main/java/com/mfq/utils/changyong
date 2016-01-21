@@ -1,0 +1,46 @@
+
+0、ssh进入服务器
+ssh work@123.59.51.3
+
+ssh work@123.59.51.4
+
+
+1、删除原有的
+  cd ~/tomcat/webapps/ROOT/
+  rm -rf *
+
+3、上传新项目
+scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.3:~/tomcat/webapps/ROOT/
+
+scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.4:~/tomcat/webapps/ROOT/
+mfq-yqds!!!
+
+
+scp /Users/liuzhiguo1/git/mfq_admin/target/mfq-admin.war work@123.59.81.222:~/tomcat/webapps/ROOT/
+workdev123
+
+ 2、停止tomcat服务
+ps -ef|grep tomcat|grep -v grep|awk '{print $2}'|xargs kill -9
+
+4、解压jar包
+jar -vxf mfq-app.war
+
+5、启动服务
+~/tomcat/bin/startup.sh
+
+5.查看日志
+cd ~/tomcat/logs/
+tail -1000f mfq-app.log
+
+去正式数据库
+ssh work@123.59.81.222
+workdev123
+mysql -u dbmfq_w -p -h 10.10.117.231
+
+Pm5JWQ9ATBf5tfNJ
+use meifenqi;
+set names utf8;
+
+使用mybatis-generator
+java -jar mybatis-generator-core-1.3.2.jar -configfile generatorConfig.xml -overwrite
+

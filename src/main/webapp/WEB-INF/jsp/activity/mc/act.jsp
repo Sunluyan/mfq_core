@@ -9,7 +9,6 @@
 	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/activity/donghua.css">
 	<script src="${pageContext.request.contextPath}/js/activity/jquery-1.8.2.min.js"></script>
-	<script src=""></script>
 </head>
 <body>
 	<div class="container">

@@ -13,6 +13,8 @@ public class OperationRecord {
 
     private Date operationDate;
 
+    private String keyword;
+
     public Long getId() {
         return id;
     }
@@ -53,15 +55,11 @@ public class OperationRecord {
         this.operationDate = operationDate;
     }
 
-    public OperationRecord(Long id, Long uid, Integer proId, Integer typeId, Date operationDate) {
-        this.id = id;
-        this.uid = uid;
-        this.proId = proId;
-        this.typeId = typeId;
-        this.operationDate = operationDate;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public OperationRecord() {
-        super();
+    public void setKeyword(String keyword) {
+        this.keyword = keyword == null ? null : keyword.trim();
     }
 }

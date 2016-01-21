@@ -144,7 +144,7 @@ public class IndexController {
 	public String hospitalSdy(@PathVariable("hid") int hid, Model model){
 		String tpp = "error";
 		if(hid == 0){
-			// TODO: 16/1/18
+
 		}
 		tpp = "hospital_"+hid;
 

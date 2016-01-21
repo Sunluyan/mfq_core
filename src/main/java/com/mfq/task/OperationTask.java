@@ -10,8 +10,11 @@ import com.mfq.dao.ProductMapper;
 import com.mfq.dataservice.cache.IRedis;
 import com.mfq.dataservice.cache.impl.RedisCacheManipulater;
 import com.mfq.task.base.DefaultTask;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -23,7 +26,7 @@ import java.util.Map;
  */
 public class OperationTask extends DefaultTask{
 
-    private static final Logger logger = LoggerFactory.getLogger(FinanceTask.class);
+    private static final Logger logger = LoggerFactory.getLogger(OperationTask.class);
 
     public static IRedis iRedis =  new RedisCacheManipulater();
 
@@ -35,19 +38,39 @@ public class OperationTask extends DefaultTask{
         return "OpeationTask";
     }
 
+    //可能这一步需要做的比较多,所以需要防止并发出现.(其实并发也没事)
     @Override
-    public void doTask() throws Exception {
-        List<Map<String,Object>> proOperation = UserOperationUtil.getProOperation();
+    public synchronized void doTask() throws Exception {
+        List<OperationRecord> proOperation = UserOperationUtil.getProOperation();
         if(CollectionUtils.isNotEmpty(proOperation)){
-
-            for (Map<String, Object> map : proOperation) {
-                // pid count date
-                Integer pid = (int)map.get("pid");
-                //    public OperationRecord(Long id, Long uid, Integer proId, Integer typeId, Date operationDate) {
-
-
+            for (OperationRecord record : proOperation) {
+                recordMapper.insertSelective(record);
             }
         }
+        List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
+        if(CollectionUtils.isNotEmpty(proOperation)){
+            for (OperationRecord record : typeOperation) {
+                recordMapper.insertSelective(record);
+            }
+        }
+
+        List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
+        if(CollectionUtils.isNotEmpty(proOperation)){
+            for (OperationRecord record : searchOperation) {
+                recordMapper.insertSelective(record);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext ac= new ClassPathXmlApplicationContext("spring/spring.xml");
+        OperationRecordMapper mapper = ac.getBean(OperationRecordMapper.class);
+        OperationRecord record = new OperationRecord();
+        record.setKeyword("fuck you all");
+        record.setUid(2798l);
+
+        mapper.insertSelective(record);
+
     }
 
 

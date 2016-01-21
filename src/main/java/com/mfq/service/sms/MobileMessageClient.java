@@ -197,7 +197,7 @@ public class MobileMessageClient {
         return result;
     }
 
-    public static void main(String[] args) {//// TODO: 16/1/16 发送消息
+    public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         MobileMessageClient mobileMessageClient = ac.getBean(MobileMessageClient.class);
         mobileMessageClient.loadConfiguration(true);

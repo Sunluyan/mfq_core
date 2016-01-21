@@ -400,6 +400,11 @@ public class ActivityController {
                     }
                 }
                 userService.updateUserPresentCoupon(user.getUid());
+                //加一个成功分享
+                String activityName = request.getParameter("activityName");
+                if(StringUtils.isNotBlank(activityName)){
+                    activityService.addResultCount(activityName);
+                }
                 return JsonUtil.toJson(0,"注册成功",null);
 
             }else if(code == 1001){
@@ -483,16 +488,49 @@ public class ActivityController {
         return ret;
     }
 
+    /**
+     * 姓名测试
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("/testname")
     public ModelAndView nameTest(HttpServletRequest request,HttpServletResponse response){
         Map<String, Object> model = new HashMap<String, Object>();
+        activityService.addOpenCount("testname");
         return new ModelAndView("/activity/testname/nametest", model);
     }
 
-    @RequestMapping("/addOperation")
-    public @ResponseBody String addOperation(HttpServletRequest request,HttpServletResponse response){
+    @RequestMapping("/coupon")
+    public ModelAndView coupon(){
+        Map<String, Object> model = new HashMap<String, Object>();
+        activityService.addOpenCount("coupon");
+        return new ModelAndView("/activity/coupon/index", model);
+    }
 
-        return null;
+
+
+    /**
+     * 添加活动的被分享次数
+     * @param activityName
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = {"/addShareCount/{activityName}","/addShareCount/{activityName}"})
+    public void addShareCount(@PathVariable String activityName, HttpServletRequest request,HttpServletResponse response){
+        activityService.addShareCount(activityName);
+    }
+
+
+    /**
+     * 添加活动的预期结果次数
+     * @param activityName
+     * @param request
+     * @param response
+     */
+    @RequestMapping(value = {"/addResultCount/{activityName}","/addResultCount/{activityName}"})
+    public void addResultCount(@PathVariable String activityName, HttpServletRequest request,HttpServletResponse response){
+        activityService.addResultCount(activityName);
     }
 
 

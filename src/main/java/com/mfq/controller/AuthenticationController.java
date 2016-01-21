@@ -156,6 +156,7 @@ public class AuthenticationController {
             
             ret = userQuotaService.saveStudentInfo(uid, student_id, school, school_location, grade, school_level, faculty,
             		speciality, scholastic_years);
+
         } catch (Exception e) {
             logger.error("Exception InterView apply!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);

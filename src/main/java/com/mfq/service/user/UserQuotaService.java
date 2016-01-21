@@ -392,7 +392,7 @@ public class UserQuotaService {
         String type = mobile_type;
         Map<String,Object> fraud = fraudApiInvoker.fraudCertify(realname, idCard, account_email, account_phone, ip_address, blackbox, type);
 		if(fraud !=null && fraud.size()>0 && fraud.get("decision").toString().toLowerCase().equals("reject")){
-			logger.info("tong dui {}",fraud);
+			logger.info("tong dun {}",fraud);
         	return JsonUtil.toJson(ErrorCodes.FRAUD_ERROR, fraud.get("msg").toString(), null);
         }
         //同盾验证结束

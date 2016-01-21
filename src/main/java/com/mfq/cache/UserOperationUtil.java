@@ -1,5 +1,6 @@
 package com.mfq.cache;
 
+import com.mfq.bean.OperationRecord;
 import com.mfq.dataservice.cache.IRedis;
 import com.mfq.dataservice.cache.impl.RedisCacheManipulater;
 import org.slf4j.Logger;
@@ -13,18 +14,19 @@ import java.util.*;
  * Created by liuzhiguo1 on 16/1/14.
  */
 
+@Component
 public class UserOperationUtil {
 
     public static final Logger logger = LoggerFactory.getLogger(UserOperationUtil.class);
 
     public static IRedis iRedis =  new RedisCacheManipulater();
 
-    public static List<Map<String,Object>> typeOperation = new ArrayList<>();
+    public static List<OperationRecord> typeOperation = new ArrayList<>();
 
-    public static List<Map<String,Object>> proOperation = new ArrayList<>();
+    public static List<OperationRecord> proOperation = new ArrayList<>();
 
-    //openCount 里的结构是 [{pid12:2},{typeId21:43}],键为产品或类别编号,值是点击次数
-    public static Map<String,Integer> openCount = new HashMap<>();
+    public static List<OperationRecord> searchOperation = new ArrayList<>();
+
 
     static{
         if(iRedis.get("typeOperation") != null){
@@ -38,6 +40,12 @@ public class UserOperationUtil {
         }else{
             iRedis.set("proOperation",Integer.MAX_VALUE,proOperation);
         }
+
+        if(iRedis.get("searchOperation") != null){
+            typeOperation = iRedis.get("searchOperation");
+        }else{
+            iRedis.set("searchOperation",Integer.MAX_VALUE,searchOperation);
+        }
     }
 
     /**
@@ -45,11 +53,11 @@ public class UserOperationUtil {
      * @param uid
      */
     public static void setType(long uid , int typeId){
-        Map<String,Object> map = new HashMap<>();
-        map.put("uid",uid);
-        map.put("typeId",typeId);
-        map.put("date",new Date());
-        typeOperation.add(map);
+        OperationRecord operationRecord = new OperationRecord();
+        operationRecord.setUid(uid);
+        operationRecord.setTypeId(typeId);
+        operationRecord.setOperationDate(new Date());
+        typeOperation.add(operationRecord);
         iRedis.set("typeOperation",Integer.MAX_VALUE,typeOperation);
     }
     /**
@@ -58,47 +66,34 @@ public class UserOperationUtil {
      * @param pid
      */
     public static void setProduct(long uid , int pid){
-        Map<String,Object> map = new HashMap<>();
-        map.put("uid",uid);
-        map.put("pid",pid);
-        map.put("date",new Date());
-        proOperation.add(map);
+        OperationRecord operationRecord = new OperationRecord();
+        operationRecord.setUid(uid);
+        operationRecord.setProId(pid);
+        operationRecord.setOperationDate(new Date());
+        proOperation.add(operationRecord);
         iRedis.set("proOperation",Integer.MAX_VALUE,proOperation);
     }
 
-    public static List<Map<String,Object>> getTypeOperation(){
+    public static void setKeyword(long uid ,String keyword){
+        OperationRecord operationRecord = new OperationRecord();
+        operationRecord.setUid(uid);
+        operationRecord.setKeyword(keyword);
+        operationRecord.setOperationDate(new Date());
+        searchOperation.add(operationRecord);
+        iRedis.set("proOperation",Integer.MAX_VALUE,searchOperation);
+    }
+
+    public static List<OperationRecord> getTypeOperation(){
         iRedis.delete("typeOperation");
         return typeOperation;
     }
-    public static List<Map<String,Object>> getProOperation(){
+    public static List<OperationRecord> getProOperation(){
         iRedis.delete("proOperation");
         return proOperation;
     }
-
-    /**
-     * 添加产品或分类的打开次数,
-     * @param proOrType 类型
-     * @param id    pid || typeId
-     */
-    public static void addOpenCount(String proOrType,Integer id){
-        Map<String,Integer>  map = new HashMap<>();
-        if(proOrType.equals("pro")){
-            map.put("pid"+id,map.get("pid"+id) == null?0:map.get("pid"+id)+1);
-        }else if(proOrType.equals("type")){
-            map.put("typeId"+id,map.get("typeId"+id) == null?0:map.get("typeId"+id)+1);
-        }else{
-            //Do Nothing
-        }
+    public static List<OperationRecord> getSearchOperation(){
+        iRedis.delete("proOperation");
+        return searchOperation;
     }
-
-    public static Map<String,Integer> getOpenCount(){
-        //拿到之后记得赶紧把openCount清空
-        Map<String,Integer> result = new HashMap<>();
-        result.putAll(openCount);
-        openCount.clear();
-        return result;
-    }
-
-
 
 }

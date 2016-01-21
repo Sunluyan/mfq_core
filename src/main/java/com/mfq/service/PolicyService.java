@@ -394,7 +394,6 @@ public class PolicyService {
 		try {
 			client.insure("mn201512231114554417000d3");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

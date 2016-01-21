@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mfq.dao.OperationRecordMapper">
-  <resultMap id="BaseResultMap" type="com.mfq.bean.OperationRecord">
+<mapper namespace="com.mfq.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.mfq.bean.Device">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="uid" jdbcType="BIGINT" property="uid" />
-    <result column="pro_id" jdbcType="INTEGER" property="proId" />
-    <result column="type_id" jdbcType="INTEGER" property="typeId" />
-    <result column="operation_date" jdbcType="TIMESTAMP" property="operationDate" />
-    <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="first_login_time" jdbcType="TIMESTAMP" property="firstLoginTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, uid, pro_id, type_id, operation_date, keyword
+    id, uuid, imei, last_login_time, first_login_time
   </sql>
-  <select id="selectByExample" parameterType="com.mfq.bean.OperationRecordExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.mfq.bean.DeviceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from operation_record
+    from device
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,96 +86,85 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from operation_record
+    from device
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from operation_record
+    delete from device
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mfq.bean.OperationRecordExample">
-    delete from operation_record
+  <delete id="deleteByExample" parameterType="com.mfq.bean.DeviceExample">
+    delete from device
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mfq.bean.OperationRecord">
-    insert into operation_record (id, uid, pro_id, 
-      type_id, operation_date, keyword
-      )
-    values (#{id,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{proId,jdbcType=INTEGER}, 
-      #{typeId,jdbcType=INTEGER}, #{operationDate,jdbcType=TIMESTAMP}, #{keyword,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.mfq.bean.Device">
+    insert into device (id, uuid, imei, 
+      last_login_time, first_login_time)
+    values (#{id,jdbcType=BIGINT}, #{uuid,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{firstLoginTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.mfq.bean.OperationRecord">
-    insert into operation_record
+  <insert id="insertSelective" parameterType="com.mfq.bean.Device">
+    insert into device
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="uid != null">
-        uid,
+      <if test="uuid != null">
+        uuid,
       </if>
-      <if test="proId != null">
-        pro_id,
+      <if test="imei != null">
+        imei,
       </if>
-      <if test="typeId != null">
-        type_id,
+      <if test="lastLoginTime != null">
+        last_login_time,
       </if>
-      <if test="operationDate != null">
-        operation_date,
-      </if>
-      <if test="keyword != null">
-        keyword,
+      <if test="firstLoginTime != null">
+        first_login_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="uid != null">
-        #{uid,jdbcType=BIGINT},
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
       </if>
-      <if test="proId != null">
-        #{proId,jdbcType=INTEGER},
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
       </if>
-      <if test="typeId != null">
-        #{typeId,jdbcType=INTEGER},
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="operationDate != null">
-        #{operationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="keyword != null">
-        #{keyword,jdbcType=VARCHAR},
+      <if test="firstLoginTime != null">
+        #{firstLoginTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mfq.bean.OperationRecordExample" resultType="java.lang.Integer">
-    select count(*) from operation_record
+  <select id="countByExample" parameterType="com.mfq.bean.DeviceExample" resultType="java.lang.Integer">
+    select count(*) from device
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update operation_record
+    update device
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.uid != null">
-        uid = #{record.uid,jdbcType=BIGINT},
+      <if test="record.uuid != null">
+        uuid = #{record.uuid,jdbcType=VARCHAR},
       </if>
-      <if test="record.proId != null">
-        pro_id = #{record.proId,jdbcType=INTEGER},
+      <if test="record.imei != null">
+        imei = #{record.imei,jdbcType=VARCHAR},
       </if>
-      <if test="record.typeId != null">
-        type_id = #{record.typeId,jdbcType=INTEGER},
+      <if test="record.lastLoginTime != null">
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.operationDate != null">
-        operation_date = #{record.operationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.keyword != null">
-        keyword = #{record.keyword,jdbcType=VARCHAR},
+      <if test="record.firstLoginTime != null">
+        first_login_time = #{record.firstLoginTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,45 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update operation_record
+    update device
     set id = #{record.id,jdbcType=BIGINT},
-      uid = #{record.uid,jdbcType=BIGINT},
-      pro_id = #{record.proId,jdbcType=INTEGER},
-      type_id = #{record.typeId,jdbcType=INTEGER},
-      operation_date = #{record.operationDate,jdbcType=TIMESTAMP},
-      keyword = #{record.keyword,jdbcType=VARCHAR}
+      uuid = #{record.uuid,jdbcType=VARCHAR},
+      imei = #{record.imei,jdbcType=VARCHAR},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      first_login_time = #{record.firstLoginTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.OperationRecord">
-    update operation_record
+  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.Device">
+    update device
     <set>
-      <if test="uid != null">
-        uid = #{uid,jdbcType=BIGINT},
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
       </if>
-      <if test="proId != null">
-        pro_id = #{proId,jdbcType=INTEGER},
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
       </if>
-      <if test="typeId != null">
-        type_id = #{typeId,jdbcType=INTEGER},
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="operationDate != null">
-        operation_date = #{operationDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="keyword != null">
-        keyword = #{keyword,jdbcType=VARCHAR},
+      <if test="firstLoginTime != null">
+        first_login_time = #{firstLoginTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.OperationRecord">
-    update operation_record
-    set uid = #{uid,jdbcType=BIGINT},
-      pro_id = #{proId,jdbcType=INTEGER},
-      type_id = #{typeId,jdbcType=INTEGER},
-      operation_date = #{operationDate,jdbcType=TIMESTAMP},
-      keyword = #{keyword,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.Device">
+    update device
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      first_login_time = #{firstLoginTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 

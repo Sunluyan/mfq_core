@@ -7,7 +7,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.helper.SignHelper;
+import com.mfq.service.AppService;
 import com.mfq.utils.Config;
+import com.mfq.utils.ListSortUtil;
+import org.apache.commons.collections.ListUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +39,8 @@ public class AppController {
     HospitalService hopitalService;
     @Resource
     CityMapper cityMapper;
+    @Resource
+    AppService appService;
 
     private static Integer android_version= Config.getInt("android_version", "0");
     private static String appAndroidUrl = Config.getItem("android_download_url");
@@ -80,7 +86,7 @@ public class AppController {
     		city = cityMapper.findById(h.getCityId());
     		clist.add(city);
     	}
-    	qcf(clist);
+    	ListSortUtil.qcf(clist);
     	
     	return JsonUtil.successResultJson(clist);
     }
@@ -113,11 +119,6 @@ public class AppController {
     public @ResponseBody String hotWord() throws Exception {
         String ret = "";
         List<String> wordsData = Lists.newArrayList();
-//        words.add("祛眼袋");
-//        words.add("开眼角");
-//        words.add("隆鼻");
-//        words.add("瘦脸针");
-//        words.add("玻尿酸");
 
         String wordItem = Config.getItem("hot_words");
         String [] words = wordItem.split(",");
@@ -127,16 +128,33 @@ public class AppController {
         ret = JsonUtil.successResultJson(words);
         return ret;
     }
-    
-    private List<City> qcf(List<City> list){
-    	
-    	for (int i = 0; i < list.size() - 1; i++) {                             //循环遍历集体中的元素
-            for (int j = list.size() - 1; j > i; j--) {                         //这里非常巧妙，这里是倒序的是比较
-                 if (list.get(j).getId()==list.get(i).getId()) {
-                 list.remove(j);
-                 }
-           }
-       }
-    return list;
-   }
+
+    /**
+     * 添加设备(app启动时)
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value={"/add/mobile/","/add/mobile"},method = {RequestMethod.GET,RequestMethod.POST},produces = "application/json;charset=utf-8")
+    public void addMotherFuckerPhone(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        Map<String,Object> params = JsonUtil.readMapFromReq(request);
+        if (!SignHelper.validateSign(params)) { // 签名验证失败
+            logger.error("sign签名验证失败");
+            return;
+        }
+        if(params.get("uuid")==null && params.get("imei")==null){
+            logger.error("参数缺失");
+            return;
+        }
+        String uuid = params.get("uuid")==null?"":params.get("uuid").toString();//iOS
+        String imei = params.get("imei")==null?"":params.get("imei").toString();//Android
+        if(StringUtils.isNotBlank(uuid)){
+            appService.addIOS(uuid);
+        }else if(StringUtils.isNotBlank(imei)){
+            appService.addAndroid(imei);
+        }
+        return;
+    }
+
+
 }

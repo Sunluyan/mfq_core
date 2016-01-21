@@ -682,6 +682,12 @@ public class WeChatController {
                 logger.warn("SEND_VCODE_RESULT:{}", ret);
                 return ret;
             }
+            if(mobile == null || mobile.length()<11 ){
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "手机号不正确",
+                        null);
+                logger.warn("SEND_VCODE_RESULT:{}", ret);
+                return ret;
+            }
             Vcode vcode = vcodeService.queryVcode(mobile);
             if (vcode.getId() > 0 && DateUtil.getDayBetweenD(new Date(),
                     vcode.getResendAt()) > 0) {

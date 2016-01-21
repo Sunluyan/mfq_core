@@ -116,6 +116,13 @@
 		<mapper resource="mybatis/mapping/UsersAuthPicMapper.xml"/>
 		<mapper resource="mybatis/mapping/PresentalMapper.xml"/>
 		<mapper resource="mybatis/mapping/OrderFreedomMapper.xml"/>
+		<mapper resource="mybatis/mapping/DeviceMapper.xml"/>
+		<mapper resource="mybatis/mapping/InviteMoneyMapper.xml"/>
+		<mapper resource="mybatis/mapping/InviteRecordMapper.xml"/>
+		<mapper resource="mybatis/mapping/OperationRecordMapper.xml"/>
+		<mapper resource="mybatis/mapping/ActivityRecordMapper.xml"/>
+
+
 	</mappers>
 
 </configuration>

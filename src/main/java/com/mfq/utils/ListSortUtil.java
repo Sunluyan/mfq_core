@@ -1,5 +1,7 @@
 package com.mfq.utils;
 
+import com.mfq.bean.area.City;
+
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -87,6 +89,17 @@ public class ListSortUtil<T> {
 		Object[] obj = c.toArray();
 		Arrays.sort(obj);
 		return (BigDecimal)obj[0];
+	}
+
+	public static List<City> qcf(List<City> list){
+		for (int i = 0; i < list.size() - 1; i++) {                             //循环遍历集体中的元素
+			for (int j = list.size() - 1; j > i; j--) {                         //这里非常巧妙，这里是倒序的是比较
+				if (list.get(j).getId()==list.get(i).getId()) {
+					list.remove(j);
+				}
+			}
+		}
+		return list;
 	}
 	
 	
