@@ -50,22 +50,29 @@ public class OperationTask extends DefaultTask{
             logger.info("operation_task recordMapper : {}",recordMapper);
             if(CollectionUtils.isNotEmpty(proOperation)){
                 for (OperationRecord record : proOperation) {
+                    logger.info(record.toString());
                     recordMapper.insertSelective(record);
                 }
+                proOperation.clear();
             }
             logger.info("operation_task typeOperation begin.....");
             List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
-            if(CollectionUtils.isNotEmpty(proOperation)){
+            if(CollectionUtils.isNotEmpty(typeOperation)){
                 for (OperationRecord record : typeOperation) {
+                    logger.info(record.toString());
                     recordMapper.insertSelective(record);
                 }
+                typeOperation.clear();
             }
+
             logger.info("operation_task searchOperation begin.....");
             List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
-            if(CollectionUtils.isNotEmpty(proOperation)){
+            if(CollectionUtils.isNotEmpty(searchOperation)){
                 for (OperationRecord record : searchOperation) {
+                    logger.info(record.toString());
                     recordMapper.insertSelective(record);
                 }
+                searchOperation.clear();
             }
         }catch(Exception e){
             logger.error("operation_task" +e+"\t"+e.getMessage()+"\t"+e.getCause());

@@ -119,6 +119,8 @@ public class ProductController {
 
             List<ProductListItem2App> list = productService.findProductByKeyword(keyword,page);
             ret = JsonUtil.successResultJson(list);
+            //添加一条用户行为记录
+            UserOperationUtil.setKeyword(UserIdHolder.getLongUid(),keyword);
         }catch(Exception e){
             logger.error("Exception ProductInfo Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);

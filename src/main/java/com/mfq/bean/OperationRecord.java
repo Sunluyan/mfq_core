@@ -63,7 +63,20 @@ public class OperationRecord implements Serializable{
         return keyword;
     }
 
-    public void setKeyword(String keyword) {
+    public void setKeyword(String keyword)
+    {
         this.keyword = keyword == null ? null : keyword.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "OperationRecord{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", proId=" + proId +
+                ", typeId=" + typeId +
+                ", operationDate=" + operationDate +
+                ", keyword='" + keyword + '\'' +
+                '}';
     }
 }

@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.cache.UserOperationUtil;
+import com.mfq.dataservice.context.UserIdHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -50,6 +52,9 @@ public class ClassifyController {
                 map.put("sm", sm);
                 ret = JsonUtil.successResultJson(map);
             }
+            //加入一条用户的行为记录
+            UserOperationUtil.setType(UserIdHolder.getLongUid(),(int)rootId);  //添加浏览数
+
             logger.info("Product_Info_Ret is:{}", ret);
         } catch (Exception e) {
             logger.error("Exception ProductInfo Process!", e);
