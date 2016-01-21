@@ -29,8 +29,8 @@ public class ExecuteTaskService {
                 ORDER_WAITPAY_TIME, TimeUnit.MINUTES);
 
         //用户操作定时任务
-        scheduledExecutorService.scheduleAtFixedRate(new OperationTask(),1,
-                1,TimeUnit.MINUTES);
+        scheduledExecutorService.scheduleAtFixedRate(new OperationTask(),5,
+                5,TimeUnit.MINUTES);
 
     }
 }

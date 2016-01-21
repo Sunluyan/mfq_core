@@ -47,7 +47,6 @@ public class OperationTask extends DefaultTask{
         logger.info("operation_task proOperation begin.....");
         try{
             logger.info("operation_task proOperation : {}",proOperation);
-            logger.info("operation_task recordMapper : {}",recordMapper);
             if(CollectionUtils.isNotEmpty(proOperation)){
                 for (OperationRecord record : proOperation) {
                     logger.info(record.toString());
@@ -57,6 +56,7 @@ public class OperationTask extends DefaultTask{
             }
             logger.info("operation_task typeOperation begin.....");
             List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
+            logger.info("operation_task typeOperation : {}",typeOperation);
             if(CollectionUtils.isNotEmpty(typeOperation)){
                 for (OperationRecord record : typeOperation) {
                     logger.info(record.toString());
@@ -67,6 +67,7 @@ public class OperationTask extends DefaultTask{
 
             logger.info("operation_task searchOperation begin.....");
             List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
+            logger.info("operation_task searchOperation : {}",searchOperation);
             if(CollectionUtils.isNotEmpty(searchOperation)){
                 for (OperationRecord record : searchOperation) {
                     logger.info(record.toString());

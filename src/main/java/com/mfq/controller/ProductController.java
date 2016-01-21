@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.mfq.cache.UserOperationUtil;
 import com.mfq.dataservice.context.UserIdHolder;
 import org.apache.commons.lang.StringUtils;
@@ -78,6 +79,10 @@ public class ProductController {
             }
             List<ProductListItem2App> data = productService.findByClass(city,
                     category, sort, type);
+            if(CollectionUtils.isEmpty(data)){
+                ret = JsonUtil.toJson(9999,"抱歉,您所在的城市暂时没有该项目",null);
+                return ret;
+            }
             ret = JsonUtil.successResultJson(data);
             logger.info("Product_Info_Ret is:{}", ret);
         } catch (Exception e) {
