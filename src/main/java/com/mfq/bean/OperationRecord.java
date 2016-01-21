@@ -1,8 +1,12 @@
 package com.mfq.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OperationRecord {
+public class OperationRecord implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     private Long id;
 
     private Long uid;
