@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -24,14 +25,13 @@ import java.util.Map;
 /**
  * Created by liuzhiguo1 on 16/1/15.
  */
+@Component
 public class OperationTask extends DefaultTask{
 
     private static final Logger logger = LoggerFactory.getLogger(OperationTask.class);
 
     public static IRedis iRedis =  new RedisCacheManipulater();
 
-    @Resource
-    OperationRecordMapper recordMapper;
 
     @Override
     public String getTaskName() {
@@ -42,27 +42,35 @@ public class OperationTask extends DefaultTask{
     @Override
     public synchronized void doTask() throws Exception {
         logger.info("operation_task begin.....");
+        OperationRecordMapper recordMapper = new ClassPathXmlApplicationContext("spring/spring.xml").getBean(OperationRecordMapper.class);
         List<OperationRecord> proOperation = UserOperationUtil.getProOperation();
         logger.info("operation_task proOperation begin.....");
-        if(CollectionUtils.isNotEmpty(proOperation)){
-            for (OperationRecord record : proOperation) {
-                recordMapper.insertSelective(record);
+        try{
+            logger.info("operation_task proOperation : {}",proOperation);
+            logger.info("operation_task recordMapper : {}",recordMapper);
+            if(CollectionUtils.isNotEmpty(proOperation)){
+                for (OperationRecord record : proOperation) {
+                    recordMapper.insertSelective(record);
+                }
             }
-        }
-        logger.info("operation_task typeOperation begin.....");
-        List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
-        if(CollectionUtils.isNotEmpty(proOperation)){
-            for (OperationRecord record : typeOperation) {
-                recordMapper.insertSelective(record);
+            logger.info("operation_task typeOperation begin.....");
+            List<OperationRecord> typeOperation = UserOperationUtil.getTypeOperation();
+            if(CollectionUtils.isNotEmpty(proOperation)){
+                for (OperationRecord record : typeOperation) {
+                    recordMapper.insertSelective(record);
+                }
             }
-        }
-        logger.info("operation_task searchOperation begin.....");
-        List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
-        if(CollectionUtils.isNotEmpty(proOperation)){
-            for (OperationRecord record : searchOperation) {
-                recordMapper.insertSelective(record);
+            logger.info("operation_task searchOperation begin.....");
+            List<OperationRecord> searchOperation = UserOperationUtil.getSearchOperation();
+            if(CollectionUtils.isNotEmpty(proOperation)){
+                for (OperationRecord record : searchOperation) {
+                    recordMapper.insertSelective(record);
+                }
             }
+        }catch(Exception e){
+            logger.error("operation_task" +e+"\t"+e.getMessage()+"\t"+e.getCause());
         }
+
         logger.info("operation_task perfect end.....");
 
     }

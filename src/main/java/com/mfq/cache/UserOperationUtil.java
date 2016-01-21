@@ -80,7 +80,7 @@ public class UserOperationUtil {
         operationRecord.setKeyword(keyword);
         operationRecord.setOperationDate(new Date());
         searchOperation.add(operationRecord);
-        iRedis.set("proOperation",Integer.MAX_VALUE,searchOperation);
+        iRedis.set("searchOperation",Integer.MAX_VALUE,searchOperation);
     }
 
     public static List<OperationRecord> getTypeOperation(){
@@ -92,7 +92,7 @@ public class UserOperationUtil {
         return proOperation;
     }
     public static List<OperationRecord> getSearchOperation(){
-        iRedis.delete("proOperation");
+        iRedis.delete("searchOperation");
         return searchOperation;
     }
 
