@@ -55,7 +55,7 @@
         from hospital
         where 1=1
         <foreach collection="keywords" item="keyword">
-            and name like CONCAT(CONCAT('%', #{keyword}), '%')
+            and name like CONCAT('%', #{keyword}, '%')
         </foreach>
 
     </select>

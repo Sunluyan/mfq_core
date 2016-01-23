@@ -42,6 +42,16 @@
 		from order_info where uid=#{uid}
 	</select>
 
+	<select id="findByUidAndStatus" resultType="OrderInfo">
+		select
+		<include refid="selectsql" />
+		from order_info where uid=#{uid}
+		<if test="status != null and status != 0">
+			and status >= #{status}
+		</if>
+
+	</select>
+
 	<select id="findOrdersByUidAndStatus" resultType="OrderInfo">
 		select
 		<include refid="selectsql" />

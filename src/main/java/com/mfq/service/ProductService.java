@@ -189,7 +189,7 @@ public class ProductService {
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         ProductService service = ac.getBean(ProductService.class);
-        service.findProductByKeyword("北京",1);
+        service.findProductByKeyword("水",1);
     }
 
 
