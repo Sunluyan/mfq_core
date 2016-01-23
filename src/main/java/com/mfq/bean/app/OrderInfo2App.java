@@ -273,6 +273,22 @@ public class OrderInfo2App implements Serializable{
 	}
 
 
+	public BigDecimal getRefund_pay() {
+		return refund_pay;
+	}
+
+	public void setRefund_pay(BigDecimal refund_pay) {
+		this.refund_pay = refund_pay;
+	}
+
+	public Date getRefund_time() {
+		return refund_time;
+	}
+
+	public void setRefund_time(Date refund_time) {
+		this.refund_time = refund_time;
+	}
+
 	public BigDecimal getUse_balance() {
 		if(this.use_balance==null){
 			return BigDecimal.valueOf(0);
