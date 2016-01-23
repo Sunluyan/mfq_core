@@ -179,7 +179,7 @@ public class RegisterService {
         } else {
             //插入一条邀请记录
             InviteRecord inviteRecord = new InviteRecord();
-            inviteRecord.setUid(userExtend.getUid());
+            inviteRecord.setUid(userId);
             inviteRecord.setInvitedTime(new Date());
             inviteRecord.setInvitedUid(userId);
             inviteService.insertSelective(inviteRecord);
