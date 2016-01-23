@@ -506,10 +506,10 @@ public class OrderService {
      *
      * @param uid
      */
-    public String queryOrdersByUid(long uid) throws Exception {
-        List<OrderInfo> data = mapper.findByUid(uid);
+    public String queryOrdersByUid(long uid, Integer status) throws Exception {
+        List<OrderInfo> data = mapper.findByUidAndStatus(uid, status);
         List<OrderInfo2App> appOrders = makeAppOrdersByOrderList(data);
-        List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUid(uid);
+        List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUidAndStatus(uid, status);
 
         List<OrderInfo2App> appOrdersFreedom = makeAppOrderByOrderFreedomList(orderFreedoms);
         if(appOrdersFreedom!=null && CollectionUtils.isNotEmpty(appOrdersFreedom)){
@@ -872,7 +872,8 @@ public class OrderService {
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         OrderService service = ac.getBean(OrderService.class);
-        service.createOrderFreedom(2936, BigDecimal.valueOf(9000),new Date(1452700800000l),null,0,1,"脱毛");
+//        service.createOrderFreedom(2936, BigDecimal.valueOf(9000),new Date(1452700800000l),null,0,1,"脱毛");
+        service.queryOrdersByUid(2798, 6);
     }
 
     /**

@@ -58,6 +58,8 @@ public class OrderInfo2App implements Serializable{
 	BigDecimal month_period;//分期总额
 	Integer financeState;//分期状态
 	BigDecimal need_pay;//需要在线支付的金额
+	BigDecimal refund_pay;//退款金额
+	Date refund_time;  //退款时间
 	
 	
 
@@ -106,6 +108,10 @@ public class OrderInfo2App implements Serializable{
 
 		this.need_pay = orderInfo.getPrice().subtract(orderInfo.getPeriodPay());
 		this.month_period = financeBill.getNewBalance();
+
+		// TODO: 16/1/22    更改退款 
+		this.refund_pay = BigDecimal.valueOf(0);
+		this.refund_time = new Date();
 	}
 
 	//任意单
@@ -156,6 +162,10 @@ public class OrderInfo2App implements Serializable{
 		}else{
 			this.need_pay = orderFreedom.getPrice();
 		}
+
+		// TODO: 16/1/22  更改退款
+		this.refund_pay = BigDecimal.valueOf(0);
+		this.refund_time = new Date();
 	}
 
 

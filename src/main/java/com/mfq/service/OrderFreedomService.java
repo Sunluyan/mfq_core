@@ -32,6 +32,19 @@ public class OrderFreedomService {
         return orderFreedomMapper.selectByExample(example);
     }
 
+
+    public List<OrderFreedom> selectByUidAndStatus(long uid, Integer status) {
+        OrderFreedomExample example = new OrderFreedomExample();
+
+        OrderFreedomExample.Criteria criteria = example.createCriteria();
+
+        criteria.andUidEqualTo(uid);
+        if(status != null){
+            criteria.andStatusGreaterThanOrEqualTo(status);
+        }
+        return orderFreedomMapper.selectByExample(example);
+    }
+
     public OrderFreedom selectByOrderNo(String orderNo) {
         OrderFreedomExample example = new OrderFreedomExample();
         example.or().andOrderNoEqualTo(orderNo);

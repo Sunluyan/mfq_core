@@ -30,6 +30,8 @@ public interface OrderInfoMapper {
 
     public List<OrderInfo> findByUid(@Param("uid") long uid);
 
+    public List<OrderInfo> findByUidAndStatus(@Param("uid")long uid, @Param("status")Integer status);
+
     public long updateOrderStatusSafe(@Param("id") long id,
             @Param("oldStatus") int oldStatus,
             @Param("newStatus") int newStatus);
