@@ -35,7 +35,6 @@ public class FraudApiInvoker {
      * state 状态校验结果（密码校验结果：0表示密码正确，1表示密码错误）
      * type = android || ios
      * 	
-     * @param data
      * @return 如果有问题，返回map，map中有msg(错误信息)和desicion(判断:0.null(参数不合法) 1.Reject 2.Review 3.Accept )；
      * 		   如果没有问题，返回null；
      */
@@ -260,7 +259,7 @@ public class FraudApiInvoker {
             }
             System.out.println(result);
             FraudApiResponse apiResp = JSON.parseObject(result.toString().trim(), FraudApiResponse.class);
-            if(apiResp.getFinal_decision()!=null && apiResp.getHit_rules().get(0).getName()!=null){
+            if(apiResp.getFinal_decision()!=null && apiResp.getHit_rules().get(0).getName()!=null && apiResp.getFinal_decision().equals("Reject")){
             	Map<String,Object> resultMap = new HashMap<String,Object>();
             	resultMap.put("decision", apiResp.getFinal_decision());
             	logger.debug("apiResp.getHit_rules().get(0).getName() = "+apiResp.getHit_rules().get(0).getName());

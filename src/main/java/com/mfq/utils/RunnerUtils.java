@@ -67,26 +67,26 @@ public class RunnerUtils {
             while (!executor.isShutdown()) {
                 if (log.isDebugEnabled()) {
                     if (executor != null) {
-                        log.debug("ThreadPoolExecutor activeCount={} coreSize={} maxSize={} largetsSize={} queueSize={} reminning={} completedCount={}",//
-                                executor.getActiveCount(),//
-                                executor.getCorePoolSize(),//
-                                executor.getMaximumPoolSize(),//
-                                executor.getLargestPoolSize(),//
-                                executor.getQueue().size(),//
-                                executor.getQueue().remainingCapacity(), //
-                                executor.getCompletedTaskCount()//
-                        );
+//                        log.debug("ThreadPoolExecutor activeCount={} coreSize={} maxSize={} largetsSize={} queueSize={} reminning={} completedCount={}",//
+//                                executor.getActiveCount(),//
+//                                executor.getCorePoolSize(),//
+//                                executor.getMaximumPoolSize(),//
+//                                executor.getLargestPoolSize(),//
+//                                executor.getQueue().size(),//
+//                                executor.getQueue().remainingCapacity(), //
+//                                executor.getCompletedTaskCount()//
+//                        );
                     }
                     if (scheduledExecutor != null) {
-                        log.debug("ScheduledThreadPoolExecutor activeCount={} coreSize={} maxSize={} largetsSize={} queueSize={} reminning={} completedCount={}",//
-                                scheduledExecutor.getActiveCount(),//
-                                scheduledExecutor.getCorePoolSize(),//
-                                scheduledExecutor.getMaximumPoolSize(),//
-                                scheduledExecutor.getLargestPoolSize(),//
-                                scheduledExecutor.getQueue().size(),//
-                                scheduledExecutor.getQueue().remainingCapacity(),//
-                                scheduledExecutor.getCompletedTaskCount()//
-                        );
+//                        log.debug("ScheduledThreadPoolExecutor activeCount={} coreSize={} maxSize={} largetsSize={} queueSize={} reminning={} completedCount={}",//
+//                                scheduledExecutor.getActiveCount(),//
+//                                scheduledExecutor.getCorePoolSize(),//
+//                                scheduledExecutor.getMaximumPoolSize(),//
+//                                scheduledExecutor.getLargestPoolSize(),//
+//                                scheduledExecutor.getQueue().size(),//
+//                                scheduledExecutor.getQueue().remainingCapacity(),//
+//                                scheduledExecutor.getCompletedTaskCount()//
+//                        );
                     }
                 }
                 try {

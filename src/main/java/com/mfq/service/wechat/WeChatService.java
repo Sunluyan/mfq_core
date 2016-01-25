@@ -138,7 +138,7 @@ public class WeChatService {
 	 * @param vcode 验证码
 	 * @param mobile 手机号
 	 */
-	public String regAndGiveMoney(String name, String mobile, String vcode, String type, BigDecimal amount, int wish) {
+	public String regAndGiveMoney(String name, String mobile, String vcode, String type, BigDecimal amount, int wish) throws Exception {
 		  
     	log.info("Wechat REG|{}|{}",  mobile, vcode);
     	

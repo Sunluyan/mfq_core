@@ -17,6 +17,7 @@ import com.mfq.dao.PassportMapper;
 import com.mfq.utils.CommonUtil;
 import com.mfq.utils.DateUtil;
 import com.mfq.utils.MD5Util;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PassportService {
@@ -74,7 +75,8 @@ public class PassportService {
     /**
      * 创建一个passport，此passport带有ticket以及salt等信息
      */
-    public Passport createPassport(long uid, String plainPassword) {
+    @Transactional
+    public Passport createPassport(long uid, String plainPassword) throws Exception{
         String salt = _uuid();
         String salt2 = _uuid();
         Passport passport = new Passport();

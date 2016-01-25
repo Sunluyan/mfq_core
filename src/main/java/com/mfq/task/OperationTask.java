@@ -30,15 +30,11 @@ public class OperationTask extends DefaultTask {
 
     private static final Logger logger = LoggerFactory.getLogger(OperationTask.class);
 
-    public static IRedis iRedis = new RedisCacheManipulater();
-
-
     @Override
     public String getTaskName() {
         return "OperationTask";
     }
 
-    //可能这一步需要做的比较多,所以需要防止并发出现.(其实并发也没事)
     @Override
     public synchronized void doTask() throws Exception {
         logger.info("operation_task begin.....");
@@ -56,7 +52,6 @@ public class OperationTask extends DefaultTask {
                 recordMapper.insertSelective(UserOperationUtil.searchOperation.get(0));
                 UserOperationUtil.searchOperation.remove(0);
             }
-
         } catch (Exception e) {
             logger.error("operation_task" + e + "\t" + e.getMessage() + "\t" + e.getCause());
             return;

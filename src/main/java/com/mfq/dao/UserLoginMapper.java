@@ -3,8 +3,10 @@ package com.mfq.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface UserLoginMapper {
 
     public boolean updateUsersLoginActived(@Param("uid") long uid);

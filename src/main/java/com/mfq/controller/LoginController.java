@@ -48,6 +48,7 @@ public class LoginController {
             String username = (String) params.get("username");
             String password = (String) params.get("password");
             String refer = (String) params.get("refer");
+            String blackbox = params.get("blackbox") == null ? null :params.get("blackbox").toString();
             if(StringUtils.isBlank(refer)){
                 refer = "http://" + Constants.SITE_DOMAIN + "/profile/";
             }
@@ -55,8 +56,8 @@ public class LoginController {
             if(redirect == null){
                 redirect = false;
             }
-            
-            String ret = loginService.login(request, response, username, password, refer, false,params);
+
+            String ret = loginService.login(request, response, username, password, refer, false,blackbox);
             if(redirect){
                 //提取refer
                 Map<String, ?> map = JsonUtil.getMapFromJsonStr(ret);

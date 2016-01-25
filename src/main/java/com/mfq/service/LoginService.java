@@ -67,7 +67,7 @@ public class LoginService {
 
     public String login(HttpServletRequest request,
             HttpServletResponse response, String login, String password,
-            String refer, boolean autologin,Map<String,Object> params) throws Exception {
+            String refer, boolean autologin,String blackbox) throws Exception {
         
         if (StringUtils.isBlank(password)) {
             return JsonUtil.toJson(ErrorCodes.USER_WRONG_PASS, "密码错误", null);
@@ -96,12 +96,6 @@ public class LoginService {
         
         //////////////插入同盾验证
         String ip_address = AppContext.getIp();
-        Object blackBoxNotString = params.get("blackbox");
-        String blackbox = null;
-        if(blackBoxNotString!=null){
-        	blackbox = (String)params.get("blackbox");
-    		log.debug("blackbox in RegisterService:{}",blackbox);
-        }
         String mobileType = MobileHelper.getMobileType(request);
         //////////////
         if (passport.getUid() == 0) {
@@ -193,7 +187,7 @@ public class LoginService {
 
     private String _handleLogin(User user, Passport passport, boolean autologin,
             String refer, HttpServletRequest request,
-            HttpServletResponse response) {
+            HttpServletResponse response) throws Exception{
         if (user.getStatus() == com.mfq.bean.user.Status.DELETED) {
             // 用户已经被删除
             return JsonUtil.toJson(ErrorCodes.USER_NOT_FIND, "帐号不存在",

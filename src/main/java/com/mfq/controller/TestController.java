@@ -27,7 +27,7 @@ public class TestController {
     public static void testVcodeSend(){
         String url = purl+"/vcode/send/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("mobile", "18612258336");
+        params.put("mobile", "18338751231");
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -58,20 +58,7 @@ public class TestController {
         System.out.println(resp);
     }
 
-    public static void testRegister(){
-        String url = purl+"/register/";
-        Map<String, Object> params = Maps.newHashMap();
-        params.put("email", "");
-        params.put("mobile", "15910812063");
-        params.put("password", "test123");
-        params.put("vcode", "7407");
-        params.put("role", 1);
-        String sign = SignHelper.makeSign(params);
-        params.put("sign", sign);
-        String body = JsonUtil.writeToJson(params);
-        String resp = HttpUtil.postJson(url, body, true);
-        System.out.println(resp);
-    }
+
 
     public static void testLogin(){
         String url = purl+"/login/";
@@ -627,6 +614,31 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testRegister(){
+        String url = purl+"/register/";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("mobile", "18338751231");
+        params.put("password", "4114388");
+        params.put("vcode", "3761");
+        params.put("dtp", "android");
+        params.put("blackbox","eyJkYXRhIjoiRURFU0dcL3F4MU9FYzFuZ2JHOW9ISmlocFBNUz0iLCJidW5kbGUiOiJjb20ubWVpZmVucWlfOCIsIm9zIjoiQW5kcm9pZCIsImRldmljZV9pZCI6IktTWmRaQzdiOW1SZzNQc3hXemd3TFBKbkp5WWsyOSthMk9CdUl5WWNIT3dhN0IyNVU3WTlWbzIyaGl1PSIsInNlc3Npb25faWQiOiJtZWlmZW5xaTFlMDJlMTE5ZmI2YWM0ZjRhOWEwMjNkZmEzYzkyNzgiLCJ2ZXJzaW9uIjoiMi4wLjYifQ==,");
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+    public static void testProfile(){
+        String url = purl+"/user/profile/";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("uid",3151);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -636,6 +648,9 @@ public class TestController {
     private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
+        testProfile();
+        //testVcodeSend();
+        //testRegister();3151
 //		testOrderCreate();
 //    	testOrderBook();
 //    	testProductClass();
@@ -653,7 +668,7 @@ public class TestController {
         //testPresent();
        // testCreateFreedom();
         //testProductSearch();
-        testHotWords();
+       // testHotWords();
     	
 
     }

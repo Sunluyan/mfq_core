@@ -47,7 +47,7 @@ public class CookieUtils {
      * @param domain    cookie域名，默认是'.5imfq.com'
      */
     public static void setLoginCookie(HttpServletRequest req, HttpServletResponse resp, 
-            Passport passport, boolean autoLogin) {
+            Passport passport, boolean autoLogin) throws Exception{
         String xid = Base62.encode(passport.getUid());
         String sessionValue = passport.getTicket() + "-" + xid;
         int maxAge = !autoLogin ? -1 : (int) ((passport.getExpiredAt().getTime() - System.currentTimeMillis()) / 1000);
