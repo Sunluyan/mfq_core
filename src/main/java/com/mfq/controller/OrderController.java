@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import com.google.common.collect.Lists;
+import com.mfq.bean.Refund;
 import com.mfq.bean.app.CouponInfo2App;
+import com.mfq.bean.app.Refund2App;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.constants.PolicyStatus;
+import com.mfq.service.RefundService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +51,9 @@ public class OrderController {
     CouponService couponService;
     @Resource
     UserQuotaService userQuotaService;
+    @Resource
+    RefundService refundService;
+
 
     /**
      * 进入预定页面
@@ -454,6 +461,69 @@ public class OrderController {
         logger.info("Order_OrderRefund_Ret is:{}", ret);
         return ret;
     }
+
+    /**
+     * 申请退款
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = { "/refund/list/",
+            "/refund/list" }, method = {RequestMethod.POST,RequestMethod.GET}, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    @LoginRequired
+    public String refundList(HttpServletRequest request,
+                         HttpServletResponse response) {
+        String ret = "";
+        Map<String, Object> params = JsonUtil.readMapFromReq(request);
+        if (!SignHelper.validateSign(params)) { // 签名验证失败
+            return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                    null);
+        }
+        if (params.get("uid") == null) {
+            ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法",
+                    null);
+            logger.error("参数不合法！ret={}", ret);
+            return ret;
+        }
+
+        Refund refund = new Refund();
+        refund.setId(1);
+        refund.setOrderNo("mn20160112172938382800ce");
+        refund.setRefundPay(BigDecimal.valueOf(1777));
+        refund.setCheckFlag(1);
+        refund.setCheckTime(new Date());
+        refund.getCheckUser();
+        refund.setStatus(1);
+        refund.setRefundTime(new Date());
+        refund.setContent("退款...");
+        refund.setCreated(new Date());
+        refund.setUpdated(new Date());
+
+        Refund refund2 = new Refund();
+        refund2.setId(1);
+        refund2.setOrderNo("mn20160115174310517400ce");
+        refund2.setRefundPay(BigDecimal.valueOf(2342));
+        refund2.setCheckFlag(1);
+        refund2.setCheckTime(new Date());
+        refund2.getCheckUser();
+        refund2.setStatus(1);
+        refund2.setRefundTime(new Date());
+        refund2.setContent("退款2...");
+        refund2.setCreated(new Date());
+        refund2.setUpdated(new Date());
+
+        List<Refund> list = Lists.newArrayList();
+        list.add(refund);
+        list.add(refund2);
+        List<Refund2App> data = refundService.create2RefundApps(list);
+        ret= JsonUtil.successResultJson(data);
+        logger.info("refund list is ret ={}",ret);
+        return ret;
+
+    }
+
     
     /**
      * 订单取消

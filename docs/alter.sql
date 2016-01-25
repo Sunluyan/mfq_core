@@ -53,6 +53,25 @@ CREATE TABLE `feedback` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='意见反馈表';
 
 
+#还款表
+CREATE TABLE `refund` (
+	`id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+	`uid` bigint(20) NOT NULL COMMENT '用户ID',
+	`order_no` VARCHAR (30) NOT NULL DEFAULT '' COMMENT '订单号',
+	`refund_pay` decimal(10,2) NOT NULL DEFAULT 0.00 COMMENT '还款金额',
+	`refund_type` tinyint(2) DEFAULT 0 COMMENT '还款类型',
+	`status` tinyint(3) DEFAULT 0 COMMENT '还款状态',
+	`check_flag` tinyint(2) DEFAULT 0 COMMENT '审核标识',
+	`check_user` varchar(30) DEFAULT '' COMMENT '审核人',
+	`content` blob NOT NULL COMMENT '意见内容',
+	`check_time` TIMESTAMP COMMENT '审核时间',
+	`refund_time` TIMESTAMP COMMENT '还款时间',
+	`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+	`updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='还款表';
+
+
 ALTER TABLE `product_classify`
 ADD COLUMN `icon`  varchar(500) NOT NULL DEFAULT '' AFTER `root_id`,
 ADD COLUMN `hg_image`  varchar(500) NOT NULL DEFAULT '' AFTER `icon`;

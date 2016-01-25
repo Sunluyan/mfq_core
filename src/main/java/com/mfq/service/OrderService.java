@@ -648,8 +648,22 @@ public class OrderService {
         long result = mapper.updateOrderInfo(orderInfo);
 
         if (result > 0) {
-            OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
-            return JsonUtil.successResultJson(bean);
+//            OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
+//            return JsonUtil.successResultJson(bean);
+
+            Refund refund = new Refund();
+            refund.setId(1);
+            refund.setOrderNo(orderInfo.getOrderNo());
+            refund.setRefundPay(orderInfo.getPrice());
+            refund.setCheckFlag(1);
+            refund.setCheckTime(new Date());
+            refund.getCheckUser();
+            refund.setStatus(1);
+            refund.setRefundTime(new Date());
+            refund.setContent("想退款...");
+            refund.setCreated(new Date());
+            refund.setUpdated(new Date());
+            return JsonUtil.successResultJson(refund);
         } else {
             return JsonUtil.toJson(ErrorCodes.FAIL, "退款申请失败", null);
         }
@@ -900,6 +914,7 @@ public class OrderService {
 
         return result;
     }
+
 }
 
 

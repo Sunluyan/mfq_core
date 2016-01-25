@@ -3,6 +3,7 @@ package com.mfq.bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.google.common.collect.Ordering;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 import com.mfq.constants.PolicyStatus;
@@ -46,6 +47,14 @@ public class OrderInfo {
     public OrderInfo() {
 
     }
+
+//    public OrderInfo(OrderFreedom freedom){
+//        this.id = freedom.getId();
+//        this.orderNo = freedom.getOrderNo();
+//        this.price = freedom.getPrice();
+//        this.uid = freedom.getUid();
+//        this.pid = freedom.getp
+//    }
 
     public OrderInfo(String orderNo, BigDecimal price, long uid, long pid,
             int payType, int period, BigDecimal periodPay, int status,
