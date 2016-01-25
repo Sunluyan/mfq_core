@@ -62,7 +62,7 @@ public class AppService {
             mapper.updateByPrimaryKey(device);
         }else{
             Device device = new Device();
-            device.setUuid(imei);
+            device.setImei(imei);
             mapper.insertSelective(device);
         }
 

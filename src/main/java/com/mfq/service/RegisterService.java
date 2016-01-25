@@ -177,12 +177,15 @@ public class RegisterService {
             code = 9999;
             msg = "创建用户失败";
         } else {
-            //插入一条邀请记录
-            InviteRecord inviteRecord = new InviteRecord();
-            inviteRecord.setUid(userId);
-            inviteRecord.setInvitedTime(new Date());
-            inviteRecord.setInvitedUid(userId);
-            inviteService.insertSelective(inviteRecord);
+            //插入一条邀请记录 如果有邀请码的话
+            if(StringUtils.isNotBlank(invite_code)){
+                InviteRecord inviteRecord = new InviteRecord();
+                inviteRecord.setUid(userId);
+                inviteRecord.setInvitedTime(new Date());
+                inviteRecord.setInvitedUid(userId);
+                inviteService.insertSelective(inviteRecord);
+            }
+
 
 
             Passport passport = passportService.createPassport(userId,

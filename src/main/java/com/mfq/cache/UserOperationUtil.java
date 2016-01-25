@@ -18,34 +18,12 @@ public class UserOperationUtil {
 
     public static final Logger logger = LoggerFactory.getLogger(UserOperationUtil.class);
 
-    public static IRedis iRedis =  new RedisCacheManipulater();
+    public static Vector<OperationRecord> typeOperation = new Vector<>();
 
-    public static List<OperationRecord> typeOperation = new ArrayList<>();
+    public static Vector<OperationRecord> proOperation = new Vector<>();
 
-    public static List<OperationRecord> proOperation = new ArrayList<>();
+    public static Vector<OperationRecord> searchOperation = new Vector<>();
 
-    public static List<OperationRecord> searchOperation = new ArrayList<>();
-
-
-    static{
-        if(iRedis.get("typeOperation") != null){
-            typeOperation = iRedis.get("typeOperation");
-        }else{
-            iRedis.set("typeOperation",Integer.MAX_VALUE,typeOperation);
-        }
-
-        if(iRedis.get("proOperation") != null){
-            typeOperation = iRedis.get("proOperation");
-        }else{
-            iRedis.set("proOperation",Integer.MAX_VALUE,proOperation);
-        }
-
-        if(iRedis.get("searchOperation") != null){
-            typeOperation = iRedis.get("searchOperation");
-        }else{
-            iRedis.set("searchOperation",Integer.MAX_VALUE,searchOperation);
-        }
-    }
 
     /**
      * 记录用户打开过的分类
@@ -57,7 +35,6 @@ public class UserOperationUtil {
         operationRecord.setTypeId(typeId);
         operationRecord.setOperationDate(new Date());
         typeOperation.add(operationRecord);
-        iRedis.set("typeOperation",Integer.MAX_VALUE,typeOperation);
     }
     /**
      * 记录用户打开过的产品
@@ -70,7 +47,6 @@ public class UserOperationUtil {
         operationRecord.setProId(pid);
         operationRecord.setOperationDate(new Date());
         proOperation.add(operationRecord);
-        iRedis.set("proOperation",Integer.MAX_VALUE,proOperation);
     }
 
     public static void setKeyword(long uid ,String keyword){
@@ -79,20 +55,6 @@ public class UserOperationUtil {
         operationRecord.setKeyword(keyword);
         operationRecord.setOperationDate(new Date());
         searchOperation.add(operationRecord);
-        iRedis.set("searchOperation",Integer.MAX_VALUE,searchOperation);
-    }
-
-    public static List<OperationRecord> getTypeOperation(){
-        iRedis.delete("typeOperation");
-        return typeOperation;
-    }
-    public static List<OperationRecord> getProOperation(){
-        iRedis.delete("proOperation");
-        return proOperation;
-    }
-    public static List<OperationRecord> getSearchOperation(){
-        iRedis.delete("searchOperation");
-        return searchOperation;
     }
 
 }
