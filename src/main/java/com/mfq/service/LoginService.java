@@ -9,11 +9,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.utils.VerifyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 
 import com.google.common.collect.ImmutableMap;
@@ -68,12 +70,12 @@ public class LoginService {
     public String login(HttpServletRequest request,
             HttpServletResponse response, String login, String password,
             String refer, boolean autologin,String blackbox) throws Exception {
-        
+
         if (StringUtils.isBlank(password)) {
             return JsonUtil.toJson(ErrorCodes.USER_WRONG_PASS, "密码错误", null);
         }
         User user = queryUser(login);
-       
+
         Map<String, ?> dataMap = Maps.newHashMap();
         Passport passport;
         if (user.getUid() > 0) {
@@ -113,7 +115,63 @@ public class LoginService {
         		return _handleLogin(user, passport, autologin, refer, request,response);        		
         	}
         }
-        
+    }
+
+    public User login4web(String username,String password,String tokenId) throws Exception{
+        if (StringUtils.isBlank(password)) {
+            throw new Exception("密码不能为空");
+        }
+        else if(VerifyUtils.verifyPassword(password)){
+            throw new Exception("密码格式错误");
+        }
+        else if(VerifyUtils.verifyMobile(username)){
+            throw new Exception("手机号格式错误");
+        }
+        User user = queryUser(username);
+
+        Map<String, ?> dataMap = Maps.newHashMap();
+        Passport passport;
+        if (user.getUid() > 0) {
+            passport = passportService.queryPassport(user.getUid());
+            if (passport.getUid() > 0) {
+                dataMap = _saltMap(passport);
+            }
+        }else{
+            throw new Exception("账号不存在");
+        }
+        if (CollectionUtils.isEmpty(dataMap)) {
+            throw new Exception("密码验证有误");
+        }
+
+        String salt = (String) dataMap.get("salt");
+        String salt2 = (String) dataMap.get("salt2");
+        // 登陆
+        String password2 = MD5Util
+                .md5Digest(MD5Util.md5Digest(password + salt) + salt2);
+        passport = passportService.login(user.getUid(), password2,
+                true);
+
+        //插入同盾验证
+        String ip_address = AppContext.getIp();
+        String mobileType = "web";
+        if (passport.getUid() == 0) {
+            if(StringUtils.isNotEmpty(tokenId))fraudApiInvoker.fraudLogin(ip_address, username, 1, tokenId, mobileType);
+            log.error("密码错误");
+            throw new Exception("密码错误");
+        } else {
+            Map<String,Object> result = new HashMap<>();
+            if(StringUtils.isNotEmpty(tokenId))result = fraudApiInvoker.fraudLogin(ip_address, username, 0, tokenId, mobileType);
+            log.info("fraudLogin as result Params :{}",result);
+            //如果result不为空且裁决是拒绝时
+            if(result != null && result.size()>0 && result.get("decision").toString().toLowerCase().equals("reject") ){
+                log.error("result.msg{}",result.get("msg"));
+                throw new Exception(result.get("msg").toString());
+            }else{
+                //return _handleLogin(user, passport, autologin, refer, request,response);
+
+            }
+        }
+        return user;
     }
 
     public void logoutCancelCookies(HttpServletRequest request,
@@ -206,7 +264,7 @@ public class LoginService {
                 request.getRemoteAddr());
         
         CookieUtils.setLoginCookie(request, response, passport, autologin);
-       
+
         // 送上积分
         // reputationService.createReputationLog(user.getUid(), Action.LOGIN,
         // ReputationExtraUtils.getBasicActionExtra(user.getUid(), "主动登录"));

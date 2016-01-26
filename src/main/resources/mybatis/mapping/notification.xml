@@ -20,7 +20,10 @@
 	<select id="queryNotificationByType" resultType="Notification">
 		select
 		<include refid="selectsql" />
-		from notification where type = #{type}
+		from notification where
+		<if test="type!=0">
+			type = #{type}
+		</if>
 		<if test="start != null and size != null">
 			limit #{start}, #{size}
 		</if>

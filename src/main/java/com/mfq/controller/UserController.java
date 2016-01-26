@@ -127,6 +127,7 @@ public class UserController {
             ret = userService.modifyUser(uid, nick, gender);
         } catch (Exception e) {
             logger.error("Exception set User!", e);
+            ret = JsonUtil.toJson(9999,"出错了"+e,null);
         }
         return ret;
     }

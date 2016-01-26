@@ -638,6 +638,18 @@ public class TestController {
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
     }
+    public static void testWebRegister(){
+        String url = purl+"/web/register/";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("mobile","18338751231");
+        params.put("nick","");
+        params.put("password","4114388");
+        params.put("vcode","8024");
+        params.put("token_id","motherfucker");
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
 
     
 //    private final static String purl="http://i.5imfq.com/";
@@ -648,9 +660,10 @@ public class TestController {
     private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
-        testProfile();
+       // testProfile();
         //testVcodeSend();
         //testRegister();3151
+        testWebRegister();
 //		testOrderCreate();
 //    	testOrderBook();
 //    	testProductClass();

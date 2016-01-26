@@ -57,23 +57,19 @@ refer_cust string 200 可选 Referer
  *
  */
 public class TongdunPostData {
-	public static final String test_partner_code = "meifenqi";
 	public static final String partner_code = "meifenqi";
-	public static final String test_secret_key_android = "c0c80e146440455bab6f7387ed34d669";
-	public static final String test_secret_key_ios = "f439e88a45e849dd94cb3cc38510479e";
 	public static final String secret_key_android = "c38cc2d9fdd745f1b3bb2cca3caffb18";
 	public static final String secret_key_ios = "5b15208213984b7e8b794fdc93f22af3";
+	public static final String secret_key_web = "6c955c79ce044546890b2b7f3e44dc82";
 	public static final String event_id_android_login = "login_professional_android";
 	public static final String event_id_android_register = "register_professional_android";
 	public static final String event_id_android_loan = "loan_and";
 	public static final String event_id_ios_login = "login_professional_ios";
 	public static final String event_id_ios_register = "register_professional_ios";
 	public static final String event_id_ios_loan = "loan_ios";
-	public static final String test_event_id_android_login = "mfq_android_login";
-	public static final String test_event_id_android_register = "mfq_android_register";
-	public static final String test_event_id_ios_login = "mfq_ios_login";
-	public static final String test_event_id_ios_register = "mfq_ios_register";
-	
+	public static final String event_id_web_register = "register_professional_web";
+	public static final String event_id_web_login = "login_professional_web";
+
 	
 	
 	private String event_id  ;//64 必填 事件ID

@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.notification.Notification;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface NotificationMapper {
     
     public List<Notification> queryNotificationByUid(@Param("start")int start, @Param("size")int size, @Param("uid") long uid, @Param("type") int type);

@@ -62,33 +62,7 @@ public class RegisterService {
     LoginService loginService;
 
 
-    @Transactional
-    public String reg(long uid, long end) {
-        logger.info("start is {}, end is {}", uid, end);
-//    	for(; uid<=end;uid++){
-//    		User user = userService.queryUser(uid);
-//    		if( user!= null){
-//    		Passport passport = passportService.createPassport(user.getUid(),
-//                    user.getMobile().substring(6, 10));
-//    		UserQuota quota = userService.buildDefaultQuota(user.getUid(), "");
-//    		
-//    		
-//	    		userLoginService.createUsersLogin(passport.getUid(), "127.0.0.1",
-//	                    "", "");
-//    		
-//    		logger.info("userquota  is start ... {}", uid);
-//    		if(userQuotaService.queryUserQuota(uid) == null);
-//    			long id = userQuotaService.insertUserQuota(quota);
-//    			if(id>0){
-//    				logger.info(" success is {}", uid);
-//    			}else{
-//    				logger.info(" error is {}", uid);
-//    			}
-//    		}
-//    	}
 
-        return "success";
-    }
 
     @Transactional
     public long reg(String email, String mobile, String nick, String password,
@@ -138,7 +112,7 @@ public class RegisterService {
             if (codeMsg.getCode() == 0) {
                 active = true;code = codeMsg.getCode();msg = codeMsg.getMsg();
             }
-        } else if (invite_code.length() != 7) {
+        } else if (invite_code.length() == 7) {
             userExtend = userExtendService.getUserExtendByInviteCode(invite_code);
             if (userExtend == null) {code = 1105;msg = "邀请码错误";}
         }
@@ -184,15 +158,9 @@ public class RegisterService {
                     true);
         }
 
-        data.put("uid", userId);
-        data.put("token", passport.getTicket());
-        if (active) {
-            data.put("status", Status.NORMAL.getValue());
-        } else {
-            data.put("status", Status.INACTIVE.getValue());
-        }
         String refers = RequestUtils.getString(request, "refer", request.getHeader("Referer"));
         refers = StringUtils.isEmpty(refers) ? "http://www.5imfq.com/profile/" : refers;
+
         //登录
         String loginResult = loginService.login(request, response, mobile, password, refers, false,blackbox);
         Map<String, Object> loginResultMap = JsonUtil.getMapFromJsonStr(loginResult);

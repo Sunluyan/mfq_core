@@ -53,8 +53,27 @@ public class NotificationService {
 		Map<String,Object> data = Maps.newHashMap();
 		
 		List<Notification> noti = Lists.newArrayList();
-		
-		if(type ==1){
+
+		if(type == 0){
+			List<Notification> notifications = mapper.queryNotificationByType(start,pageSize,0);
+			long noticount = mapper.queryNotificationCountByType(uid,0);
+			for(Notification n: notifications){
+				MsgRead read = msgReadMapper.queryMsgRead(uid, n.getId());
+				if(read != null){
+					n.setStatus(1);
+					noti.add(n);
+				}else{
+					noti.add(n);
+				}
+			}
+			if(!CollectionUtils.isEmpty(noti)){
+				ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();
+				sortList.sort(noti, "created", "desc");
+			}
+			data.put("msg", noti);
+			data.put("count", noticount);
+		}
+		else if(type ==1){
 			
 			List<Notification> notis = mapper.queryNotificationByType(start, pageSize, 1); 
 			long noticount = mapper.queryNotificationCountByType(0, 1);
@@ -66,7 +85,6 @@ public class NotificationService {
 				}else{
 					noti.add(n);
 				}
-				
 			}
 			if(!CollectionUtils.isEmpty(noti)){
 	        	ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();

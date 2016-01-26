@@ -77,6 +77,7 @@ public class FraudApiInvoker {
 	    	params.put("ip_address", ip_address);
 	    	params.put("account_login", account_login);
 	    	params.put("state", state);
+            logger.info("blackbox ----------------------before to fraud"+black_box);
 	    	params.put("black_box", black_box);
 			logger.error("[FraudApiInvoker] at fraudLogin : params= {}",params);
 	    	return invoke(params);
@@ -92,7 +93,7 @@ public class FraudApiInvoker {
      * @param account_login 注册账户
      * @param account_mobile 注册手机
      * @param ip_address ip地址
-     * @param black_box	黑盒	
+     * @param blackbox	黑盒
      * @param type	设备类型 ios or android
      * @return
      */
@@ -100,7 +101,7 @@ public class FraudApiInvoker {
     	try {
 			Map<String,Object> map = new HashMap<String, Object>();
 			//字段判空
-			if(!type.trim().toLowerCase().equals("android") && !type.trim().toLowerCase().equals("ios")){
+			if(!type.trim().toLowerCase().equals("android") && !type.trim().toLowerCase().equals("ios") && !type.trim().toLowerCase().equals("web")){
 				logger.error("[FraudApiInvoker] at fraudRegister : type is not legal  ");
 				map.put("msg","type 字段不合法");
 				return map;
@@ -128,8 +129,8 @@ public class FraudApiInvoker {
 			//打包参数
 			Map<String,Object> params = new HashMap<String,Object>();
 			params.put("partner_code", TongdunPostData.partner_code);
-			params.put("secret_key", type.trim().toLowerCase().equals("android")?TongdunPostData.secret_key_android:TongdunPostData.secret_key_ios);
-			params.put("event_id", type.trim().toLowerCase().equals("android")?TongdunPostData.event_id_android_register:TongdunPostData.event_id_ios_register);
+			params.put("secret_key", type.trim().toLowerCase().equals("android")?TongdunPostData.secret_key_android:type.trim().toLowerCase().equals("ios")?TongdunPostData.secret_key_ios:TongdunPostData.secret_key_web);
+			params.put("event_id", type.trim().toLowerCase().equals("android")?TongdunPostData.event_id_android_register:type.trim().toLowerCase().equals("ios")?TongdunPostData.event_id_ios_register:TongdunPostData.event_id_web_register);
 	    	params.put("ip_address", ip_address);
 	    	params.put("account_login", account_login);
 	    	params.put("black_box", blackbox);
@@ -196,8 +197,8 @@ public class FraudApiInvoker {
 			//打包参数
 			Map<String,Object> params = new HashMap<String,Object>();
 			params.put("partner_code", TongdunPostData.partner_code);
-			params.put("secret_key", type.trim().toLowerCase().equals("android")?TongdunPostData.secret_key_android:TongdunPostData.secret_key_ios);
-			params.put("event_id", type.trim().toLowerCase().equals("android")?TongdunPostData.event_id_android_loan:TongdunPostData.event_id_ios_loan);
+			params.put("secret_key", type.trim().toLowerCase().equals("android")?TongdunPostData.secret_key_android:type.trim().toLowerCase().equals("ios")?TongdunPostData.secret_key_ios:TongdunPostData.secret_key_web);
+			params.put("event_id", type.trim().toLowerCase().equals("android")?TongdunPostData.event_id_android_login:type.trim().toLowerCase().equals("ios")?TongdunPostData.event_id_ios_login:TongdunPostData.event_id_web_login);
 	    	params.put("account_name", account_name);
 	    	params.put("id_number", id_number);
 	    	params.put("account_phone", account_phone);
