@@ -21,7 +21,7 @@
     </root>
     
     <logger name="com.mfq" level="DEBUG" additivity="false">
-        <appender-ref ref="file" />
+        <!--<appender-ref ref="file" />-->
     </logger>
     
     <logger name="com.mfq.dataservice" level="DEBUG" additivity="false">
