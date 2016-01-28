@@ -38,6 +38,7 @@ public class ProductListItem2App {
 		this.hospitalName = hospitalName;
 	}
 
+
 	public long getId() {
 		return id;
 	}
