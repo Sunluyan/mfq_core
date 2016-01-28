@@ -651,6 +651,18 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testNotification(){
+        String url = purl+"/noti/msg/";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("page",1);
+        params.put("type",0);
+        params.put("uid",2780);
+        params.put("sign",SignHelper.makeSign(params));
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -663,7 +675,7 @@ public class TestController {
        // testProfile();
         //testVcodeSend();
         //testRegister();3151
-        testWebRegister();
+       // testWebRegister();
 //		testOrderCreate();
 //    	testOrderBook();
 //    	testProductClass();
@@ -675,8 +687,8 @@ public class TestController {
 //    	testLogin();
 //    	testCreateFinance();
  //   	testFinanceList();
-    	//testAdultInfo();'
-
+    	//testAdultInfo();
+        testNotification();
         //testOrderBook();
         //testPresent();
        // testCreateFreedom();

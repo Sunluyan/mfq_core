@@ -8,8 +8,10 @@ import org.apache.ibatis.annotations.Param;
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.Product;
 import com.mfq.constants.ProductType;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface ProductMapper {
 
     public Product findById(@Param("id") long id);

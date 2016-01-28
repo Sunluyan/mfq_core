@@ -19,6 +19,24 @@ public class ProductListItem2App {
 	BigDecimal subsidy; //补贴
 	String city;   //城市
 	Map<Integer, BigDecimal> fq;  //分期
+	String hospitalId;
+	String hosName;
+
+	public String getHospitalId() {
+		return hospitalId;
+	}
+
+	public void setHospitalId(String hospitalId) {
+		this.hospitalId = hospitalId;
+	}
+
+	public String getHosName() {
+		return hosName;
+	}
+
+	public void setHosName(String hosName) {
+		this.hosName = hosName;
+	}
 
 	public long getId() {
 		return id;

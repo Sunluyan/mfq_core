@@ -150,6 +150,8 @@ public class ProductService {
             logger.warn("ProductList is empty!");
             return null;
         }
+        //查找所有医院
+        List<Hospital> hospitals = hospitalService.queryHospitals();
         for (Product pt : ps) {
             ProductListItem2App bean = new ProductListItem2App();
             BeanUtils.copyProperties(pt, bean);
@@ -161,6 +163,13 @@ public class ProductService {
             bean.setMarketPrice(pt.getMarketPrice());
             bean.setSubsidy(pt.getMarketPrice().subtract(pt.getPrice()));
             bean.setUrl("http://" + Constants.SITE_DOMAIN + "/product/app/detail?pid="+pt.getId());
+
+            for (Hospital hospital : hospitals) {
+                if(pt.getHospitalId() == hospital.getId()){
+                    bean.setHosName(hospital.getName());
+                }
+            }
+
             list.add(bean);
         }
         return list;
