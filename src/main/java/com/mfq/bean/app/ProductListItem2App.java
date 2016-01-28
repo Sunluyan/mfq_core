@@ -20,7 +20,7 @@ public class ProductListItem2App {
 	String city;   //城市
 	Map<Integer, BigDecimal> fq;  //分期
 	String hospitalId;
-	String hosName;
+	String hospitalName;
 
 	public String getHospitalId() {
 		return hospitalId;
@@ -30,12 +30,12 @@ public class ProductListItem2App {
 		this.hospitalId = hospitalId;
 	}
 
-	public String getHosName() {
-		return hosName;
+	public String getHospitalName() {
+		return hospitalName;
 	}
 
-	public void setHosName(String hosName) {
-		this.hosName = hosName;
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
 	}
 
 	public long getId() {

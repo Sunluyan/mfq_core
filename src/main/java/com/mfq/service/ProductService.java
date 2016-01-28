@@ -166,7 +166,7 @@ public class ProductService {
 
             for (Hospital hospital : hospitals) {
                 if(pt.getHospitalId() == hospital.getId()){
-                    bean.setHosName(hospital.getName());
+                    bean.setHospitalName(hospital.getName());
                 }
             }
 
