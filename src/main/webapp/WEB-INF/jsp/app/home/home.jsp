@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>美分期APP-首页</title>
-    <meta name="viewport" content="width=640,initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=no" />
+    <meta name="viewport" content="width=640,initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=no" />scp
 
     <script src="http://7xlb4j.com2.z0.glb.qiniucdn.com/jqury-1.7.2%2Fjquery-1.7.2.min.js"></script>
     <script src="http://7xlb4j.com2.z0.glb.qiniucdn.com/jquery.mobile-1.4.2.min.css"></script>
@@ -99,7 +99,7 @@
 <div class="item">
     <c:forEach items="${products}" var="product">
     <div class="item-inner" onclick="window.location.href='product:${product.id}-${product.name}';">
-        <img class="item-1" src="${product.img}" height="228" width="614" alt="">
+        <img class="item-1" src="${product.img}" width="614" alt="">
         <div class="update"></div>
         <div class="item-foot">
             <div class="item-foot-l">

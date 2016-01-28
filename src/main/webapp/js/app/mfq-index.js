@@ -34,6 +34,10 @@ window.onload=function(){
 	        else if(oldLeft+moveNow>0){
 	        	return;
 	        }
+			console.log(oldLeft+moveNow)
+			if(oldLeft + moveNow <-582){
+				return;
+			}
 
 	        obj.style.left = oldLeft + moveNow +"px";
 
@@ -77,6 +81,10 @@ window.onload=function(){
 	        else if(oldLeft_2+moveNow_2>0){
 	        	return;
 	        }
+			console.log(oldLeft_2+moveNow_2)
+			if(oldLeft_2+moveNow_2<-586){
+				return;
+			}
 
 	        obj_2.style.left = oldLeft_2 + moveNow_2 +"px";
 

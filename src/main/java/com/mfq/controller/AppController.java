@@ -42,9 +42,12 @@ public class AppController {
     @Resource
     AppService appService;
 
-    private static float android_version= Config.getFloat("android_version", "0");
-    private static String appAndroidUrl = Config.getItem("android_download_url");
-//    private static float
+    private static final float android_version= Config.getFloat("android_version", "0");
+    private static final String appAndroidUrl = Config.getItem("android_url");
+    private static final int androidUpdate = Config.getInt("android_update","0");
+    private static final float ios_version = Config.getFloat("ios_version","0");
+    private static final int iosUpdate = Config.getInt("ios_update", "0");
+
 
     @RequestMapping(value = "/app/download/", method = { RequestMethod.GET,
             RequestMethod.POST }, produces = "application/json;charset=utf-8")
@@ -66,6 +69,32 @@ public class AppController {
                 map.put("appIosUrl", appIosUrl);
             }
             return JsonUtil.toJson(ErrorCodes.SUCCESS, "ok", map);
+        } catch (Exception e) {
+            logger.error("Exception Check Mobile Usage!", e);
+            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+        }
+    }
+
+    @RequestMapping(value = {"/app/version/","/app/version"}, method = { RequestMethod.GET,
+            RequestMethod.POST }, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String appVersion(HttpServletRequest request,
+                              HttpServletResponse response) throws Exception {
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            String appName = "mfq";
+            String app = params.get("dtp").toString();
+
+            Map<String, Object> map = Maps.newHashMap();
+            if(app.equals("iOS")){
+                map.put("version", ios_version);
+                map.put("update", iosUpdate);
+            }else if(app.equals("Android")){
+                map.put("version", android_version);
+                map.put("url", appAndroidUrl);
+                map.put("update", androidUpdate);
+            }
+            return JsonUtil.successResultJson(map);
         } catch (Exception e) {
             logger.error("Exception Check Mobile Usage!", e);
             return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
