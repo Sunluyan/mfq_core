@@ -20,10 +20,7 @@
 	<select id="queryNotificationByType" resultType="Notification">
 		select
 		<include refid="selectsql" />
-		from notification where
-		<if test="type!=0">
-			type = #{type}
-		</if>
+		from notification where type = #{type}
 		<if test="start != null and size != null">
 			limit #{start}, #{size}
 		</if>
@@ -52,6 +49,20 @@
 		<if test="type != 0">
 			and type=#{type}
 		</if>
+	</select>
+
+	<select id="queryAll" resultType="Notification" >
+		select
+		<include refid="selectsql"/>
+		from notification
+		where uid = #{uid} or type = 1
+		limit #{start},#{pagesize}
+	</select>
+
+	<select id="queryCountAll" resultType="Long">
+		select count(1)
+		from notification
+		where uid = #{uid} or type = 1
 	</select>
 
 </mapper>

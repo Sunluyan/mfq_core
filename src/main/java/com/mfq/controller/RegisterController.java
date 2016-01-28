@@ -1,6 +1,8 @@
 package com.mfq.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -99,6 +101,7 @@ public class RegisterController {
     @ResponseBody
     public String register4web(HttpServletRequest request, HttpServletResponse response) {
         try{
+
             String asid = AppContext.getIp();
             Map<String, Object> params = JsonUtil.readMapFromReq(request);
             String mobile = (String) params.get("mobile");
@@ -123,6 +126,10 @@ public class RegisterController {
             logger.error("Exception_Register_Progress!", e);
             return JsonUtil.toJson(ErrorCodes.CORE_ERROR, e.toString(), null);
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 
 

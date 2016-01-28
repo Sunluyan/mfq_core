@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.PortalTongdun;
+import com.mfq.dao.PortalTongdunMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,8 @@ public class UserQuotaService {
     SMSService smsService;
     @Resource
     FraudApiInvoker fraudApiInvoker;
+    @Resource
+    PortalTongdunMapper portalTongdunMapper;
     
     private static RedisCache cache = new RedisCache();
 
@@ -393,7 +397,9 @@ public class UserQuotaService {
         Map<String,Object> fraud = fraudApiInvoker.fraudCertify(realname, idCard, account_email, account_phone, ip_address, blackbox, type);
 		if(fraud !=null && fraud.size()>0 && fraud.get("decision").toString().toLowerCase().equals("reject")){
 			logger.info("tong dun {}",fraud);
-        	return JsonUtil.toJson(ErrorCodes.FRAUD_ERROR, fraud.get("msg").toString(), null);
+            PortalTongdun portalTongdun = new PortalTongdun();
+            portalTongdun.setMsg(fraud.toString());
+            portalTongdunMapper.insert(portalTongdun);
         }
         //同盾验证结束
         long result = mapper.updateUserQuotaForAdult(realname, idCard, g, origin, authStatus, location, uid);
@@ -412,7 +418,6 @@ public class UserQuotaService {
 
     private void sendNotificationSms(String realname, String mobile) throws Exception {
         //短信通知
-
         String [] params = {realname ,mobile};
         smsService.sendInterViewHint(params);
     }

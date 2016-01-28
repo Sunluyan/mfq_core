@@ -52,13 +52,8 @@ public class NotificationController {
 	        }
 			int page = Integer.parseInt(params.get("page").toString());
 			int type = Integer.parseInt(params.get("type").toString());
-			long t = new Date().getTime();
-			if(params.get("t") != null){
-				t = Long.parseLong(params.get("t").toString());
-			}
 
-			Date time = new Date(t);
-			ret = notificationService.queryMsgs(uid, page, time, type);
+			ret = notificationService.queryMsgs(uid, page, type);
 		}catch(Exception e){
 			logger.error("msg  is error", e);
 		}

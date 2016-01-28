@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -40,8 +42,14 @@ public class NotificationService {
 	MsgReadMapper msgReadMapper;
 	
 	private int pageSize = 10;
+
+	public static void main(String[] args) {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		NotificationService service = ac.getBean(NotificationService.class);
+		service.queryMsgs(2798,1,0);
+	}
 	
-	public String queryMsgs(long uid, int page, Date time, int type) {
+	public String queryMsgs(long uid, int page, int type) {
 
 		String ret ="";
 		
@@ -55,8 +63,10 @@ public class NotificationService {
 		List<Notification> noti = Lists.newArrayList();
 
 		if(type == 0){
-			List<Notification> notifications = mapper.queryNotificationByType(start,pageSize,0);
-			long noticount = mapper.queryNotificationCountByType(uid,0);
+            List<Notification> notifications = mapper.queryAll(uid,start,pageSize);
+
+            long noticount = mapper.queryCountAll(uid);
+
 			for(Notification n: notifications){
 				MsgRead read = msgReadMapper.queryMsgRead(uid, n.getId());
 				if(read != null){
@@ -67,7 +77,7 @@ public class NotificationService {
 				}
 			}
 			if(!CollectionUtils.isEmpty(noti)){
-				ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();
+				ListSortUtil<Notification> sortList = new ListSortUtil<>();
 				sortList.sort(noti, "created", "desc");
 			}
 			data.put("msg", noti);

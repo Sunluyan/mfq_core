@@ -8,8 +8,10 @@ import com.alibaba.dubbo.config.support.Parameter;
 import com.mfq.annotation.MFQDao;
 import com.mfq.bean.user.Gender;
 import com.mfq.bean.user.UserQuota;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface UserQuotaMapper {
 
     public long insertUserQuota(UserQuota quota);

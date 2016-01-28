@@ -5,8 +5,10 @@ import com.mfq.bean.user.UsersAuthPic;
 import com.mfq.bean.user.UsersAuthPicExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface UsersAuthPicMapper {
     int countByExample(UsersAuthPicExample example);
 

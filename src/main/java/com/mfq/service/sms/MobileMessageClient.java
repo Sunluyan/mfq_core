@@ -124,7 +124,7 @@ public class MobileMessageClient {
         // 发送检测 报警规则: 一个小时之内如果有两个人2次, 或者一个人三次
         recordAndCheckSMSService(mobile);
         String result = "0";
-        if (Config.isProduct()) {
+        if (Config.isProduct() || Config.isDev()) {
             result = p.sendVcodeMessage(content, mobile);
         } else {
             log.warn("Environment {}, mobile={}, vcodeMsg={}",
@@ -202,7 +202,7 @@ public class MobileMessageClient {
         MobileMessageClient mobileMessageClient = ac.getBean(MobileMessageClient.class);
         mobileMessageClient.loadConfiguration(true);
         MessageProvider p = mobileMessageClient.getProvider(MessageType.Vcode);
-        String result = p.sendSingleMessage("【美分期】500元优惠券已放入您的美分期APP账户中，使用时间有限，快快登录使用 （link）。<美分期专注于微整形的团购与分期，0息分期，先整形后付款>。", "18338751231");
+        String result = p.sendSingleMessage("刘志国你嘎哈呢", "18338751231");
         System.out.println(result);
     }
 
