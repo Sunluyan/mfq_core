@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.Hospital;
+import com.mfq.service.HospitalService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +41,8 @@ public class IndexController {
 	ProductService productService;
 	@Resource
     ClassifyService classifyService;
+	@Resource
+	HospitalService hospitalService;
 	
 	private String startDate = "2015-12-10 10:00:00";
     private String endDate = "2015-12-12 23:59:59";
@@ -54,17 +58,22 @@ public class IndexController {
                 .findByFlag(cityId, ProductFlag.RECOMMEND, 0);
     	
     	List<ProductClassify> classifys = classifyService.findByRootId(0);
+
+		List<Map<String,Object>> hospitals = hospitalService.findAll();
+
+		model.addAttribute("hospitals", hospitals);
     	
-    	for(int i=0;i<10;i++){
-    		ProductClassify c=null;
-    		if(i < classifys.size()){
-    			c=classifys.get(i);
-    		}else{
-    			c = new ProductClassify();
-    		}
-    		
-    		model.addAttribute("classify_"+i, c);
-    	}
+//    	for(int i=0;i<10;i++){
+//    		ProductClassify c=null;
+//    		if(i < classifys.size()){
+//    			c=classifys.get(i);
+//    		}else{
+//    			c = new ProductClassify();
+//    		}
+//
+//    		model.addAttribute("classify_"+i, c);
+//    	}
+		model.addAttribute("classifys", classifys);
     	
     	model.addAttribute("products", data);
         return "/app/home/home";

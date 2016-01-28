@@ -42,8 +42,9 @@ public class AppController {
     @Resource
     AppService appService;
 
-    private static Integer android_version= Config.getInt("android_version", "0");
+    private static float android_version= Config.getFloat("android_version", "0");
     private static String appAndroidUrl = Config.getItem("android_download_url");
+//    private static float
 
     @RequestMapping(value = "/app/download/", method = { RequestMethod.GET,
             RequestMethod.POST }, produces = "application/json;charset=utf-8")

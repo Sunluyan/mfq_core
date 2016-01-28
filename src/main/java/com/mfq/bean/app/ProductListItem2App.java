@@ -38,6 +38,7 @@ public class ProductListItem2App {
 		this.hosName = hosName;
 	}
 
+
 	public long getId() {
 		return id;
 	}
