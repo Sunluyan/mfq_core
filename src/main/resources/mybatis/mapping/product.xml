@@ -104,7 +104,7 @@
 		select
 		<include refid="selectsql"/>
 		from product
-		where 1=1
+		where 1=1 and online = 1
 		<foreach collection="keywords" item="keyword">
 			and name like CONCAT('%', #{keyword}, '%')
 		</foreach>
