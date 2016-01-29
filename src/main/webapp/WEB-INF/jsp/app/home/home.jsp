@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>美分期APP-首页</title>
-    <meta name="viewport" content="width=640,initial-scale=1,maximum-scale=1, minimum-scale=1,user-scalable=no" />scp
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
     <script src="http://7xlb4j.com2.z0.glb.qiniucdn.com/jqury-1.7.2%2Fjquery-1.7.2.min.js"></script>
     <script src="http://7xlb4j.com2.z0.glb.qiniucdn.com/jquery.mobile-1.4.2.min.css"></script>
@@ -20,7 +20,7 @@
     <div class="header-inner" >
         <ul id="id" class="fuck">
             <c:forEach items="${classifys}" var="cla">
-                <li style="background-image: url(${cla.hgImage})">
+                <li style="background-image: url(${cla.hgImage})" onclick="window.location.href='classify:${cla.id}-${cla.name}';">
                     <a href="#">
                         <div class="gray">${cla.name}</div>
                     </a>
@@ -71,7 +71,7 @@
     <div class="header-inner" >
         <ul id="id_2" class="">
             <c:forEach items="${hospitals}" var="hospital">
-            <li style="background-image: url(${hospital.img})">
+            <li style="background-image: url(${hospital.img})" onclick="window.location.href='hospital:${hospital.id}-${hospital.name}';">
                 <a href="hospital:${hospital.id}-${hospital.name}">
                     <div class="gray">北京美莱</div>
                 </a>
