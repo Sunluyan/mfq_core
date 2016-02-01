@@ -12,10 +12,10 @@ public class TestController {
 	private final static String purl="http://i.5imfq.com/";
 
     public void testOrderCreate(){
-        String url = purl+"/order/refund/list/";
+        String url = purl+"/noti/msg/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("uid", 2527);
-        params.put("type", '1');
+        params.put("uid", 2798);
+        params.put("type", '0');
         params.put("page", 1);
 
         String sign = SignHelper.makeSign(params);
