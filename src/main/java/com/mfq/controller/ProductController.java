@@ -80,7 +80,7 @@ public class ProductController {
             List<ProductListItem2App> data = productService.findByClass(city,
                     category, sort, type);
             if(CollectionUtils.isEmpty(data)){
-                ret = JsonUtil.toJson(9999,"抱歉,您所在的城市暂时没有该项目",null);
+                ret = JsonUtil.toJson(9998,"抱歉,您所在的城市暂时没有该项目",null);
                 return ret;
             }
             ret = JsonUtil.successResultJson(data);

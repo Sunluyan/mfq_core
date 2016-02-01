@@ -21,6 +21,15 @@ public class ProductListItem2App {
 	Map<Integer, BigDecimal> fq;  //分期
 	String hospitalId;
 	String hospitalName;
+	String hosName;
+
+	public String getHosName() {
+		return hosName;
+	}
+
+	public void setHosName(String hosName) {
+		this.hosName = hosName;
+	}
 
 	public String getHospitalId() {
 		return hospitalId;
