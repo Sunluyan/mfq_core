@@ -36,7 +36,7 @@
                  item="tid">
             #{tid}
         </foreach>
-		and `flag` != -1
+		and `flag` != -1 
 		<!-- flag =-1 is delete product-->
 	</select>
 	
