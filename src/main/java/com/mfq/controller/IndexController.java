@@ -63,16 +63,16 @@ public class IndexController {
 
 		model.addAttribute("hospitals", hospitals);
     	
-//    	for(int i=0;i<10;i++){
-//    		ProductClassify c=null;
-//    		if(i < classifys.size()){
-//    			c=classifys.get(i);
-//    		}else{
-//    			c = new ProductClassify();
-//    		}
-//
-//    		model.addAttribute("classify_"+i, c);
-//    	}
+    	for(int i=0;i<10;i++){
+    		ProductClassify c=null;
+    		if(i < classifys.size()){
+    			c=classifys.get(i);
+    		}else{
+    			c = new ProductClassify();
+    		}
+
+    		model.addAttribute("classify_"+i, c);
+    	}
 		model.addAttribute("classifys", classifys);
     	
     	model.addAttribute("products", data);

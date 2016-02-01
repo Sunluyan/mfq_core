@@ -372,7 +372,7 @@ public class UserQuotaService {
         JSONObject ret = CheckIDCard(realname, idCard);
         int retcode = ret.getInteger("code");
         if(retcode == 1){
-        	authStatus = 1;
+        	authStatus = 2;
         }else if(retcode == 2){
         	return JsonUtil.toJson(1002, "身份证校验不一致", null);
         }else if(retcode == 3){
