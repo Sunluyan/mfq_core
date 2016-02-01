@@ -107,6 +107,13 @@ public class NotificationController {
 				return ret;
 			}
 			long uid = Long.parseLong(params.get("uid").toString());
+
+			if(uid == 0){
+				ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+				logger.error("参数不合法！ret={}", ret);
+				return ret;
+			}
+
 			ret = notificationService.isNewMessage(uid);
 		}catch (Exception e){
 			logger.error("is new msagges is  {}",e);
