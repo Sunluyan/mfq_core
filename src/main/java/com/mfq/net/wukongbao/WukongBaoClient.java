@@ -201,7 +201,6 @@ public class WukongBaoClient {
 	/**
 	 * 保单 请求
 	 * @param order
-	 * @param productName
 	 * @param waiterId
 	 * @return
 	 */

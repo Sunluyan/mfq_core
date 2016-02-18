@@ -9,9 +9,6 @@ import javax.annotation.Resource;
 import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.constants.*;
-import com.mfq.dao.OrderFreedomMapper;
-import org.apache.commons.collections.list.LazyList;
-import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,8 +57,6 @@ public class OrderService {
     @Resource
     OrderInfoMapper mapper;
     @Resource
-    OrderFreedomMapper orderFreedomMapper;
-    @Resource
     SMSService smsService;
     @Resource
     CityMapper cityMapper;
@@ -69,8 +64,6 @@ public class OrderService {
     PolicyService policyService;
     @Resource
     FinanceBillService financeBillService;
-    @Resource
-    OrderFreedomService orderFreedomService;
 
     /**
      * 生成订单(不包括随意单)
@@ -325,20 +318,7 @@ public class OrderService {
         return sb.toString();
     }
 
-    /**
-     * 生成*随意单*订单号
-     *
-     * @return
-     */
-    public String makeOrderFreedomNo() {
-        Integer randomInt = new Random().nextInt(99999999);
-        String randomStr = new DecimalFormat("00000000").format(randomInt);
-        StringBuilder sb = new StringBuilder(Constants.FREEDOM_ORDER_PREFIX);
-        sb.append(DateUtil.formatCurTimeLong());
-        sb.append(randomStr);
-        System.out.println(sb.toString());
-        return sb.toString();
-    }
+
 
 
     /**
@@ -509,15 +489,6 @@ public class OrderService {
     public String queryOrdersByUid(long uid, Integer status) throws Exception {
         List<OrderInfo> data = mapper.findByUidAndStatus(uid, status);
         List<OrderInfo2App> appOrders = makeAppOrdersByOrderList(data);
-        List<OrderFreedom> orderFreedoms = orderFreedomService.selectByUidAndStatus(uid, status);
-
-        List<OrderInfo2App> appOrdersFreedom = makeAppOrderByOrderFreedomList(orderFreedoms);
-        if(appOrdersFreedom!=null && CollectionUtils.isNotEmpty(appOrdersFreedom)){
-            for (OrderInfo2App orderInfo2App : appOrdersFreedom) {
-                appOrders.add(orderInfo2App);
-            }
-        }
-
         // 排序
         if (!CollectionUtils.isEmpty(appOrders)) {
             ListSortUtil<OrderInfo2App> sortList = new ListSortUtil<OrderInfo2App>();
@@ -525,8 +496,6 @@ public class OrderService {
         }
         return JsonUtil.successResultJson(appOrders);
     }
-
-
 
 
     /**
@@ -539,21 +508,13 @@ public class OrderService {
      */
     public String queryOrderDetailByOid(Long uid, String orderNo)
             throws Exception {
-        if (!orderNo.contains("fk")) {
-            OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
-            if (orderInfo == null) {
-                return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "订单不存在", null);
-            }
-            OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
-            return JsonUtil.successResultJson(bean);
-        } else {
-            OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(orderNo);
-            if (orderFreedom == null) {
-                return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "订单不存在", null);
-            }
-            OrderInfo2App bean = makeAppOrderByOrderFreedom(orderFreedom);
-            return JsonUtil.successResultJson(bean);
+        OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
+        if (orderInfo == null) {
+            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "订单不存在", null);
         }
+        OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
+        return JsonUtil.successResultJson(bean);
+
     }
 
 
@@ -678,57 +639,29 @@ public class OrderService {
      * @throws Exception
      */
     public String cancelOrder(Long uid, String orderNo) throws Exception {
-        if (!orderNo.contains("fk")) {
 
-            OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
-            if (orderInfo == null) {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "订单不存在 ", null);
+        OrderInfo orderInfo = mapper.findByOrderNo(orderNo);
+        if (orderInfo == null) {
+            return JsonUtil.toJson(ErrorCodes.FAIL, "订单不存在 ", null);
+        }
+        if (orderInfo.getStatus() != OrderStatus.BOOK_OK.getValue()) {
+            return JsonUtil.toJson(ErrorCodes.FAIL, "当前订单状态不允许取消", null);
+        }
+        Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
+        if (coupon != null && coupon.getStatus() == CouponStatus.FREEZE) {
+            long l = couponService.updateCouponStatus(orderInfo.getCouponNum(),
+                    CouponStatus.INIT);
+            if (l <= 0) {
+                return JsonUtil.toJson(ErrorCodes.FAIL, "更新优惠券状态失败", null);
             }
-            if (orderInfo.getStatus() != OrderStatus.BOOK_OK.getValue()) {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "当前订单状态不允许取消", null);
-            }
-            Coupon coupon = couponService.findByCouponNum(orderInfo.getCouponNum());
-            if (coupon != null && coupon.getStatus() == CouponStatus.FREEZE) {
-                long l = couponService.updateCouponStatus(orderInfo.getCouponNum(),
-                        CouponStatus.INIT);
-                if (l <= 0) {
-                    return JsonUtil.toJson(ErrorCodes.FAIL, "更新优惠券状态失败", null);
-                }
-            }
-            orderInfo.setStatus(OrderStatus.CANCEL_OK.getValue());
-            long result = mapper.updateOrderInfo(orderInfo);
-            if (result > 0) {
-                OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
-                return JsonUtil.successResultJson(bean);
-            } else {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "取消订单失败", null);
-            }
-
+        }
+        orderInfo.setStatus(OrderStatus.CANCEL_OK.getValue());
+        long result = mapper.updateOrderInfo(orderInfo);
+        if (result > 0) {
+            OrderInfo2App bean = makeAppOrderByOrder(orderInfo);
+            return JsonUtil.successResultJson(bean);
         } else {
-
-            OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(orderNo);
-            if (orderFreedom == null) {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "订单不存在 ", null);
-            }
-            if (orderFreedom.getStatus() != OrderStatus.BOOK_OK.getValue()) {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "当前订单状态不允许取消", null);
-            }
-            Coupon coupon = couponService.findByCouponNum(orderFreedom.getCouponNum());
-            if (coupon != null && coupon.getStatus() == CouponStatus.FREEZE) {
-                long l = couponService.updateCouponStatus(orderFreedom.getCouponNum(),
-                        CouponStatus.INIT);
-                if (l <= 0) {
-                    return JsonUtil.toJson(ErrorCodes.FAIL, "更新优惠券状态失败", null);
-                }
-            }
-            orderFreedom.setStatus(OrderStatus.CANCEL_OK.getValue());
-            long result = orderFreedomMapper.updateByPrimaryKeySelective(orderFreedom);
-            if (result > 0) {
-                OrderInfo2App bean = makeAppOrderByOrderFreedom(orderFreedom);
-                return JsonUtil.successResultJson(bean);
-            } else {
-                return JsonUtil.toJson(ErrorCodes.FAIL, "取消订单失败", null);
-            }
+            return JsonUtil.toJson(ErrorCodes.FAIL, "取消订单失败", null);
         }
 
     }
@@ -798,122 +731,13 @@ public class OrderService {
 
     }
 
-    /**
-     * 创建任意单的OrderInfo2App
-     *
-     * @param order
-     * @return
-     * @throws Exception
-     */
-    public OrderInfo2App makeAppOrderByOrderFreedom(OrderFreedom order) throws Exception {
-        if (order == null) {
-            return null;
-        }
-        logger.info("order = {}", order.toString());
-        Hospital hospital = hospitalService.findById(order.getHospitalId());
-        FinanceBill finance = financeBillService.findFinanceDetailById(order.getOrderNo());
-        OrderInfo2App bean = new OrderInfo2App(order, hospital);
-
-        //减去优惠券的价格
-        if (StringUtils.isNotBlank(bean.getCouponNum())) {
-            Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
-            List<Coupon> couponList = new ArrayList<>();
-            couponList.add(coupon);
-            CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
-            bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
-        }
-        return bean;
-    }
-
-    public List<OrderInfo2App> makeAppOrderByOrderFreedomList(List<OrderFreedom> orderFreedoms) throws Exception {
-        if (orderFreedoms == null || orderFreedoms.size() == 0) {
-            return null;
-        }
-        List<OrderInfo2App> list = new ArrayList<>();
-        for (OrderFreedom orderFreedom : orderFreedoms) {
-            Hospital hospital = hospitalService.findById(orderFreedom.getHospitalId());
-            FinanceBill finance = financeBillService.findFinanceDetailById(orderFreedom.getOrderNo());
-            OrderInfo2App bean = new OrderInfo2App(orderFreedom, hospital);
-
-            //减去优惠券的价格
-            if (StringUtils.isNotBlank(bean.getCouponNum())) {
-                Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
-                List<Coupon> couponList = new ArrayList<>();
-                couponList.add(coupon);
-                CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
-                bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
-            }
-            list.add(bean);
-        }
-
-        return list;
-    }
-
-    /**
-     * 创建任意单
-     * 1.创建任意单订单
-     * 2.加入orderInfo2app
-     *
-     * @param uid
-     * @param amount
-     * @param operationTime
-     * @param couponNum
-     * @param policyNum
-     * @return
-     */
-    @Transactional
-    public OrderInfo2App createOrderFreedom(long uid, BigDecimal amount, Date operationTime, String couponNum, int policyNum, int hosId, String proname) throws Exception {
-
-        //public OrderFreedom(Long id, Long uid, String orderNo, Integer hospitalId, String proname,
-        // BigDecimal price, Integer status, String couponNum, BigDecimal onlinePay, String securityCode,
-        // Integer policyStatus, Date createTime, Date payTime, Date updateTime, Date serviceTime)
-        logger.info(uid+"\t"+amount+"\t"+operationTime+"\t"+couponNum+"\t"+policyNum+"\t"+hosId+"\t"+proname);
-        String orderNo = makeOrderFreedomNo();
-        String securityCode = SecurityCodeUtil.getSecurityCode(orderNo);
-        OrderFreedom orderFreedom = new OrderFreedom(null, uid, orderNo, hosId, proname, amount, OrderStatus.BOOK_OK.getValue(), couponNum, BigDecimal.valueOf(0), securityCode,
-                policyNum, new Date(), null, new Date(), operationTime);
-
-        long count = orderFreedomMapper.insertSelective(orderFreedom);
-        if (count != 1) {
-            logger.error("创建随意单失败!请重试");
-            throw new Exception("创建随意单失败!请重试");
-        }
-        //开始创建orderInfo2App
-        OrderInfo2App orderInfo2App = makeAppOrderByOrderFreedom(orderFreedom);
-        return orderInfo2App;
-    }
 
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         OrderService service = ac.getBean(OrderService.class);
-//        service.createOrderFreedom(2936, BigDecimal.valueOf(9000),new Date(1452700800000l),null,0,1,"脱毛");
         service.queryOrdersByUid(2798, 6);
     }
 
-    /**
-     * 进入随意单时需要的数据
-     *
-     * @param uid
-     * @return 医院列表 优惠券列表
-     */
-    public Map<String,Object> bookingOrderFreedom(Long uid) throws Exception{
-        //获取医院列表
-        List<Hospital> hosList = hospitalService.queryHospitals();
-        List<CouponInfo2App> couponList = couponService.findValidCoupon(uid);
-        List<Map<String,Object>> hosMaps = new ArrayList<>();
-
-        for (Hospital hospital : hosList) {
-            Map<String,Object> map = new HashMap<>();
-            map.put("hosname",hospital.getName());
-            map.put("hosid",hospital.getId());
-            hosMaps.add(map);
-        }
-        Map<String,Object> result = new HashMap<>();
-        result.put("hospitals",hosMaps);
-        result.put("coupons",couponList);
-
-        return result;
-    }
 
 }
 

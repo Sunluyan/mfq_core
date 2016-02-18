@@ -7,16 +7,12 @@ import java.util.Date;
 import javax.annotation.Resource;
 
 import com.mfq.bean.*;
-import com.mfq.dao.OrderFreedomMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
@@ -72,11 +68,6 @@ public class PayService {
     PolicyInfoMapper policyInfoMapper;
     @Resource
     ProductService productService;
-    @Resource
-    OrderFreedomMapper orderFreedomMapper;
-    @Resource
-    OrderFreedomService orderFreedomService;
-
 
     /**
      * @param orderType
@@ -500,8 +491,6 @@ public class PayService {
             return OrderType.ONLINE;
         } else if (StringUtils.startsWithIgnoreCase(billNo, Constants.REFUND_ORDER_PREFIX)) {
             return OrderType.REFUND;
-        } else if (StringUtils.startsWithIgnoreCase(billNo, Constants.FREEDOM_ORDER_PREFIX)) {
-            return OrderType.FREEDOM;
         } else {
             throw new Exception("不支持的订单类型！billNo=" + billNo);
         }
@@ -567,150 +556,4 @@ public class PayService {
     }
 
 
-    /**
-     * 随意单支付完成之后
-     *
-     * @param result
-     */
-    @Transactional
-    public void updateOrderFreedomPayOk(PayCallbackResult result) throws Exception {
-        logger.info("PayCallBack result :{}", result);
-
-        OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(result.getOrderNo());
-        OrderStatus toStatus = OrderStatus.PAY_OK;
-        if (orderFreedom.getStatus() == toStatus.getValue()) {
-            logger.warn("数据库中本订单状态与目标状态相同，skip后续流程！");
-            throw new Exception("数据库中本订单状态与目标状态相同，skip后续流程！");
-        }
-
-        //更新订单的支付状态
-        long l = orderFreedomService.updateOrderStatus(orderFreedom.getOrderNo(), OrderStatus.BOOK_OK, OrderStatus.PAY_OK);
-        logger.info("updateOrder 方法 ，修改订单状态 ，orderNo：{}，oldState：{}，newState：{}", orderFreedom.getOrderNo(), OrderStatus.BOOK_OK.getValue(), OrderStatus.PAY_OK.getValue());
-        if (l <= 0) {
-            logger.warn("回调更新订单状态失败，需要报警！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新订单状态失败,order:" + result.getOrderNo());
-        }
-
-        //更新onlinePay。
-        long onlinePayCount = orderFreedomService.updateOrderOnlinepay(orderFreedom.getOrderNo(), result.getAmount());
-        if (onlinePayCount <= 0) {
-            logger.warn("回调更新订单状态失败，需要报警！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新订单状态失败,order:" + result.getOrderNo());
-        }
-
-
-        PayRecord record = payRecordService.findByOrderNo(orderFreedom.getOrderNo());
-        if (record.getStatus() == PayStatus.PAID && PayAPIType.fromCode(record.getTpp()) != result.getApiType()) {
-            logger.warn("发现疑似重复支付订单，请关注平台！orderNo={}, firstPay={}, nowPay={}", orderFreedom.getOrderNo(), record.getTpp(),
-                    result.getApiType());
-            smsService.sendSysSMS("发现疑似重复支付订单,order:" + result.getOrderNo() + ", firstPay=" + record.getTpp()
-                    + ", nowPay=" + result.getApiType());
-            logger.warn("终止本次回调处理！");
-        }
-
-
-        record.setStatus(PayStatus.PAID); // 是否应该写在这儿？
-        record.setCallbackAt(result.getPayAt() == null ? new Date() : result.getPayAt());
-        record.setTpp(result.getApiType().getCode());
-        record.setTradeNo(result.getTradeNo());
-        record.setBankCode(result.getBankCode());
-        record.setPayAt(result.getPayAt());
-
-        long m = payRecordService.updateOne(record);
-        if (m <= 0) {
-            logger.warn("回调更新充值记录失败，需要报警（请拨打报警电话110）！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新充值记录失败,order:" + result.getOrderNo());
-        }
-
-        //如果是用余额支付该订单,更新下用户余额
-        if (result.getApiType() == PayAPIType.INNER) {
-            long count = quotaService.updateUserBalance(record.getUid(), result.getAmount());
-            if (count != 1) {
-                throw new Exception("用户余额更新失败");
-            }
-        }
-
-        //悟空保
-        if (orderFreedom.getPolicyStatus() == PolicyStatus.AUDITING.getId()) {
-            String ret = policyService.insure(orderFreedom.getOrderNo());
-            logger.info("wukong ret = {}", ret);
-            JSONObject wk = JSONObject.fromObject(ret);
-            if (wk.getInt("code") != 0) {
-                throw new Exception(wk.getString("msg"));
-            } else {
-                orderService.updatePolicyStatusByStatus(PolicyStatus.INSURE_EFFECT, PolicyStatus.AUDITING, orderFreedom.getOrderNo());
-            }
-        }
-    }
-
-    /**
-     * 随意单付款之后(beeCluod)
-     *
-     * @param result
-     */
-    @Transactional
-    public void updateOrderFreedomPayOk(BeeCloudResult result) throws Exception {
-        logger.info("PayCallBack result :{}", result);
-
-        OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(result.getOptional().get("orderNo").toString());
-        OrderStatus toStatus = OrderStatus.PAY_OK;
-        if (orderFreedom.getStatus() == toStatus.getValue()) {
-            logger.warn("数据库中本订单状态与目标状态相同，skip后续流程！");
-            throw new Exception("数据库中本订单状态与目标状态相同，skip后续流程！");
-        }
-
-        //更新订单的支付状态
-        long l = orderFreedomService.updateOrderStatus(orderFreedom.getOrderNo(), OrderStatus.BOOK_OK, OrderStatus.PAY_OK);
-        logger.info("updateOrder 方法 ，修改订单状态 ，orderNo：{}，oldState：{}，newState：{}", orderFreedom.getOrderNo(), OrderStatus.BOOK_OK.getValue(), OrderStatus.PAY_OK.getValue());
-        if (l <= 0) {
-            logger.warn("回调更新订单状态失败，需要报警！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新订单状态失败,order:" + orderFreedom.getOrderNo());
-        }
-
-        //更新onlinePay。
-        BigDecimal onlinePay = BigDecimal.valueOf(result.getTransaction_fee()).divide(BigDecimal.valueOf(100));
-        long onlinePayCount = orderFreedomService.updateOrderOnlinepay(orderFreedom.getOrderNo(), onlinePay);
-        if (onlinePayCount <= 0) {
-            logger.warn("回调更新订单状态失败，需要报警！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新订单状态失败,order:" + orderFreedom.getOrderNo());
-        }
-
-
-        PayRecord record = payRecordService.findByOrderNo(orderFreedom.getOrderNo());
-        PayAPIType payApiType = result.getChannel_type().equals("UN") ? PayAPIType.UNIONPAY : null;
-        if (record.getStatus() == PayStatus.PAID && PayAPIType.fromCode(record.getTpp()) != payApiType) {
-            logger.warn("发现疑似重复支付订单，请关注平台！orderNo={}, firstPay={}, nowPay={}", orderFreedom.getOrderNo(), record.getTpp(),
-                    payApiType);
-            smsService.sendSysSMS("发现疑似重复支付订单,order:" + orderFreedom.getOrderNo() + ", firstPay=" + record.getTpp()
-                    + ", nowPay=" + payApiType);
-            logger.warn("终止本次回调处理！");
-        }
-
-
-        record.setStatus(PayStatus.PAID); // 是否应该写在这儿？
-        record.setCallbackAt(result.getTimestamp() == null ? new Date() : new Date(result.getTimestamp()));
-        record.setTpp(payApiType.getCode());
-        record.setTradeNo(result.getTransaction_id());
-        record.setBankCode("");
-        record.setPayAt(new Date());
-
-        long m = payRecordService.updateOne(record);
-        if (m <= 0) {
-            logger.warn("回调更新充值记录失败，需要报警（请拨打报警电话110）！payCallbackResult={}", result);
-            smsService.sendSysSMS("订单回调更新充值记录失败,order:" + orderFreedom.getOrderNo());
-        }
-
-        //悟空保
-        if (orderFreedom.getPolicyStatus() == PolicyStatus.AUDITING.getId()) {
-            String ret = policyService.insure(orderFreedom.getOrderNo());
-            logger.info("wukong ret = {}", ret);
-            JSONObject wk = JSONObject.fromObject(ret);
-            if (wk.getInt("code") != 0) {
-                throw new Exception(wk.getString("msg"));
-            } else {
-                orderService.updatePolicyStatusByStatus(PolicyStatus.INSURE_EFFECT, PolicyStatus.AUDITING, orderFreedom.getOrderNo());
-            }
-        }
-
-    }
 }

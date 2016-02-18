@@ -209,10 +209,11 @@ public class UserController {
             }
             long uid = Long.parseLong(params.get("uid").toString());
             int authStatus = Integer.parseInt(params.get("auth_status").toString());
-            int count = userQuotaService.updateAuthStatusByUid(uid, authStatus);
-            if (count <= 0) {
-                ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "修改失败", null);
-            }
+
+//            int count = userQuotaService.updateAuthStatusByUid(uid, authStatus);
+//            if (count <= 0) {
+//                ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "修改失败", null);
+//            }
             ret = JsonUtil.toJson(0, null, "修改成功");
 
         } catch (Exception e) {

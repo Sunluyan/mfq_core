@@ -41,4 +41,6 @@ public interface UserMapper {
     public int updatePresentByMobile(@Param("mobile")String  mobile);
 
     public List<User> queryAllUser();
+
+    List<User> queryUsersByPage(@Param("start") int p,@Param("size") int size);
 }

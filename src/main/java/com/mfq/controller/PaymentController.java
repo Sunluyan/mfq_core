@@ -187,10 +187,6 @@ public class PaymentController {
 				payService.updateOrderPayOk(result);
 			}
 
-			else if(payService.getOrderType(result.getOrderNo()) == OrderType.FREEDOM){
-				payService.updateOrderFreedomPayOk(result);
-			}
-			
 			logger.info("result.getApiType().getCode():{}",result.getApiType().getCode());
 
             //开始插入提成

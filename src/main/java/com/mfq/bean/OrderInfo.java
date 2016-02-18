@@ -48,13 +48,6 @@ public class OrderInfo {
 
     }
 
-//    public OrderInfo(OrderFreedom freedom){
-//        this.id = freedom.getId();
-//        this.orderNo = freedom.getOrderNo();
-//        this.price = freedom.getPrice();
-//        this.uid = freedom.getUid();
-//        this.pid = freedom.getp
-//    }
 
     public OrderInfo(String orderNo, BigDecimal price, long uid, long pid,
             int payType, int period, BigDecimal periodPay, int status,

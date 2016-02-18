@@ -22,9 +22,7 @@ public class Constants {
     public static String RECHARGE_ORDER_PREFIX = "cz";
     // 在线还款－仅还款订单前缀
     public static String REFUND_ORDER_PREFIX = "bl";
-    // 随意单前缀
-    public static String FREEDOM_ORDER_PREFIX = "fk";
-    
+
     public static String SEC_KEY = "Xo+81y.0AA61j89],f|yu6";
     
     // 网站相关，通用－发短信／邮件等

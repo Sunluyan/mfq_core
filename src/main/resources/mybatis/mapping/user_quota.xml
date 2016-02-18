@@ -70,6 +70,9 @@
 	<update id="updateUserQuotaForAdult">
 		update users_quota
 		set realname=#{realname}, origin=#{origin},
+		<if test="usertype != 0">
+			user_type=#{usertype},
+		</if>
 		id_card = #{idCard}, auth_status=#{status}, school_location=#{schoolLocation},
 		updated_at=now() where uid=#{uid}
 	</update>
@@ -143,5 +146,9 @@
 		update users_quota
 		set auth_status = #{authStatus}
 		where uid = #{uid}
+	</update>
+
+	<update id="updateUserType">
+		update users_quota set user_type = #{type} where uid= #{uid}
 	</update>
 </mapper>

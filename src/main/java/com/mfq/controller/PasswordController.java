@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.service.sms.SMSService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,8 @@ public class PasswordController {
     VcodeService vcodeService;
     @Resource
     MailAndSmsService mailAndSmsService;
+    @Resource
+    SMSService smsService;
 
     // 密码reset 邮件
     @RequestMapping(value = "/password/reset/{vcode}/{email}/", method = RequestMethod.GET)

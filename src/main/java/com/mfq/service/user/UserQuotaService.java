@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import com.mfq.bean.PortalTongdun;
 import com.mfq.dao.PortalTongdunMapper;
+import com.qiniu.util.Json;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -333,7 +334,7 @@ public class UserQuotaService {
 		return mapper.updateIdPic(userId, pic, t);
 	}
 
-	public String applyAdultInterView(Long uid, String realname, String idCard, int gender, String origin, String location , String mobile_type, String blackbox) throws Exception {
+	public String applyAdultInterView(Long uid, int userType, String realname, String idCard, int gender, String origin, String location , String mobile_type, String blackbox) throws Exception {
         logger.info("user applyInterview |{}|{}|{}|{}|{}", uid, realname,
                 idCard, gender, origin, location);
 
@@ -402,7 +403,7 @@ public class UserQuotaService {
             portalTongdunMapper.insert(portalTongdun);
         }
         //同盾验证结束
-        long result = mapper.updateUserQuotaForAdult(realname, idCard, g, origin, authStatus, location, uid);
+        long result = mapper.updateUserQuotaForAdult(userType,realname, idCard, g, origin, authStatus, location, uid);
         Map<String, Object> data = Maps.newHashMap();
         data.put("num", result);
         
@@ -446,6 +447,9 @@ public class UserQuotaService {
             //消息通知
             sendNotificationSms(quota.getRealname(), user.getMobile());
         }
+
+        smsService.sendSms(user.getMobile(),"您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
+
         return JsonUtil.successResultJson(result);
 		
 	}
@@ -476,14 +480,28 @@ public class UserQuotaService {
             //消息通知
             sendNotificationSms(quota.getRealname(), user.getMobile());
         }
+        smsService.sendSms(user.getMobile(),"您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
 		return JsonUtil.successResultJson(result);
 	}
 	
 	public int updateAuthStatusByUid(long uid ,int authStatus){
 		return mapper.updateAuthStatusByUid(uid, authStatus);
 	}
-	
-	
-    
 
+
+    public String updateUserType(long uid, int type) {
+        String ret = "";
+        if(type != 1 && type !=2){
+            return JsonUtil.toJson(999,"参数错误",null);
+        }
+
+        int result =mapper.updateUserType(uid,type);
+        if(result>0){
+            ret=JsonUtil.successResultJson(result);
+        }else {
+            ret= JsonUtil.toJson(9999,"错误",result);
+        }
+        return ret;
+
+    }
 }

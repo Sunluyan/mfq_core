@@ -159,7 +159,11 @@ public class UserTraceFilter implements Filter {
     }
 
     private boolean isNeedLog(HttpServletRequest req) {
-        String uri = req.getRequestURI();
+
+        String uri = "";
+        if(req!=null) {
+            uri = req.getRequestURI();
+        }
 
         if (uri.endsWith(".jsp") || uri.endsWith(".css") || uri.endsWith(".js")
                 || uri.endsWith(".jpg") || uri.endsWith(".png")

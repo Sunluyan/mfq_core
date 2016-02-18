@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.service.sms.SMSService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,54 @@ public class AuthenticationController {
 
     @Resource
     UserQuotaService userQuotaService;
+    @Resource
+    SMSService smsService;
+
+
+
+    /**
+     * 实名认证
+     *
+     * @throws Exception
+     *             任何异常
+     */
+    @RequestMapping(value = { "/user/type",
+            "/user/type/" }, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    @LoginRequired
+    public String userType(HttpServletRequest request,
+                        HttpServletResponse response) {
+        String ret = "";
+
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+                logger.error("签名验证失败！ret={}", ret);
+                return ret;
+            }
+            if (params.get("uid") == null || params.get("type") == null) {
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法",
+                        null);
+                logger.error("参数不合法！ret={}", ret);
+                return ret;
+            }
+            long uid = Long.parseLong(params.get("uid").toString());
+            int type = Integer.parseInt(params.get("type").toString());
+            ret = userQuotaService.updateUserType(uid, type);
+
+
+
+        }catch (Exception e){
+            logger.error("user type is {}",e);
+        }
+        return ret;
+
+
+
+
+    }
 
     /**
      * 实名认证
@@ -69,6 +118,11 @@ public class AuthenticationController {
             int gender = Integer.parseInt(params.get("gender").toString());
             String origin = params.get("origin").toString();
             String location = params.get("location").toString();
+
+            int userType = 0;
+            if (params.get("user_type")!=null) {
+                userType = Integer.parseInt(params.get("user_type").toString());
+            }
             
             Object blackboxObj = params.get("blackbox").toString();
             String blackbox = null;
@@ -76,7 +130,7 @@ public class AuthenticationController {
             	blackbox = blackboxObj.toString();      	
             }
             String mobileType = MobileHelper.getMobileType(request);
-            ret = userQuotaService.applyAdultInterView(uid, realname, idCard, gender, origin, location,mobileType,blackbox);
+            ret = userQuotaService.applyAdultInterView(uid, userType,realname, idCard, gender, origin, location,mobileType,blackbox);
 
         } catch (Exception e) {
             logger.error("Exception InterView apply!", e);
@@ -115,10 +169,12 @@ public class AuthenticationController {
             String work_years = params.get("work_years").toString();  //工作年限          
             
             ret = userQuotaService.saveAdultInfo(uid, company, position, department, salary, social_insurance, work_years);
+
         } catch (Exception e) {
             logger.error("Exception InterView apply!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
         }
+
         logger.info("AUDLT_SAVE_INFO Ret={}", ret);
         return ret;
     }
@@ -163,6 +219,34 @@ public class AuthenticationController {
         }
         logger.info("AUDLT_SAVE_INFO Ret={}", ret);
         return ret;
+    }
+
+
+
+    @RequestMapping(value = { "/sms",
+            "/sms/" }, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    @LoginRequired
+    public String sma(HttpServletRequest request) {
+        String ret="";
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",null);
+                logger.error("签名验证失败！ret={}", ret);
+                return ret;
+            }
+            String mobile=params.get("mobile").toString();
+            String msg=params.get("msg").toString();
+            smsService.sendSms(mobile,msg);
+            return "success";
+
+        }catch (Exception e){
+            logger.error("sms  is error {}",e);
+        }
+
+
+        return "fail";
     }
 	
 

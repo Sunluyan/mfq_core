@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="线上环境 2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tomcat/webapps/ROOT" local="$PROJECT_DIR$/target/mfq-app" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

@@ -87,4 +87,11 @@
 		<include refid="selectsql" />
 		from users where status in (0,1)
 	</select>
+
+
+	<select id="queryUsersByPage" resultType="User">
+		select
+		<include refid="selectsql" />
+		from users where status in (0,1) limit #{start},#{size}
+	</select>
 </mapper>

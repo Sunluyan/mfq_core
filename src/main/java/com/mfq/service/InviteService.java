@@ -31,8 +31,6 @@ public class InviteService {
     @Resource
     OrderService orderService;
     @Resource
-    OrderFreedomService orderFreedomService;
-    @Resource
     FinanceBillService financeBillService;
 
     public int insertSelective(InviteRecord record) {
@@ -60,9 +58,6 @@ public class InviteService {
         } else if (orderNo.contains("bl")) {
             FinanceBill financeBill = financeBillService.findBillByBillNo(orderNo);
             uid = financeBill.getUid();
-        } else if (orderNo.contains("fk")) {
-            OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(orderNo);
-            uid = orderFreedom.getUid();
         }
 
         if (uid == 0) {

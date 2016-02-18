@@ -1,12 +1,12 @@
 window.onload=function(){
 
-	/*分类开始*/
+	/*分类开始
 	var obj = document.getElementById('id');
 
 
 	var move = 0;
 	var oldLeft = 0;
-	var maxLeft = $(obj).width()-$(document).width()-10;
+	var maxLeft = $(obj).width()-$(document).width()-180;
 
 	obj.addEventListener('touchstart', function(event) {
 		var touch = event.targetTouches[0];
@@ -34,17 +34,11 @@ window.onload=function(){
 	        else if(oldLeft+moveNow>0){
 	        	return;
 	        }
-			console.log(oldLeft+moveNow)
-			if(oldLeft + moveNow <-582){
-				return;
-			}
 
 	        obj.style.left = oldLeft + moveNow +"px";
-
-	        /*obj.style.top = touch.pageY-50 + 'px';*/
 	        }
 	}, false);
-
+*/
 	
 	/*医院开始*/
 
@@ -53,7 +47,9 @@ window.onload=function(){
 
 	var move_2 = 0;
 	var oldLeft_2 = 0;
-	var maxLeft_2 = $(obj_2).width()-$(document).width()-200;
+	var maxLeft_2 = $(obj_2).width()-$(window).width();
+	console.log("maxLeft_2"+maxLeft_2)
+	console.log("box is "+$(obj_2).width())
 
 	obj_2.addEventListener('touchstart', function(event) {
 		var touch_2 = event.targetTouches[0];
@@ -74,18 +70,19 @@ window.onload=function(){
 	        // 把元素放在手指所在的位置
 	        // 
 	        var moveNow_2 = touch_2.pageX - move_2;
+			console.log("move_now"+moveNow_2)
 	        if(oldLeft_2+moveNow_2+maxLeft_2<0){
 	        	return;
 	        }
 
 	        else if(oldLeft_2+moveNow_2>0){
+
 	        	return;
 	        }
-			console.log(oldLeft_2+moveNow_2)
-			if(oldLeft_2+moveNow_2<-586){
-				return;
-			}
-
+			//if((oldLeft_2+moveNow_2)<-676){
+			//	return;
+			//}
+			console.log(" ......."+(oldLeft_2+moveNow_2));
 	        obj_2.style.left = oldLeft_2 + moveNow_2 +"px";
 
 	        /*obj.style.top = touch.pageY-50 + 'px';*/

@@ -149,9 +149,12 @@ public class CouponService {
 		List<CouponInfo2App> cinfolist= Lists.newArrayList();
 		
 		for(Coupon coupon:clist){
-            logger.info("coupon:{}",coupon.toString());
-			CouponBatchInfo couponBatchInfo = batchMapper.findById(coupon.getBatchId());
-			cinfolist.add(new CouponInfo2App(coupon, couponBatchInfo));
+            if(coupon!=null){
+                logger.info("coupon:{}",coupon.toString());
+                CouponBatchInfo couponBatchInfo = batchMapper.findById(coupon.getBatchId());
+                cinfolist.add(new CouponInfo2App(coupon, couponBatchInfo));
+            }
+
 		}
 		return cinfolist;
 	}

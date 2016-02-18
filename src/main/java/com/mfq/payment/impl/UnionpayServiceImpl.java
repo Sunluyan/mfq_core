@@ -53,8 +53,6 @@ public class UnionpayServiceImpl extends BasePaymentService {
     PayRecordService payRecordService;
     @Resource
     PayService payService;
-    @Resource
-    OrderFreedomService orderFreedomService;
 
 
     public String genNonceStr() {
@@ -89,9 +87,6 @@ public class UnionpayServiceImpl extends BasePaymentService {
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
                 pname = product.getName();
-            }else{
-                OrderFreedom orderFreedom = orderFreedomService.selectByOrderNo(orderNo);
-                pname = orderFreedom.getProname();
             }
 
             //报文前准备
@@ -175,10 +170,6 @@ public class UnionpayServiceImpl extends BasePaymentService {
             } else if (payService.getOrderType(orderNo) == OrderType.ONLINE) {//订单支付
 
                 payService.updateOrderPayOk(result);
-
-            } else if (payService.getOrderType(orderNo) == OrderType.FREEDOM) {
-
-                payService.updateOrderFreedomPayOk(result);
 
             }
         } else {

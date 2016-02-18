@@ -50,7 +50,7 @@ public interface UserQuotaMapper {
 
 	public boolean updateIdPic(@Param("uid")Long userId, @Param("pic") String pic,@Param("type") int i);
 
-	public long updateUserQuotaForAdult(@Param("realname")String realname,@Param("idCard") String idCard,@Param("gender") Gender g,@Param("origin") String origin,@Param("status") int authStatus, @Param("schoolLocation")String schoolLocation, @Param("uid")Long userId);
+	public long updateUserQuotaForAdult(@Param("usertype")int type,@Param("realname")String realname,@Param("idCard") String idCard,@Param("gender") Gender g,@Param("origin") String origin,@Param("status") int authStatus, @Param("schoolLocation")String schoolLocation, @Param("uid")Long userId);
 	
 
 	public int updateAdultWorkInfo(@Param("uid")Long uid, @Param("company")String company, @Param("position")String position, @Param("department")String department, @Param("salary")String salary,
@@ -61,6 +61,7 @@ public interface UserQuotaMapper {
 	
 	
 	public int updateAuthStatusByUid(@Param("uid")long uid,@Param("authStatus")int authStatus);
-	
-	
+
+
+    public int updateUserType(@Param("uid") long uid, @Param("type") int type);
 }

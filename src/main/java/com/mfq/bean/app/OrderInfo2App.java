@@ -2,23 +2,16 @@ package com.mfq.bean.app;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.mfq.bean.Hospital;
-import com.mfq.bean.OrderFreedom;
-import com.mfq.bean.coupon.Coupon;
 import com.mfq.service.CouponService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.mfq.bean.FinanceBill;
 import com.mfq.bean.OrderInfo;
 import com.mfq.constants.Constants;
 import com.mfq.constants.OrderStatus;
 import com.mfq.constants.PolicyStatus;
-import com.mfq.utils.JsonUtil;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -110,60 +103,6 @@ public class OrderInfo2App implements Serializable{
 		this.month_period = financeBill.getNewBalance();
 
 		// TODO: 16/1/22    更改退款 
-		this.refund_pay = BigDecimal.valueOf(0);
-		this.refund_time = new Date();
-	}
-
-	//任意单
-	public OrderInfo2App(OrderFreedom orderFreedom , Hospital hospital){
-		/**String billNo;//分期编号
-		 BigDecimal price; // 总价
-		 Integer pay_type; // 订单类型；1分期付款，0全额付款
-		 Integer status; // 订单状态
-		 BigDecimal hospital_pay; //到院应付
-		 BigDecimal online_pay; //线上支付
-		 BigDecimal use_balance; //使用余额部分
-		 BigDecimal pay_price;  //已支付金额
-		 Integer product_type; //产品类型
-		 Integer period; // 期数
-		 Integer cur_period;//总期数
-		 Long product_id; // 产品ID
-		 String product_name; // 产品名称
-		 String couponNum; //优惠券
-		 String product_img; // 产品图片
-		 String product_url; //产品详情url
-		 String hospital_name; // 医院名称
-		 int policy_status;  //是否有保单
-		 Date order_time; //下单时间
-		 Date update_time; //更新时间
-		 String security_code; //验证码（到院出示）
-		 Date serviceStartTime;//预约就医时间
-		 Date everyMonthPayTime;//每月还款时间
-		 BigDecimal all_period;//分期总额
-		 BigDecimal month_period;//分期总额
-		 Integer financeState;//分期状态
-		 BigDecimal need_pay;//需要在线支付的金额
-		 */
-		this.uid = orderFreedom.getUid();
-		this.order_no = orderFreedom.getOrderNo();
-		this.pay_type = 1;
-		this.status = orderFreedom.getStatus();
-		this.online_pay = orderFreedom.getOnlinePay();
-		this.product_name = orderFreedom.getProname();
-		this.couponNum = orderFreedom.getCouponNum();
-		this.hospital_name = hospital.getName();
-		this.policy_status = orderFreedom.getPolicyStatus();
-		this.order_time = orderFreedom.getCreateTime();
-		this.update_time = orderFreedom.getUpdateTime();
-		this.security_code = orderFreedom.getSecurityCode();
-		this.serviceStartTime = orderFreedom.getServiceTime();
-		if(PolicyStatus.AUDITING.getId() == orderFreedom.getPolicyStatus()){
-			this.need_pay = orderFreedom.getPrice().add(BigDecimal.valueOf(19));
-		}else{
-			this.need_pay = orderFreedom.getPrice();
-		}
-
-		// TODO: 16/1/22  更改退款
 		this.refund_pay = BigDecimal.valueOf(0);
 		this.refund_time = new Date();
 	}

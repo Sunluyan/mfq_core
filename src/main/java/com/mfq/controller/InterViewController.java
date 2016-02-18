@@ -73,8 +73,13 @@ public class InterViewController {
             if(blackboxObj != null){
             	blackbox = blackboxObj.toString();      	
             }
+
+            int userType=0;
+            if(params.get("user_type")!=null){
+                userType = Integer.parseInt(params.get("user_type").toString());
+            }
             String mobileType = MobileHelper.getMobileType(request);
-            ret = userQuotaService.applyAdultInterView(uid, realname, idCard, gender, origin, location,mobileType,blackbox);
+            ret = userQuotaService.applyAdultInterView(uid, userType, realname, idCard, gender, origin, location,mobileType,blackbox);
 //            String school = (String) params.get("school");
 //            String contact = (String) params.get("contact");
 //            ret = userQuotaService.applyInterView(uid, realname, idCard, school,

@@ -337,4 +337,9 @@ public class UserService {
     public List<User> queryAllUser(){
         return mapper.queryAllUser();
     }
+
+
+    public List<User> queryUsersByPage(int p, int size){
+        return mapper.queryUsersByPage(p,size);
+    }
 }

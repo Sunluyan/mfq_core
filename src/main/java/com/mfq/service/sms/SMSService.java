@@ -56,11 +56,12 @@ public class SMSService {
     	
     	//套用验证码发送模板
     	String [] p= message.split(",");
-    	String msgTmpl = MsgTmplContext.getSmsTmpl("mobile_reg_verification");
-    	Object[] params = new Object[]{p[0]};
-    	MessageFormat messageFormat = new MessageFormat(msgTmpl);
-    	message = messageFormat.format(params);
-        
+        String msgTmpl = MsgTmplContext.getSmsTmpl("mobile_reg_verification");
+        Object[] params = new Object[]{p[0]};
+        MessageFormat messageFormat = new MessageFormat(msgTmpl);
+        message = messageFormat.format(params);
+
+
         sendSMS(mobile, message, null, true);
     }
 
@@ -82,7 +83,6 @@ public class SMSService {
     
     /**
      * 发送订单提醒
-     * @param message
      * @throws Exception
      */
     public void sendCreateOrderSMS(String [] params) throws Exception{
@@ -97,7 +97,6 @@ public class SMSService {
     
     /**
      * 发送订单完成提醒
-     * @param message
      * @throws Exception
      */
     public void sendFinishOrderSMS(String [] params) throws Exception{
@@ -159,12 +158,12 @@ public class SMSService {
             writeCodeMsg(code, msg);
             return;
         }
-        if (message.trim().length() > 65) {
-            code = ErrorCodes.SMS_OVERFLOW;
-            msg = "一条短信不要超过65个字符, 签名占5个字";
-            writeCodeMsg(code, msg);
-            return;
-        }
+//        if (message.trim().length() > 65) {
+//            code = ErrorCodes.SMS_OVERFLOW;
+//            msg = "一条短信不要超过65个字符, 签名占5个字";
+//            writeCodeMsg(code, msg);
+//            return;
+//        }
         if (mobiles.trim().isEmpty()) {
             code = ErrorCodes.USER_ERR_MOBILE;
             msg = "手机号码格式错误";
@@ -181,14 +180,14 @@ public class SMSService {
                 return;
             }
         }
-        if (message.trim().equals(lastBatchMessage)) {
-            code = ErrorCodes.SMS_DUPLICATE;
-            msg = "短信内容不能重复, 会被封号";
-            writeCodeMsg(code, msg);
-            return;
-        } else {
-            lastBatchMessage = message.trim();
-        }
+//        if (message.trim().equals(lastBatchMessage)) {
+//            code = ErrorCodes.SMS_DUPLICATE;
+//            msg = "短信内容不能重复, 会被封号";
+//            writeCodeMsg(code, msg);
+//            return;
+//        } else {
+////            lastBatchMessage = message.trim();
+//        }
         logger.info(String.format("SEND_SMS %s => %s", message, mobiles));
         smsInnerService.sendBatchMessage(message.trim(),
                 Arrays.asList(mobilelist));
@@ -200,9 +199,9 @@ public class SMSService {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         SMSService smsService = ac.getBean(SMSService.class);
         UserService userService = ac.getBean(UserService.class);
-        List<User> users = userService.queryAllUser();
+//        List<User> users = userService.queryAllUser();
         //for (User user : users) {
-            smsService.sendSms("18338751231","fuck it all");
+            smsService.sendSms("15910812061","您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
         //}
     }
 

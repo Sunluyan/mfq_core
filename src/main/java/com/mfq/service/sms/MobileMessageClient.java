@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import com.mfq.bean.user.User;
+import com.mfq.service.sms.provider.*;
 import com.mfq.service.user.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -36,13 +37,6 @@ import com.mfq.bean.sms.SMSSendType;
 import com.mfq.constants.SmsConstants;
 import com.mfq.dao.SMSConfigMapper;
 import com.mfq.dao.SMSMapper;
-import com.mfq.service.sms.provider.MaiXunMessageProvider;
-import com.mfq.service.sms.provider.MandaoMessageProvider;
-import com.mfq.service.sms.provider.MessageProvider;
-import com.mfq.service.sms.provider.MontnetsProvider;
-import com.mfq.service.sms.provider.NullMessageProvider;
-import com.mfq.service.sms.provider.TianHanMessageProvider;
-import com.mfq.service.sms.provider.UcpaasMessageProvider;
 import com.mfq.utils.Config;
 import com.mfq.utils.DateUtil;
 
@@ -145,10 +139,10 @@ public class MobileMessageClient {
         balance = p.getBalance();
         smsWarningLog.info("smscost left:" + balance);
 
-        String result = FiveMinuteLimit;
-        if (recordAndCheckSMSRepeat(mobiles, content)) {
+        String result = FiveMinuteLimit;   // TODO: 16/2/4 暂时停掉5分钟jiance
+        if (recordAndCheckSMSRepeat(mobiles, content)||!"".equals(content)) {
             result = "0";
-            if (Config.isProduct()) {
+            if (Config.isProduct()||Config.isDev()) {
                 result = p.sendBatchMessage(content, mobiles);
             } else {
                 log.warn(
@@ -182,15 +176,17 @@ public class MobileMessageClient {
         String result = FiveMinuteLimit;
         if (recordAndCheckSMSRepeat(mobile, content)) { // false时就是重复了
             result = "0";
-            if (Config.isProduct()) {
+            if (Config.isProduct()||Config.isDev()) {
                 result = p.sendSingleMessage(content, mobile);
             } else {
                 log.warn("Environment {}, mobile={}, content={}",
                         Config.getItem("system.type"), mobile, content);
             }
+            log.info("sms result is {}",result);
             createSmsLog(p, content, mobile, null, result, SMSSendType.NORMAL,
                     0);
         } else { // false时就是重复了
+            log.info("s result is {}",result);
             createSmsLog(p, content, mobile, null, result, SMSSendType.NORMAL,
                     0, true);
         }
@@ -202,7 +198,7 @@ public class MobileMessageClient {
         MobileMessageClient mobileMessageClient = ac.getBean(MobileMessageClient.class);
         mobileMessageClient.loadConfiguration(true);
         MessageProvider p = mobileMessageClient.getProvider(MessageType.Vcode);
-        String result = p.sendSingleMessage("刘志国你嘎哈呢", "18338751231");
+        String result = p.sendVcodeMessage("2098", "15910812061");
         System.out.println(result);
     }
 
@@ -215,7 +211,7 @@ public class MobileMessageClient {
         MessageProvider p = getProvider(MessageType.Normal); // 严格来讲, 这是不对的,
                                                              // 要考虑原短信是vcode还是normal
         String result = "0";
-        if (Config.isProduct()) {
+        if (Config.isProduct()||Config.isDev()) {
             result = p.sendSingleMessage(content, mobile);
         }
         if (SMSSendType.RESEND == sendtype) {
@@ -283,8 +279,10 @@ public class MobileMessageClient {
                         provider = new MontnetsProvider();
                     } else if (config.getName().equalsIgnoreCase("ucpaas")) {
                         provider = new UcpaasMessageProvider();
-                    } else { // 不认识或者故意的
-                        provider = new NullMessageProvider();
+                    }  else if (config.getName().equalsIgnoreCase("alidayu")) {
+                        provider = new AlidayuMessageProvider();
+                    } else { // 不认识或者故意的  // TODO: 16/2/4   默认麦讯通
+                        provider = new MaiXunMessageProvider();
                         errorWarning(
                                 "wrong mobile message server name!:"
                                         + config.getName(),
@@ -383,7 +381,7 @@ public class MobileMessageClient {
             return "-1";
         }
         String result = "0";
-        if (Config.isProduct()) {
+        if (Config.isProduct()||Config.isDev()) {
             result = p.sendSingleMessage(content, mobile);
         } else {
             log.warn("Environment {}, mobile={}, AlarmMsg={}",
@@ -522,7 +520,7 @@ public class MobileMessageClient {
     }
 
     private void errorWarning(String error, boolean alarm, String errcode) {
-        if (Config.isProduct()) {
+        if (Config.isProduct()||Config.isDev()) {
             if (FiveMinuteLimit.equalsIgnoreCase(errcode)) { // 忽略此报警
                 smsWarningLog.error(error);
             } else {
