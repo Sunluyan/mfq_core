@@ -34,4 +34,14 @@
 		update users_extend set channel_id = #{channelId}, mobile_type = #{mobileType} where uid=#{uid}
 	</update>
 
+	<update id="updateUserInviteCode" >
+		update users_extend set invite_code = #{inviteCode} where uid = #{uid}
+	</update>
+
+	<select id="queryUserExtendByInviteCode" resultType="UserExtend">
+		select
+		<include refid="selectsql" />
+		from users_extend where invite_code = #{inviteCode}
+	</select>
+
 </mapper>

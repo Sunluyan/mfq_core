@@ -50,6 +50,9 @@
 		<property name="dataSource" ref="lazyDsTOP" />
 		<property name="configLocation" value="classpath:mybatis/sql-map-config.xml" />
 	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="annotationClass" value="com.mfq.annotation.MFQDao" />

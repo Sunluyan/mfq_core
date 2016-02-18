@@ -36,7 +36,7 @@
                  item="tid">
             #{tid}
         </foreach>
-		and `flag` != -1
+		and `flag` != -1 
 		<!-- flag =-1 is delete product-->
 	</select>
 	
@@ -104,7 +104,7 @@
 		select
 		<include refid="selectsql"/>
 		from product
-		where 1=1
+		where 1=1 and online = 1
 		<foreach collection="keywords" item="keyword">
 			and name like CONCAT('%', #{keyword}, '%')
 		</foreach>
