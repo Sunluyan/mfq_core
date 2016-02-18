@@ -79,36 +79,36 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value = {"/web/login", "/web/login/"}, method = {RequestMethod.POST,RequestMethod.GET}, produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public String login4web(HttpServletRequest request, HttpServletResponse response) {
-        try{
-            HttpSession session = request.getSession();
-            if(session.getAttribute("user") != null){
-                return JsonUtil.toJson(ErrorCodes.CORE_ERROR,"您已经在登录状态",null);
-            }
-
-            Map<String, Object> params = JsonUtil.readMapFromReq(request);
-            String username = (String) params.get("username");
-            String password = (String) params.get("password");
-            String refer = (String) params.get("refer");
-            String blackbox = params.get("blackbox") == null ? null :params.get("blackbox").toString();
-            logger.info("blackbox----------------",blackbox);
-
-            User user = loginService.login4web(username, password,blackbox);
-
-            if(user != null){
-                session.setAttribute("user",user);
-                session.setMaxInactiveInterval(60*60*24*15);
-                return JsonUtil.successResultJson(user);
-            }
-
-        } catch (Exception e) {
-            logger.error("Exception Login Process!", e);
-            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
-        }
-        return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
-    }
+//    @RequestMapping(value = {"/web/login", "/web/login/"}, method = {RequestMethod.POST,RequestMethod.GET}, produces = "application/json;charset=utf-8")
+//    @ResponseBody
+//    public String login4web(HttpServletRequest request, HttpServletResponse response) {
+//        try{
+//            HttpSession session = request.getSession();
+//            if(session.getAttribute("user") != null){
+//                return JsonUtil.toJson(ErrorCodes.CORE_ERROR,"您已经在登录状态",null);
+//            }
+//
+//            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+//            String username = (String) params.get("username");
+//            String password = (String) params.get("password");
+//            String refer = (String) params.get("refer");
+//            String blackbox = params.get("blackbox") == null ? null :params.get("blackbox").toString();
+//            logger.info("blackbox----------------",blackbox);
+//
+//            User user = loginService.login4web(username, password,blackbox);
+//
+//            if(user != null){
+//                session.setAttribute("user",user);
+//                session.setMaxInactiveInterval(60*60*24*15);
+//                return JsonUtil.successResultJson(user);
+//            }
+//
+//        } catch (Exception e) {
+//            logger.error("Exception Login Process!", e);
+//            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+//        }
+//        return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+//    }
 
     @RequestMapping(value = {"/web/logout","/web/logout/"},produces = "application/json;charset=utf-8")
     public String logout4web(HttpServletRequest request) {
