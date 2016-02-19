@@ -1,6 +1,7 @@
 package com.mfq.service.sms;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -44,6 +45,7 @@ public class SMSService {
     MailService mailService;
 
     String lastBatchMessage = ""; // 最后一条短信
+    private String msgTmpl;
 
     /**
      * 发送验证码－Code类短信服务
@@ -197,12 +199,37 @@ public class SMSService {
 
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        SMSService smsService = ac.getBean(SMSService.class);
         UserService userService = ac.getBean(UserService.class);
-//        List<User> users = userService.queryAllUser();
-        //for (User user : users) {
-            smsService.sendSms("15910812061","您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
-        //}
+        SMSService smsService = ac.getBean(SMSService.class);
+//        UserService userService = ac.getBean(UserService.class);
+////        List<User> users = userService.queryAllUser();
+//        //for (User user : users) {
+//            smsService.sendSms("15910812061","您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
+//        //}
+
+        // 成功发送短信
+        long uid=2798;
+        BigDecimal present=BigDecimal.valueOf(3.0);
+        BigDecimal amount = BigDecimal.valueOf(3.0);
+
+
+        try {
+            User user = userService.queryUser(uid);
+            String msgTmpl = "";
+            Object[] params;
+            if (present.compareTo(new BigDecimal(0)) > 0) {
+                msgTmpl = MsgTmplContext.getSmsTmpl("mobile_recharge_present_notice");
+                params = new Object[]{user.getMobile(), DateUtil.formatLong(new Date()), amount, present};
+            } else {
+                msgTmpl = MsgTmplContext.getSmsTmpl("mobile_recharge_notice");
+                params = new Object[]{user.getMobile(), DateUtil.formatLong(new Date()), amount};
+            }
+            MessageFormat messageFormat = new MessageFormat(msgTmpl);
+            String message = messageFormat.format(params);
+            smsService.sendSms(user.getMobile(), message);
+        } catch (Exception e) {
+            logger.error("RechargeSMS_SEND_ERROR", e);
+        }
     }
 
     /**
@@ -274,7 +301,7 @@ public class SMSService {
 		if(filterMobiles(params))
     		return;
     	String mobiles= StringUtils.stripToEmpty(Config.getItem("sms_interview_hint"));
-    	String msgTmpl = StringUtils.stripToEmpty(MsgTmplContext.getSmsTmpl("mobile_interview_hint"));
+    	String msgTmpl =  StringUtils.stripToEmpty(MsgTmplContext.getSmsTmpl("mobile_interview_hint"));
     	MessageFormat messageFormat = new MessageFormat(msgTmpl);
     	String message = messageFormat.format(params);
     	sendBatchSms(mobiles, message);

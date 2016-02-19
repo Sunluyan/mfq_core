@@ -180,17 +180,24 @@ public class PaymentController {
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.REFUND){//还款（还分期账单）
 				//还款，修改financeBill状态
 				payService.updateOrderRefundOk(result);
+
+				//开始插入提成
+				inviteService.inviteMoneyRecordOperation(result);
+
 			}
 
 			else if(payService.getOrderType(result.getOrderNo()) == OrderType.ONLINE){
 				//订单支付
 				payService.updateOrderPayOk(result);
+
+				//开始插入提成
+				inviteService.inviteMoneyRecordOperation(result);
+
 			}
 
 			logger.info("result.getApiType().getCode():{}",result.getApiType().getCode());
 
-            //开始插入提成
-            inviteService.inviteMoneyRecordOperation(result);
+
 
 		}catch (Exception e) {
 			logger.error("MOBILE_CALLBACK_EXCEPTION", e);

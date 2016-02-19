@@ -73,6 +73,7 @@ public class NotificationService {
 					n.setStatus(1);
 					noti.add(n);
 				}else{
+					n.setStatus(0);
 					noti.add(n);
 				}
 			}
@@ -93,6 +94,7 @@ public class NotificationService {
 					n.setStatus(1);
 					noti.add(n);
 				}else{
+					n.setStatus(0);
 					noti.add(n);
 				}
 			}
@@ -126,6 +128,7 @@ public class NotificationService {
 					n.setStatus(1);
 					noti.add(n);
 				}else{
+					n.setStatus(0);
 					noti.add(n);
 				}
 

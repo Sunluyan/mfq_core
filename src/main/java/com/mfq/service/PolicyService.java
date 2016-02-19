@@ -91,6 +91,9 @@ public class PolicyService {
             PolicyInfo info = new PolicyInfo();
             if (infos.size() > 0)
                 info = infos.get(0);
+            if(info.getPolicyStatus()==PolicyStatus.AUDITING||info.getPolicyStatus()==PolicyStatus.WITHOUT){
+                continue;
+            }
             PolicyListForApp app = new PolicyListForApp(insure.getId(), insure.getProductName(), insure.getOrderNo(),
                     insure.getHospitalName(), insure.getCreatedAt(), info.getPolicyBdate(), info.getPolicyEdate(), info.getPolicyStatus(), "");
             list.add(app);

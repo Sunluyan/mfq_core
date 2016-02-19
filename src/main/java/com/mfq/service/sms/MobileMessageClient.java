@@ -114,11 +114,13 @@ public class MobileMessageClient {
     }
 
     public String sendVcodeMessage(String content, String mobile) {
+        log.info("sendVcodeMessage===> {},{}",content, mobile);
         MessageProvider p = getProvider(MessageType.Vcode);
         // 发送检测 报警规则: 一个小时之内如果有两个人2次, 或者一个人三次
         recordAndCheckSMSService(mobile);
         String result = "0";
         if (Config.isProduct() || Config.isDev()) {
+            log.info("p is {}",p.getName());
             result = p.sendVcodeMessage(content, mobile);
         } else {
             log.warn("Environment {}, mobile={}, vcodeMsg={}",
@@ -132,17 +134,18 @@ public class MobileMessageClient {
      * 批量短信发送，禁止5分钟内创建同样内容的短信给同一批次收信人
      */
     public String sendBatchMessage(String content, String mobiles) {
-    	log.info("===> {},{}",content, mobiles);
+    	log.info("sendBatchMessage===> {},{}",content, mobiles);
         MessageProvider p = getProvider(MessageType.Batch);
         log.info("MessageProvider  p_name is {}",p.getName());
         String balance;
         balance = p.getBalance();
         smsWarningLog.info("smscost left:" + balance);
 
-        String result = FiveMinuteLimit;   // TODO: 16/2/4 暂时停掉5分钟jiance
-        if (recordAndCheckSMSRepeat(mobiles, content)||!"".equals(content)) {
+        String result = FiveMinuteLimit;
+        if (recordAndCheckSMSRepeat(mobiles, content)) {
             result = "0";
             if (Config.isProduct()||Config.isDev()) {
+                log.info("p is {}",p.getName());
                 result = p.sendBatchMessage(content, mobiles);
             } else {
                 log.warn(
@@ -172,11 +175,13 @@ public class MobileMessageClient {
      * 普通短信发送，禁止5分钟内创建同样内容的短信给同一收信人
      */
     public String sendSingleMessage(String content, String mobile) {
+        log.info("sendSingleMessage===> {},{}",content, mobile);
         MessageProvider p = getProvider(MessageType.Normal);
         String result = FiveMinuteLimit;
         if (recordAndCheckSMSRepeat(mobile, content)) { // false时就是重复了
             result = "0";
             if (Config.isProduct()||Config.isDev()) {
+                log.info("p is {}",p.getName());
                 result = p.sendSingleMessage(content, mobile);
             } else {
                 log.warn("Environment {}, mobile={}, content={}",
@@ -212,6 +217,7 @@ public class MobileMessageClient {
                                                              // 要考虑原短信是vcode还是normal
         String result = "0";
         if (Config.isProduct()||Config.isDev()) {
+            log.info("p is {}",p.getName());
             result = p.sendSingleMessage(content, mobile);
         }
         if (SMSSendType.RESEND == sendtype) {
@@ -229,11 +235,14 @@ public class MobileMessageClient {
      */
     public String sendSingleMessageBytime(String content, String mobile,
             Date sendtime) {
+        log.info("sendSingleMessageByTime===> {},{}",content, mobile);
         if (sendtime == null) {
             return sendSingleMessage(content, mobile);
         }
         MessageProvider p = getProvider(MessageType.Normal);
         if (recordAndCheckSMSRepeat(mobile, content)) {
+            log.info("p is {}",p.getName());
+
             return createTimedSms(p, content, mobile, sendtime, null, null)
                     + "";
         } else {
@@ -268,6 +277,7 @@ public class MobileMessageClient {
                         log.warn("no config for this provider, ignore config!");
                         continue;
                     }
+
                     MessageProvider provider;
                     if (config.getName().equalsIgnoreCase("maixun")) {
                         provider = new MaiXunMessageProvider();
@@ -374,6 +384,7 @@ public class MobileMessageClient {
 
     // 发送警报信息, 用于内部自我报警
     protected String sendAlarmMessage(String content, String mobile) {
+        log.info("sendAlarmMessage===> {},{}",content, mobile);
         MessageProvider p = getProvider(MessageType.Backup);
         if (p == null) {
             String error = "sms: not find backup setting! please check and fix it!";
@@ -382,6 +393,7 @@ public class MobileMessageClient {
         }
         String result = "0";
         if (Config.isProduct()||Config.isDev()) {
+            log.info("p is {}",p.getName());
             result = p.sendSingleMessage(content, mobile);
         } else {
             log.warn("Environment {}, mobile={}, AlarmMsg={}",
@@ -520,7 +532,7 @@ public class MobileMessageClient {
     }
 
     private void errorWarning(String error, boolean alarm, String errcode) {
-        if (Config.isProduct()||Config.isDev()) {
+        if (Config.isProduct()) {
             if (FiveMinuteLimit.equalsIgnoreCase(errcode)) { // 忽略此报警
                 smsWarningLog.error(error);
             } else {

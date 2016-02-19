@@ -35,7 +35,7 @@
         </ul>
 
     </div> -->
-    <ul class="xiangmu">
+    <ul class="xiangmu" style="margin-top: 1rem;">
         <li>
             <a href="classify:${classify_0.id }-${classify_0.name}">
                 <img src="${classify_0.hgImage}" height="150" width="150" alt="">
@@ -67,7 +67,7 @@
             </a>
         </li>
     </ul>
-    <ul class="xiangmu">
+    <ul class="xiangmu" style="margin-top: 1rem;">
         <li>
             <a href="classify:${classify_5.id}-${classify_5.name}">
                 <img src="${classify_5.hgImage}" height="150" width="150" alt="">

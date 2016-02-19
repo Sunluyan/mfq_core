@@ -163,6 +163,7 @@ public class MaiXunMessageProvider extends MessageProvider {
         return directSend(mobile, content + suffix, 1, stime, null);
     }
 
+
     public static void main(String[] args) {
         MaiXunMessageProvider m = new MaiXunMessageProvider();
         String content = "测试。。。";

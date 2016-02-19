@@ -26,7 +26,10 @@ public class RefundService {
     public List<Refund2App> create2RefundApps(List<Refund> list){
         List<Refund2App> data = Lists.newArrayList();
         for(Refund refund:list){
-            data.add(createRefundApp(refund));
+            Refund2App app =createRefundApp(refund);
+            if (app!=null) {
+                data.add(app);
+            }
         }
         return data;
     }
@@ -35,7 +38,9 @@ public class RefundService {
     public Refund2App createRefundApp(Refund refund){
         String orderNo = refund.getOrderNo();
         OrderInfo info = orderService.findByOrderNo(orderNo);
+        if(info==null)return null;
         Product product = productService.findById(info.getPid());
+        if(product==null)return null;
         Hospital hospital = hospitalService.findById(product.getHospitalId());
         Refund2App app =new Refund2App(refund, product.getName(), product.getImg(), hospital.getName(),
                 info.getPrice(), info.getPrice());

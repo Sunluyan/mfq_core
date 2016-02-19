@@ -41,7 +41,7 @@ public class OrderInfo2App implements Serializable{
 	String product_img; // 产品图片
 	String product_url; //产品详情url
 	String hospital_name; // 医院名称
-	int policy_status;  //是否有保单
+	int policy_status;  //是
 	Date order_time; //下单时间
 	Date update_time; //更新时间
 	String security_code; //验证码（到院出示）

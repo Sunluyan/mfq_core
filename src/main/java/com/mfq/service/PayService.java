@@ -200,14 +200,6 @@ public class PayService {
             throw new Exception("数据库中本订单状态与目标状态相同，skip后续流程！");
         }
 
-//			if(order.getPolicyStatus() == PolicyStatus.AUDITING){
-//				//更新保单状态
-//				PolicyInfo policyInfo = policyService.findPolicyInfoByOrder(order.getOrderNo());
-//
-//				policyInfo.setPolicyStatus(PolicyStatus.INSURE_EFFECT);
-//				policyInfoMapper.updateByPrimaryKey(policyInfo);
-//				
-//			}
 
         //更新订单的支付状态
         long l = orderService.updateOrder(order.getId(), OrderStatus.BOOK_OK.getValue(), OrderStatus.PAY_OK.getValue());

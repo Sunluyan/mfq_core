@@ -371,3 +371,36 @@ Caused by: java.net.ConnectException: Operation timed out
   <CurDaySend>0</CurDaySend>
 </ROOT>
 [2016-02-18 17:01:46  INFO com.mfq.utils.XMLConverUtil:43] [] [] [] [] soap2map ret:{SendTotal=15384, Points=1538, RetCode=Sucess, CurDaySend=0, StockRemain=11500}
+[2016-02-19 16:37:33  WARN com.mfq.utils.Config:49] [] [] [] [] SystemConfig: isProduct=false, isDev=true, cachePrefix=D_, hostName=localhost, systemType=Dev
+[2016-02-19 16:37:34  INFO com.mfq.cache.MsgTmplContext:34] [] [] [] [] MsgTmplContext init start......
+[2016-02-19 16:37:34  INFO com.mfq.cache.MsgTmplContext:49] [] [] [] [] MsgTmplContext init end......
+[2016-02-19 16:38:05  INFO SMSLOG:279] [] [] [] [] SEND_SMS 15910812064 => 您好，15910812064，您于2016-02-19 16:37:34成功充值3元，系统额外赠送您3元（仅限购买产品使用），感谢使用！
+[2016-02-19 16:38:19  INFO SMSLOG:293] [] [] [] [] SendSMS:{"msg":"发送成功","code":0}
+[2016-02-19 16:38:19  WARN com.mfq.service.sms.MobileMessageClient:268] [] [] [] [] no config for this provider, ignore config!
+[2016-02-19 16:38:19  INFO com.mfq.service.sms.MobileMessageClient:312] [] [] [] [] load mobile message servers configuration success
+[2016-02-19 16:38:45  INFO com.mfq.service.sms.provider.MaiXunMessageProvider:108] [] [] [] [] Maixun短信mobile:15910812064,content:您好，15910812064，您于2016-02-19 16:37:34成功充值3元，系统额外赠送您3元（仅限购买产品使用），感谢使用！【美分期】
+[2016-02-19 16:38:51  INFO com.mfq.service.sms.provider.MaiXunMessageProvider:120] [] [] [] [] Maixun短信参数:{Account=admin, SendTime=, Phones=15910812064, UserID=968928, Content=您好，15910812064，您于2016-02-19 16:37:34成功充值3元，系统额外赠送您3元（仅限购买产品使用），感谢使用！【美分期】, SendType=1, PostFixNumber=, Password=YC8M5D}
+[2016-02-19 16:39:03  INFO com.mfq.utils.HttpUtil:280] [] [] [] [] push response result:<?xml version="1.0" encoding="utf-8"?>
+<ROOT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="JobSendedDescription">
+  <RetCode>Sucess</RetCode>
+  <JobID>195855488</JobID>
+  <OKPhoneCounts>1</OKPhoneCounts>
+  <StockReduced>2</StockReduced>
+  <ErrPhones />
+</ROOT>
+[2016-02-19 16:46:56  INFO com.mfq.service.sms.MobileMessageClient:185] [] [] [] [] sms result is <?xml version="1.0" encoding="utf-8"?>
+<ROOT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="JobSendedDescription">
+  <RetCode>Sucess</RetCode>
+  <JobID>195855488</JobID>
+  <OKPhoneCounts>1</OKPhoneCounts>
+  <StockReduced>2</StockReduced>
+  <ErrPhones />
+</ROOT>
+[2016-02-19 16:47:24  INFO com.mfq.service.sms.MobileMessageClient:429] [] [] [] [] send mobile message byname maixun :15910812064 message: 您好，15910812064，您于2016-02-19 16:37:34成功充值3元，系统额外赠送您3元（仅限购买产品使用），感谢使用！ null result:<?xml version="1.0" encoding="utf-8"?>
+<ROOT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="JobSendedDescription">
+  <RetCode>Sucess</RetCode>
+  <JobID>195855488</JobID>
+  <OKPhoneCounts>1</OKPhoneCounts>
+  <StockReduced>2</StockReduced>
+  <ErrPhones />
+</ROOT> time: 2016-02-19 16:47:21
