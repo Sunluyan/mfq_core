@@ -448,8 +448,6 @@ public class UserQuotaService {
             sendNotificationSms(quota.getRealname(), user.getMobile());
         }
 
-        smsService.sendSms(user.getMobile(),"您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
-
         return JsonUtil.successResultJson(result);
 		
 	}
@@ -480,7 +478,6 @@ public class UserQuotaService {
             //消息通知
             sendNotificationSms(quota.getRealname(), user.getMobile());
         }
-        smsService.sendSms(user.getMobile(),"您好，美分期于2016年2月6日至17日放假，放假期间暂停后台业务内部升级，在此期间您可正常提交申请审核工作将于2月18号正式启动，给您带来不便请谅解，恭祝您新春快乐。");
 		return JsonUtil.successResultJson(result);
 	}
 	
