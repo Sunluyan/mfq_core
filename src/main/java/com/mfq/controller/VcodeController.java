@@ -112,7 +112,7 @@ public class VcodeController {
             vcode = vcodeService.applyVcode(mobile, expireAt, resendAt);
 
             String msg = vcode.getVcode();
-            // rf|ip|Referer|mobile|msg
+
             logger.info("msg_full_log: {}|{}|{}|{}", ip,
                     request.getHeader("Referer"), mobile, msg);
 

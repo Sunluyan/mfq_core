@@ -20,11 +20,11 @@
 				<property name="testOnReturn" value="false" />
 				<property name="validationInterval" value="30000" />
 				<property name="validationQuery" value="select 1" />
-				<property name="timeBetweenEvictionRunsMillis" value="30000" />
+				<property name="timeBetweenEvictionRunsMillis" value="15000" />
 				<property name="maxActive" value="10" />
 				<property name="initialSize" value="1" />
 				<property name="maxWait" value="3000" />
-				<property name="minEvictableIdleTimeMillis" value="30000" />
+				<property name="minEvictableIdleTimeMillis" value="3000" />
 				<property name="minIdle" value="10" />
 				<property name="maxIdle" value="10" />
 				<property name="logAbandoned" value="true" />
@@ -49,6 +49,9 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="lazyDsTOP" />
 		<property name="configLocation" value="classpath:mybatis/sql-map-config.xml" />
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -275,7 +275,7 @@ public class PaymentController {
             }
             //验证付款金额是否和订单需要付款的金额相等
 			BigDecimal totalFee = BigDecimal.valueOf(result.getTransaction_fee());
-			BigDecimal amount = BigDecimal.valueOf(Integer.parseInt(result.getOptional().get("amount").toString()));
+			BigDecimal amount = BigDecimal.valueOf(Long.parseLong(result.getOptional().get("amount").toString()));
 			if(totalFee.compareTo(amount) != 0){
 				logger.error("应支付金额与实际支付不相等!totalFee:{},amount{}",totalFee,amount);
 				throw new Exception("应支付金额与实际支付不相等!");
