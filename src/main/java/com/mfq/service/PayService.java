@@ -437,8 +437,7 @@ public class PayService {
     }
 
     @Transactional
-    public boolean updateRechargePayOk(BeeCloudResult result, PayStatus status) {
-        try {
+    public boolean updateRechargePayOk(BeeCloudResult result, PayStatus status) throws Exception {
             PayRecord r = payRecordService.updateOne(result, status);
             if (r == null) {
                 throw new Exception("更新充值记录失败！");
@@ -448,11 +447,6 @@ public class PayService {
             // 成功发送短信
             sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));
             return true;
-
-        } catch (Exception e) {
-            logger.error("updateRechargePayOk in PayService ERROR :{}", e);
-            return false;
-        }
     }
 
     // 发送短信!

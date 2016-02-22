@@ -1,6 +1,7 @@
 package com.mfq.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -648,6 +649,39 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testBeecloud(){
+        //{"data":{"app_sign":"20d567eabcafc5486cea8631ebc7bb1c",
+        // "timestamp":1456125638426,
+        // "title":"美分期个人余额充值－1.0","total_fee":100,
+        // "optional":{"uid":3467,"amount":"1.0","orderNo":"cz2016022215203879940d8b"},
+        // "app_id":"967f5a80-ae09-4c46-b29e-cb0843887eed",
+        // "bill_no":"cz2016022215203879940d8b","channel":"UN_APP"},
+        // "code":0,"msg":"success"}
+        String url = purl+"pay/mobile_callback/beecloud.do";
+        Map<String, Object> params = Maps.newHashMap();
+        Map<String,Object> data = new HashMap<>();
+        data.put("app_sign","20d567eabcafc5486cea8631ebc7bb1c");
+        data.put("timestamp",1456125638426l);
+        data.put("title","美分期个人余额充值－1.0");
+        data.put("total_fee",100);
+        Map<String,Object> optional = Maps.newHashMap();
+        optional.put("uid",3467);
+        optional.put("amount","1.0");
+        optional.put("orderNo","cz2016022215203879940d8b");
+        data.put("optional",optional);
+        data.put("app_id","967f5a80-ae09-4c46-b29e-cb0843887eed");
+        data.put("bill_no","cz2016022215203879940d8b");
+        data.put("channel","UN_APP");
+        params.put("data",data);
+        params.put("code",0);
+        params.put("msg","success");
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+
+
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -673,11 +707,12 @@ public class TestController {
 //    	testCreateFinance();
  //   	testFinanceList();
     	//testAdultInfo();
-        testNotification();
+        //testNotification();
         //testOrderBook();
         //testPresent();
         //testProductSearch();
        // testHotWords();
+        testBeecloud();
     	
 
     }

@@ -16,10 +16,7 @@ import com.mfq.payment.util.wechat.Configure;
 import com.mfq.payment.util.wechat.HttpsUtil;
 import com.mfq.payment.util.wechat.PayReqData;
 import com.mfq.service.*;
-import com.mfq.utils.HttpUtil;
-import com.mfq.utils.JsonUtil;
-import com.mfq.utils.MD5Util;
-import com.mfq.utils.XMLConverUtil;
+import com.mfq.utils.*;
 import net.sf.json.util.JSONUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -75,6 +72,7 @@ public class UnionpayServiceImpl extends BasePaymentService {
         try {
             String orderNo = (String) params.get("order_no");
             String pname = "";
+            params.put("amount",0.01);//// TODO: 16/2/22 强制改成1分,别忘了改回来. 
             Map<String, Object> optional = new HashMap<>();
             optional.put("orderNo", orderNo);
             optional.put("amount", params.get("amount"));
@@ -90,7 +88,13 @@ public class UnionpayServiceImpl extends BasePaymentService {
             }
 
             //报文前准备
-            String app_secret = BeeCloudConfigure.APPSECRET;
+
+            String app_secret = null;
+            if(Config.isDev()){
+                app_secret = BeeCloudConfigure.APPSECRET;
+            }else{
+                app_secret = BeeCloudConfigure.TESTSECRET;
+            }
 
             //开始制作请求报文
             String app_id = BeeCloudConfigure.APPID;
@@ -171,6 +175,8 @@ public class UnionpayServiceImpl extends BasePaymentService {
 
                 payService.updateOrderPayOk(result);
 
+            }else{
+                throw new Exception("订单号类型错误");
             }
         } else {
             throw new Exception("支付未成功");

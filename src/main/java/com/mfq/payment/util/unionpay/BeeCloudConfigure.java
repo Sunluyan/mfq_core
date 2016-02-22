@@ -17,6 +17,8 @@ public class BeeCloudConfigure {
     // 收到API的返回的时候也要用这个key来对返回的数据算下签名，跟API的Sign数据进行比较，如果值不一致，有可能数据被第三方给篡改
     public static String APPSECRET  = Config.getItem("app_secret");
 
+    public static String TESTSECRET = Config.getItem("test_secret");
+
     //BeeCloud 分配的APPID
     public static String APPID = Config.getItem("app_id");
 

@@ -249,9 +249,11 @@ public class PaymentController {
     @RequestMapping(value = "/pay/mobile_callback/beecloud.do",method={RequestMethod.POST,RequestMethod.GET})
     public void BCCallback(HttpServletRequest request,HttpServletResponse response){
         String ret = "";
-
+		logger.info("mobile_callback beecoud start"+request);
         try {
-            BeeCloudResult result = new BeeCloudResult(request);
+			Map<String,Object> params = JsonUtil.readMapFromReq(request);
+			logger.info(params.toString());
+			BeeCloudResult result = new BeeCloudResult(request);
             logger.info("BeeCloudResult : {}",result);
             //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
             if(result.getTrade_success()){

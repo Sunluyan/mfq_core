@@ -39,6 +39,7 @@ public class BeeCloudResult {
 
         try{
             Map<String,Object> params = JsonUtil.readMapFromReq(request);
+
             this.sign = params.get("sign").toString();
             this.timestamp = Long.parseLong(params.get("timestamp").toString());
             this.channel_type = params.get("channel_type").toString();
