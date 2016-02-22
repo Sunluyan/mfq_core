@@ -247,6 +247,11 @@
 	  
 	  limit 0,1
   </select>
+
+
+    <select id="queryBillByOrderNo" resultType="FinanceBill">
+        select <include refid="selectsql" /> from finance_bill WHERE uid=#{uid} and order_no=#{orderNo};
+    </select>
 	
 	
 

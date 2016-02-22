@@ -36,6 +36,7 @@ public interface FinanceBillMapper {
 	public long insertSelective(FinanceBill record);
 	
     public long updateByPrimaryKeySelective(FinanceBill record);
-	
 
+
+	public List<FinanceBill> queryBillByOrderNo(@Param("uid") long uid,@Param("orderNo") String orderNo);
 }

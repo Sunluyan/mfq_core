@@ -94,7 +94,6 @@ public class MailAndSmsService {
                 applyvcode.getVcode()
                 };
 
-        // TODO: 16/2/18 短信通道切换 需修改 
         smsService.sendVcodeMessage(
                 buildFragment("mobile_reset_verification", params, true), mobile);
 

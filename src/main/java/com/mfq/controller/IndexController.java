@@ -59,7 +59,7 @@ public class IndexController {
     	
     	List<ProductClassify> classifys = classifyService.findByRootId(0);
 
-		List<Map<String,Object>> hospitals = hospitalService.findAll();
+		List<Map<String,Object>> hospitals = hospitalService.findHospitalByCity(1);
 
 		model.addAttribute("hospitals", hospitals);
     	

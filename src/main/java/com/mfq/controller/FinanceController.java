@@ -86,7 +86,11 @@ public class FinanceController {
 				logger.error("参数不合法！ret={}", ret);
 				return ret;
 			}
-			Integer s = (Integer) params.get("type");
+
+			Integer s = 100;
+			if(params.get("type")!=null){
+				s=Integer.parseInt(params.get("type").toString());
+			}
 			ret = financeBillService.fetchAppBillInfo(uid, s);
 		}catch(Exception e){
 			logger.error("Exception Validate Vcode!", e);
@@ -103,11 +107,10 @@ public class FinanceController {
 	 * 分期的首页，需要显示剩余额度和总额度。
 	 * 传入 uid 
 	 * @param request	
-	 * @param response
 	 * @return 剩余额度和总额度 {authStatus:xx,quotaAll:xx,quotaLeft:xxx}
 	 */
 	@RequestMapping(value = {"/main","/main/"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public @ResponseBody String financeMainPage(HttpServletRequest request,HttpServletResponse response){
+	public @ResponseBody String financeMainPage(HttpServletRequest request){
 		String ret = "";
 		try {
 			Map<String, Object> params = JsonUtil.readMapFromReq(request);
@@ -140,6 +143,40 @@ public class FinanceController {
 		return ret;
 	}
 
+	/**
+	 * 根据用户id获取分期列表
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = {"/order","/order/"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	@LoginRequired
+	public @ResponseBody String financeOrderList(HttpServletRequest request,HttpServletResponse response){
+		String ret="";
+		try {
+			Map<String, Object> params = JsonUtil.readMapFromReq(request);
+			if(!SignHelper.validateSign(params)){
+				ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+				logger.error("签名验证失败！ret={}", ret);
+				return ret;
+			}
+			if(params.get("uid") == null && params.get("orderNo") == null){
+				ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+				logger.error("参数不合法！ret={}", ret);
+				return ret;
+			}
+
+			long uid = Long.parseLong(params.get("uid").toString());
+			String orderNo = params.get("orderNo").toString();
+
+			ret = financeBillService.queryAppFinancesByOrder(uid, orderNo);
+
+		}catch (Exception e){
+			logger.error("finance order list is error {}", e);
+		}
+		logger.info("finance order list ret  is {}",ret);
+		return ret;
+	}
 
 	/**
 	 * 根据用户id获取分期列表
@@ -163,7 +200,7 @@ public class FinanceController {
 				logger.error("参数不合法！ret={}", ret);
 				return ret;
 			}
-			
+
 			long uid = Long.parseLong(params.get("uid").toString());
 			/**
 			 * 1、获得用户所有分期订单
@@ -184,15 +221,15 @@ public class FinanceController {
 			}
 
 			List<OrderInfo2App> realresult = new ArrayList<OrderInfo2App>();
-			
-			
+
+
 			for (String orderNo : orderNoSet) {	//循环订单号
 				OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
 				OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
 				logger.info("OrderInfo2App at FinanceController :{}",data);
 				data.setFinanceState(-1);
 				data.setBillNo("xiajibaBillNo");
-				
+
 				for (FinanceBill finance : list) {
 					if(finance.getOrderNo().equals(orderNo)){//循环该用户所有和正在循环的订单号相同的 分期订单
 						logger.info("finance in FinanceVontroller : ",finance.toString());
@@ -215,7 +252,7 @@ public class FinanceController {
 				}
 				realresult.add(data);
 			}
-			
+
 			logger.info("realresult:{}",realresult);
 			ret = JsonUtil.toJson(0 , null, realresult);
 

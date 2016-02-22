@@ -8,6 +8,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.google.common.collect.Maps;
+import com.mfq.bean.app.OrderInfo2App;
+import com.mfq.constants.PayType;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +73,6 @@ public class FinanceBillService {
 	/**
 	 * findBillByBillNo
 	 * 
-	 * @param billno
 	 * @return
 	 * @throws Exception
 	 */
@@ -257,12 +259,38 @@ public class FinanceBillService {
 		updateFinanceStateTask();
 	}
 
-	public static void main(String[] args) {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"spring/spring.xml");
-		FinanceBillMapper mapper = ac.getBean(FinanceBillMapper.class);
-		FinanceBill finance = mapper.findFinanceDetailById("mn2015122020290787750082");
-		System.out.println(finance.toString());
+	public static void main(String[] args) throws Exception {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		FinanceBillService financeBillService = ac.getBean(FinanceBillService.class);
+
+		String finance = financeBillService.queryAppFinancesByOrder(2936,"mn2016011116070133780097");
+		System.out.println(finance);
 	}
+//13599996598
+
+	public String queryAppFinancesByOrder(long uid, String orderNo) throws Exception {
+
+		OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
+
+		if (orderInfo==null || orderInfo.getUid()!=uid || orderInfo.getPayType()!= PayType.FINANCING.getId()){
+			return "订单不存在...";
+		}
+
+		List<FinanceBill> finances = mapper.queryBillByOrderNo(uid, orderNo);
+		if (finances.size() < 3){
+			throw new Exception("获取分期账单错误...");
+		}
+
+		//构建返回结果
+		OrderInfo2App orderApp = orderService.makeAppOrderByOrder(orderInfo);
+		List<FinanceBill2App> financesApp = makeAppBillByBill(finances);
+		Map<String, Object> ret = Maps.newHashMap();
+		ret.put("order_info", orderApp);
+		ret.put("finances", financesApp);
+
+		return JsonUtil.successResultJson(ret);
+	}
+
+
 
 }
