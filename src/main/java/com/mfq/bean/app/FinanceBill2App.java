@@ -46,7 +46,11 @@ public class FinanceBill2App {
         this.charge_at = DateUtil.formatLong(bill.getChargeAt());
         this.bill_at = DateUtil.formatLong(bill.getBillAt());
         this.due_at = DateUtil.formatLong(bill.getDueAt());
-        this.pay_at = DateUtil.formatLong(bill.getPayAt());
+        if(bill.getPayAt() != null) {
+            this.pay_at = DateUtil.formatLong(bill.getPayAt());
+        }else {
+            this.pay_at = "";
+        }
     }
 
     public long getId() {

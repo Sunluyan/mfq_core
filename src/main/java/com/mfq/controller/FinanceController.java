@@ -173,6 +173,7 @@ public class FinanceController {
 
 		}catch (Exception e){
 			logger.error("finance order list is error {}", e);
+			ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
 		}
 		logger.info("finance order list ret  is {}",ret);
 		return ret;
@@ -248,13 +249,15 @@ public class FinanceController {
 							data.setCur_period(finance.getCurPeriod());
 							break;
 						}
+
+
 					}
 				}
 				realresult.add(data);
 			}
 
 			logger.info("realresult:{}",realresult);
-			ret = JsonUtil.toJson(0 , null, realresult);
+			ret = JsonUtil.successResultJson(realresult);
 
 		}catch (Exception e) {
 			logger.error("Exception in FinanceController.userFinanceState = {}",e);

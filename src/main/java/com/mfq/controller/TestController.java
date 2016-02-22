@@ -15,9 +15,9 @@ public class TestController {
     
 	
     public static void testCheckMobile(){
-        String url = purl+"/mobile/check/";
+        String url = purl+"/finance/list/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("mobile", "18612258336");
+        params.put("uid", "2936");
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -692,26 +692,6 @@ public class TestController {
 	
     public static void main(String[] args){
        // testProfile();
-        //testVcodeSend();
-        //testRegister();3151
-       // testWebRegister();
-//		testOrderCreate();
-//    	testOrderBook();
-//    	testProductClass();
-//		testOrderList();
-//    	testSendMessage();
-//    	testinsertMsgs();
-//    	testinsertMsgs();
-//    	testNotiMsgs();
-//    	testLogin();
-//    	testCreateFinance();
- //   	testFinanceList();
-    	//testAdultInfo();
-        //testNotification();
-        //testOrderBook();
-        //testPresent();
-        //testProductSearch();
-       // testHotWords();
         testBeecloud();
     	
 
