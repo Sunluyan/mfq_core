@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Maps;
 import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.coupon.Coupon;
@@ -251,8 +252,6 @@ public class PaymentController {
         String ret = "";
 		logger.info("mobile_callback beecoud start"+request);
         try {
-			Map<String,Object> params = JsonUtil.readMapFromReq(request);
-			logger.info(params.toString());
 			BeeCloudResult result = new BeeCloudResult(request);
             logger.info("BeeCloudResult : {}",result);
             //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
@@ -277,7 +276,7 @@ public class PaymentController {
             }
             //验证付款金额是否和订单需要付款的金额相等
 			BigDecimal totalFee = BigDecimal.valueOf(result.getTransaction_fee());
-			BigDecimal amount = BigDecimal.valueOf(Long.parseLong(result.getOptional().get("amount").toString()));
+			BigDecimal amount = BigDecimal.valueOf(Float.parseFloat(result.getOptional().get("amount").toString()));
 			if(totalFee.compareTo(amount) != 0){
 				logger.error("应支付金额与实际支付不相等!totalFee:{},amount{}",totalFee,amount);
 				throw new Exception("应支付金额与实际支付不相等!");
@@ -297,6 +296,10 @@ public class PaymentController {
 
 
     }
+
+	public static void main(String[] args) {
+
+	}
 }
 
 

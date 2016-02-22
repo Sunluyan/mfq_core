@@ -16,11 +16,11 @@
         </encoder>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="file" />
     </root>
     
-    <logger name="com.mfq" level="DEBUG" additivity="false">
+    <logger name="com.mfq" level="info" additivity="false">
         <appender-ref ref="file" />
     </logger>
     
