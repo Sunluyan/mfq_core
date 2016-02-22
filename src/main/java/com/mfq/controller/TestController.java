@@ -657,7 +657,7 @@ public class TestController {
         // "app_id":"967f5a80-ae09-4c46-b29e-cb0843887eed",
         // "bill_no":"cz2016022215203879940d8b","channel":"UN_APP"},
         // "code":0,"msg":"success"}
-        String url = purl+"pay/mobile_callback/beecloud.do";
+        String url = purl+"pay/mobile_pay/beecloud.do";
         Map<String, Object> params = Maps.newHashMap();
         Map<String,Object> data = new HashMap<>();
         data.put("app_sign","20d567eabcafc5486cea8631ebc7bb1c");
@@ -678,7 +678,9 @@ public class TestController {
         String body = JsonUtil.writeToJson(params);
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
+    }
 
+    public static void testBeecloudGoPay(){
 
     }
 
