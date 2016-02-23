@@ -58,7 +58,12 @@
             and name like CONCAT('%', #{keyword}, '%')
         </foreach>
 
-
     </select>
+
+	<select id="findByCity" resultType="Hospital">
+		SELECT
+		<include refid="selectsql"/>
+		FROM hospital where city_id = #{cityId}
+	</select>
 
 </mapper>
