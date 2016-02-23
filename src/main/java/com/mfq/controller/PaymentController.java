@@ -117,9 +117,9 @@ public class PaymentController {
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
 			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount);
 			logger.info("save2PayRecord! orderNo={}, count={}", orderNo, s);
-			
-			
-			ret = service.goPay(request, response, params, orderType);
+
+            System.out.println("before go pay  params:   "+params);
+            ret = service.goPay(request, response, params, orderType);
 			
 		} catch (Exception e) {
 			logger.error("Exception", e);
@@ -253,7 +253,6 @@ public class PaymentController {
 		logger.info("mobile_callback beecoud start"+request);
         try {
 			BeeCloudResult result = new BeeCloudResult(request);
-            logger.info("BeeCloudResult : {}",result);
             //不论结果怎么样,只要签名正确,都应该先返回success.success代表接收正确
             if(result.getTrade_success()){
                 response.getWriter().append("success");
@@ -275,9 +274,11 @@ public class PaymentController {
                 throw new Exception("参数错误!");
             }
             //验证付款金额是否和订单需要付款的金额相等
-			BigDecimal totalFee = BigDecimal.valueOf(result.getTransaction_fee());
-			BigDecimal amount = BigDecimal.valueOf(Float.parseFloat(result.getOptional().get("amount").toString()));
-			if(totalFee.compareTo(amount) != 0){
+			String totalFee = result.getTransaction_fee().toString();
+			//把0.01变成1
+			String amount = String.valueOf(Double.parseDouble(result.getOptional().get("amount").toString())*100);
+            amount = amount.substring(0,amount.indexOf("."));
+			if(!totalFee.equals(amount)){
 				logger.error("应支付金额与实际支付不相等!totalFee:{},amount{}",totalFee,amount);
 				throw new Exception("应支付金额与实际支付不相等!");
 			}

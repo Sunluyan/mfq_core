@@ -654,7 +654,7 @@ public class TestController {
         // "timestamp":1456125638426,
         // "title":"美分期个人余额充值－1.0","total_fee":100,
         // "optional":{"uid":3467,"amount":"1.0","orderNo":"cz2016022215203879940d8b"},
-        // "app_id":"967f5a80-ae09-4c46-b29e-cb0843887eed",
+        // "app_id":"967f5a80-ae09-4c46-b29e-cb0843887eed",Î
         // "bill_no":"cz2016022215203879940d8b","channel":"UN_APP"},
         // "code":0,"msg":"success"}
         String url = purl+"pay/mobile_pay/beecloud.do";

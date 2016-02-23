@@ -72,10 +72,10 @@ public class UnionpayServiceImpl extends BasePaymentService {
         try {
             String orderNo = (String) params.get("order_no");
             String pname = "";
-            params.put("amount",0.01);//// TODO: 16/2/22 强制改成1分,别忘了改回来. 
             Map<String, Object> optional = new HashMap<>();
             optional.put("orderNo", orderNo);
             optional.put("amount", params.get("amount"));
+            logger.info(params.get("amount").toString()+"     in unionpayserviceimpl");
             optional.put("uid", UserIdHolder.getLongUid());
             if (orderType == OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
@@ -90,11 +90,7 @@ public class UnionpayServiceImpl extends BasePaymentService {
             //报文前准备
 
             String app_secret = null;
-            if(Config.isDev()){
-                app_secret = BeeCloudConfigure.APPSECRET;
-            }else{
-                app_secret = BeeCloudConfigure.TESTSECRET;
-            }
+            app_secret = BeeCloudConfigure.APPSECRET;
 
             //开始制作请求报文
             String app_id = BeeCloudConfigure.APPID;

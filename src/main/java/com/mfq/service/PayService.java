@@ -444,8 +444,8 @@ public class PayService {
             }
             quotaService.updateUserBalance(Long.valueOf(result.getOptional().get("uid").toString()),
                     new BigDecimal(result.getTransaction_fee().toString()).divide(BigDecimal.valueOf(100)).negate());
-            // 成功发送短信
-            sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));
+            // 成功发送短信 暂时注释掉
+           // sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));
             return true;
     }
 
