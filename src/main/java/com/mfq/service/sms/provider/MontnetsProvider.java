@@ -150,7 +150,7 @@ public class MontnetsProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
         return sendSingleMessage(content, mobile);
     }
 

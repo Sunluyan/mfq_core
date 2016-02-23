@@ -71,7 +71,7 @@ public class TongyiMessageProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
         return _sendSingleMessage(mobile, content, null);
     }
 

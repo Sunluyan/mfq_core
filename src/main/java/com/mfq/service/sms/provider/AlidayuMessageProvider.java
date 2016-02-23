@@ -143,7 +143,7 @@ public class AlidayuMessageProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
         return directSend(mobile, content + suffix, 1, null, null);
     }
 

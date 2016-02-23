@@ -1,8 +1,10 @@
 package com.mfq.service.sms.provider;
 
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Map;
 
+import com.mfq.cache.MsgTmplContext;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -144,7 +146,16 @@ public class MaiXunMessageProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
+
+
+        //套用验证码发送模板
+    	String [] p= content.split(",");
+        String msgTmpl = MsgTmplContext.getSmsTmpl("mobile_reg_verification");
+        Object[] params = new Object[]{p[0]};
+        MessageFormat messageFormat = new MessageFormat(msgTmpl);
+        content = messageFormat.format(params);
+
         return directSend(mobile, content + suffix, 1, null, null);
     }
 

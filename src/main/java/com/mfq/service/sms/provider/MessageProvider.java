@@ -23,7 +23,7 @@ public abstract class MessageProvider {
     public abstract void loadConfiguration(Map<String, Object> setting);
     public abstract String getBalance();
     public abstract String sendBatchMessage(String content, String mobiles);
-    public abstract String sendVcodeMessage(String content, String mobile);
+    public abstract String sendVcodeMessage(String content, String mobile, boolean isReset);
     public abstract String sendSingleMessage(String content, String mobile);
     public abstract String sendSingleMessageBytime(String content, String mobile, Date sendtime);
 }

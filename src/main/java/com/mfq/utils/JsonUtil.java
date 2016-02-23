@@ -12,6 +12,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.ser.StdSerializerProvider;
 import org.codehaus.jackson.map.ser.std.NullSerializer;
 import org.slf4j.Logger;
@@ -53,6 +54,7 @@ public class JsonUtil {
             if (withIndent) {
                 return mo.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             } else {
+                mo.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
                 return mo.writeValueAsString(obj);
             }
         }catch(Exception e){

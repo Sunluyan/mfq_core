@@ -29,7 +29,7 @@ public class NullMessageProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
         return SmsConstants.ERROR_SERVER;
     }
 

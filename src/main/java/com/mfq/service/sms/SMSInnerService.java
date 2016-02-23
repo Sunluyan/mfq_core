@@ -58,12 +58,12 @@ public class SMSInnerService {
      * @return
      */
     public boolean sendVcodeMessage(final String codecontent,
-            final String mobile) {
+            final String mobile, final boolean isReset) {
         RunnerUtils.submit(new Thread() {
             @Override
             public void run() {
                 // String result =
-                client.sendVcodeMessage(codecontent, mobile);
+                client.sendVcodeMessage(codecontent, mobile, isReset);
             }
         });
 
@@ -126,7 +126,6 @@ public class SMSInnerService {
      * @param content
      * @param mobilelist
      * @return
-     * @throws TException
      */
     public boolean sendBatchMessage(final String content, final List<String> mobilelist) {
         RunnerUtils.submit(new Thread() {

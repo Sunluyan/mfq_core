@@ -100,9 +100,6 @@ public class FinanceController {
 		return ret;
 	}
 
-
-
-
 	/**
 	 * 分期的首页，需要显示剩余额度和总额度。
 	 * 传入 uid 

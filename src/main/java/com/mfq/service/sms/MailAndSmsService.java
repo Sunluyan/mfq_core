@@ -89,13 +89,15 @@ public class MailAndSmsService {
         Vcode applyvcode = vcodeService.applyVcode(mobile,
                 new Date(System.currentTimeMillis() + MOBILE_EXPIRE_DURATION),
                 new Date(System.currentTimeMillis() + Msm_SEND_DURATION));
-        Object[] params = new Object[] {
-        		nick,
-                applyvcode.getVcode()
-                };
+//        Object[] params = new Object[] {
+//        		nick,
+//                applyvcode.getVcode()
+//                };
 
-        smsService.sendVcodeMessage(
-                buildFragment("mobile_reset_verification", params, true), mobile);
+//        smsService.sendVcodeMessage(
+//                buildFragment("mobile_reset_verification", params, true), mobile);
+
+        smsService.sendVcodeMessage(applyvcode.getVcode(), mobile, true);
 
         Map<String, Object> reData = new HashMap<String, Object>();
         reData.put("reSendSecond",

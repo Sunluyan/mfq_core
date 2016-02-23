@@ -135,7 +135,7 @@ public class TianHanMessageProvider extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
         String function = "Send";
 
         Map<String, String> params = new LinkedHashMap<String, String>();

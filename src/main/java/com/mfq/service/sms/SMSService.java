@@ -57,11 +57,11 @@ public class SMSService {
     public void sendCodeSms(String mobile, String message) throws Exception {
     	
     	//套用验证码发送模板
-    	String [] p= message.split(",");
-        String msgTmpl = MsgTmplContext.getSmsTmpl("mobile_reg_verification");
-        Object[] params = new Object[]{p[0]};
-        MessageFormat messageFormat = new MessageFormat(msgTmpl);
-        message = messageFormat.format(params);
+//    	String [] p= message.split(",");
+//        String msgTmpl = MsgTmplContext.getSmsTmpl("mobile_reg_verification");
+//        Object[] params = new Object[]{p[0]};
+//        MessageFormat messageFormat = new MessageFormat(msgTmpl);
+//        message = messageFormat.format(params);
 
 
         sendSMS(mobile, message, null, true);
@@ -274,7 +274,7 @@ public class SMSService {
                 if (isCode) {
                     logger.info(String.format("SEND_SMS (CODE) %s => %s",
                             mobile, message));
-                    smsInnerService.sendVcodeMessage(message, mobile);
+                    smsInnerService.sendVcodeMessage(message, mobile, false);
                 } else {
                     logger.info(String.format("SEND_SMS %s => %s", mobile,
                             message));

@@ -26,8 +26,9 @@ public class UcpaasMessageProvider  extends MessageProvider {
     private String accountSid;
     private String authToken;
     
-    private String appId = "c87b5cc35a9c4ce5a6ab91b247534cf3";
-    private String vcodeTmpId = "20568";
+    private String appId = "57089327354947a491a4ef8bc2119f74";
+    private String vcodeTmpId = "11942";
+    private String resetVcode = "20740";
     
     @Override
     public void loadConfiguration(Map<String, Object> setting) {
@@ -51,12 +52,29 @@ public class UcpaasMessageProvider  extends MessageProvider {
     }
 
     @Override
-    public String sendVcodeMessage(String content, String mobile) {
+    public String sendVcodeMessage(String content, String mobile, boolean isReset) {
+        if(isReset){
+            vcodeTmpId = resetVcode;
+            logger.info("content is {}", content);
+            String [] params = content.split(",");
+            if(params.length >1){
+                content = params[1];
+            }else {
+                content = params[0];
+            }
+        }
+        return sendVcodeMessage(content, mobile, vcodeTmpId);
+    }
+
+
+    public String sendVcodeMessage(String content, String mobile, String tmpId){
+
+//        20740
 
         Map<String, Object> bodyMap = Maps.newHashMap();
         Map<String, String> inner = Maps.newHashMap();
         inner.put("appId", appId);
-        inner.put("templateId", vcodeTmpId);
+        inner.put("templateId", tmpId);
         inner.put("to", mobile); // mobile需逗号分割，该处仅针对单个对象发送
         inner.put("param", content + ",30");
         bodyMap.put("templateSMS", inner);

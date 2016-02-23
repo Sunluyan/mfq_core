@@ -43,9 +43,26 @@
             color: #e6002d;
             font-size: 12px;
         }
+        .STYLE1 p{
+            margin: 0;
+        }
         .STYLE3 {color: #666666}
-        .STYLE4 {font-size: 16px}
+        .STYLE4 {font-size: 20px;margin-bottom:0;}
         .STYLE6 {color: #999999}
+
+        .yellow{
+            padding: 0.1rem 0.2rem;
+            background: #f8ffaf;
+            margin: 12px;
+
+
+        }
+
+        .star{
+            display: inline-block;
+            width:0.5rem ;
+            height: 0.5rem;
+        }
     </style>
 </head>
 
@@ -54,7 +71,18 @@
 <table width="100%" border="0" cellpadding="4" cellspacing="4">
 
     <tr>
-        <td align="center" class="STYLE1"><p><span class="STYLE4">上海Yestar艺星医疗美容医院</span>      <br />
+        <td align="center" class="STYLE1">
+
+            <span class="STYLE4">上海Yestar艺星医疗美容医院</span>
+            <br />
+            <p style="height:10px;margin: 0;"></p>
+	        	<span class="yellow" style="">
+	        		<lable for="zmd" style="color:#666; ">知名度：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/half.png" alt="" id="zmd" class="star" style="margin-right: 0.3rem;"/>
+	        		<lable for="zmd" style="color:#666; ">医生资质：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/half.png" alt="" id="zmd" class="star"/>
+	        		<lable for="zmd" style="color:#666; ">规模：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/>
+	        	</span>
+            <br />
+            <p style="height:10px;margin: 0;"></p>
             <span class="STYLE3">地址：上海市长宁区虹桥路1165号</span></p>    </td>
     </tr>
     <tr>
@@ -64,7 +92,8 @@
         <td align="left" class="d_l">医院环境</td>
     </tr>
     <tr>
-        <td align="center" valign="top"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-yxyx_05.png" width="80%" /><br />
+        <td align="center" valign="top">
+            <img src="http://7xlcaq.com2.z0.glb.qiniucdn.com/hospital_yx_little-1.png" width="80%" /><br />
             <br />
             <img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-yxyx_09.png" width="80%" />      <br />
             <br />
@@ -88,8 +117,9 @@
     <tr class="STYLE1">
         <td align="center" valign="top" class="STYLE1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/hospital-yxyx_16.png" width="80%" /></td>
     </tr>
+
 </table>
-<p>&nbsp;</p>
+<div style="color:#fe6868;background: #e7e7e7;padding: 0.2rem 0;margin: 0 auto;text-align: center;font-size: 14px;">上海城市项目将在2016年6月份开展</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </body>

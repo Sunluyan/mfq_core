@@ -41,10 +41,27 @@
         }
         .STYLE1 {
             color: #e6002d;
-            font-size: 12px;
         }
-        .STYLE3 {color: #666666}
+        .STYLE1 p{
+            margin: 0;
+        }
+        .STYLE3 {color: #666666;font-size: 0.4rem;}
+        .STYLE4 {font-size: 20px;margin-bottom:0;}
         .STYLE6 {color: #999999}
+
+        .yellow{
+            padding: 0.1rem 0.2rem;
+            background: #f8ffaf;
+            margin: 12px;
+
+
+        }
+
+        .star{
+            display: inline-block;
+            width:0.5rem ;
+            height: 0.5rem;
+        }
     </style>
 </head>
 
@@ -53,8 +70,17 @@
 <table width="100%" border="0" cellpadding="4" cellspacing="4">
 
     <tr>
-        <td align="center" class="STYLE1"><p>北京航空总医院整形美容
+        <td align="center" class="STYLE1"><p>
+            <span class="STYLE4">北京航空总医院整形美容</span>
             <br />
+            <p style="height:10px;margin: 0;"></p>
+	        	<span class="yellow" style="">
+	        		<lable for="zmd" style="color:#666; ">知名度：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/none.png" alt="" id="zmd" class="star" style="margin-right: 0.3rem;"/>
+	        		<lable for="zmd" style="color:#666; ">医生资质：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/none.png" alt="" id="zmd" class="star"/>
+	        		<lable for="zmd" style="color:#666; ">规模：</lable><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/one.png" alt="" id="zmd" class="star"/><img src="/images/hospital/half.png" alt="" id="zmd" class="star"/>
+	        	</span>
+            <br />
+            <p style="height:10px;margin: 0;"></p>
             <span class="STYLE3">地址：北京市朝阳区安外北苑路3号院</span></p>    </td>
     </tr>
     <tr>
