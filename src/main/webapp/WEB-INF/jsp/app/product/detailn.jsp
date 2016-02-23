@@ -29,8 +29,6 @@ String cure_means = (String) request.getAttribute("cureMeans");
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
 <title>商品详情</title>
-
-<link href="css/tipbox.css" rel="stylesheet" type="text/css" />
 <meta name="keywords" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app/n/style.css" type="text/css" />
@@ -171,7 +169,7 @@ body {
 	font-size: 11px;
 }
 .text_tuan {
-	color: #ff5254;
+	color: RGB(251,93,156);
 }
 .txt_tuangou {
 	font-size: 11px;
@@ -182,7 +180,7 @@ body {
 	font-weight: bold;
 }
 .line_down table tr td table {
-	color: #FF5254;
+	color: RGB(251,93,156);
 }
 .bt_td {
 	font-size: 12px;
@@ -236,14 +234,14 @@ body {
 	text-decoration: none;
 	border-radius:5px;
 }
-.STYLE71 {color: #FF5254}
+.STYLE71 {color: RGB(251,93,156)}
 .STYLE72 {color: #FFFFFF}
 .STYLE75 {
 	font-size: 18px;
-	color: #FF5254;
+	color: RGB(251,93,156);
 }
 .STYLE76 {font-size: 12px}
-.STYLE9 {color: #FF5254; font-family: "方正细黑一简体"; }
+.STYLE9 {color: RGB(251,93,156); font-family: "方正细黑一简体"; }
 .left_line {	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -264,18 +262,18 @@ body {
 	text-align: left;
 	vertical-align: baseline;
 }
-.pri_l {font-size: 24px;color: #FF5254}
-.pri_s {	color: #FF5254;
+.pri_l {font-size: 24px;color: RGB(251,93,156)}
+.pri_s {	color: RGB(251,93,156);
 	font-size: 14px;
 }
 .round_l {	font-size: 9px;
-	border: 1px solid #FF5254;
-	color:#FF5254;
+	border: 1px solid RGB(251,93,156);
+	color:RGB(251,93,156);
 	border-radius: 2px;
 }
 .round_l1 {font-size: 9px;
-	border: 1px solid #FF5254;
-	color:#FF5254;
+	border: 1px solid RGB(251,93,156);
+	color:RGB(251,93,156);
 	border-radius: 2px;
 }
 .up_do_line_red {
@@ -296,19 +294,19 @@ body {
 	border-bottom-color: #CCCCCC;
 	border-left-color: #CCCCCC;
 }
-.STYLE80 {border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; border-right-style: none; border-bottom-style: solid; border-left-style: none; border-top-color: #E4E4E4; border-right-color: #E4E4E4; border-bottom-color: #E4E4E4; border-left-color: #E4E4E4; color: #FF5254; }
+.STYLE80 {border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: none; border-right-style: none; border-bottom-style: solid; border-left-style: none; border-top-color: #E4E4E4; border-right-color: #E4E4E4; border-bottom-color: #E4E4E4; border-left-color: #E4E4E4; color: RGB(251,93,156); }
 .STYLE11 {	font-size: 10px;
 	color: #FFFFFF;
 }
 .round_l2 {	font-size: 9px;
-	border: 1px solid #FF5254;
-	color:#FF5254;
+	border: 1px solid RGB(251,93,156);
+	color:RGB(251,93,156);
 	border-radius: 2px;
 }
 
 .round_l21 {font-size: 9px;
-	border: 1px solid #FF5254;
-	color:#FF5254;
+	border: 1px solid RGB(251,93,156);
+	color:RGB(251,93,156);
 	border-radius: 2px;
 }
 .a1 {
@@ -363,7 +361,7 @@ body {
 			 <td valign="bottom"><span class="pri_s"> &nbsp;&nbsp;<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_41.png" width="18" />￥</span><span class="STYLE3"><span class="pri_l"><%=price %></span></span> <span class="STYLE76"><del>原价￥<%=market_price %></del></span></td>
 			<td align="right" style="padding:10px;"><table border="0" cellpadding="1" cellspacing="0" class="round_l21">
           <tr>
-            <td width="30" align="center" valign="middle" bgcolor="#FF5254"><span class="STYLE9"><span class="STYLE11">补贴</span></span></td>
+            <td width="30" align="center" valign="middle" bgcolor="RGB(251,93,156)"><span class="STYLE9"><span class="STYLE11">补贴</span></span></td>
             <td align="left" valign="bottom" bgcolor="#FFFFFF"><span class="pri_s" >￥${bt }</span></td>
           </tr>
       </table></td>
@@ -384,7 +382,7 @@ body {
 			<c:if test="${fq_12 != '' }">/ ￥${fq_12 }x12期</c:if>
 		</ul>
 	</div>
-	<div style="background-color:#FF5254;text-align:center; vertical-align:middle; position:relative;right:0px; bottom:0px; left:64%;height:58px; width:35%;float:left">
+	<div style="background-color:RGB(251,93,156);text-align:center; vertical-align:middle; position:relative;right:0px; bottom:0px; left:64%;height:58px; width:35%;float:left">
 		<ul style="height:58px;line-height:58px;text-align:center; vertical-align:middle; ">
 
 			<c:if test="${!s }">
@@ -437,11 +435,11 @@ body {
   <tr>
     <td height="3"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-1px.png" width="1"/></td>
   </tr>
-
+	
   <tr>
     <td height="90" align="center" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="6">
       <tr>
-        <td><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-splc.png" width="100%" /></td>
+        <td><img src="http://7xlcaq.com2.z0.glb.qiniucdn.com/product-liucheng.png" width="100%" /></td>
       </tr>
     </table></td>
   </tr>

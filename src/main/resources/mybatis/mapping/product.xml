@@ -114,6 +114,7 @@
 			<foreach collection="hospitals" open="(" close=")" separator="," item="hospital">
 				#{hospital.id}
 			</foreach>
+			and online = 1
 		</if>
 		order by sale_num desc
 
