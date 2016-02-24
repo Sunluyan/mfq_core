@@ -37,6 +37,8 @@ public interface FinanceBillMapper {
 	
     public long updateByPrimaryKeySelective(FinanceBill record);
 
+	public List<FinanceBill> queryBillByBillNos(@Param("billnos")List<String> billnos);
+
 
 	public List<FinanceBill> queryBillByOrderNo(@Param("uid") long uid,@Param("orderNo") String orderNo);
 }

@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +51,8 @@ public class UnionpayServiceImpl extends BasePaymentService {
     PayRecordService payRecordService;
     @Resource
     PayService payService;
-
+    @Resource
+    FinanceBillService financeBillService;
 
     public String genNonceStr() {
         return "123";
@@ -77,10 +79,14 @@ public class UnionpayServiceImpl extends BasePaymentService {
             optional.put("amount", params.get("amount"));
             logger.info(params.get("amount").toString()+"     in unionpayserviceimpl");
             optional.put("uid", UserIdHolder.getLongUid());
+
+            Integer total_fee = (int) (Float.parseFloat(params.get("amount").toString()) * 100);
             if (orderType == OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
             } else if (orderType == OrderType.REFUND) {
                 pname = "美分期还款－" + String.valueOf(params.get("amount"));
+                BigDecimal BDAmount = financeBillService.getAmountByBillNos(orderNo);
+                total_fee = (int)(BDAmount.floatValue()*100);
             } else if(orderType == OrderType.ONLINE){
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
@@ -89,15 +95,13 @@ public class UnionpayServiceImpl extends BasePaymentService {
 
             //报文前准备
 
-            String app_secret = null;
-            app_secret = BeeCloudConfigure.APPSECRET;
+            String app_secret = BeeCloudConfigure.APPSECRET;
 
             //开始制作请求报文
             String app_id = BeeCloudConfigure.APPID;
             long timestamp = new Date().getTime();
             String app_sign = getBCAppSign(app_id, timestamp, app_secret);
             String channel = BeeCloudConfigure.CHANNEL;
-            Integer total_fee = (int) (Float.parseFloat(params.get("amount").toString()) * 100);
             String bill_no = orderNo;
             String title = pname;
             if (title.length() > 16) {

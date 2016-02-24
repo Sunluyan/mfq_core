@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.service.FinanceBillService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ import com.mfq.utils.DateUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.MD5;
 import com.mfq.utils.XMLConverUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 @PayAPIImpl(payAPIType = PayAPIType.WECHAT)
 @Service
@@ -49,6 +51,8 @@ public class WechatServiceImpl extends BasePaymentService {
     ProductService productService;
     @Resource
     PayRecordService payRecordService;
+    @Resource
+    FinanceBillService financeBillService;
 
     private String genNonceStr() {
 		Random random = new Random();
@@ -56,6 +60,7 @@ public class WechatServiceImpl extends BasePaymentService {
 	}
     
     @Override
+    @Transactional
     public String goPay(HttpServletRequest request,
             HttpServletResponse response, Map<String, Object> params,
             OrderType orderType) {
@@ -63,17 +68,23 @@ public class WechatServiceImpl extends BasePaymentService {
         try {
             String orderNo = (String) params.get("order_no");
             String pname = "";
+            int amount = (int)(Float.parseFloat(params.get("amount").toString())*100);//按分计算
             if (orderType ==  OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
             } else if(orderType ==  OrderType.REFUND){
-            	pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
+            	pname = "美分期分期还款－" + String.valueOf(params.get("amount"));
+                //将分期账单的所有金额加起来
+                BigDecimal BDAmount = financeBillService.getAmountByBillNos(orderNo);
+                amount = (int)(BDAmount.floatValue()*100);
+
             } else {
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
                 pname = product.getName();
             }
             String nonce_str = genNonceStr();
-            int amount = (int)(Float.parseFloat(params.get("amount").toString())*100);//按分计算
+
+
             PayReqData reqBean = new PayReqData(AppContext.getUuid(), nonce_str,
                     pname, orderNo, amount,
                     AppContext.getIp(), buildPayCallbackURL());

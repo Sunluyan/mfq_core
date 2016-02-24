@@ -35,7 +35,7 @@ public class PayRecord {
     Date updatedAt; // 最后更新时间
 
     public PayRecord() {
-
+        super();
     }
 
     public long getId() {

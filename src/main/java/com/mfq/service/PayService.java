@@ -515,11 +515,18 @@ public class PayService {
 
     }
 
+    /**
+     * 分期账单的流水,记录的是分期账单号,不是orderNo是billNo
+     * 所以需要通过orderNo查找到所有的FinanceBillNo
+     * @param result
+     * @return
+     * @throws Exception
+     */
     @Transactional
     public boolean updateOrderRefundOk(BeeCloudResult result) throws Exception {
 
         PayRecord r = payRecordService.findByOrderNo(result.getOptional().get("orderNo").toString());
-        //
+
         FinanceBill financeBill = financeBillService.findBillByBillNo(r.getOrderNo());
         if (financeBill == null || financeBill.getId() <= 0) {
             return false;

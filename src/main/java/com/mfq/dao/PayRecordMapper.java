@@ -8,8 +8,10 @@ import com.mfq.annotation.MFQDao;
 import com.mfq.bean.PayRecord;
 import com.mfq.constants.OrderType;
 import com.mfq.constants.PayStatus;
+import org.springframework.stereotype.Component;
 
 @MFQDao
+@Component
 public interface PayRecordMapper {
 
     public PayRecord findById(@Param("id") long id);

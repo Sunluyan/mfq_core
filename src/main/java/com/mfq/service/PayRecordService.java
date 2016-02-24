@@ -46,14 +46,29 @@ public class PayRecordService {
      *            用户id
      * @param orderNo，若充值则为充值单号
      */
+    @Transactional
     public long saveRecord(OrderType orderType, long uid, String orderNo,
-            BigDecimal amount) {
+            BigDecimal amount) throws Exception{
         if (uid <= 0) {
             logger.warn("UserId is unvalid for recharge process! uid={}", uid);
             return 0;
         }
         if (orderType == OrderType.RECHARGE && StringUtils.isBlank(orderNo)) {
             orderNo = makeChargeNo(uid);
+        }
+        if(orderType == OrderType.REFUND){
+            for(int i = 0;i<orderNo.split(",").length;i++){
+                String billNo = orderNo.split(",")[i];
+                if(StringUtils.isBlank(billNo)){
+                    break;
+                }
+                BigDecimal present = new BigDecimal(0);
+                BigDecimal balance = new BigDecimal(0);
+                PayRecord record = buildDefaultRecord(orderType,uid,orderNo,amount,balance,present);
+                Long count = mapper.insertOne(record);
+                if(count!=1) throw new Exception("插入充值记录出错");
+            }
+            return 1;
         }
         BigDecimal present = new BigDecimal(0);
         BigDecimal balance = new BigDecimal(0);
@@ -227,6 +242,8 @@ public class PayRecordService {
     public PayRecord findByOrderNo(String orderNo) {
         return mapper.findByOrderNo(orderNo);
     }
+
+
 
     public long insertOne(PayRecord record) {
         return mapper.insertOne(record);

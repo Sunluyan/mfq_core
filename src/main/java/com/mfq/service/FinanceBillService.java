@@ -2,6 +2,7 @@ package com.mfq.service;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.google.common.collect.Maps;
+import com.google.common.eventbus.Subscribe;
 import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.constants.PayType;
 import org.apache.commons.lang.StringUtils;
@@ -290,6 +292,38 @@ public class FinanceBillService {
 
 		return JsonUtil.successResultJson(ret);
 	}
+
+
+
+	public BigDecimal getAmountByBillNos(String orderNo) {
+		BigDecimal amount = new BigDecimal(0);
+		List<String> billNos = new ArrayList<>();
+		for(int i = 0;i<orderNo.split(",").length;i++){
+			String billNo = orderNo.split(",")[i];
+			if(StringUtils.isBlank(billNo))break;
+			billNos.add(billNo);
+		}
+		List<FinanceBill> list = mapper.queryBillByBillNos(billNos);
+		for (FinanceBill financeBill : list) {
+			amount.add(financeBill.getNewBalance()).add(financeBill.getLateFee());
+		}
+		return amount;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

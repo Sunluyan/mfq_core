@@ -91,7 +91,6 @@ public class PaymentController {
 																				 // 或 还款金额
 
 
-			
 			PayAPIType apiType = PayAPIType.fromCode(tpp);
 	        if (apiType == null) {
 	            return null;

@@ -116,6 +116,7 @@ public class AppController {
     		city = cityMapper.findById(h.getCityId());
     		clist.add(city);
     	}
+
     	ListSortUtil.qcf(clist);
     	
     	return JsonUtil.successResultJson(clist);
