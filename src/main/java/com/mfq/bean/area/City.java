@@ -29,5 +29,14 @@ public class City {
 	public void setSort(long sort) {
 		this.sort = sort;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "City{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", proId=" + proId +
+				", sort=" + sort +
+				'}';
+	}
 }

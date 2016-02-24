@@ -114,10 +114,12 @@ public class AppController {
     	for(Hospital h:list){
     		City city = new City();
     		city = cityMapper.findById(h.getCityId());
-    		clist.add(city);
+            logger.info(city.toString());
+            clist.add(city);
     	}
 
-    	ListSortUtil.qcf(clist);
+        if(clist.size()!=0)
+    	    ListSortUtil.qcf(clist);
     	
     	return JsonUtil.successResultJson(clist);
     }

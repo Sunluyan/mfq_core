@@ -136,7 +136,7 @@ public class InviteService {
         //10000-30000 5%,
         //30000-50000 6%,
         //50000-80000 7%,
-        //        >80000 8%
+        //>80000 8%
         BigDecimal persent = new BigDecimal(0);
         if (amount.compareTo(BigDecimal.valueOf(10000)) < 0) {
             persent = BigDecimal.valueOf(0.04);

@@ -38,6 +38,7 @@
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.0.13" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.0.13" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.36" />
+          <element id="library" level="project" name="Maven: org.jbarcode:jbarcode:0.2.8" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.8" />
@@ -73,7 +74,7 @@
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.2" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
           <element id="library" level="project" name="Maven: org.jetbrains:annotations-java5:15.0" />
-          <element id="library" level="project" name="Maven: com.wkb:signature:1.0" />
+          <element id="library" level="project" name="Maven: com.wkb:signature:1.1" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:2.4" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
         </element>
