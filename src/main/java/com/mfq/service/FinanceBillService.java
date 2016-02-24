@@ -353,11 +353,6 @@ public class FinanceBillService {
 			realresult.add(app);
 
 		}
-
-
-
-
-
 		return realresult;
 	}
 
