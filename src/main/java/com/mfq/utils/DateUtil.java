@@ -2,6 +2,10 @@ package com.mfq.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -266,8 +270,8 @@ public final class DateUtil {
     /**
      * 取得时间间隔,相差的时间，XX小时XX分钟
      * 
-     * @param d1
-     * @param d2
+     * @param time1
+     * @param time2
      * @return 不会超过24小时
      */
     public static String getTimeBetween(String time1, String time2) {
@@ -372,5 +376,46 @@ public final class DateUtil {
     	long msgCreateTime = Long.parseLong(date) * 1000L;   
 	    return new Date(msgCreateTime);
     }
-    
+
+    /**
+     *  jdk 8 后 java.util.Date to LocalDate
+     * @param date
+     * @return localDate
+     */
+    public static LocalDate coverDateToLocalDate(Date date){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    /**
+     *  jdk 8 后 java.util.Date to LocalTime
+     * @param date
+     * @return localDate
+     */
+    public static LocalTime coverDateToLocalTime(Date date){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalTime();
+    }
+
+    /**
+     *  jdk 8 后 java.util.Date to LocalDateTime
+     * @param date
+     * @return localDate
+     */
+    public static LocalDateTime coverDateToLocalDateTime(Date date){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    }
+
+
+    public static boolean isBetween(Date thisTime, Date beginTime, Date endTime){
+        if(thisTime == null){
+            thisTime = new Date();
+        }
+        if(beginTime.getTime() > endTime.getTime()){
+            return false;
+        }
+        if(beginTime.getTime() < thisTime.getTime() && endTime.getTime() > thisTime.getTime()){
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -2,17 +2,15 @@ package com.mfq.service;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
 import com.google.common.collect.Maps;
-import com.google.common.eventbus.Subscribe;
+import com.mfq.bean.app.FinanceBillList2App;
 import com.mfq.bean.app.OrderInfo2App;
 import com.mfq.constants.PayType;
+import com.mfq.utils.DateUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -294,6 +292,77 @@ public class FinanceBillService {
 	}
 
 
+	public List<FinanceBillList2App> createFinanceApp(List<FinanceBill> list) throws Exception {
+		Set<String> orderNoSet = new HashSet<String>();
+		for (FinanceBill finance : list) {
+			orderNoSet.add(finance.getOrderNo());
+		}
+
+		List<FinanceBillList2App> realresult = new ArrayList<FinanceBillList2App>();
+		for (String orderNo:orderNoSet){
+
+			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
+			OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
+			data.setFinanceState(1);
+
+			int nowInstallment = 0;
+
+			BigDecimal financePrincipal = orderInfo.getOnlinePay();
+			BigDecimal financeService = BigDecimal.valueOf(0);
+
+			BigDecimal hasPay = BigDecimal.valueOf(0);
+			BigDecimal waitPay = BigDecimal.valueOf(0);
+
+			BigDecimal totalCurPay = BigDecimal.valueOf(0);
+
+			List<FinanceBill> bills = Lists.newArrayList();
+			for (FinanceBill finance : list) {
+				if(finance.getOrderNo().equals(orderNo)) {//循环该用户所有和正在循环的订单号相同的 分期订单
+					bills.add(finance);
+					//判断当前期数
+					Date startPay = finance.getDueAt();
+					Date endPay = DateUtil.addMonth(startPay,1);
+					if(DateUtil.isBetween(new Date(), startPay, endPay)){
+						nowInstallment = finance.getCurPeriod();
+					}
+					totalCurPay = totalCurPay.add(finance.getNewBalance());
+
+					int billStatus = finance.getStatus();
+
+					if(billStatus == BillStatus.NOT_PAY || billStatus == BillStatus.OVER_TIME.getId()){
+
+						waitPay = waitPay.add(finance.getNewBalance());
+
+					}else if(billStatus == BillStatus.PAY_OFF.getId()){
+
+						hasPay = hasPay.add(finance.getNewBalance());
+
+					}
+				}
+			}
+
+			financeService = totalCurPay.subtract(financePrincipal);
+			BigDecimal financeTotal = financePrincipal.add(financeService);
+
+			//start
+			FinanceBillList2App app = new FinanceBillList2App(data.getProduct_name(), data.getOrder_time(), data.getPrice(), data.getFinanceState(),
+					data.getCur_period(), nowInstallment,
+					data.getOrder_no(), financePrincipal, financeService, financeTotal, hasPay, waitPay,
+					bills);
+
+			realresult.add(app);
+
+		}
+
+
+
+
+
+		return realresult;
+	}
+
+
+
 
 	public BigDecimal getAmountByBillNos(String orderNo) {
 		BigDecimal amount = new BigDecimal(0);
@@ -310,21 +379,4 @@ public class FinanceBillService {
 		return amount;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

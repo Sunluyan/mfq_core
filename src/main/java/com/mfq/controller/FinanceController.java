@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.app.FinanceBillList2App;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -64,8 +65,7 @@ public class FinanceController {
 	@RequestMapping(value = {"/bill", "/bill/"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	@LoginRequired
-	public String userDetail(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String userDetail(HttpServletRequest request) {
 		String ret = "";
 		try{
 			Map<String, Object> params = JsonUtil.readMapFromReq(request);
@@ -213,45 +213,47 @@ public class FinanceController {
 				return ret;
 			}
 
-			Set<String> orderNoSet = new HashSet<String>();
-			for (FinanceBill finance : list) {
-				orderNoSet.add(finance.getOrderNo());
-			}
+			List<FinanceBillList2App> realresult =financeBillService.createFinanceApp(list);
 
-			List<OrderInfo2App> realresult = new ArrayList<OrderInfo2App>();
-
-
-			for (String orderNo : orderNoSet) {	//循环订单号
-				OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
-				OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
-				logger.info("OrderInfo2App at FinanceController :{}",data);
-				data.setFinanceState(-1);
-				data.setBillNo("xiajibaBillNo");
-
-				for (FinanceBill finance : list) {
-					if(finance.getOrderNo().equals(orderNo)){//循环该用户所有和正在循环的订单号相同的 分期订单
-						logger.info("finance in FinanceVontroller : ",finance.toString());
-						data.setBillNo(finance.getBillNo());
-						data.setEveryMonthPayTime(finance.getDueAt());
-						data.setMonth_period(finance.getNewBalance());
-						if(finance.getStatus() == 1){
-							//分期状态设为1 , 当前期数为第一个为待付款的账单的current
-							data.setFinanceState(1);
-							data.setCur_period(finance.getCurPeriod());
-							break;
-						}
-						if(finance.getStatus() == 2){
-							//分期状态设为2 , 当前期数为第一个为待付款的账单的current
-							data.setFinanceState(2);
-							data.setCur_period(finance.getCurPeriod());
-							break;
-						}
-
-
-					}
-				}
-				realresult.add(data);
-			}
+//			Set<String> orderNoSet = new HashSet<String>();
+//			for (FinanceBill finance : list) {
+//				orderNoSet.add(finance.getOrderNo());
+//			}
+//
+//			List<FinanceBillList2App> realresult = new ArrayList<FinanceBillList2App>();
+//
+//
+//			for (String orderNo : orderNoSet) {	//循环订单号
+//				OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
+//				OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
+//				logger.info("OrderInfo2App at FinanceController :{}",data);
+//				data.setFinanceState(-1);
+//				data.setBillNo("xiajibaBillNo");
+//
+//				for (FinanceBill finance : list) {
+//					if(finance.getOrderNo().equals(orderNo)){//循环该用户所有和正在循环的订单号相同的 分期订单
+//						logger.info("finance in FinanceVontroller : ",finance.toString());
+//						data.setBillNo(finance.getBillNo());
+//						data.setEveryMonthPayTime(finance.getDueAt());
+//						data.setMonth_period(finance.getNewBalance());
+//						if(finance.getStatus() == 1){
+//							//分期状态设为1 , 当前期数为第一个为待付款的账单的current
+//							data.setFinanceState(1);
+//							data.setCur_period(finance.getCurPeriod());
+//							break;
+//						}
+//						if(finance.getStatus() == 2){
+//							//分期状态设为2 , 当前期数为第一个为待付款的账单的current
+//							data.setFinanceState(2);
+//							data.setCur_period(finance.getCurPeriod());
+//							break;
+//						}
+//
+//
+//					}
+//				}
+//				realresult.add(data);
+//			}
 
 			logger.info("realresult:{}",realresult);
 			ret = JsonUtil.successResultJson(realresult);

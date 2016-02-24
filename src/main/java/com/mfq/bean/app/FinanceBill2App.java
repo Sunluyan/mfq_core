@@ -26,7 +26,7 @@ public class FinanceBill2App {
     String due_at; // 帐单应还款日期
     String pay_at; // 实际还款日期
     
-    public FinanceBill2App(){
+    public FinanceBill2App(String billNo, BigDecimal newBalance, Integer curPeriod, boolean isNow, int billStatus){
         
     }
     

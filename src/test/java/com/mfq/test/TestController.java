@@ -7,6 +7,7 @@ import java.util.Map;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
+import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -17,35 +18,16 @@ public class TestController {
 
 
     public void testOrderCreate() throws IOException {
-//        String url = purl+"/finance/order/";
-//        Map<String, Object> params = Maps.newHashMap();
-//        params.put("uid", "2936");
-//        params.put("orderNo", "mn2016011116070133780097");
-//
-//        String sign = SignHelper.makeSign(params);
-//        params.put("sign", sign);
-//        String body = JsonUtil.writeToJson(params);
-//        String resp = HttpUtil.postJson(url, body, true);
-//        System.out.println(resp);
+        String url = purl+"/finance/list/";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("uid", "2936");
+        params.put("orderNo", "mn2016011116070133780097");
 
-//
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("name", "hzucmj");
-        map.put("age", 22);
-        map.put("yyy",null);
-//
-//
-//        String t = JsonUtil.toJson(map, false,false);
-//        System.out.print(t);
-
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
-        User user = new User(1,"jack",null);
-        map.put("su",user);
-        String outJson = mapper.writeValueAsString(map);
-        System.out.println(outJson);
-
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
 
     }
 
