@@ -484,34 +484,41 @@ public class PayService {
 
     @Transactional
     public boolean updateOrderRefundOk(PayCallbackResult result) throws Exception {
+        for(int i = 0;i<result.getOrderNo().split(",").length;i++){
+            String billNo = result.getOrderNo().split(",")[i];
+            if(StringUtils.isBlank(billNo)){
+                break;
+            }
+            PayRecord r = payRecordService.findByOrderNo(billNo);
+            FinanceBill financeBill = financeBillService.findBillByBillNo(r.getOrderNo());
+            if (financeBill == null || financeBill.getId() <= 0) {
+                return false;
+            }
 
-        PayRecord r = payRecordService.findByOrderNo(result.getOrderNo());
-        //
-        FinanceBill financeBill = financeBillService.findBillByBillNo(r.getOrderNo());
-        if (financeBill == null || financeBill.getId() <= 0) {
-            return false;
+            financeBill.setPayAt(new Date());
+            //不论是否过期，都要把状态修改成-1已支付状态。判断该账单是否是过期账单要在查询的时候通过看payat是否大于dueat，
+            //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
+            //if(financeBill.getDueAt().getTime() > System.currentTimeMillis()){
+            financeBill.setStatus(BillStatus.PAY_OFF.getId());
+            //}else{
+            //financeBill.setStatus(BillStatus.OVER_TIME.getId());
+            //}
+            financeBill.setUpdatedAt(new Date());
+
+            long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
+            long count = 0;
+            if (result.getApiType() == PayAPIType.INNER) {
+                count = quotaService.updateUserBalance(financeBill.getUid(), result.getAmount());
+            }
+
+
+            if (count != 1) throw new Exception("更新用户余额失败");
+
+            logger.info("update orderRefund success! ret={}", u);
+            return true;
         }
-        financeBill.setPayAt(new Date());
-        //不论是否过期，都要把状态修改成-1已支付状态。判断该账单是否是过期账单要在查询的时候通过看payat是否大于dueat，
-        //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
-        //if(financeBill.getDueAt().getTime() > System.currentTimeMillis()){
-        financeBill.setStatus(BillStatus.PAY_OFF.getId());
-        //}else{
-        //financeBill.setStatus(BillStatus.OVER_TIME.getId());
-        //}
-        financeBill.setUpdatedAt(new Date());
 
-        long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
-        long count = 0;
-        if (result.getApiType() == PayAPIType.INNER) {
-            count = quotaService.updateUserBalance(financeBill.getUid(), result.getAmount());
-        }
-
-
-        if (count != 1) throw new Exception("更新用户余额失败");
-
-        logger.info("update orderRefund success! ret={}", u);
-        return true;
+        return false;
 
     }
 
@@ -524,28 +531,31 @@ public class PayService {
      */
     @Transactional
     public boolean updateOrderRefundOk(BeeCloudResult result) throws Exception {
+        for(int i = 0;i<result.getOptional().get("orderNo").toString().split(",").length;i++) {
+            String billNo = result.getOptional().get("orderNo").toString().split(",")[i];
+            if(StringUtils.isBlank(billNo)){
+                break;
+            }
+            PayRecord r = payRecordService.findByOrderNo(billNo);
 
-        PayRecord r = payRecordService.findByOrderNo(result.getOptional().get("orderNo").toString());
+            FinanceBill financeBill = financeBillService.findBillByBillNo(r.getOrderNo());
+            if (financeBill == null || financeBill.getId() <= 0) {
+                return false;
+            }
+            financeBill.setPayAt(new Date());
+            //不论是否过期，都要把状态修改成-1已支付状态。
+            //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
+            financeBill.setStatus(BillStatus.PAY_OFF.getId());
+            financeBill.setUpdatedAt(new Date());
 
-        FinanceBill financeBill = financeBillService.findBillByBillNo(r.getOrderNo());
-        if (financeBill == null || financeBill.getId() <= 0) {
-            return false;
+            long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
+
+            logger.info("update orderRefund success! ret={}", u);
+            return true;
         }
-        financeBill.setPayAt(new Date());
-        //不论是否过期，都要把状态修改成-1已支付状态。判断该账单是否是过期账单要在查询的时候通过看payat是否大于dueat，
-        //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
-        //if(financeBill.getDueAt().getTime() > System.currentTimeMillis()){
-        financeBill.setStatus(BillStatus.PAY_OFF.getId());
-        //}else{
-        //financeBill.setStatus(BillStatus.OVER_TIME.getId());
-        //}
-        financeBill.setUpdatedAt(new Date());
 
-        long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
 
-        logger.info("update orderRefund success! ret={}", u);
-        return true;
-
+        return false;
     }
 
 
