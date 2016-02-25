@@ -38,10 +38,7 @@
 
 	<insert id="insertOne" parameterType="PayRecord"
 		useGeneratedKeys="true" keyProperty="id">
-		<selectKey resultType="long" order="AFTER" keyProperty="id">
-			SELECT LAST_INSERT_ID() AS id
-		</selectKey>
-		insert ignore into pay_record(
+		insert into pay_record(
 		<include refid="insertsql" />
 		)values (
 		#{orderType}, #{tradeNo}, #{orderNo}, #{amount}, #{balance},
@@ -65,4 +62,10 @@
 		`callback_at`=#{callbackAt}, `updated_at`=now()
 		where id = #{id}
 	</update>
+
+	<select id="queryByOrderNo" resultType="PayRecord">
+		select
+		<include refid="selectsql" />
+		from pay_record where order_type=#{orderType} and uid=#{uid} and status = #{status}
+	</select>
 </mapper>

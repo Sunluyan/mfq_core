@@ -9,11 +9,14 @@ import java.util.Random;
 import javax.annotation.Resource;
 
 import com.mfq.bean.BeeCloudResult;
+import com.mfq.bean.FinanceBill;
 import com.mfq.constants.CardType;
 import com.mfq.payment.PayAPIType;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
@@ -39,16 +42,18 @@ public class PayRecordService {
     UserQuotaService quotaService;
     @Resource
     PayRecordMapper mapper;
+    @Resource
+    FinanceBillService financeBillService;
 
     /**
      * 需要插入充值记录表
-     * @param uid
-     *            用户id
+     *
+     * @param uid               用户id
      * @param orderNo，若充值则为充值单号
      */
     @Transactional
     public long saveRecord(OrderType orderType, long uid, String orderNo,
-            BigDecimal amount) throws Exception{
+                           BigDecimal amount) throws Exception {
         if (uid <= 0) {
             logger.warn("UserId is unvalid for recharge process! uid={}", uid);
             return 0;
@@ -56,18 +61,14 @@ public class PayRecordService {
         if (orderType == OrderType.RECHARGE && StringUtils.isBlank(orderNo)) {
             orderNo = makeChargeNo(uid);
         }
-        if(orderType == OrderType.REFUND){
-            for(int i = 0;i<orderNo.split(",").length;i++){
-                String billNo = orderNo.split(",")[i];
-                if(StringUtils.isBlank(billNo)){
-                    break;
-                }
-                BigDecimal present = new BigDecimal(0);
-                BigDecimal balance = new BigDecimal(0);
-                PayRecord record = buildDefaultRecord(orderType,uid,orderNo,amount,balance,present);
-                Long count = mapper.insertOne(record);
-                if(count!=1) throw new Exception("插入充值记录出错");
-            }
+        if (orderType == OrderType.REFUND) {
+            FinanceBill financeBill = financeBillService.findBillByBillNo(orderNo.split(",")[0]);
+
+            BigDecimal present = new BigDecimal(0);
+            BigDecimal balance = new BigDecimal(0);
+            PayRecord record = buildDefaultRecord(orderType, uid, financeBill.getOrderNo(), amount, balance, present);
+            long count = mapper.insertOne(record);
+            if(count != 1)throw new Exception("插入流水出错");
             return 1;
         }
         BigDecimal present = new BigDecimal(0);
@@ -77,6 +78,7 @@ public class PayRecordService {
         logger.info("create record {}", record);
         return mapper.insertOne(record);
     }
+
 
 
 
@@ -95,7 +97,7 @@ public class PayRecordService {
             return null;
         }
         logger.info("orderNo , record {} | {}", result.getOrderNo(), record.getId());
-        logger.info("record status {} | {}",record.getStatus(), status);
+        logger.info("record status {} | {}", record.getStatus(), status);
         if (record.getStatus() == status) {
             logger.warn("充值记录状态与要更新到的状态相同！");
             // do nothing
@@ -132,7 +134,7 @@ public class PayRecordService {
         if (record == null || status == null) {
         }
         logger.info("orderNo , record {} | {}", result.getOptional().get("orderNo").toString(), record.getId());
-        logger.info("record status {} | {}",record.getStatus(), status);
+        logger.info("record status {} | {}", record.getStatus(), status);
         if (record.getStatus() == status) {
             logger.warn("充值记录状态与要更新到的状态相同！");
             // do nothing
@@ -157,11 +159,9 @@ public class PayRecordService {
 
     /**
      * 只能清除未实际付款的充值记录update－status
-     * 
-     * @param uid
-     *            用户的ID
-     * @param cid
-     *            pay_record的ID
+     *
+     * @param uid 用户的ID
+     * @param cid pay_record的ID
      * @return
      */
     public boolean cancelRecharge(long uid, long cid) {
@@ -176,28 +176,28 @@ public class PayRecordService {
 
     /**
      * 获取用户充值/支付历史记录
-     * 
+     *
      * @param uid
      * @return
      */
     public List<PayRecord> findUserHistory(OrderType orderType, long uid) {
         // 状态为取消的不展示
-    	List<PayRecord> list = mapper.findByUId(orderType, uid, PayStatus.PAID);
-		//排序
-        if(!CollectionUtils.isEmpty(list)){
-        	ListSortUtil<PayRecord> sortList = new ListSortUtil<PayRecord>();
-        	sortList.sort(list, "updatedAt", "desc"); 
+        List<PayRecord> list = mapper.findByUId(orderType, uid, PayStatus.PAID);
+        //排序
+        if (!CollectionUtils.isEmpty(list)) {
+            ListSortUtil<PayRecord> sortList = new ListSortUtil<PayRecord>();
+            sortList.sort(list, "updatedAt", "desc");
         }
-    	return list;
+        return list;
     }
 
     /**
      * 构造默认记录
-     * 
+     *
      * @return
      */
     private PayRecord buildDefaultRecord(OrderType orderType, long uid, String orderNo,
-            BigDecimal amount, BigDecimal balance, BigDecimal present) {
+                                         BigDecimal amount, BigDecimal balance, BigDecimal present) {
         PayRecord record = new PayRecord();
         record.setOrderType(orderType);
         record.setUid(uid);
@@ -221,7 +221,6 @@ public class PayRecordService {
 
     /**
      * 生成支付单号，仅支付与对账使用
-     * 
      */
     public String makeChargeNo(long uid) {
         String pHex = Long.toHexString(uid);
@@ -243,7 +242,15 @@ public class PayRecordService {
         return mapper.findByOrderNo(orderNo);
     }
 
+    public PayRecord queryLastByOrderNo(String orderNo){
+        List<PayRecord> list = mapper.queryByOrderNo(orderNo);
+        return list.get(list.size()-1);
+    }
 
+    public static void main(String[] args) throws Exception {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        PayRecordService service = ac.getBean(PayRecordService.class);
+    }
 
     public long insertOne(PayRecord record) {
         return mapper.insertOne(record);
