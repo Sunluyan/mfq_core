@@ -307,7 +307,7 @@ public class FinanceBillService {
 
 			int nowInstallment = 0;
 
-			BigDecimal financePrincipal = orderInfo.getOnlinePay();
+			BigDecimal financePrincipal = orderInfo.getPeriodPay();
 			BigDecimal financeService = BigDecimal.valueOf(0);
 
 			BigDecimal hasPay = BigDecimal.valueOf(0);
@@ -333,7 +333,7 @@ public class FinanceBillService {
 
 					int billStatus = finance.getStatus();
 
-					if(billStatus == BillStatus.NOT_PAY || billStatus == BillStatus.OVER_TIME.getId()){
+					if(billStatus == BillStatus.WAIT_PAY.getId() || billStatus == BillStatus.OVER_TIME.getId()){
 
 						waitPay = waitPay.add(finance.getNewBalance());
 
@@ -347,6 +347,10 @@ public class FinanceBillService {
 
 			financeService = totalCurPay.subtract(financePrincipal);
 			BigDecimal financeTotal = financePrincipal.add(financeService);
+
+			if(financeService.compareTo(BigDecimal.valueOf(1))<0){
+				financeService = BigDecimal.valueOf(0);
+			}
 
 			//start
 			FinanceBillList2App app = new FinanceBillList2App(data.getProduct_name(), data.getOrder_time(), data.getPrice(), data.getFinanceState(),

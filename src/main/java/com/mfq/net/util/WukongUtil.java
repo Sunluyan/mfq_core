@@ -9,11 +9,10 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.apache.commons.lang.StringUtils;
+import com.wkb.openapi.security.signature.SignatureUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -22,16 +21,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.CollectionUtils;
 
-import com.mfq.constants.Constants;
 import com.mfq.net.wukongbao.pojo.WkbConstants;
-import com.mfq.net.wukongbao.pojo.WukongRequest;
-import com.mfq.utils.BeanUtil;
-import com.mfq.utils.JsonUtil;
-import com.mfq.utils.MD5Util;
-import com.mfq.utils.RSAUtils;
-import com.wkb.openapi.security.signature.SignatureUtils;
 
 import net.sf.json.JSONObject;
 

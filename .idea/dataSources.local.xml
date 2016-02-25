@@ -5,6 +5,8 @@
       <secret-storage>master_key</secret-storage>
       <user-name>dbmfq_w</user-name>
     </data-source>
-    <data-source name="mysql" uuid="4202f9e9-9c94-44bf-9fa9-92e1d668d31a" />
+    <data-source name="mysql" uuid="4202f9e9-9c94-44bf-9fa9-92e1d668d31a">
+      <user-name>dbmfq_w</user-name>
+    </data-source>
   </component>
 </project>

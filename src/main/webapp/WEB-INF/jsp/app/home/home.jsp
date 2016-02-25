@@ -10,9 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <link rel="stylesheet" href="/css/app/mfq-index.css">
 <script src="/js/app/jquery-1.7.2.min.js"></script>
-<!-- <script src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.css"></script>
-<script src="jquery.mobile-1.4.2/jquery.mobile-1.4.2.min.js"></script> -->
-<script src="/js/app/mfq-index.js"></script>
+
 </head>
 <body>
 <div class="header">
