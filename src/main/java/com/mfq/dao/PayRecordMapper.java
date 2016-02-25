@@ -24,5 +24,6 @@ public interface PayRecordMapper {
     public long insertOne(PayRecord record);
 
     public long updateOne(PayRecord record);
-    
+
+    List<PayRecord> queryByOrderNo(String orderNo);
 }
