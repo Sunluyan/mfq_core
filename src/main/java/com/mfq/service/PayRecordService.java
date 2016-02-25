@@ -91,17 +91,19 @@ public class PayRecordService {
      */
     @Transactional
     public PayRecord updateOne(PayCallbackResult result, PayStatus status) throws Exception {
-        PayRecord record = findByOrderNo(result.getOrderNo());
+        String billNo = result.getOrderNo().split(",")[0];
+        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+        PayRecord record = queryLastByOrderNo(orderNo);
+
         if (record == null || status == null) {
-            logger.error("不存在与{}匹配的充值记录", result.getOrderNo());
-            return null;
+            if (record == null || status == null) {
+                throw new Exception("更新流水出错");
+            }
         }
         logger.info("orderNo , record {} | {}", result.getOrderNo(), record.getId());
         logger.info("record status {} | {}", record.getStatus(), status);
         if (record.getStatus() == status) {
-            logger.warn("充值记录状态与要更新到的状态相同！");
-            // do nothing
-            return null;
+            throw new Exception("充值记录状态与要更新到的状态相同");
         }
         // 更新充值记录
         record.setAmount(result.getAmount());
@@ -130,8 +132,11 @@ public class PayRecordService {
      */
     @Transactional
     public PayRecord updateOne(BeeCloudResult result, PayStatus status) throws Exception {
-        PayRecord record = findByOrderNo(result.getOptional().get("orderNo").toString());
+        String billNo = result.getOptional().get("orderNo").toString().split(",")[0];
+        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+        PayRecord record = queryLastByOrderNo(orderNo);
         if (record == null || status == null) {
+            throw new Exception("更新流水出错");
         }
         logger.info("orderNo , record {} | {}", result.getOptional().get("orderNo").toString(), record.getId());
         logger.info("record status {} | {}", record.getStatus(), status);

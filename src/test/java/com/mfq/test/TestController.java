@@ -28,51 +28,24 @@ public class TestController {
         String body = JsonUtil.writeToJson(params);
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
+    }
+    /*
+    amount=400order_no=bl20160225171509454100a5
+     */
+    public static void testCallback(){
+        String url = purl+"/pay/mobile_callback/innerpay.do";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("amount", 400);
+        params.put("order_no", "bl20160225171509454100a5");
 
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
     }
 
     public static void main(String[] args) {
-        TestController test = new TestController();
-        try {
-            test.testOrderCreate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        testCallback();
     }
 }
 
-class User{
-    int id;
-    String name;
-    String age;
 
-    public User(int id, String name, String age){
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-}

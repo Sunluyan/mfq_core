@@ -375,7 +375,7 @@ public class PayService {
 
     /**
      * 分为几种方式： 1.分期：
-     * <p/>
+     * <p>
      * 2.团购单：
      *
      * @param order
@@ -438,15 +438,15 @@ public class PayService {
 
     @Transactional
     public boolean updateRechargePayOk(BeeCloudResult result, PayStatus status) throws Exception {
-            PayRecord r = payRecordService.updateOne(result, status);
-            if (r == null) {
-                throw new Exception("更新充值记录失败！");
-            }
-            quotaService.updateUserBalance(Long.valueOf(result.getOptional().get("uid").toString()),
-                    new BigDecimal(result.getTransaction_fee().toString()).divide(BigDecimal.valueOf(100)).negate());
-            // 成功发送短信 暂时注释掉
-           // sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));
-            return true;
+        PayRecord r = payRecordService.updateOne(result, status);
+        if (r == null) {
+            throw new Exception("更新充值记录失败！");
+        }
+        quotaService.updateUserBalance(Long.valueOf(result.getOptional().get("uid").toString()),
+                new BigDecimal(result.getTransaction_fee().toString()).divide(BigDecimal.valueOf(100)).negate());
+        // 成功发送短信 暂时注释掉
+        // sendRechargeSMS(r.getUid(), r.getAmount(), BigDecimal.valueOf(0));
+        return true;
     }
 
     // 发送短信!
@@ -484,41 +484,43 @@ public class PayService {
 
     @Transactional
     public boolean updateOrderRefundOk(PayCallbackResult result) throws Exception {
-            String billNo = result.getOrderNo().split(",")[0];
-            String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
-            PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
-            payRecordService.updateOne(result,PayStatus.PAID);
-            for(int i = 0;i<result.getOrderNo().split(",").length;i++){
-                billNo = result.getOrderNo().split(",")[i];
-                FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
-                if (financeBill == null || financeBill.getId() <= 0) {
-                    return false;
-                }
-
-                financeBill.setPayAt(new Date());
-                //不论是否过期，都要把状态修改成-1已支付状态。判断该账单是否是过期账单要在查询的时候通过看payat是否大于dueat，
-                //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
-                financeBill.setStatus(BillStatus.PAY_OFF.getId());
-                financeBill.setUpdatedAt(new Date());
-
-                long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
+        String billNo = result.getOrderNo().split(",")[0];
+        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+        PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
+        payRecordService.updateOne(result, PayStatus.PAID);
+        for (int i = 0; i < result.getOrderNo().split(",").length; i++) {
+            billNo = result.getOrderNo().split(",")[i];
+            FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
+            if (financeBill == null || financeBill.getId() <= 0) {
+                return false;
             }
 
-            long count = 0;
-            if (result.getApiType() == PayAPIType.INNER) {
-                count = quotaService.updateUserBalance(r.getUid(), result.getAmount());
-            }
+            financeBill.setPayAt(new Date());
+            //不论是否过期，都要把状态修改成-1已支付状态。判断该账单是否是过期账单要在查询的时候通过看payat是否大于dueat，
+            //而不是设置为状态2。状态2会在半夜启用Task来循环判定修改。状态2（BillStatus.OVER_TIME）表示的是逾期未付款，付了款之后怎能还是逾期未付款呢。
+            financeBill.setStatus(BillStatus.PAY_OFF.getId());
+            financeBill.setUpdatedAt(new Date());
+
+            long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
+        }
 
 
-            if (count != 1) throw new Exception("更新用户余额失败");
+        long count = 0;
+        if (result.getApiType() == PayAPIType.INNER) {
+            count = quotaService.updateUserBalance(r.getUid(), result.getAmount());
+        }
 
-            logger.info("update orderRefund success! ret={}");
-            return true;
+
+        if (count != 1) throw new Exception("更新用户余额失败");
+
+        logger.info("update orderRefund success! ret={}");
+        return true;
     }
 
     /**
      * 分期账单的流水,记录的是分期账单号,不是orderNo是billNo
      * 所以需要通过orderNo查找到所有的FinanceBillNo
+     *
      * @param result
      * @return
      * @throws Exception
@@ -528,8 +530,8 @@ public class PayService {
         String billNo = result.getOptional().get("orderNo").toString().split(",")[0];
         String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
         PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
-        payRecordService.updateOne(result,PayStatus.PAID);
-        for(int i = 0;i<result.getOptional().get("orderNo").toString().length();i++){
+        payRecordService.updateOne(result, PayStatus.PAID);
+        for (int i = 0; i < result.getOptional().get("orderNo").toString().length(); i++) {
             billNo = result.getOptional().get("orderNo").toString().split(",")[i];
             FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
             if (financeBill == null || financeBill.getId() <= 0) {
@@ -543,7 +545,7 @@ public class PayService {
             financeBill.setUpdatedAt(new Date());
 
             long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
-            if(u!=1)throw new Exception("更新账单状态出错");
+            if (u != 1) throw new Exception("更新账单状态出错");
         }
 
         logger.info("update orderRefund success! ret={}");

@@ -148,6 +148,7 @@ public class PaymentController {
 		// String lockFlag = "";
 		String ret = "";
 		try {
+
 			logger.info("{} pay callback received tpp: {}", tpp, RequestUtils.formatRequestParameters(request));
 			//获取支付方式服务
 			BasePaymentService service = PayFactory.getInstance(tpp);

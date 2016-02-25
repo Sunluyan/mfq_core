@@ -85,7 +85,7 @@ public class InnerServiceImpl extends BasePaymentService {
 		result.setStatus(1);
 		result.setMerchantaccount("MFQ");
 		result.setOrderNo(map.get("order_no").toString());
-		result.setTradeNo(map.get("order_no").toString());
+		result.setTradeNo("innerpay without tradeNo");
 		result.setAmount(new BigDecimal(map.get("amount").toString()));
 		result.setBankCode("MFQ");
 		result.setBank("MFQ");
