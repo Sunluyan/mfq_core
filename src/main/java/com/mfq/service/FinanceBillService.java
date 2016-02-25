@@ -307,11 +307,14 @@ public class FinanceBillService {
 
 			int nowInstallment = 0;
 
-			BigDecimal financePrincipal = orderInfo.getOnlinePay();
+			BigDecimal financePrincipal = orderInfo.getPeriodPay();
 			BigDecimal financeService = BigDecimal.valueOf(0);
 
 			BigDecimal hasPay = BigDecimal.valueOf(0);
 			BigDecimal waitPay = BigDecimal.valueOf(0);
+
+
+			int allPeriod = 0;
 
 			BigDecimal totalCurPay = BigDecimal.valueOf(0);
 
@@ -319,6 +322,7 @@ public class FinanceBillService {
 			for (FinanceBill finance : list) {
 				if(finance.getOrderNo().equals(orderNo)) {//循环该用户所有和正在循环的订单号相同的 分期订单
 					bills.add(finance);
+					allPeriod +=1;
 					//判断当前期数
 					Date startPay = finance.getDueAt();
 					Date endPay = DateUtil.addMonth(startPay,1);
@@ -329,7 +333,7 @@ public class FinanceBillService {
 
 					int billStatus = finance.getStatus();
 
-					if(billStatus == BillStatus.NOT_PAY || billStatus == BillStatus.OVER_TIME.getId()){
+					if(billStatus == BillStatus.WAIT_PAY.getId() || billStatus == BillStatus.OVER_TIME.getId()){
 
 						waitPay = waitPay.add(finance.getNewBalance());
 
@@ -344,9 +348,13 @@ public class FinanceBillService {
 			financeService = totalCurPay.subtract(financePrincipal);
 			BigDecimal financeTotal = financePrincipal.add(financeService);
 
+			if(financeService.compareTo(BigDecimal.valueOf(1))<0){
+				financeService = BigDecimal.valueOf(0);
+			}
+
 			//start
 			FinanceBillList2App app = new FinanceBillList2App(data.getProduct_name(), data.getOrder_time(), data.getPrice(), data.getFinanceState(),
-					data.getCur_period(), nowInstallment,
+					allPeriod, nowInstallment,
 					data.getOrder_no(), financePrincipal, financeService, financeTotal, hasPay, waitPay,
 					bills);
 
