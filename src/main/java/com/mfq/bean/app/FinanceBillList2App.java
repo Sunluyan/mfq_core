@@ -52,7 +52,11 @@ public class FinanceBillList2App implements Serializable{
 					isNow = true;
 				}
 				int bs = bill.getStatus();
-				Bill2App app = new Bill2App(bill.getBillNo(), bill.getNewBalance(), bill.getCurPeriod(), isNow, bs, bill.getDueAt(), bill.getLateFee());
+
+				BigDecimal installments = BigDecimal.valueOf(installmentsNum);
+				BigDecimal billService = financePrincipal.divide(installments).subtract(bill.getNewBalance());
+
+				Bill2App app = new Bill2App(bill.getBillNo(), bill.getNewBalance(), bill.getCurPeriod(), isNow, bs, bill.getDueAt(), bill.getLateFee(), billService);
 				billapps.add(app);
 			}
 			this.bills = billapps;
@@ -70,9 +74,10 @@ public class FinanceBillList2App implements Serializable{
 		int bill_status;  //账单状态  已付 1  待付 2
 		Date repay_time; //还款时间
 		BigDecimal late_fee; //违约金
+		BigDecimal bill_service; //分期服务费
 
 
-		public Bill2App(String billNo, BigDecimal billPrice, int billNum, boolean isNow, int billStatus, Date repayTime, BigDecimal lateFee){
+		public Bill2App(String billNo, BigDecimal billPrice, int billNum, boolean isNow, int billStatus, Date repayTime, BigDecimal lateFee, BigDecimal billService){
 			this.bill_no = billNo;
 			this.bill_price = billPrice;
 			this.bill_num = billNum;
@@ -82,20 +87,7 @@ public class FinanceBillList2App implements Serializable{
 			if(repayTime!=null){
 				this.repay_time = repayTime;
 			}
-		}
-
-		public List<Bill2App> Bill2App(List<FinanceBill> bills){
-
-			List<Bill2App> billapps = Lists.newArrayList();
-			for(FinanceBill bill :bills){
-
-				boolean isNow = true;
-				int billStatus = bill.getStatus();
-				Bill2App app = new Bill2App(bill.getBillNo(), bill.getNewBalance(), bill.getCurPeriod(), isNow, billStatus, bill.getDueAt(), bill.getLateFee());
-				billapps.add(app);
-			}
-
-			return billapps;
+			this.bill_service = billService;
 		}
 
 		public String getBill_no() {
