@@ -275,23 +275,23 @@ public class WukongBaoClient2 {
 //		
 //		
 //		System.out.println("sortMap:"+JsonUtil.writeToJson(sortMap));
-////		Map<String,Object> sortMap = new HashMap<String,Object>();
+//		Map<String,Object> sortMap = new HashMap<String,Object>();
 //		
 //		String biz =sortMap.get("bizContent").toString();
 //		
 //		System.out.println("bizContent:"+biz);
 //		sortMap = getInfo();
 //		Map<String,Object> encryptAndSign = SignatureUtils.encryptAndSign(sortMap, WkbConstants.WKB_PUK_KEY.trim(), WkbConstants.DEV_PRI_KEY.trim(), "UTF-8", true, true);
-////		String bizContent = SignatureUtils.checkSignAndDecrypt(encryptAndSign, WkbConstants.DEV_PUB_KEY, WkbConstants.DEV_PRI_KEY, true, true);
-////		sortMap.put("bizContent", SignatureUtils.rsaEncrypt(biz, WkbConstants.WKB_PUK_KEY, "UTF-8"));
-////		sortMap.setSign(encryptAndSign.get("sign").toString());
-////		sortMap.setBizContent(encryptAndSign.get("bizContent").toString());
+//		String bizContent = SignatureUtils.checkSignAndDecrypt(encryptAndSign, WkbConstants.DEV_PUB_KEY, WkbConstants.DEV_PRI_KEY, true, true);
+//		sortMap.put("bizContent", SignatureUtils.rsaEncrypt(biz, WkbConstants.WKB_PUK_KEY, "UTF-8"));
+//		sortMap.setSign(encryptAndSign.get("sign").toString());
+//		sortMap.setBizContent(encryptAndSign.get("bizContent").toString());
 //		
 //		System.out.println(SignatureUtils.rsaEncrypt(biz, WkbConstants.WKB_PUK_KEY, "UTF-8"));
 //		
 //		
-////		sortMap.put("sign", encryptAndSign.get("sign").toString());
-////		sortMap.put("bizContent", encryptAndSign.get("bizContent").toString());
+//		sortMap.put("sign", encryptAndSign.get("sign").toString());
+//		sortMap.put("bizContent", encryptAndSign.get("bizContent").toString());
 //		
 //		System.out.println("请求 json:"+JsonUtil.writeToJson(sortMap));
 //		String response = client.WukongRequest(sortMap);
@@ -369,9 +369,6 @@ public class WukongBaoClient2 {
 		map.put("version", WkbConstants.VERSION);
 		map.put("sign", "");
 		
-	
-		
-		
 //		JSONObject jSONObject = new JSONObject();
 //		jSONObject.put("name", "张三");
 //		jSONObject.put("age", 30);
@@ -422,10 +419,6 @@ public class WukongBaoClient2 {
 		return map;
 		
 	}
-	
-	
-	
-	
 	
 //	公钥
 //	MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLzNfn38T+MHFSB8lEp60xWTXe0v481fMh57er

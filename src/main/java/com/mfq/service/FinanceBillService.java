@@ -326,9 +326,9 @@ public class FinanceBillService {
 					//判断当前期数
 					Date startPay = finance.getDueAt();
 					Date endPay = DateUtil.addMonth(startPay,1);
-					if(DateUtil.isBetween(new Date(), startPay, endPay)){
-						nowInstallment = finance.getCurPeriod();
-					}
+//					if(DateUtil.isBetween(new Date(), startPay, endPay)){
+//						nowInstallment = finance.getCurPeriod();
+//					}
 					totalCurPay = totalCurPay.add(finance.getNewBalance());
 
 					int billStatus = finance.getStatus();
@@ -338,6 +338,8 @@ public class FinanceBillService {
 						waitPay = waitPay.add(finance.getNewBalance());
 
 					}else if(billStatus == BillStatus.PAY_OFF.getId()){
+
+						nowInstallment += 1;
 
 						hasPay = hasPay.add(finance.getNewBalance());
 
