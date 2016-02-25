@@ -488,7 +488,7 @@ public class PayService {
             String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
             PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
 
-            for(int i = 0;i<result.getOrderNo().length();i++){
+            for(int i = 0;i<result.getOrderNo().split(",").length;i++){
                 billNo = result.getOrderNo().split(",")[i];
                 FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
                 if (financeBill == null || financeBill.getId() <= 0) {

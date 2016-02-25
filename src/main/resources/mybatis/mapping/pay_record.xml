@@ -66,6 +66,6 @@
 	<select id="queryByOrderNo" resultType="PayRecord">
 		select
 		<include refid="selectsql" />
-		from pay_record where order_type=#{orderType} and uid=#{uid} and status = #{status}
+		from pay_record where order_no=#{orderNo}
 	</select>
 </mapper>

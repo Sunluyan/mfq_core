@@ -300,19 +300,19 @@ public class TestController {
         System.out.println(resp);
     }
     
-    //{"amount":12000,"one_money":500,"period":5,"pid":1,"sign":"C82B2A48D2F35408960BCF894F959D3C","type":0,"uid":201}
-    //{"amount":12000,"one_money":500,"period":24,"pid":1,"sign":"4B8A5864B9BF995668D0A9DA1FBC5A15","type":0,"uid":201}
-    
+    //"amount":44443,"operation_time":1456416000000,"period":3,"pid":141,"policy":0,
+    // "sign":"EE94F0356BFB4C7FD30CD0A9586862A7","uid":3156
     public static void testOrderCreate(){
         String url = purl+"/order/create";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("uid", 2798);
-        params.put("pid", 131);
-        params.put("type", 0);
-        params.put("amount", 1);
-        params.put("online_pay", 1);
-        params.put("operation_time", new Date());
-        
+        params.put("amount", 44443);
+        params.put("operation_time", 1456416000000l);
+        params.put("period", 3);
+        params.put("pid", 141);
+        params.put("policy", 0);
+        params.put("uid", 3156);
+        params.put("uid", 3156);
+
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -657,6 +657,8 @@ public class TestController {
         // "app_id":"967f5a80-ae09-4c46-b29e-cb0843887eed",Î
         // "bill_no":"cz2016022215203879940d8b","channel":"UN_APP"},
         // "code":0,"msg":"success"}
+
+
         String url = purl+"pay/mobile_pay/beecloud.do";
         Map<String, Object> params = Maps.newHashMap();
         Map<String,Object> data = new HashMap<>();
@@ -680,8 +682,36 @@ public class TestController {
         System.out.println(resp);
     }
 
-    public static void testBeecloudGoPay(){
+    //"amount":44443,"operation_time":1456416000000,"period":3,"pid":141,"policy":0,
+    // "sign":"EE94F0356BFB4C7FD30CD0A9586862A7","uid":3156
+    public static void testOrderFinance(){
+        String url = purl+"/order/create/finance";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("amount", 44443);
+        params.put("operation_time", 1456416000000l);
+        params.put("period", 3);
+        params.put("pid", 141);
+        params.put("policy", 0);
+        params.put("uid", 3156);
+        params.put("sign", "EE94F0356BFB4C7FD30CD0A9586862A7");
 
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
+    public static void testCallback(){
+        /**
+         * "order_no":""}
+         */
+        String url = purl+"/pay/mobile_callback/innerpay.do";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("sign", "DC0FB01C3019B5EAC170E83C0E5D8A7B");
+        params.put("amount", "34999.02");
+        params.put("order_no", "bl2016022516130377600097,bl2016022516130371010097,bl2016022516130328250097,bl2016022516130349560097,bl2016022516130366280097,bl2016022516130326960097");
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
     }
 
     
@@ -694,8 +724,9 @@ public class TestController {
 	
     public static void main(String[] args){
        // testProfile();
-        testBeecloud();
-    	
+//        testBeecloud();
+        testCallback();
+//        testOrderFinance();
 
     }
     

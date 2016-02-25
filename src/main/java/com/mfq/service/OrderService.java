@@ -92,14 +92,13 @@ public class OrderService {
 
         Product p = productService.findById(pid);
         User user = userService.queryUser(uid);
-
         if (p == null || user == null) {
             throw new Exception("无法找到此用户或产品。");
         }
 
         boolean flag = validBeforeCreate(uid, p, amount, onlinePay,
                 hospitalPay, balancePay, period, periodPay, t, couponNum, policy_status);
-
+        // TODO: 16/2/25  下分期订单的时候,应该把订单状态改成已支付
 
 //		if (!flag) {
 //			throw new Exception("生单前订单校验失败！");
@@ -139,7 +138,7 @@ public class OrderService {
         OrderStatus toStatus = OrderStatus.BOOK_OK;
 
         if (t == PayType.FINANCING) {
-            if (policy_status == -1) {
+            if (policy_status == 0) {
                 if (amount.compareTo(periodPay) >= 0) {
                     toStatus = OrderStatus.PAY_OK;
                 }
