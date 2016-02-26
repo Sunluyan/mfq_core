@@ -303,7 +303,7 @@ public class FinanceBillService {
 
 			OrderInfo orderInfo = orderService.findByOrderNo(orderNo);
 			OrderInfo2App data = orderService.makeAppOrderByOrder(orderInfo);
-			data.setFinanceState(1);
+			data.setFinanceState(2);
 
 			int nowInstallment = 0;
 
@@ -337,6 +337,10 @@ public class FinanceBillService {
 
 						waitPay = waitPay.add(finance.getNewBalance());
 
+						if(data.getFinanceState() != 3){
+							data.setFinanceState(1);
+						}
+
 					}else if(billStatus == BillStatus.PAY_OFF.getId()){
 
 						nowInstallment += 1;
@@ -344,6 +348,11 @@ public class FinanceBillService {
 						hasPay = hasPay.add(finance.getNewBalance());
 
 					}
+
+					if(billStatus == BillStatus.OVER_TIME.getId()){
+						data.setFinanceState(3);
+					}
+
 				}
 			}
 

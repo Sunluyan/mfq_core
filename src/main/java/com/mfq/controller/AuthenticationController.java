@@ -139,13 +139,13 @@ public class AuthenticationController {
         logger.info("audllt_EndRet={}", ret);
         return ret;
     }
+//    4006008500
     
     @RequestMapping(value = { "/adult/info",
     "/adult/info/" }, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	@ResponseBody
 	@LoginRequired
-	public String adultInfo(HttpServletRequest request,
-	    HttpServletResponse response) {
+	public String adultInfo(HttpServletRequest request) {
         String ret = "";
         try {
             Map<String, Object> params = JsonUtil.readMapFromReq(request);
@@ -166,7 +166,9 @@ public class AuthenticationController {
             String department = params.get("department").toString();
             String salary = params.get("salary").toString();
             String social_insurance = params.get("social_insurance").toString();  //社保账户
-            String work_years = params.get("work_years").toString();  //工作年限          
+            String work_years = params.get("work_years").toString();  //工作年限
+
+            logger.info(" adult inf is {}|{}|{}|{}|{}|{}|{}", uid ,company, position, department, salary, social_insurance, work_years);
             
             ret = userQuotaService.saveAdultInfo(uid, company, position, department, salary, social_insurance, work_years);
 

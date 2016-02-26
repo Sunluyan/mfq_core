@@ -107,7 +107,7 @@ public class OrderService {
         long ls = mapper.findByUidAndPayTypeAndPid(uid, PayType.FINANCING.getId(), pid);
         long lsr = mapper.findByUidAndPayTypeAndPid(uid, PayType.FULL.getId(), pid);
         logger.info("ls = {}, lsr ={}", ls, lsr);
-        if (ls + lsr > 2 || ls > 1 || lsr > 1) {
+        if (ls > 1 || lsr >1) {
             throw new Exception("存在未支付订单。");
         }
 
