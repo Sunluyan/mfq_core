@@ -54,7 +54,7 @@ public class FinanceBillList2App implements Serializable{
 				int bs = bill.getStatus();
 
 				BigDecimal installments = BigDecimal.valueOf(installmentsNum);
-				BigDecimal billService = financePrincipal.divide(installments).subtract(bill.getNewBalance());
+				BigDecimal billService = financePrincipal.divide(installments,2,BigDecimal.ROUND_HALF_UP).subtract(bill.getNewBalance());
 
 				Bill2App app = new Bill2App(bill.getBillNo(), bill.getNewBalance(), bill.getCurPeriod(), isNow, bs, bill.getDueAt(), bill.getLateFee(), billService);
 				billapps.add(app);
