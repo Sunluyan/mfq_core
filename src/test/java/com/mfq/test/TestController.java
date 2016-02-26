@@ -14,13 +14,13 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 	
-	private final static String purl="http://t.5imfq.com:8080/";
+	private final static String purl="http://i.5imfq.com";
 
 
-    public void testOrderCreate() throws IOException {
+    public static void testOrderCreate() throws IOException {
         String url = purl+"/finance/list/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("uid", "2936");
+        params.put("uid", "2847");
         params.put("orderNo", "mn2016011116070133780097");
 
         String sign = SignHelper.makeSign(params);
@@ -43,8 +43,9 @@ public class TestController {
         System.out.println(resp);
     }
 
-    public static void main(String[] args) {
-        testCallback();
+    public static void main(String[] args) throws IOException {
+
+        testOrderCreate();
     }
 }
 
