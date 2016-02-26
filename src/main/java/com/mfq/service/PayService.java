@@ -477,6 +477,8 @@ public class PayService {
             return OrderType.ONLINE;
         } else if (StringUtils.startsWithIgnoreCase(billNo, Constants.REFUND_ORDER_PREFIX)) {
             return OrderType.REFUND;
+        } else if (StringUtils.startsWithIgnoreCase(billNo, Constants.PAY_ORDER_PREFIX)) {
+            return OrderType.PAYNO;
         } else {
             throw new Exception("不支持的订单类型！billNo=" + billNo);
         }

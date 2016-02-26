@@ -61,6 +61,8 @@ public class PaymentController {
 	CouponService couponService;
     @Resource
     InviteService inviteService;
+	@Resource
+	BilltopayService billtopayService;
 	
 	
 	/**
@@ -85,8 +87,12 @@ public class PaymentController {
 				return ret;
 			}
 			String orderNo = (String) params.get("order_no");
+			if(orderNo.contains("bl")){
+				//生成支付订单号,并把orderNo变成PAYNO
+				orderNo = billtopayService.makePayNo(orderNo);
+			}
 			OrderType orderType = payService.getOrderType(orderNo);
-			
+
 			BigDecimal amount = new BigDecimal(params.get("amount").toString()); // 充值额度或实际需支付金额
 																				 // 或 还款金额
 
@@ -159,6 +165,9 @@ public class PaymentController {
 
 			//传入 request、response 获取支付结果的实体类
 			PayCallbackResult result = service.payCallback(request, response, ret);
+			if(result.getOrderNo().contains("pa")){
+				result.setOrderNo(billtopayService.payNoToBillsNo(result.getOrderNo()));
+			}
 			if(result.getOrderNo()==null){
 				ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_NULL, "参数不对", null);
 				throw new Exception("参数不对");

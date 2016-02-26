@@ -84,7 +84,7 @@ public class WechatServiceImpl extends BasePaymentService {
             }
             String nonce_str = genNonceStr();
 
-
+            //// TODO: 16/2/26  
             PayReqData reqBean = new PayReqData(AppContext.getUuid(), nonce_str,
                     pname, orderNo, amount,
                     AppContext.getIp(), buildPayCallbackURL());

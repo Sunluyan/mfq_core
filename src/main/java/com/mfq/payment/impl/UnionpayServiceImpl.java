@@ -97,6 +97,7 @@ public class UnionpayServiceImpl extends BasePaymentService {
 
             String app_secret = BeeCloudConfigure.APPSECRET;
 
+
             //开始制作请求报文
             String app_id = BeeCloudConfigure.APPID;
             long timestamp = new Date().getTime();

@@ -9,7 +9,8 @@ public enum OrderType {
 
 	ONLINE(1, "订单"),
     RECHARGE(2, "充值"),
-    REFUND(3, "还款");
+    REFUND(3, "还款"),
+    PAYNO(4,"支付号");
 
     int id;
     String desc;
