@@ -144,7 +144,7 @@ public class MobileMessageClient {
         String result = FiveMinuteLimit;
         if (recordAndCheckSMSRepeat(mobiles, content)) {
             result = "0";
-            if (Config.isProduct()||Config.isDev()) {
+            if (Config.isProduct()) {
                 log.info("p is {}",p.getName());
                 result = p.sendBatchMessage(content, mobiles);
             } else {
