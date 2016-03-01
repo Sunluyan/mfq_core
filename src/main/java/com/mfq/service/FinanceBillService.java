@@ -51,6 +51,8 @@ public class FinanceBillService {
 	FinanceBillMapper mapper;
 	@Resource
 	UserQuotaService service;
+	@Resource
+	BilltopayService billtopayService;
 
 	/**
 	 * bill info for app
@@ -259,13 +261,7 @@ public class FinanceBillService {
 		updateFinanceStateTask();
 	}
 
-	public static void main(String[] args) throws Exception {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-		FinanceBillService financeBillService = ac.getBean(FinanceBillService.class);
 
-		String finance = financeBillService.queryAppFinancesByOrder(2936,"mn2016011116070133780097");
-		System.out.println(finance);
-	}
 //13599996598
 
 	public String queryAppFinancesByOrder(long uid, String orderNo) throws Exception {
@@ -388,9 +384,21 @@ public class FinanceBillService {
 		}
 		List<FinanceBill> list = mapper.queryBillByBillNos(billNos);
 		for (FinanceBill financeBill : list) {
-			amount.add(financeBill.getNewBalance()).add(financeBill.getLateFee());
+			amount = amount.add(financeBill.getNewBalance()).add(financeBill.getLateFee());
 		}
 		return amount;
+	}
+	public BigDecimal getBillNosByPAYNO(String payNo){
+		String bills = billtopayService.payNoToBillsNo(payNo);
+		return getAmountByBillNos(bills);
+	}
+
+	public static void main(String[] args) throws Exception {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+		FinanceBillService financeBillService = ac.getBean(FinanceBillService.class);
+		BigDecimal bd = financeBillService.getBillNosByPAYNO("pa2016022711335545680001");
+		System.out.println(bd);
 
 	}
+
 }

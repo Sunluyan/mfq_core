@@ -260,7 +260,9 @@ public class ProductController {
                 model.put("purl", product.getImg());
                 model.put("type", product.getType().getId());
                 model.put("market_price", myformat.format(product.getMarketPrice()));
-                
+                model.put("begin_time", DateUtil.formatCZYYYYMMDD(product.getDateStart()));
+                model.put("end_time", DateUtil.formatCZYYYYMMDD(product.getDateEnd()));
+
                 productDetail = productService.findProductDetailByPid(id);
                 if(productDetail != null){
                 	model.put("consume_step", productDetail.getConsumeStep());  //消费流程
@@ -279,7 +281,7 @@ public class ProductController {
                 model.put("hospital_name", hospital.getName());
                 model.put("hospital_addr", hospital.getAddress());
                 model.put("hospital_img", hospital.getImg());
-                
+
                 ret = "/app/product/detail";
                 
                 if(id > 120){

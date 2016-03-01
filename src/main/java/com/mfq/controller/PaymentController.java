@@ -87,9 +87,11 @@ public class PaymentController {
 				return ret;
 			}
 			String orderNo = (String) params.get("order_no");
+
 			if(orderNo.contains("bl")){
 				//生成支付订单号,并把orderNo变成PAYNO
 				orderNo = billtopayService.makePayNo(orderNo);
+				params.put("order_no",orderNo);
 			}
 			OrderType orderType = payService.getOrderType(orderNo);
 

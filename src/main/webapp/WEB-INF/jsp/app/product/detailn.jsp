@@ -401,10 +401,14 @@ body {
 
 <div class="table" style="background-color:#FFFFFF; padding:10px 0 10px 0">
 	<div class="a1">
-	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
-		<div class="r2"><span class="STYLE71 STYLE48"><strong>治疗手段:</strong></span></div>
-		<div class="r3">${p.cureMeans }</div>
-	</div>
+		<div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
+		<div class="r2"><span class="STYLE71 STYLE48"><strong>有效时间:</strong></span></div>
+		<div class="r3">${begin_time} 到 ${end_time}</div>
+	</div><div class="a1">
+	<div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
+	<div class="r2"><span class="STYLE71 STYLE48"><strong>治疗手段:</strong></span></div>
+	<div class="r3">${p.cureMeans }</div>
+</div>
 	<div class="a1">
 	    <div class="r1"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-icon.png" width="13" /></div>
 		<div class="r2"><span class="STYLE71 STYLE48"><strong>治疗时长:</strong></span></div>

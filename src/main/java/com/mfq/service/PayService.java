@@ -68,6 +68,8 @@ public class PayService {
     PolicyInfoMapper policyInfoMapper;
     @Resource
     ProductService productService;
+    @Resource
+    BilltopayService billtopayService;
 
     /**
      * @param orderType
@@ -484,12 +486,15 @@ public class PayService {
         }
     }
 
+
     @Transactional
     public boolean updateOrderRefundOk(PayCallbackResult result) throws Exception {
         String billNo = result.getOrderNo().split(",")[0];
         String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
         PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
         payRecordService.updateOne(result, PayStatus.PAID);
+
+        //更新流水状态payRecordService.updateOne(result, PayStatus.PAID);
         for (int i = 0; i < result.getOrderNo().split(",").length; i++) {
             billNo = result.getOrderNo().split(",")[i];
             FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
@@ -507,21 +512,19 @@ public class PayService {
         }
 
 
-        long count = 0;
-        if (result.getApiType() == PayAPIType.INNER) {
-            count = quotaService.updateUserBalance(r.getUid(), result.getAmount());
+        if (result.getApiType() == PayAPIType.INNER) {//如果用余额还的
+            long count = quotaService.updateUserBalance(r.getUid(), result.getAmount());
+            if (count != 1) throw new Exception("更新用户余额失败");
         }
 
 
-        if (count != 1) throw new Exception("更新用户余额失败");
-
+        //更新流水信息
         logger.info("update orderRefund success! ret={}");
         return true;
     }
 
     /**
-     * 分期账单的流水,记录的是分期账单号,不是orderNo是billNo
-     * 所以需要通过orderNo查找到所有的FinanceBillNo
+     * 分期账单的流水,记录的是OrderNo
      *
      * @param result
      * @return
@@ -529,12 +532,14 @@ public class PayService {
      */
     @Transactional
     public boolean updateOrderRefundOk(BeeCloudResult result) throws Exception {
-        String billNo = result.getOptional().get("orderNo").toString().split(",")[0];
-        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
-        PayRecord r = payRecordService.queryLastByOrderNo(orderNo);
+        //传过来的应该是pa开头的NO
+
+        String payNo = result.getOptional().get("orderNo").toString();
+        String billNos = billtopayService.payNoToBillsNo(payNo);
+
         payRecordService.updateOne(result, PayStatus.PAID);
-        for (int i = 0; i < result.getOptional().get("orderNo").toString().length(); i++) {
-            billNo = result.getOptional().get("orderNo").toString().split(",")[i];
+        for (int i = 0; i < billNos.split(",").length; i++) {
+            String billNo = billNos.split(",")[i];
             FinanceBill financeBill = financeBillService.findBillByBillNo(billNo);
             if (financeBill == null || financeBill.getId() <= 0) {
                 return false;
@@ -549,6 +554,7 @@ public class PayService {
             long u = financeBillService.updateFinanceBillStatusAndPayAt(financeBill);
             if (u != 1) throw new Exception("更新账单状态出错");
         }
+
 
         logger.info("update orderRefund success! ret={}");
         return true;

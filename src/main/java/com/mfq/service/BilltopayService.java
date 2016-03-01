@@ -34,12 +34,14 @@ public class BilltopayService {
     public String payNoToBillsNo(String payNo){
         BilltopayExample example = new BilltopayExample();
         example.or().andPayNoEqualTo(payNo);
-        Billtopay billtopay = mapper.selectByExample(example).get(0);
+        Billtopay billtopay = mapper.selectByExampleWithBLOBs(example).get(0);
         return billtopay.getBillNo();
     }
 
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         BilltopayService service = ac.getBean(BilltopayService.class);
+        service.payNoToBillsNo("pa2016022711063050800001");
+
     }
 }

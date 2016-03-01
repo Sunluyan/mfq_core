@@ -54,6 +54,7 @@ public class WechatServiceImpl extends BasePaymentService {
     @Resource
     FinanceBillService financeBillService;
 
+
     private String genNonceStr() {
 		Random random = new Random();
 		return MD5.getMessageDigest(String.valueOf(random.nextInt(10000)).getBytes());
@@ -68,16 +69,19 @@ public class WechatServiceImpl extends BasePaymentService {
         try {
             String orderNo = (String) params.get("order_no");
             String pname = "";
+            if(orderType == OrderType.PAYNO){
+                orderType = OrderType.REFUND;
+            }
             int amount = (int)(Float.parseFloat(params.get("amount").toString())*100);//按分计算
             if (orderType ==  OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
             } else if(orderType ==  OrderType.REFUND){
             	pname = "美分期分期还款－" + String.valueOf(params.get("amount"));
                 //将分期账单的所有金额加起来
-                BigDecimal BDAmount = financeBillService.getAmountByBillNos(orderNo);
+                BigDecimal BDAmount = financeBillService.getBillNosByPAYNO(orderNo);
                 amount = (int)(BDAmount.floatValue()*100);
 
-            } else {
+            }  else{
                 OrderInfo order = orderService.findByOrderNo(orderNo);
                 Product product = productService.findById(order.getPid());
                 pname = product.getName();

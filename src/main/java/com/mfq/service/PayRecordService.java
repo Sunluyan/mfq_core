@@ -8,8 +8,7 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
-import com.mfq.bean.BeeCloudResult;
-import com.mfq.bean.FinanceBill;
+import com.mfq.bean.*;
 import com.mfq.constants.CardType;
 import com.mfq.payment.PayAPIType;
 import org.apache.commons.lang.StringUtils;
@@ -20,8 +19,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
-import com.mfq.bean.PayCallbackResult;
-import com.mfq.bean.PayRecord;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.constants.Constants;
 import com.mfq.constants.OrderType;
@@ -44,6 +41,8 @@ public class PayRecordService {
     PayRecordMapper mapper;
     @Resource
     FinanceBillService financeBillService;
+    @Resource
+    BilltopayService billtopayService;
 
     /**
      * 需要插入充值记录表
@@ -61,7 +60,8 @@ public class PayRecordService {
         if (orderType == OrderType.RECHARGE && StringUtils.isBlank(orderNo)) {
             orderNo = makeChargeNo(uid);
         }
-        if (orderType == OrderType.REFUND) {
+        if (orderType == OrderType.REFUND || orderType == OrderType.PAYNO) {
+            orderNo = billtopayService.payNoToBillsNo(orderNo);
             FinanceBill financeBill = financeBillService.findBillByBillNo(orderNo.split(",")[0]);
 
             BigDecimal present = new BigDecimal(0);
@@ -83,7 +83,7 @@ public class PayRecordService {
 
 
     /**
-     * 充值成功回调update
+     * 充值成功后更新流水状态
      *
      * @param result
      * @param status
@@ -91,8 +91,14 @@ public class PayRecordService {
      */
     @Transactional
     public PayRecord updateOne(PayCallbackResult result, PayStatus status) throws Exception {
+
         String billNo = result.getOrderNo().split(",")[0];
-        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+        String orderNo = "";
+        if(result.getOrderNo().contains("cz")){
+            orderNo = result.getOrderNo();
+        }else{
+            orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+        }
         PayRecord record = queryLastByOrderNo(orderNo);
 
         if (record == null || status == null) {
@@ -117,7 +123,8 @@ public class PayRecordService {
         record.setTpp(result.getApiType().getCode());
         record.setTradeNo(StringUtils.defaultIfBlank(result.getTradeNo(), ""));
         record.setUpdatedAt(new Date());
-        mapper.updateOne(record);
+        long count = mapper.updateOne(record);
+
         logger.error("用户充值构造的内容：{}", record);
         return record;
     }
@@ -132,8 +139,15 @@ public class PayRecordService {
      */
     @Transactional
     public PayRecord updateOne(BeeCloudResult result, PayStatus status) throws Exception {
-        String billNo = result.getOptional().get("orderNo").toString().split(",")[0];
-        String orderNo = financeBillService.findBillByBillNo(billNo).getOrderNo();
+
+        String orderNo = "";
+        if(result.getOptional().get("orderNo").toString().contains("cz")){
+            orderNo = result.getOptional().get("orderNo").toString();
+        }else{
+            //传过来的是pa
+            String billsNo = billtopayService.payNoToBillsNo(result.getOptional().get("orderNo").toString());
+            orderNo = financeBillService.findBillByBillNo(billsNo.split(",")[0]).getOrderNo();
+        }
         PayRecord record = queryLastByOrderNo(orderNo);
         if (record == null || status == null) {
             throw new Exception("更新流水出错");

@@ -80,12 +80,16 @@ public class UnionpayServiceImpl extends BasePaymentService {
             logger.info(params.get("amount").toString()+"     in unionpayserviceimpl");
             optional.put("uid", UserIdHolder.getLongUid());
 
+            if(orderNo.contains("pa")){
+                orderType = OrderType.REFUND;
+            }
+
             Integer total_fee = (int) (Float.parseFloat(params.get("amount").toString()) * 100);
             if (orderType == OrderType.RECHARGE) {
                 pname = "美分期个人余额充值－" + String.valueOf(params.get("amount"));
             } else if (orderType == OrderType.REFUND) {
                 pname = "美分期还款－" + String.valueOf(params.get("amount"));
-                BigDecimal BDAmount = financeBillService.getAmountByBillNos(orderNo);
+                BigDecimal BDAmount = financeBillService.getBillNosByPAYNO(orderNo);
                 total_fee = (int)(BDAmount.floatValue()*100);
             } else if(orderType == OrderType.ONLINE){
                 OrderInfo order = orderService.findByOrderNo(orderNo);
@@ -162,18 +166,19 @@ public class UnionpayServiceImpl extends BasePaymentService {
         String ret = "";
         logger.info("BeeCloudResult : {}", result);
         //1,支付成功.2,付款是为了做什么.3,根据不同的目的修改不同的东西
+
         if (result.getTrade_success()) {
             String orderNo = result.getOptional().get("orderNo").toString();
+
             if (payService.getOrderType(orderNo) == OrderType.RECHARGE) {//充值
 
                 payService.updateRechargePayOk(result, PayStatus.PAID);
 
-            } else if (payService.getOrderType(orderNo) == OrderType.REFUND) {//分期还款
+            } else if (payService.getOrderType(orderNo) == OrderType.REFUND || payService.getOrderType(orderNo) == OrderType.PAYNO) {//分期还款
 
                 payService.updateOrderRefundOk(result);
 
-            } else if (payService.getOrderType(orderNo) == OrderType.ONLINE) {//订单支付
-
+            } else if (payService.getOrderType(orderNo) == OrderType.ONLINE ) {//订单支付
                 payService.updateOrderPayOk(result);
 
             }else{
