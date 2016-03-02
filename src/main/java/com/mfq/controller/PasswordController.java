@@ -180,48 +180,60 @@ public class PasswordController {
     @ResponseBody
     public String resetPassword(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        String vcode = RequestUtils.getString(request, "vcode", "");
-        String key = RequestUtils.getString(request, "key", "");
-        String password = RequestUtils.getString(request, "password", "");
-        
-        Map<String, Object> params = JsonUtil.readMapFromReq(request);
-        if(StringUtils.isBlank(vcode)){
-        	vcode = params.get("vcode").toString();
-        }
-        if(StringUtils.isBlank(key)){
-        	key = params.get("key").toString();
-        }
-        if(StringUtils.isBlank(password)){
-        	password = params.get("password").toString();
-        }
-        	
+
+        String ret = "";
+
+        try {
+
+
+            String vcode = RequestUtils.getString(request, "vcode", "");
+            String key = RequestUtils.getString(request, "key", "");
+            String password = RequestUtils.getString(request, "password", "");
+
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (StringUtils.isBlank(vcode)) {
+                vcode = params.get("vcode").toString();
+            }
+            if (StringUtils.isBlank(key)) {
+                key = params.get("key").toString();
+            }
+            if (StringUtils.isBlank(password)) {
+                password = params.get("password").toString();
+            }
+
 //        String decryptVcode = SecretDesUtils.decrypt(vcode);
 //        String decryptKey = SecretDesUtils.decrypt(key);
-        String decryptVcode = vcode;
-        String decryptKey = key;
-        User user;
-        if (decryptKey.contains("@")) {
-            user = userService.queryUserByEmail(decryptKey);
-        } else {
-            user = userService.queryUserByMobile(decryptKey);
-        }
-        if (user.getUid() == 0) {
-            logger.error("reset passowrd,but not exist,key:" + decryptKey);
-            return JsonUtil.toJson(ErrorCodes.USER_NOT_FIND, "用户不存在", null);
-        }
-        CodeMsg codeMsg = vcodeService.validate(decryptKey, decryptVcode);
-        boolean firstPassword = UserHelper.isSetSigns(user.getSign(),
-                SignIndex.FirstPassword);
-        if (codeMsg.getCode() == 0) {
-            boolean success = passportService
-                    .updatePasswordForAdmin(user.getUid(), password);
-            if (firstPassword && success) {
-                userService.updateSigns(user.getUid(), false,
-                        SignIndex.FirstPassword);
+            String decryptVcode = vcode;
+            String decryptKey = key;
+            User user;
+            if (decryptKey.contains("@")) {
+                user = userService.queryUserByEmail(decryptKey);
+            } else {
+                user = userService.queryUserByMobile(decryptKey);
             }
-            return JsonUtil.successResultJson();
-        } else {
-            return JsonUtil.toJson(codeMsg.getCode(), codeMsg.getMsg(), null);
+            if (user.getUid() == 0) {
+                logger.error("reset passowrd,but not exist,key:" + decryptKey);
+                return JsonUtil.toJson(ErrorCodes.USER_NOT_FIND, "用户不存在", null);
+            }
+            CodeMsg codeMsg = vcodeService.validate(decryptKey, decryptVcode);
+            boolean firstPassword = UserHelper.isSetSigns(user.getSign(),
+                    SignIndex.FirstPassword);
+            if (codeMsg.getCode() == 0) {
+                boolean success = passportService
+                        .updatePasswordForAdmin(user.getUid(), password);
+                if (firstPassword && success) {
+                    userService.updateSigns(user.getUid(), false,
+                            SignIndex.FirstPassword);
+                }
+                ret= JsonUtil.successResultJson();
+            } else {
+                ret= JsonUtil.toJson(codeMsg.getCode(), codeMsg.getMsg(), null);
+            }
+
+        }catch (Exception e){
+            logger.error("reset password is error {}",e);
         }
+        logger.info("充值密码  ret {}",ret);
+        return ret;
     }
 }
