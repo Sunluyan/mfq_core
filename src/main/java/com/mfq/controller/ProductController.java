@@ -330,7 +330,6 @@ public class ProductController {
             logger.error("Exception ProductInfo Process!", e);
             model.put("error", "系统异常");
         }
-        logger.info("Product_Info_Ret is:{}", model);
         return new ModelAndView(ret, model);
     }
 }

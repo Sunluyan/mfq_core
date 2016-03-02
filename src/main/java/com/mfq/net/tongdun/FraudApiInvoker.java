@@ -294,15 +294,5 @@ public class FraudApiInvoker {
         Integer state = 1;
         String account_login = "18338751231";
         String ip_address = "119.253.47.110";
-        	//String ip_address,String account_login,Integer state,String black_box,String type
-        	
-        
-        	Map<String,Object> result = new FraudApiInvoker().fraudLogin(ip_address,account_login,state,black_box,"ios");  
-        	if(result!=null){
-        		System.out.println(result.get("msg"));
-        	}else{
-        		System.out.println(result);
-        		
-        	}
     }
 }

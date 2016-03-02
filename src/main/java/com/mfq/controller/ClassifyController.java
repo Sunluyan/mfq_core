@@ -55,7 +55,6 @@ public class ClassifyController {
             //加入一条用户的行为记录
             UserOperationUtil.setType(UserIdHolder.getLongUid(),(int)rootId);  //添加浏览数
 
-            logger.info("Product_Info_Ret is:{}", ret);
         } catch (Exception e) {
             logger.error("Exception ProductInfo Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);

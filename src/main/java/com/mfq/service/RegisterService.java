@@ -77,13 +77,6 @@ public class RegisterService {
         String ip_address = AppContext.getIp();
 
         Map<String, Object> result = Maps.newHashMap();
-        if (StringUtils.isNotEmpty(blackbox))
-            result = fraudApiInvoker.fraudRegister(mobile, mobile, ip_address, blackbox, mobileType);
-        //如果result不为空且裁决是拒绝时
-        if (result != null && result.size() > 0 && result.get("decision").toString().toLowerCase().equals("reject")) {
-            throw new Exception(result.get("msg").toString());
-        }
-        //////////////
 
         int code = ErrorCodes.SUCCESS;
         String msg = "注册成功";
@@ -122,7 +115,7 @@ public class RegisterService {
             throw new Exception(msg);
         }
 
-        
+
         Map<String, Object> data = Maps.newHashMap();
         long userId = userService.createUser(
                 active ? Status.NORMAL : Status.INACTIVE, nick, null, email, mobile, stu, invite_code,

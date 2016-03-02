@@ -101,19 +101,9 @@ public class LoginService {
         String mobileType = MobileHelper.getMobileType(request);
         //////////////
         if (passport.getUid() == 0) {
-        	if(StringUtils.isNotEmpty(blackbox))fraudApiInvoker.fraudLogin(ip_address, login, 1, blackbox, mobileType);
-        	return JsonUtil.toJson(ErrorCodes.USER_WRONG_PASS, "密码错误", null);        		
+        	return JsonUtil.toJson(ErrorCodes.USER_WRONG_PASS, "密码错误", null);
         } else {
-        	Map<String,Object> result = new HashMap<String, Object>();
-        	if(StringUtils.isNotEmpty(blackbox))result = fraudApiInvoker.fraudLogin(ip_address, login, 0, blackbox, mobileType);
-        	log.info("fraudLogin as result Params :{}",result);
-    		//如果result不为空且裁决是拒绝时
-        	if(result != null && result.size()>0 && result.get("decision").toString().toLowerCase().equals("reject") ){
-        		log.info("result.msg{}",result.get("msg"));
-        		return JsonUtil.toJson(ErrorCodes.FRAUD_ERROR, result.get("msg").toString(), null);
-        	}else{
-        		return _handleLogin(user, passport, autologin, refer, request,response);        		
-        	}
+            return _handleLogin(user, passport, autologin, refer, request,response);
         }
     }
 

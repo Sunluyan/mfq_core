@@ -82,7 +82,7 @@ public class UserHelper {
 
     public static void formatDefaultUser(User user) {
         if (user.getStatus() == null) {
-            user.setStatus(Status.INACTIVE);
+            user.setStatus(Status.NORMAL);
         }
         if (StringUtils.isBlank(user.getMobile())) {
             user.setMobile(MD5Util.md5Digest(UUID.randomUUID().toString())); // 随机手机号
