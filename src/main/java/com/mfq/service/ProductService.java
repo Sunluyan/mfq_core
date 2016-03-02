@@ -5,7 +5,8 @@ import java.util.*;
 
 import javax.annotation.Resource;
 
-import com.mfq.dao.HospitalMapper;
+import com.mfq.bean.*;
+import com.mfq.dao.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -15,10 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.google.common.collect.Lists;
-import com.mfq.bean.Hospital;
-import com.mfq.bean.Product;
-import com.mfq.bean.ProductDetail;
-import com.mfq.bean.ProductImg;
 import com.mfq.bean.app.ProductInfo2App;
 import com.mfq.bean.app.ProductListItem2App;
 import com.mfq.bean.area.City;
@@ -26,9 +23,6 @@ import com.mfq.constants.Constants;
 import com.mfq.constants.ProductFlag;
 import com.mfq.constants.ProductType;
 import com.mfq.constants.SortType;
-import com.mfq.dao.ProductDetailMapper;
-import com.mfq.dao.ProductImgMapper;
-import com.mfq.dao.ProductMapper;
 import com.mfq.dao.area.CityMapper;
 import com.mfq.utils.DateUtil;
 import com.mfq.utils.FQUtil;
@@ -62,6 +56,8 @@ public class ProductService {
     HospitalMapper hospitalMapper;
     @Resource
     ProductMapper productMapper;
+    @Resource
+    ProFqRecordMapper preFqRecordMapper;
 
 
     public ProductInfo2App buildInfo(long pid) {
@@ -239,4 +235,26 @@ public class ProductService {
 		return productImgMapper.findByPid(id);
 	}
 
+    public BigDecimal selectFqPriceByPid(Long pid) {
+        try{
+            ProFqRecordExample example = new ProFqRecordExample();
+            example.or().andPidEqualTo(pid.intValue());
+            BigDecimal price = BigDecimal.valueOf(preFqRecordMapper.selectByExample(example).get(0).getPeriodPay());
+            return price;
+        }catch(Exception e){ //如果没有的话返回null
+            return null;
+        }
+    }
+
+    public BigDecimal selectPriceOrFqPrice(Long pid) throws Exception {
+        try{
+            ProFqRecordExample example = new ProFqRecordExample();
+            example.or().andPidEqualTo(pid.intValue());
+            BigDecimal price = BigDecimal.valueOf(preFqRecordMapper.selectByExample(example).get(0).getPeriodPay());
+            return price;
+        }catch(Exception e){ //如果没有的话返回产品价格
+            Product p = findById(pid);
+            return p.getPrice();
+        }
+    }
 }

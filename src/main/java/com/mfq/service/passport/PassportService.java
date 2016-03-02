@@ -35,9 +35,7 @@ public class PassportService {
     /**
      * 新的登录方式
      * 返回的passport中uid大于0成功，等于0验证失败，小于0用户不存在
-     * @param uid用户uid
      * @param password2-md5( md5(plainPassword+salt)+salt2 )
-     * @param autoLogin是否自动登录
      * @return 登录信息，登录成功后salt2/password2 会更新
      */
     public Passport login(long uid, String password2, boolean autoLogin) {
@@ -89,7 +87,10 @@ public class PassportService {
         passport.setSalt2(salt2);
         passport.setPassword2(
                 MD5Util.md5Digest(passport.getPassword() + salt2));
-        mapper.insertPassport(passport);
+        long count = mapper.insertPassport(passport);
+        if(count != 1){
+            throw new Exception("创建passport失败");
+        }
         return passport;
     }
 
@@ -119,8 +120,6 @@ public class PassportService {
      * 通过提供旧密码，修改密码的渠道
      * 
      * @param uid
-     * @param oldPassword
-     * @param newPassword
      * @return
      */
     public boolean updatePassword(long uid, String oldPlainPassword,

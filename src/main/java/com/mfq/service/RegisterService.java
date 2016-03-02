@@ -122,7 +122,7 @@ public class RegisterService {
             throw new Exception(msg);
         }
 
-
+        
         Map<String, Object> data = Maps.newHashMap();
         long userId = userService.createUser(
                 active ? Status.NORMAL : Status.INACTIVE, nick, null, email, mobile, stu, invite_code,

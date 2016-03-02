@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.constants.*;
+import com.mfq.dao.ProFqRecordMapper;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,6 +65,8 @@ public class OrderService {
     PolicyService policyService;
     @Resource
     FinanceBillService financeBillService;
+    @Resource
+    ProFqRecordMapper proFqRecordMapper;
 
     /**
      * 生成订单(不包括随意单)
@@ -358,9 +361,8 @@ public class OrderService {
             }
         } else {
             if (!(product != null
-                    && DateUtil.getDayBetweenD(product.getDateStart(),
-                    new Date()) >= 0 && DateUtil.getDayBetweenD(
-                    new Date(), product.getDateEnd()) >= 0)) {
+                    && DateUtil.getDayBetweenD(product.getDateStart(), new Date()) >= 0
+                    && DateUtil.getDayBetweenD(new Date(), product.getDateEnd()) >= 0)) {
                 logger.warn("该产品不可下单！pid={}", pid);
                 return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "该产品不可下单 ", null);
             }
@@ -438,6 +440,9 @@ public class OrderService {
             fm.put("hospital_pay", product.getHospitalPay());
         } else if (PayType.FINANCING == type) { // 分期
             fm.put("quota_left", quota.getQuotaLeft());
+            BigDecimal fqPrice = productService.selectFqPriceByPid(product.getId());
+            if(fqPrice!=null) fm.put("amount",fqPrice);
+
         } else {
             logger.error("Exception_PayType_Param!");
             throw new Exception("Exception_PayType_Param!");
@@ -683,33 +688,15 @@ public class OrderService {
     /**
      * 计算分期
      *
-     * @param uid
+     * @param pid
      * @return
      * @throws Exception
      */
-    public String calculateFinancingByUidAndAmount(long uid,
-                                                   BigDecimal amount) throws Exception {
-        User user = userService.queryUser(uid);
-        if (user == null || user.getUid() < 0 || UserIdHolder.getLongUid() < 0) {
-            logger.warn("用户不存在！uid={}", uid);
-            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
-        }
-
-        UserQuota quota = userQuotaService.queryUserQuota(uid);
-        if (quota == null || quota.getUid() <= 0) {
-            logger.warn("无法获取UserQuota！uid={}", uid);
-            return JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
-        }
-
-
-        Map<Integer, Object> map = new HashMap<Integer, Object>();
-        Integer[] periods = {6, 12, 24,};
-        for (Integer integer : periods) {
-            BigDecimal money = amount.multiply(new BigDecimal("0.0125"))
-                    .add(amount.divide(new BigDecimal(integer), 2, BigDecimal.ROUND_HALF_EVEN)).setScale(2, BigDecimal.ROUND_HALF_EVEN);
-            map.put(integer, money);
-        }
-        return JsonUtil.successResultJson(map);
+    public List<ProFqRecord> calculateFinancing(Integer pid) throws Exception {
+        ProFqRecordExample example = new ProFqRecordExample();
+        example.or().andPidEqualTo(pid);
+        List<ProFqRecord> list = proFqRecordMapper.selectByExample(example);
+        return list;
     }
 
     public List<OrderInfo> getSeckillingProduct(long uid) {
@@ -734,7 +721,8 @@ public class OrderService {
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         OrderService service = ac.getBean(OrderService.class);
-        service.queryOrdersByUid(2798, 6);
+        service.calculateFinancing(223);
+
     }
 
 

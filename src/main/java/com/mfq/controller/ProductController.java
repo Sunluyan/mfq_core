@@ -272,7 +272,7 @@ public class ProductController {
                 }
                 
                 
-                Map<String,Object> fq = FQUtil.fenqiMaxCompute(product.getMarketPrice());// 分期得计算规则
+                Map<String,Object> fq = FQUtil.fenqiMaxCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
                 model.put("p_price", String.valueOf(fq.get("p_price")));
                 model.put("p_num", String.valueOf(fq.get("p_num")));
                 
@@ -288,7 +288,7 @@ public class ProductController {
                 	model.put("cureMeans", productDetail.getCureMeans());
                 	model.put("p", productDetail);
                 	
-                	Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(product.getMarketPrice());// 分期得计算规则
+                	Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
                     
                 	Map<Integer, BigDecimal> f = Maps.newHashMap();
                 	if(fqs.containsKey(6)){

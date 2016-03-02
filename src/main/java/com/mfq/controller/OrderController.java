@@ -17,6 +17,7 @@ import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.app.Refund2App;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.constants.PolicyStatus;
+import com.mfq.service.ProductService;
 import com.mfq.service.RefundService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -53,6 +54,8 @@ public class OrderController {
     UserQuotaService userQuotaService;
     @Resource
     RefundService refundService;
+    @Resource
+    ProductService productService;
 
 
     /**
@@ -222,10 +225,11 @@ public class OrderController {
      * 用于创建分期订单
      * 1、uid
      * 2、pid
-     * 3、用户输入的钱
      * 4、period期数
      * 5、是否悟空保
      * 6、预约就医时间
+     *
+     * 现在不需要判定用户输入的金额,用商品的现价或者分期价代替,优先使用分期价
      * @param request
      * @param response
      * @return
@@ -245,14 +249,15 @@ public class OrderController {
             }
             Long uid = Long.parseLong(params.get("uid").toString());
             Long pid = Long.parseLong(params.get("pid").toString());
-            BigDecimal amount = new BigDecimal(params.get("amount").toString());//amount 是用户输入的总价
+            BigDecimal amount = productService.selectPriceOrFqPrice(pid);
+
             if (UserIdHolder.isLogin() && UserIdHolder.getLongUid() != uid || pid == null) {
                 logger.error("系统非法请求！ATTENTION_UNLAWFULL_ACCESS");
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
                         null);
             }
             if(amount.compareTo(new BigDecimal(100))<=0){
-            	return JsonUtil.toJson(ErrorCodes.ORDER_MONEY_TOOLOW, "订单金额小于100", null); 
+            	return JsonUtil.toJson(ErrorCodes.ORDER_MONEY_TOOLOW, "订单金额小于100", null);
             }
 
             // MARK 如果有优惠券的话,应该先把amount减掉相应的金额,然后该干嘛干嘛,最后把金额给amout加上.
@@ -581,15 +586,10 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
                         null);
             }
-			if (params.get("uid") == null || params.get("amount") == null) { // 参数异常
-                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
-                        null);
-            }
-			
-            Long uid = Long.parseLong(params.get("uid").toString());
-            BigDecimal amount = new BigDecimal(params.get("amount").toString());  //使用余额部分
-            
-            ret = orderService.calculateFinancingByUidAndAmount(uid, amount);
+
+            Integer pid = Integer.parseInt(params.get("pid").toString());
+
+            ret = JsonUtil.successResultJson(orderService.calculateFinancing(pid));
             
         } catch (Exception e) {
             logger.error("Exception Financing Process!", e);
@@ -598,10 +598,6 @@ public class OrderController {
         logger.info("Order_Financing_Ret is:{}", ret);
     	return ret;
     }
-
-
-
-
 
 
 

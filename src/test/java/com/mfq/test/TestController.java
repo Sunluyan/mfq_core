@@ -61,12 +61,25 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testFinance(){
+        String url = purl+"/order/finance_info";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("pid",223);
+
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
 
     public static void main(String[] args) throws IOException {
 
 //        testOrderCreate();
-        testCallback();
+//        testCallback();
 //        testGopay();
+        testFinance();
     }
 }
 
