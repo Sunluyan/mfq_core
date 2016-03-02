@@ -351,7 +351,7 @@ body {
 			</c:forEach>
 			</div>
 		<script type="text/javascript">banner()</script>
-<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; "><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
+<a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; color:white;"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>
 </div>
 
 <div style="background-color:#ffffff; width:100%; text-align:left;vertical-align: middle;">
@@ -361,7 +361,7 @@ body {
 			 <td valign="bottom"><span class="pri_s"> &nbsp;&nbsp;<img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_41.png" width="18" />￥</span><span class="STYLE3"><span class="pri_l"><%=price %></span></span> <span class="STYLE76"><del>原价￥<%=market_price %></del></span></td>
 			<td align="right" style="padding:10px;"><table border="0" cellpadding="1" cellspacing="0" class="round_l21">
           <tr>
-            <td width="30" align="center" valign="middle" bgcolor="RGB(251,93,156)"><span class="STYLE9"><span class="STYLE11">补贴</span></span></td>
+            <td width="30" align="center" valign="middle"  style="background-color:RGB(251,93,156);" ><span class="STYLE9"><span class="STYLE11">补贴</span></span></td>
             <td align="left" valign="bottom" bgcolor="#FFFFFF"><span class="pri_s" >￥${bt }</span></td>
           </tr>
       </table></td>
