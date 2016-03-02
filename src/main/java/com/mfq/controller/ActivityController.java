@@ -511,6 +511,7 @@ public class ActivityController {
     @RequestMapping("/baoming")
     public ModelAndView baoming(){
         Map<String, Object> model = new HashMap<String, Object>();
+        activityService.addShareCount("baoming");
         return new ModelAndView("/activity/baoming/index", model);
     }
 
@@ -524,6 +525,7 @@ public class ActivityController {
      */
     @RequestMapping(value = {"/addShareCount/{activityName}","/addShareCount/{activityName}"})
     public void addShareCount(@PathVariable String activityName, HttpServletRequest request,HttpServletResponse response){
+
         activityService.addShareCount(activityName);
     }
 
