@@ -62,52 +62,56 @@ public class RegisterService {
     LoginService loginService;
 
 
-
-
     @Transactional
     public long reg(String email, String mobile, String nick, String password,
-                      String vcode, String refer, String regip, String source,
-                      String regTrack, int stu, String invite_code, String blackbox, String mobileType,
-                      HttpServletRequest request, HttpServletResponse response) throws Exception {
+                    String vcode, String refer, String regip, String source,
+                    String regTrack, int stu, String invite_code, String blackbox, String mobileType,
+                    HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         logger.info("REG|{}|{}|{}|{}|{}|{}|{}|{}|{}", email, mobile, nick,
                 password, vcode, refer, regip, source, regTrack, stu);
 
-        //////////////插入同盾验证
-        String ip_address = AppContext.getIp();
-
-        Map<String, Object> result = Maps.newHashMap();
 
         int code = ErrorCodes.SUCCESS;
         String msg = "注册成功";
-        boolean active = false;
 
         UserExtend userExtend = null;
 
         if (StringUtils.isNotBlank(nick) && !VerifyUtils.verifyNick(nick)) {
-            code = 1001;msg = "昵称格式错误";
+            code = 1001;
+            msg = "昵称格式错误";
         } else if (!VerifyUtils.verifyPassword(password)) {
-            code = 1003;msg = "密码格式错误";
+            code = 1003;
+            msg = "密码格式错误";
         } else if (StringUtils.isBlank(email) && StringUtils.isBlank(mobile)) {
-            code = 1201;msg = "邮箱和手机号必须填充一项";
+            code = 1201;
+            msg = "邮箱和手机号必须填充一项";
         } else if (StringUtils.isNotBlank(email) && !VerifyUtils.verifyEmail(email)) {
-            code = 1002;msg = "邮箱格式错误";
+            code = 1002;
+            msg = "邮箱格式错误";
         } else if (StringUtils.isNotBlank(email) && userService.queryUserByEmail(email).getUid() != 0) {
-            code = 1102;msg = "此邮箱已注册";
+            code = 1102;
+            msg = "此邮箱已注册";
         } else if (StringUtils.isNotBlank(mobile)
                 && !VerifyUtils.verifyMobile(mobile)) {
-            code = 1004;msg = "手机号格式错误";
+            code = 1004;
+            msg = "手机号格式错误";
         } else if (StringUtils.isNotBlank(mobile)
                 && userService.queryUserByMobile(mobile).getUid() != 0) {
-            code = 1104;msg = "此手机号已注册";
+            code = 1104;
+            msg = "此手机号已注册";
         } else if (StringUtils.isNotBlank(mobile)) {
             CodeMsg codeMsg = vcodeService.validate(mobile, vcode);
             if (codeMsg.getCode() == 0) {
-                active = true;code = codeMsg.getCode();msg = codeMsg.getMsg();
+                code = codeMsg.getCode();
+                msg = codeMsg.getMsg();
             }
         } else if (invite_code.length() == 7) {
             userExtend = userExtendService.getUserExtendByInviteCode(invite_code);
-            if (userExtend == null) {code = 1105;msg = "邀请码错误";}
+            if (userExtend == null) {
+                code = 1105;
+                msg = "邀请码错误";
+            }
         }
 
         if (code != 0) {
@@ -118,7 +122,7 @@ public class RegisterService {
 
         Map<String, Object> data = Maps.newHashMap();
         long userId = userService.createUser(
-                active ? Status.NORMAL : Status.INACTIVE, nick, null, email, mobile, stu, invite_code,
+                Status.NORMAL, nick, null, email, mobile, stu, invite_code,
                 new SignIndex[0]);
 
 
@@ -145,29 +149,27 @@ public class RegisterService {
             throw new Exception("登陆失败");
         }
 
-        if (active) {
-            userLoginService.updateUsersLoginActivedTime(passport.getUid());
-            CookieUtils.setLoginCookie(request, response, passport,
-                    true);
-        }
+        userLoginService.updateUsersLoginActivedTime(passport.getUid());
+        CookieUtils.setLoginCookie(request, response, passport,
+                true);
 
         String refers = RequestUtils.getString(request, "refer", request.getHeader("Referer"));
         refers = StringUtils.isEmpty(refers) ? "http://www.5imfq.com/profile/" : refers;
 
         //登录
-        String loginResult = loginService.login(request, response, mobile, password, refers, false,blackbox);
+        String loginResult = loginService.login(request, response, mobile, password, refers, false, blackbox);
         Map<String, Object> loginResultMap = JsonUtil.getMapFromJsonStr(loginResult);
         code = Integer.parseInt(loginResultMap.get("code").toString());
-        msg = loginResultMap.get("msg") == null ? null :loginResultMap.get("msg").toString();
+        msg = loginResultMap.get("msg") == null ? null : loginResultMap.get("msg").toString();
         if (code == 0) {
             // 更新access token所对应的用户信息
             @SuppressWarnings("unchecked")
-            Map<String, Object> datas = (Map<String, Object>)loginResultMap.get("data");
-            if(datas != null && datas.get("uid") != null){
+            Map<String, Object> datas = (Map<String, Object>) loginResultMap.get("data");
+            if (datas != null && datas.get("uid") != null) {
                 Long uid = Long.parseLong(datas.get("uid").toString());
                 loginService.updateIntallations(request, uid);
             }
-        }else{
+        } else {
             throw new Exception(msg);
         }
 

@@ -508,6 +508,12 @@ public class ActivityController {
         return new ModelAndView("/activity/coupon/index", model);
     }
 
+    @RequestMapping("/baoming")
+    public ModelAndView baoming(){
+        Map<String, Object> model = new HashMap<String, Object>();
+        return new ModelAndView("/activity/baoming/index", model);
+    }
+
 
 
     /**
@@ -532,6 +538,8 @@ public class ActivityController {
     public void addResultCount(@PathVariable String activityName, HttpServletRequest request,HttpServletResponse response){
         activityService.addResultCount(activityName);
     }
+
+
 
 
 
