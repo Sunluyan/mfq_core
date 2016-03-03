@@ -11,6 +11,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.app.ActivityOffline;
+import com.mfq.bean.app.ActivityOnline;
+import com.mfq.bean.app.ActivityOnlineDetail;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.helper.SignHelper;
@@ -540,6 +543,73 @@ public class ActivityController {
     public void addResultCount(@PathVariable String activityName, HttpServletRequest request,HttpServletResponse response){
         activityService.addResultCount(activityName);
     }
+
+
+    /**
+     * 获取线上活动列表
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = {"/online","/online/"})
+    public @ResponseBody String onlineList(HttpServletRequest request, HttpServletResponse response){
+        try{
+            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+            }
+            List<ActivityOnline> list = activityService.onlineList();
+            logger.info(list.toString());
+            return JsonUtil.successResultJson(list);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"获取线上列表出错",null);
+        }
+    }
+
+    @RequestMapping(value = {"/online/detail","/online/detail/"})
+    public @ResponseBody String onlineDetail(HttpServletRequest request, HttpServletResponse response){
+        try{
+            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) {
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+            }
+            if(params.get("id") == null){
+                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_NULL, "参数错误", null);
+            }
+            Integer id = Integer.parseInt(params.get("id").toString());
+
+            ActivityOnlineDetail onlineDetail = activityService.onlineDetail(id);
+
+            return JsonUtil.successResultJson(onlineDetail);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"获取线上列表出错",null);
+        }
+    }
+
+    /**
+     * 获取线下活动列表
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = {"/offline","/offline/"})
+    public @ResponseBody String offlineList(HttpServletRequest request, HttpServletResponse response){
+        try{
+            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+            }
+            List<ActivityOffline> list = activityService.offlineList();
+            return JsonUtil.successResultJson(list);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"获取线下列表出错",null);
+        }
+    }
+
+
 
 
 

@@ -15,13 +15,13 @@ public class Activity {
 
     private String link;
 
-    private Integer type;
+    private Integer type;       //1是线上活动 2是线下活动
 
     private Date beginAt;
 
     private Date endAt;
 
-    private Date activityTime;
+    private String activityTime;
 
     private String activityPlace;
 
@@ -101,11 +101,11 @@ public class Activity {
         this.endAt = endAt;
     }
 
-    public Date getActivityTime() {
+    public String getActivityTime() {
         return activityTime;
     }
 
-    public void setActivityTime(Date activityTime) {
+    public void setActivityTime(String activityTime) {
         this.activityTime = activityTime;
     }
 

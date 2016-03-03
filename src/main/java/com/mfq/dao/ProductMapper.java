@@ -34,5 +34,6 @@ public interface ProductMapper {
 
 	List<Product> selectByKeywordsAndHospitalIds(@Param("keywords")String[] keywords,@Param("hospitals")List<Hospital> hospitals,
 												 @Param("start")long start,@Param("pagesize")long pagesize);
+	List<Product> selectByPids(@Param("pids")List<Long> pids);
 
 }

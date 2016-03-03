@@ -14,7 +14,7 @@ public class ActivityOnlineDetail {
     private String desc;
     private String imgSmall;
     private String imgBig;
-    private List<ProductListItem2App2> pros ;
+    private List<ProductListItem2App> pros ;
 
     public ActivityOnlineDetail(Activity activity) {
         this.id = activity.getId();
@@ -68,11 +68,11 @@ public class ActivityOnlineDetail {
         this.imgBig = imgBig;
     }
 
-    public List<ProductListItem2App2> getPros() {
+    public List<ProductListItem2App> getPros() {
         return pros;
     }
 
-    public void setPros(List<ProductListItem2App2> pros) {
+    public void setPros(List<ProductListItem2App> pros) {
         this.pros = pros;
     }
 }

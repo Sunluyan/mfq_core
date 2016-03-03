@@ -9,9 +9,9 @@
     <result column="activity_desc" property="activityDesc" jdbcType="VARCHAR" />
     <result column="link" property="link" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="begin_at" property="beginAt" jdbcType="TIMESTAMP" />
-    <result column="end_at" property="endAt" jdbcType="TIMESTAMP" />
-    <result column="activity_time" property="activityTime" jdbcType="TIMESTAMP" />
+    <result column="begin_at" property="beginAt" jdbcType="" />
+    <result column="end_at" property="endAt" jdbcType="" />
+    <result column="activity_time" property="activityTime" jdbcType="VARCHAR" />
     <result column="activity_place" property="activityPlace" jdbcType="VARCHAR" />
     <result column="img_big" property="imgBig" jdbcType="VARCHAR" />
   </resultMap>
@@ -139,8 +139,8 @@
       pids)
     values (#{id,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, #{imgSmall,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{activityDesc,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER}, #{beginAt,jdbcType=TIMESTAMP}, #{endAt,jdbcType=TIMESTAMP}, 
-      #{activityTime,jdbcType=TIMESTAMP}, #{activityPlace,jdbcType=VARCHAR}, #{imgBig,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{beginAt,jdbcType=}, #{endAt,jdbcType=},
+      #{activityTime,jdbcType=VARCHAR}, #{activityPlace,jdbcType=VARCHAR}, #{imgBig,jdbcType=VARCHAR}, 
       #{pids,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.mfq.bean.Activity" >
@@ -209,13 +209,13 @@
         #{type,jdbcType=INTEGER},
       </if>
       <if test="beginAt != null" >
-        #{beginAt,jdbcType=TIMESTAMP},
+        #{beginAt,jdbcType=},
       </if>
       <if test="endAt != null" >
-        #{endAt,jdbcType=TIMESTAMP},
+        #{endAt,jdbcType=},
       </if>
       <if test="activityTime != null" >
-        #{activityTime,jdbcType=TIMESTAMP},
+        #{activityTime,jdbcType=VARCHAR},
       </if>
       <if test="activityPlace != null" >
         #{activityPlace,jdbcType=VARCHAR},
@@ -259,13 +259,13 @@
         type = #{record.type,jdbcType=INTEGER},
       </if>
       <if test="record.beginAt != null" >
-        begin_at = #{record.beginAt,jdbcType=TIMESTAMP},
+        begin_at = #{record.beginAt,jdbcType=},
       </if>
       <if test="record.endAt != null" >
-        end_at = #{record.endAt,jdbcType=TIMESTAMP},
+        end_at = #{record.endAt,jdbcType=},
       </if>
       <if test="record.activityTime != null" >
-        activity_time = #{record.activityTime,jdbcType=TIMESTAMP},
+        activity_time = #{record.activityTime,jdbcType=VARCHAR},
       </if>
       <if test="record.activityPlace != null" >
         activity_place = #{record.activityPlace,jdbcType=VARCHAR},
@@ -290,9 +290,9 @@
       activity_desc = #{record.activityDesc,jdbcType=VARCHAR},
       link = #{record.link,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
-      begin_at = #{record.beginAt,jdbcType=TIMESTAMP},
-      end_at = #{record.endAt,jdbcType=TIMESTAMP},
-      activity_time = #{record.activityTime,jdbcType=TIMESTAMP},
+      begin_at = #{record.beginAt,jdbcType=},
+      end_at = #{record.endAt,jdbcType=},
+      activity_time = #{record.activityTime,jdbcType=VARCHAR},
       activity_place = #{record.activityPlace,jdbcType=VARCHAR},
       img_big = #{record.imgBig,jdbcType=VARCHAR},
       pids = #{record.pids,jdbcType=LONGVARCHAR}
@@ -309,9 +309,9 @@
       activity_desc = #{record.activityDesc,jdbcType=VARCHAR},
       link = #{record.link,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
-      begin_at = #{record.beginAt,jdbcType=TIMESTAMP},
-      end_at = #{record.endAt,jdbcType=TIMESTAMP},
-      activity_time = #{record.activityTime,jdbcType=TIMESTAMP},
+      begin_at = #{record.beginAt,jdbcType=},
+      end_at = #{record.endAt,jdbcType=},
+      activity_time = #{record.activityTime,jdbcType=VARCHAR},
       activity_place = #{record.activityPlace,jdbcType=VARCHAR},
       img_big = #{record.imgBig,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -340,13 +340,13 @@
         type = #{type,jdbcType=INTEGER},
       </if>
       <if test="beginAt != null" >
-        begin_at = #{beginAt,jdbcType=TIMESTAMP},
+        begin_at = #{beginAt,jdbcType=},
       </if>
       <if test="endAt != null" >
-        end_at = #{endAt,jdbcType=TIMESTAMP},
+        end_at = #{endAt,jdbcType=},
       </if>
       <if test="activityTime != null" >
-        activity_time = #{activityTime,jdbcType=TIMESTAMP},
+        activity_time = #{activityTime,jdbcType=VARCHAR},
       </if>
       <if test="activityPlace != null" >
         activity_place = #{activityPlace,jdbcType=VARCHAR},
@@ -368,9 +368,9 @@
       activity_desc = #{activityDesc,jdbcType=VARCHAR},
       link = #{link,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
-      begin_at = #{beginAt,jdbcType=TIMESTAMP},
+      begin_at = #{beginAt,jdbcType=},
       end_at = #{endAt,jdbcType=TIMESTAMP},
-      activity_time = #{activityTime,jdbcType=TIMESTAMP},
+      activity_time = #{activityTime,jdbcType=VARCHAR},
       activity_place = #{activityPlace,jdbcType=VARCHAR},
       img_big = #{imgBig,jdbcType=VARCHAR},
       pids = #{pids,jdbcType=LONGVARCHAR}
@@ -386,7 +386,7 @@
       type = #{type,jdbcType=INTEGER},
       begin_at = #{beginAt,jdbcType=TIMESTAMP},
       end_at = #{endAt,jdbcType=TIMESTAMP},
-      activity_time = #{activityTime,jdbcType=TIMESTAMP},
+      activity_time = #{activityTime,jdbcType=VARCHAR},
       activity_place = #{activityPlace,jdbcType=VARCHAR},
       img_big = #{imgBig,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

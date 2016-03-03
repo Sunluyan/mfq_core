@@ -1,6 +1,7 @@
 package com.mfq.service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import javax.annotation.Resource;
 import ch.qos.logback.classic.jul.JULHelper;
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.mfq.bean.*;
+import com.mfq.bean.app.*;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.bean.coupon.CouponBatchInfo;
 import com.mfq.bean.user.PresentRecord;
@@ -25,8 +27,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mfq.bean.app.OrderInfo2App;
-import com.mfq.bean.app.ProductInfoItem;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserExtend;
 import com.mfq.dataservice.context.UserIdHolder;
@@ -73,6 +73,8 @@ public class ActivityService {
     CouponBatchInfoMapper couponBatchInfoMapper;
     @Resource
     ActivityRecordMapper activityRecordMapper;
+    @Resource
+    ActivityMapper activityMapper;
 
     public List<ProductInfoItem> getItemsByType(ProductType type) {
         List<Product> plist = productService.queryProductsByType(type);
@@ -224,27 +226,47 @@ public class ActivityService {
     }
 
 
+    public List<ActivityOnline> onlineList() throws Exception{
+        ActivityExample example = new ActivityExample();
+        Date date = new Date();
+        example.or().andEndAtGreaterThan(date).andBeginAtLessThan(date).andTypeEqualTo(1);
+        List<Activity> activities = activityMapper.selectByExample(example);
+        List<ActivityOnline> list = new ArrayList<>();
+        for (Activity activity : activities) {
+            ActivityOnline online = new ActivityOnline(activity);
+            list.add(online);
+        }
+        return list;
+    }
+
+    public List<ActivityOffline> offlineList() throws Exception{
+        ActivityExample example = new ActivityExample();
+        Date date = new Date();
+        example.or().andEndAtGreaterThan(date).andBeginAtLessThan(date).andTypeEqualTo(2);
+        List<Activity> activities = activityMapper.selectByExample(example);
+        List<ActivityOffline> list = new ArrayList<>();
+        for (Activity activity : activities) {
+            ActivityOffline offline = new ActivityOffline(activity);
+            list.add(offline);
+        }
+        return list;
+    }
+
+
+    public ActivityOnlineDetail onlineDetail(Integer id) throws Exception{
+        Activity activity = activityMapper.selectByPrimaryKey(id);
+        ActivityOnlineDetail detail = new ActivityOnlineDetail(activity);
+        List<Product> products = productService.selectByPids(activity.getPids());
+        List<ProductListItem2App> list = productService.convert2AppList(products);
+        detail.setPros(list);
+        return detail;
+    }
+
+
 
 
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        PresentalMapper mapper = ac.getBean(PresentalMapper.class);
-        Presental p = new Presental();
-
-
-        for (int i = 0; i < 10000; i++) {
-            String num = i + "";
-            if (num.length() < 4) {
-                for (int j = num.length(); j < 4; j++) {
-                    num = "0" + num;
-                }
-            }
-            p.setCode(num);
-            mapper.insert(p);
-            System.out.println(num);
-        }
-
-
     }
 
 

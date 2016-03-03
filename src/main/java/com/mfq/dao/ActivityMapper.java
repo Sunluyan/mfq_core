@@ -1,10 +1,14 @@
 package com.mfq.dao;
 
+import com.mfq.annotation.MFQDao;
 import com.mfq.bean.Activity;
 import com.mfq.bean.ActivityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
+@MFQDao
 public interface ActivityMapper {
     int countByExample(ActivityExample example);
 

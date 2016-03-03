@@ -73,13 +73,25 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testOnline(){
+        String url = purl+"/activity/offline";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("area_id",223);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
 
     public static void main(String[] args) throws IOException {
 
 //        testOrderCreate();
 //        testCallback();
 //        testGopay();
-        testFinance();
+//        testFinance();
+        testOnline();
     }
 }
 

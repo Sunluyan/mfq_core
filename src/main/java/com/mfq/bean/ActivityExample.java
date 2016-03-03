@@ -705,52 +705,52 @@ public class ActivityExample {
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeEqualTo(Date value) {
+        public Criteria andActivityTimeEqualTo(String value) {
             addCriterion("activity_time =", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeNotEqualTo(Date value) {
+        public Criteria andActivityTimeNotEqualTo(String value) {
             addCriterion("activity_time <>", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeGreaterThan(Date value) {
+        public Criteria andActivityTimeGreaterThan(String value) {
             addCriterion("activity_time >", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andActivityTimeGreaterThanOrEqualTo(String value) {
             addCriterion("activity_time >=", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeLessThan(Date value) {
+        public Criteria andActivityTimeLessThan(String value) {
             addCriterion("activity_time <", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeLessThanOrEqualTo(Date value) {
+        public Criteria andActivityTimeLessThanOrEqualTo(String value) {
             addCriterion("activity_time <=", value, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeIn(List<Date> values) {
+        public Criteria andActivityTimeIn(List<String> values) {
             addCriterion("activity_time in", values, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeNotIn(List<Date> values) {
+        public Criteria andActivityTimeNotIn(List<String> values) {
             addCriterion("activity_time not in", values, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeBetween(Date value1, Date value2) {
+        public Criteria andActivityTimeBetween(String value1, String value2) {
             addCriterion("activity_time between", value1, value2, "activityTime");
             return (Criteria) this;
         }
 
-        public Criteria andActivityTimeNotBetween(Date value1, Date value2) {
+        public Criteria andActivityTimeNotBetween(String value1, String value2) {
             addCriterion("activity_time not between", value1, value2, "activityTime");
             return (Criteria) this;
         }

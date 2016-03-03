@@ -191,11 +191,7 @@ public class ProductService {
         return result;
     }
 
-    public static void main(String[] args) {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        ProductService service = ac.getBean(ProductService.class);
-        service.findProductByKeyword("水",1);
-    }
+
 
 
     public long addSaleNum(long pid){
@@ -257,4 +253,23 @@ public class ProductService {
             return p.getPrice();
         }
     }
+
+    public List<Product> selectByPids(String pids){
+        List<Long> list = new ArrayList<>();
+        for (int i = 0; i < pids.split(",").length; i++) {
+            list.add(Long.parseLong(pids.split(",")[i]));
+        }
+        return mapper.selectByPids(list);
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        ProductService service = ac.getBean(ProductService.class);
+        List<Product> list = service.selectByPids("223,222,221,");
+        for (Product product : list) {
+            System.out.println(product.toString());
+        }
+    }
+
+
 }

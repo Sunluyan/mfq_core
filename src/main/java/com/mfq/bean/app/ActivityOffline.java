@@ -7,24 +7,24 @@ import java.util.Date;
 /**
  * Created by liuzhiguo1 on 16/3/2.
  */
-public class ActivityNotOnline {
+public class ActivityOffline {
 
     private Integer id;
 
     private String imgSmall;
 
-    private Date time;
+    private String time;
 
     private String place;
 
-    public ActivityNotOnline(Activity activity) {
+    public ActivityOffline(Activity activity) {
         this.id = activity.getId();
         this.imgSmall = activity.getImgSmall();
         this.time = activity.getActivityTime();
         this.place = activity.getActivityPlace();
     }
 
-    public ActivityNotOnline() {
+    public ActivityOffline() {
         super();
     }
 
@@ -44,11 +44,11 @@ public class ActivityNotOnline {
         this.imgSmall = imgSmall;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
