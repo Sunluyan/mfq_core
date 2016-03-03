@@ -103,6 +103,11 @@ public class IndexController {
         	hd.put("id",b.getpId());
         	hd.put("name",b.getName());
         	hd.put("url",b.getUrl());
+			if("#".equals(b.getUrl())){
+				hd.put("ref", 2);
+			}else {
+				hd.put("ref", 1);
+			}
         	data.add(hd);
     	}
     	String ret = JsonUtil.successResultJson(data);

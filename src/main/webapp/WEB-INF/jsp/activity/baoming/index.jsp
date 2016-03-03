@@ -594,8 +594,7 @@ pageEncoding="UTF-8"%>
 	          即可报名成功。如纯针+张三 186****1234。</div>
 				</div>
 				<div class="fangfa">
-					<span style="font-size: 1.4rem;">方式2 : </span><div style="text-indent: 3rem;margin-bottom:1rem;font-size: 1.2rem;">发送活动名称（纯针）+个人信息（姓名+电话）至公众号，
-	          即可报名成功。 到 18600172457 
+					<span style="font-size: 1.4rem;">方式2 : </span><div style="text-indent: 3rem;margin-bottom:1rem;font-size: 1.2rem;">发送活动名称（纯针）+个人信息（姓名+电话）至18600172457
 		   如 : 纯针+张三 186****1234</div>
 				</div>
 				<div class="fangfa">
