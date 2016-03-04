@@ -103,10 +103,6 @@ public class OrderService {
                 hospitalPay, balancePay, period, periodPay, t, couponNum, policy_status);
         // TODO: 16/2/25  下分期订单的时候,应该把订单状态改成已支付
 
-//		if (!flag) {
-//			throw new Exception("生单前订单校验失败！");
-//		}
-
         long ls = mapper.findByUidAndPayTypeAndPid(uid, PayType.FINANCING.getId(), pid);
         long lsr = mapper.findByUidAndPayTypeAndPid(uid, PayType.FULL.getId(), pid);
         logger.info("ls = {}, lsr ={}", ls, lsr);
@@ -142,7 +138,7 @@ public class OrderService {
 
         if (t == PayType.FINANCING) {
             if (policy_status == 0) {
-                if (amount.compareTo(periodPay) >= 0) {
+                if (amount.compareTo(periodPay) <= 0) {
                     toStatus = OrderStatus.PAY_OK;
                 }
             }

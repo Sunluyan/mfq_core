@@ -14,8 +14,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 	
-//	private final static String purl="http://i.5imfq.com";
-	private final static String purl="http://localhost:8080";
+	private final static String purl="http://i.5imfq.com";
+//	private final static String purl="http://localhost:8080";
 
 
     public static void testOrderCreate() throws IOException {
@@ -74,9 +74,9 @@ public class TestController {
     }
 
     public static void testOnline(){
-        String url = purl+"/activity/offline";
+        String url = purl+"/activity/online/detail";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("area_id",223);
+        params.put("id",2);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);

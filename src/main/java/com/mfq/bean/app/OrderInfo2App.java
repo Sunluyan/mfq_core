@@ -99,7 +99,7 @@ public class OrderInfo2App implements Serializable{
 		this.billNo = financeBill.getBillNo();
 		this.financeState = financeBill.getStatus();
 
-		this.need_pay = orderInfo.getPrice().subtract(orderInfo.getPeriodPay());
+		this.need_pay = orderInfo.getPrice().subtract(orderInfo.getPeriodPay()).subtract(orderInfo.getOnlinePay());
 		this.month_period = financeBill.getNewBalance();
 
 		// TODO: 16/1/22    更改退款 

@@ -735,6 +735,16 @@ public class ActivityExample {
             return (Criteria) this;
         }
 
+        public Criteria andActivityTimeLike(String value) {
+            addCriterion("activity_time like", value, "activityTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityTimeNotLike(String value) {
+            addCriterion("activity_time not like", value, "activityTime");
+            return (Criteria) this;
+        }
+
         public Criteria andActivityTimeIn(List<String> values) {
             addCriterion("activity_time in", values, "activityTime");
             return (Criteria) this;

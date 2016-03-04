@@ -17,6 +17,7 @@ import com.mfq.bean.app.FinanceBillList2App;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -207,7 +208,7 @@ public class FinanceController {
 			 * 查找用户所有订单
 			 */
 			List<FinanceBill> list = financeBillService.findAllBills(uid);
-			if(list == null){
+			if(CollectionUtils.isEmpty(list)){
 				ret = JsonUtil.toJson(0, null, null);
 				logger.debug("user:{} 没有分期订单！ have not finance ",uid);
 				return ret;

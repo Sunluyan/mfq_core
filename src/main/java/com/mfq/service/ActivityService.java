@@ -258,6 +258,9 @@ public class ActivityService {
         ActivityOnlineDetail detail = new ActivityOnlineDetail(activity);
         List<Product> products = productService.selectByPids(activity.getPids());
         List<ProductListItem2App> list = productService.convert2AppList(products);
+        for (ProductListItem2App productListItem2App : list) {
+            productListItem2App.setUrl("product:"+productListItem2App.getId()+"-"+productListItem2App.getName());
+        }
         detail.setPros(list);
         return detail;
     }

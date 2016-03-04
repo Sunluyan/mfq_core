@@ -15,7 +15,7 @@ public class Activity {
 
     private String link;
 
-    private Integer type;       //1是线上活动 2是线下活动
+    private Integer type;
 
     private Date beginAt;
 
@@ -106,7 +106,7 @@ public class Activity {
     }
 
     public void setActivityTime(String activityTime) {
-        this.activityTime = activityTime;
+        this.activityTime = activityTime == null ? null : activityTime.trim();
     }
 
     public String getActivityPlace() {

@@ -608,6 +608,18 @@ public class ActivityController {
             return JsonUtil.toJson(9999,"获取线下列表出错",null);
         }
     }
+    @RequestMapping(value = {"/topimg","/topimg/"})
+    public @ResponseBody String topimg(HttpServletRequest request, HttpServletResponse response){
+        try{
+            String url = "http://bootstrap.kinghack.com/assets/img/bootstrap-mdo-sfmoma-02.jpg";
+            return JsonUtil.successResultJson(url);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"获取线下列表出错",null);
+        }
+    }
+
+
 
 
 

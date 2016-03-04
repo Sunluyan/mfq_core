@@ -17,11 +17,16 @@ public class ActivityOffline {
 
     private String place;
 
+    private String link;
+
+
+
     public ActivityOffline(Activity activity) {
         this.id = activity.getId();
         this.imgSmall = activity.getImgSmall();
         this.time = activity.getActivityTime();
         this.place = activity.getActivityPlace();
+        this.link = activity.getLink();
     }
 
     public ActivityOffline() {
@@ -58,5 +63,13 @@ public class ActivityOffline {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }
