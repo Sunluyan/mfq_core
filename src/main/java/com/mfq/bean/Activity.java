@@ -27,6 +27,8 @@ public class Activity {
 
     private String imgBig;
 
+    private Integer end;
+
     private String pids;
 
     public Integer getId() {
@@ -123,6 +125,14 @@ public class Activity {
 
     public void setImgBig(String imgBig) {
         this.imgBig = imgBig == null ? null : imgBig.trim();
+    }
+
+    public Integer getEnd() {
+        return end;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
     }
 
     public String getPids() {

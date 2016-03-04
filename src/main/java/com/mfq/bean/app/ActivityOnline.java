@@ -8,10 +8,12 @@ import com.mfq.bean.Activity;
 public class ActivityOnline {
     private Integer id ;
     private String img;
+    private Integer end;
 
     public ActivityOnline(Activity activity) {
         this.id = activity.getId();
         this.img = activity.getImgSmall();
+        this.end = activity.getEnd();
     }
     public ActivityOnline(){
         super();

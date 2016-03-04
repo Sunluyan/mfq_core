@@ -1,42 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mfq.dao.ActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.mfq.bean.Activity" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
-    <result column="img_small" property="imgSmall" jdbcType="VARCHAR" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="activity_desc" property="activityDesc" jdbcType="VARCHAR" />
-    <result column="link" property="link" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="begin_at" property="beginAt" jdbcType="TIMESTAMP" />
-    <result column="end_at" property="endAt" jdbcType="TIMESTAMP" />
-    <result column="activity_time" property="activityTime" jdbcType="VARCHAR" />
-    <result column="activity_place" property="activityPlace" jdbcType="VARCHAR" />
-    <result column="img_big" property="imgBig" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mfq.dao.ActivityMapper">
+  <resultMap id="BaseResultMap" type="com.mfq.bean.Activity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="img_small" jdbcType="VARCHAR" property="imgSmall" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="activity_desc" jdbcType="VARCHAR" property="activityDesc" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="begin_at" jdbcType="TIMESTAMP" property="beginAt" />
+    <result column="end_at" jdbcType="TIMESTAMP" property="endAt" />
+    <result column="activity_time" jdbcType="VARCHAR" property="activityTime" />
+    <result column="activity_place" jdbcType="VARCHAR" property="activityPlace" />
+    <result column="img_big" jdbcType="VARCHAR" property="imgBig" />
+    <result column="end" jdbcType="INTEGER" property="end" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.mfq.bean.Activity" extends="BaseResultMap" >
-    <result column="pids" property="pids" jdbcType="LONGVARCHAR" />
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mfq.bean.Activity">
+    <result column="pids" jdbcType="LONGVARCHAR" property="pids" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -47,25 +48,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -76,44 +77,44 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, activity_name, img_small, title, activity_desc, link, type, begin_at, end_at, 
-    activity_time, activity_place, img_big
+    activity_time, activity_place, img_big, end
   </sql>
-  <sql id="Blob_Column_List" >
+  <sql id="Blob_Column_List">
     pids
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.mfq.bean.ActivityExample" >
+  <select id="selectByExampleWithBLOBs" parameterType="com.mfq.bean.ActivityExample" resultMap="ResultMapWithBLOBs">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from activity
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mfq.bean.ActivityExample" >
+  <select id="selectByExample" parameterType="com.mfq.bean.ActivityExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from activity
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -121,167 +122,176 @@
     from activity
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mfq.bean.ActivityExample" >
+  <delete id="deleteByExample" parameterType="com.mfq.bean.ActivityExample">
     delete from activity
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mfq.bean.Activity" >
+  <insert id="insert" parameterType="com.mfq.bean.Activity">
     insert into activity (id, activity_name, img_small, 
       title, activity_desc, link, 
       type, begin_at, end_at, 
       activity_time, activity_place, img_big, 
-      pids)
+      end, pids)
     values (#{id,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, #{imgSmall,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{activityDesc,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER}, #{beginAt,jdbcType=TIMESTAMP}, #{endAt,jdbcType=TIMESTAMP}, 
       #{activityTime,jdbcType=VARCHAR}, #{activityPlace,jdbcType=VARCHAR}, #{imgBig,jdbcType=VARCHAR}, 
-      #{pids,jdbcType=LONGVARCHAR})
+      #{end,jdbcType=INTEGER}, #{pids,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.mfq.bean.Activity" >
+  <insert id="insertSelective" parameterType="com.mfq.bean.Activity">
     insert into activity
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="activityName != null" >
+      <if test="activityName != null">
         activity_name,
       </if>
-      <if test="imgSmall != null" >
+      <if test="imgSmall != null">
         img_small,
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title,
       </if>
-      <if test="activityDesc != null" >
+      <if test="activityDesc != null">
         activity_desc,
       </if>
-      <if test="link != null" >
+      <if test="link != null">
         link,
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type,
       </if>
-      <if test="beginAt != null" >
+      <if test="beginAt != null">
         begin_at,
       </if>
-      <if test="endAt != null" >
+      <if test="endAt != null">
         end_at,
       </if>
-      <if test="activityTime != null" >
+      <if test="activityTime != null">
         activity_time,
       </if>
-      <if test="activityPlace != null" >
+      <if test="activityPlace != null">
         activity_place,
       </if>
-      <if test="imgBig != null" >
+      <if test="imgBig != null">
         img_big,
       </if>
-      <if test="pids != null" >
+      <if test="end != null">
+        end,
+      </if>
+      <if test="pids != null">
         pids,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="activityName != null" >
+      <if test="activityName != null">
         #{activityName,jdbcType=VARCHAR},
       </if>
-      <if test="imgSmall != null" >
+      <if test="imgSmall != null">
         #{imgSmall,jdbcType=VARCHAR},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="activityDesc != null" >
+      <if test="activityDesc != null">
         #{activityDesc,jdbcType=VARCHAR},
       </if>
-      <if test="link != null" >
+      <if test="link != null">
         #{link,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="beginAt != null" >
+      <if test="beginAt != null">
         #{beginAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="endAt != null" >
+      <if test="endAt != null">
         #{endAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="activityTime != null" >
+      <if test="activityTime != null">
         #{activityTime,jdbcType=VARCHAR},
       </if>
-      <if test="activityPlace != null" >
+      <if test="activityPlace != null">
         #{activityPlace,jdbcType=VARCHAR},
       </if>
-      <if test="imgBig != null" >
+      <if test="imgBig != null">
         #{imgBig,jdbcType=VARCHAR},
       </if>
-      <if test="pids != null" >
+      <if test="end != null">
+        #{end,jdbcType=INTEGER},
+      </if>
+      <if test="pids != null">
         #{pids,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mfq.bean.ActivityExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.mfq.bean.ActivityExample" resultType="java.lang.Integer">
     select count(*) from activity
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update activity
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.activityName != null" >
+      <if test="record.activityName != null">
         activity_name = #{record.activityName,jdbcType=VARCHAR},
       </if>
-      <if test="record.imgSmall != null" >
+      <if test="record.imgSmall != null">
         img_small = #{record.imgSmall,jdbcType=VARCHAR},
       </if>
-      <if test="record.title != null" >
+      <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.activityDesc != null" >
+      <if test="record.activityDesc != null">
         activity_desc = #{record.activityDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.link != null" >
+      <if test="record.link != null">
         link = #{record.link,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
+      <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
       </if>
-      <if test="record.beginAt != null" >
+      <if test="record.beginAt != null">
         begin_at = #{record.beginAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.endAt != null" >
+      <if test="record.endAt != null">
         end_at = #{record.endAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.activityTime != null" >
+      <if test="record.activityTime != null">
         activity_time = #{record.activityTime,jdbcType=VARCHAR},
       </if>
-      <if test="record.activityPlace != null" >
+      <if test="record.activityPlace != null">
         activity_place = #{record.activityPlace,jdbcType=VARCHAR},
       </if>
-      <if test="record.imgBig != null" >
+      <if test="record.imgBig != null">
         img_big = #{record.imgBig,jdbcType=VARCHAR},
       </if>
-      <if test="record.pids != null" >
+      <if test="record.end != null">
+        end = #{record.end,jdbcType=INTEGER},
+      </if>
+      <if test="record.pids != null">
         pids = #{record.pids,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
+  <update id="updateByExampleWithBLOBs" parameterType="map">
     update activity
     set id = #{record.id,jdbcType=INTEGER},
       activity_name = #{record.activityName,jdbcType=VARCHAR},
@@ -295,12 +305,13 @@
       activity_time = #{record.activityTime,jdbcType=VARCHAR},
       activity_place = #{record.activityPlace,jdbcType=VARCHAR},
       img_big = #{record.imgBig,jdbcType=VARCHAR},
+      end = #{record.end,jdbcType=INTEGER},
       pids = #{record.pids,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update activity
     set id = #{record.id,jdbcType=INTEGER},
       activity_name = #{record.activityName,jdbcType=VARCHAR},
@@ -313,54 +324,58 @@
       end_at = #{record.endAt,jdbcType=TIMESTAMP},
       activity_time = #{record.activityTime,jdbcType=VARCHAR},
       activity_place = #{record.activityPlace,jdbcType=VARCHAR},
-      img_big = #{record.imgBig,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+      img_big = #{record.imgBig,jdbcType=VARCHAR},
+      end = #{record.end,jdbcType=INTEGER}
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.Activity" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.Activity">
     update activity
-    <set >
-      <if test="activityName != null" >
+    <set>
+      <if test="activityName != null">
         activity_name = #{activityName,jdbcType=VARCHAR},
       </if>
-      <if test="imgSmall != null" >
+      <if test="imgSmall != null">
         img_small = #{imgSmall,jdbcType=VARCHAR},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="activityDesc != null" >
+      <if test="activityDesc != null">
         activity_desc = #{activityDesc,jdbcType=VARCHAR},
       </if>
-      <if test="link != null" >
+      <if test="link != null">
         link = #{link,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="beginAt != null" >
+      <if test="beginAt != null">
         begin_at = #{beginAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="endAt != null" >
+      <if test="endAt != null">
         end_at = #{endAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="activityTime != null" >
+      <if test="activityTime != null">
         activity_time = #{activityTime,jdbcType=VARCHAR},
       </if>
-      <if test="activityPlace != null" >
+      <if test="activityPlace != null">
         activity_place = #{activityPlace,jdbcType=VARCHAR},
       </if>
-      <if test="imgBig != null" >
+      <if test="imgBig != null">
         img_big = #{imgBig,jdbcType=VARCHAR},
       </if>
-      <if test="pids != null" >
+      <if test="end != null">
+        end = #{end,jdbcType=INTEGER},
+      </if>
+      <if test="pids != null">
         pids = #{pids,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mfq.bean.Activity" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mfq.bean.Activity">
     update activity
     set activity_name = #{activityName,jdbcType=VARCHAR},
       img_small = #{imgSmall,jdbcType=VARCHAR},
@@ -373,10 +388,11 @@
       activity_time = #{activityTime,jdbcType=VARCHAR},
       activity_place = #{activityPlace,jdbcType=VARCHAR},
       img_big = #{imgBig,jdbcType=VARCHAR},
+      end = #{end,jdbcType=INTEGER},
       pids = #{pids,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.Activity" >
+  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.Activity">
     update activity
     set activity_name = #{activityName,jdbcType=VARCHAR},
       img_small = #{imgSmall,jdbcType=VARCHAR},
@@ -388,7 +404,9 @@
       end_at = #{endAt,jdbcType=TIMESTAMP},
       activity_time = #{activityTime,jdbcType=VARCHAR},
       activity_place = #{activityPlace,jdbcType=VARCHAR},
-      img_big = #{imgBig,jdbcType=VARCHAR}
+      img_big = #{imgBig,jdbcType=VARCHAR},
+      end = #{end,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

@@ -19,6 +19,7 @@ public class ActivityOffline {
 
     private String link;
 
+    private Integer end;
 
 
     public ActivityOffline(Activity activity) {
@@ -27,6 +28,7 @@ public class ActivityOffline {
         this.time = activity.getActivityTime();
         this.place = activity.getActivityPlace();
         this.link = activity.getLink();
+        this.end = activity.getEnd();
     }
 
     public ActivityOffline() {

@@ -904,6 +904,66 @@ public class ActivityExample {
             addCriterion("img_big not between", value1, value2, "imgBig");
             return (Criteria) this;
         }
+
+        public Criteria andEndIsNull() {
+            addCriterion("end is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndIsNotNull() {
+            addCriterion("end is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndEqualTo(Integer value) {
+            addCriterion("end =", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndNotEqualTo(Integer value) {
+            addCriterion("end <>", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndGreaterThan(Integer value) {
+            addCriterion("end >", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndGreaterThanOrEqualTo(Integer value) {
+            addCriterion("end >=", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndLessThan(Integer value) {
+            addCriterion("end <", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndLessThanOrEqualTo(Integer value) {
+            addCriterion("end <=", value, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndIn(List<Integer> values) {
+            addCriterion("end in", values, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndNotIn(List<Integer> values) {
+            addCriterion("end not in", values, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndBetween(Integer value1, Integer value2) {
+            addCriterion("end between", value1, value2, "end");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndNotBetween(Integer value1, Integer value2) {
+            addCriterion("end not between", value1, value2, "end");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
