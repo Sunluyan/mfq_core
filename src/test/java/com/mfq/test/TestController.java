@@ -74,7 +74,7 @@ public class TestController {
     }
 
     public static void testOnline(){
-        String url = purl+"/activity/online/detail";
+        String url = purl+"/activity/online";
         Map<String, Object> params = Maps.newHashMap();
         params.put("id",2);
         String sign = SignHelper.makeSign(params);

@@ -34,4 +34,12 @@ public class ActivityOnline {
     public void setImg(String img) {
         this.img = img;
     }
+
+    public Integer getEnd() {
+        return end;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
 }

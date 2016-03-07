@@ -71,7 +71,16 @@ public class ActivityOffline {
         return link;
     }
 
+    public Integer getEnd() {
+        return end;
+    }
+
+    public void setEnd(Integer end) {
+        this.end = end;
+    }
+
     public void setLink(String link) {
+
         this.link = link;
     }
 }
