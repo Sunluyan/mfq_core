@@ -82,7 +82,7 @@ public class IndexController {
     @RequestMapping(value = {"/ad","/ad/"})
     @ResponseBody
     public String ad() {
-    	String data = QiniuBucketEnum.IMG2.getDomain()+"/images/ad/ad.png?t="+3;
+    	String data = QiniuBucketEnum.IMG2.getDomain()+"/images/ad/ad.png?t="+4;
         return JsonUtil.toJson(0, "", data);
     }
     
