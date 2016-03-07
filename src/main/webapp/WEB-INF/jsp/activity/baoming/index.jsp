@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
 	
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<title>一顿饭的时间,提升颜值的秘密</title>
 	<style type="text/css">
 		*{
@@ -52,8 +53,7 @@ pageEncoding="UTF-8"%>
 		.title{
 			width: 100%;
 			height: ;
-			
-			
+
 		}
 		
 		.page0 .line{
@@ -497,11 +497,11 @@ pageEncoding="UTF-8"%>
 				<p class="p1 hot">活动主要内容</p>
 				<p class="p3">1. 签到领取礼包，全程免费提供饮品及零食</p>
 				<p class="p3">2. 开场介绍及抽取现金抵用券</p>
-				<p class="p3">3.北京美莱医院专家讲解，进行一对一交流</p>
+				<p class="p3">3.北京美莱医疗美容医院专家讲解，进行一对一交流</p>
 				<p class="p3">4.与真人秀零距离接触，分享整形故事，变美心得</p>
 				
 				<p class="p1 hot">活动地址</p>
-				<p class="p3">北京美莱医院5层-VIP室</p>
+				<p class="p3">北京美莱医疗美容医院5层-VIP室</p>
 				<p class="p3">北京市朝阳区朝阳门外大街227号</p>
 			</div>
 			<img  class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02arrow.png" height="36" width="54" />
@@ -513,7 +513,7 @@ pageEncoding="UTF-8"%>
 			<div class="body">
 				<p class="title">医院介绍</p>
 				<p class="description">
-					北京美莱美容医院 汇集百位知名医师团队，安全塑美超过300万用户，18年来始终超越行业标准。北京美莱美容医院对于品质的不断追求也促进美莱成为“医美行业领跑品牌。
+					北京美莱医疗美容医院汇集百位知名医师团队，安全塑美超过300万用户，18年来始终超越行业标准。北京美莱医疗美容医院对于品质的不断追求也促进美莱成为"医美行业领跑品牌"。
 				</p>
 				<img class="one top" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02one.png"/>
 				<img class="one" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02two.png"/>
@@ -527,12 +527,12 @@ pageEncoding="UTF-8"%>
 			<div class="body">
 				<p class="title">活动场地</p>
 				<p class="description">
-					北京美莱美容医院 汇集百位知名医师团队，安全塑美超过300万用户。
+					北京美莱医疗美容医院 汇集百位知名医师团队，安全塑美超过300万用户。
 				</p>
-				<img class="one top" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02one.png"/>
-				<img class="one" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02two.png" style="margin-bottom: 1rem;"/>
+				<img class="one top" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02page-3one.png"/>
+				<img class="one" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02page-3two.png" style="margin-bottom: 1rem;"/>
 				<p class="description">
-					北京美莱医院5层-VIP室
+					北京美莱医疗美容医院5层-VIP室
 				</p>
 				<p class="description">
 					北京市朝阳区朝阳门外大街227号
@@ -608,8 +608,79 @@ pageEncoding="UTF-8"%>
 		</div>
 	</div>
 
-	
-	
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+	<script>
+
+		/*微信分享接口*/
+		var url = location.href.split('#')[0];
+
+		$.ajax({
+			url:"http://m.5imfq.com/wechat/js/token/",
+			data:{
+				url:url
+			},
+			dataType:"json",
+			success:function(json){
+				if(json.code != 0){
+					return;
+				}
+
+
+				wx.config({
+					debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+					appId: json.data.appId, // 必填，公众号的唯一标识
+					timestamp: json.data.timestamp, // 必填，生成签名的时间戳
+					nonceStr: json.data.nonceStr, // 必填，生成签名的随机串
+					signature: json.data.signature,// 必填，签名，见附录1
+					jsApiList: ['onMenuShareTimeline','wx.onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				});
+
+				wx.ready(function(){
+
+					// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+					wx.onMenuShareTimeline({
+						title: '一顿饭的时间，提升颜值的秘密', // 分享标题
+						link: 'http://m.5imfq.com/activity/baoming', // 分享链接
+						imgUrl: 'http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02share.jpg?_=1', // 分享图标
+						success: function () {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function () {
+							// 用户取消分享后执行的回调函数
+							alert("取消就不能参与了哦")
+						}
+					});
+					wx.onMenuShareAppMessage({
+						title: '一顿饭的时间，提升颜值的秘密', // 分享标题
+						desc: '', // 分享描述
+						link: 'http://m.5imfq.com/activity/baoming', // 分享链接
+						imgUrl: 'http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-02share.jpg?_=1', // 分享图标
+						type: 'link', // 分享类型,music、video或link，不填默认为link
+						dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+						success: function () {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function () {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+				});
+				wx.error(function(res){
+
+					// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+					alert("error")
+				});
+
+
+
+			}
+		})
+
+
+		/*微信分享接口*/
+	</script>
 	
 
 </body>

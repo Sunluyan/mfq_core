@@ -68,6 +68,9 @@ public class OrderService {
     @Resource
     ProFqRecordMapper proFqRecordMapper;
 
+
+    static final int max = 100000, min = 10000;
+
     /**
      * 生成订单(不包括随意单)
      *
@@ -174,9 +177,18 @@ public class OrderService {
             }
         }
 
-        String SecurityCode = SecurityCodeUtil.getSecurityCode(orderNo);
-        order.setSecurityCode(SecurityCode);
+        order.setSecurityCode("");
         long insertOrder = insertOrder(order);
+
+        if(insertOrder < 10){
+            logger.info("创建订单号为{}",insertOrder);
+            order = mapper.findByOrderNo(orderNo);
+        }
+
+        String SecurityCode = createSecurityCode(order.getId());
+
+        long re = mapper.updateSecurityCode(orderNo,SecurityCode);
+
         logger.info("创建订单的类型是:{},订单的详情为:{}", t.getName(), order.toString());
         if (insertOrder != 1) {
             throw new Exception("插入订单失败！请重试");
@@ -203,6 +215,24 @@ public class OrderService {
         smsService.sendCreateOrderSMS(params);
         return makeAppOrderByOrder(order);
     }
+
+
+
+    private static  String createSecurityCode(long orderId){
+        if(orderId < 10){
+            logger.info("创建订单号为{}",orderId);
+            orderId = new Random().nextInt(9999);
+        }
+        StringBuilder code = new StringBuilder("m");
+        code.append(DateUtil.formatShort());
+        Integer randomInt = new Random().nextInt(999);
+        String randomStr = new DecimalFormat("000").format(randomInt);
+        code.append(orderId);
+        code.append(randomStr);
+
+        return code.toString();
+    }
+
 
     /**
      * 下单前的校验,没有完善,应设计为抛出错误,统一在createOrder的函数中处理,因为可以回滚. TODO
@@ -715,9 +745,11 @@ public class OrderService {
 
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        OrderService service = ac.getBean(OrderService.class);
-        service.calculateFinancing(223);
+//        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+//        OrderService service = ac.getBean(OrderService.class);
+//        service.calculateFinancing(223);
+
+       System.out.print(createSecurityCode(6666l));
 
     }
 

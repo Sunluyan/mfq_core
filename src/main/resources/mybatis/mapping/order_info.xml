@@ -118,4 +118,8 @@
   	update order_info set policy_status=#{newStatus} where order_no = #{orderNo} and policy_status=#{oldStatus}
   </update>
 
+	<update id="updateSecurityCode">
+		UPDATE order_info set security_code = #{code} WHERE order_no = #{orderNo}
+	</update>
+
 </mapper>

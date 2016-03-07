@@ -76,6 +76,13 @@ public final class DateUtil {
             return fmt.format(date);
         }
     }
+
+    public static String formatCZYYYYMMDD() {
+        SimpleDateFormat fmt = formatCZYYYYMMDD[getIndex()];
+        synchronized (fmt) {
+            return fmt.format(new Date());
+        }
+    }
     
     public static Date convertYYYYMMDDHHMMSS(String strDate) {
         if (strDate == null || strDate.indexOf("null") >= 0)
@@ -167,6 +174,13 @@ public final class DateUtil {
         SimpleDateFormat fmt = formatShort[getIndex()];
         synchronized (fmt) {
             return fmt.format(date);
+        }
+    }
+
+    public static String formatShort() {
+        SimpleDateFormat fmt = formatShort[getIndex()];
+        synchronized (fmt) {
+            return fmt.format(new Date());
         }
     }
 

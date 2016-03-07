@@ -102,7 +102,7 @@ public class ProductService {
     	SortType sortType = SortType.fromId(sort);
     	ProductType pType = ProductType.fromId(type);
     	if(sortType == null){
-    		sortType = SortType.fromId(0);
+    		sortType = SortType.fromId(1);
     	}
     	if(pType == null){
     		pType = ProductType.fromId(0);
