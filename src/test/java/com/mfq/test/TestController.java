@@ -14,7 +14,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 	
-	private final static String purl="http://i.5imfq.com";
+//	private final static String purl="http://i.5imfq.com";
+	private final static String purl="http://m.5imfq.com";
 //	private final static String purl="http://localhost:8080";
 
 
@@ -74,9 +75,9 @@ public class TestController {
     }
 
     public static void testOnline(){
-        String url = purl+"/activity/online";
+        String url = purl+"/activity/topimg";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("id",2);
+        params.put("id",5);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
