@@ -260,7 +260,7 @@
         from finance_bill
         where bill_no in
         <foreach collection="billnos" item="billno" open="(" separator="," close=")">
-            billno
+            #{billno}
         </foreach>
     </select>
 	

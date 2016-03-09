@@ -120,6 +120,9 @@
 		<mapper resource="mybatis/mapping/InviteRecordMapper.xml"/>
 		<mapper resource="mybatis/mapping/OperationRecordMapper.xml"/>
 		<mapper resource="mybatis/mapping/ActivityRecordMapper.xml"/>
+		<mapper resource="mybatis/mapping/BilltopayMapper.xml"/>
+		<mapper resource="mybatis/mapping/ProFqRecordMapper.xml"/>
+		<mapper resource="mybatis/mapping/ActivityMapper.xml"/>
 
 
 	</mappers>

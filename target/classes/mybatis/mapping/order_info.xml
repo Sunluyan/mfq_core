@@ -61,7 +61,7 @@
 	
 	
 	<select id="findByUidAndPayTypeAndPid" resultType="long">
-		select count(*) from order_info where uid=#{uid} and pid = #{pid} and pay_type = #{type}
+		select count(*) from order_info where uid=#{uid} and pid = #{pid} and pay_type = #{type} and status = 0
 	</select>
 
 	<select id="findByUidAndProductType" resultType="OrderInfo">
@@ -117,5 +117,9 @@
   <update id="updatePolicyStatusByStatus">
   	update order_info set policy_status=#{newStatus} where order_no = #{orderNo} and policy_status=#{oldStatus}
   </update>
+
+	<update id="updateSecurityCode">
+		UPDATE order_info set security_code = #{code} WHERE order_no = #{orderNo}
+	</update>
 
 </mapper>

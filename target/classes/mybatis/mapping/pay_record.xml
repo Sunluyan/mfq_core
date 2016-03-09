@@ -28,6 +28,7 @@
 		select
 		<include refid="selectsql" />
 		from pay_record where order_no=#{orderNo}
+		order by id desc limit 0,1
 	</select>
 
 	<select id="findByUId" resultType="PayRecord">
