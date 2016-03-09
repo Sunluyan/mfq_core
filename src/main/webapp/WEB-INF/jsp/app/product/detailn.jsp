@@ -346,9 +346,9 @@ body {
 <body>
 <div style="background-color:#000000; width:100%; text-align:left;vertical-align: middle;">
 <div class="banner" id="banner" >
-			<c:forEach items="${imgs }" var="img">
-			<img class="d1" src="${img.img}" background:center no-repeat;/>
-			</c:forEach>
+			<%--<c:forEach items="${imgs }" var="img">--%>
+			<img class="d1" src="${imgs}" background:center no-repeat;/>
+			<%--</c:forEach>--%>
 			</div>
 		<script type="text/javascript">banner()</script>
 <a href="/hospital/<%=hid%>/" style="text-decoration: none; width: 100%; display: block; color: #666666;"> <strong style="margin:8px; color:white;"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/app-home-mfq_qqqindex_37.png" width="9"> <%=hospital_name %></strong> </a>

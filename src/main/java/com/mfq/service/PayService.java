@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.annotation.Resource;
 
 import com.mfq.bean.*;
+import org.apache.commons.jexl2.UnifiedJEXL;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -203,6 +204,18 @@ public class PayService {
         }
 
 
+        PayRecord record = payRecordService.findByOrderNo(order.getOrderNo());
+        if(record == null){
+            throw new Exception("无法找到Record...");
+        }
+        if (record.getStatus() == PayStatus.PAID && PayAPIType.fromCode(record.getTpp()) != result.getApiType()) {
+            logger.warn("发现疑似重复支付订单，请关注平台！orderNo={}, firstPay={}, nowPay={}", order.getOrderNo(), record.getTpp(),
+                    result.getApiType());
+            smsService.sendSysSMS("发现疑似重复支付订单,order:" + result.getOrderNo() + ", firstPay=" + record.getTpp()
+                    + ", nowPay=" + result.getApiType());
+            logger.warn("终止本次回调处理！");
+        }
+
         //更新订单的支付状态
         long l = orderService.updateOrder(order.getId(), OrderStatus.BOOK_OK.getValue(), OrderStatus.PAY_OK.getValue());
         logger.info("updateOrder 方法 ，修改订单状态 ，orderId：{}，oldState：{}，newState：{}", order.getId(), OrderStatus.BOOK_OK.getValue(), OrderStatus.PAY_OK.getValue());
@@ -218,17 +231,6 @@ public class PayService {
             logger.warn("回调更新订单状态失败，需要报警！payCallbackResult={}", result);
             smsService.sendSysSMS("订单回调更新订单状态失败,order:" + result.getOrderNo());
         }
-
-
-        PayRecord record = payRecordService.findByOrderNo(order.getOrderNo());
-        if (record.getStatus() == PayStatus.PAID && PayAPIType.fromCode(record.getTpp()) != result.getApiType()) {
-            logger.warn("发现疑似重复支付订单，请关注平台！orderNo={}, firstPay={}, nowPay={}", order.getOrderNo(), record.getTpp(),
-                    result.getApiType());
-            smsService.sendSysSMS("发现疑似重复支付订单,order:" + result.getOrderNo() + ", firstPay=" + record.getTpp()
-                    + ", nowPay=" + result.getApiType());
-            logger.warn("终止本次回调处理！");
-        }
-
 
         record.setStatus(PayStatus.PAID); // 是否应该写在这儿？
         record.setCallbackAt(result.getPayAt() == null ? new Date() : result.getPayAt());
@@ -255,10 +257,16 @@ public class PayService {
         //BigDecimal couponQuota = new BigDecimal(0);
 
 
-        //User user = userService.queryUser(order.getUid());
-        //UserQuota quota = quotaService.queryUserQuota(user.getUid());
-        //String [] params = {"".equals(quota.getRealname())?"未设置用户名":quota.getRealname(), user.getMobile(), order.getOrderNo()};
-        //smsService.sendFinishOrderSMS(params);
+        User user = userService.queryUser(order.getUid());
+        UserQuota quota = quotaService.queryUserQuota(user.getUid());
+        Product product = productService.findById(order.getPid());
+        if (product == null){product = new Product();product.setName("");}
+        String [] params = {"".equals(quota.getRealname())?"未设置用户名":quota.getRealname(), user.getMobile(), order.getOrderNo(), product.getName()};
+
+        //发送短信通知
+        logger.info("短信通知公司同事....{}",params.toString());
+        smsService.sendFinishOrderSMS(params);
+        logger.info("短信已通知.");
 
 
         //悟空保

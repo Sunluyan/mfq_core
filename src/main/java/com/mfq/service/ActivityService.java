@@ -257,7 +257,19 @@ public class ActivityService {
         Activity activity = activityMapper.selectByPrimaryKey(id);
         ActivityOnlineDetail detail = new ActivityOnlineDetail(activity);
         List<Product> products = productService.selectByPids(activity.getPids());
+
+        for(Product p: products){
+            List<ProductImg> imgs = productService.productImgMapper.findByPid(p.getId());
+            logger.info(" 产品 ... {}",p.getId());
+            if(imgs.size() > 1){
+                logger.info("图片..{}",imgs.get(1).getImg());
+                p.setImg(imgs.get(1).getImg());
+            }
+        }
+
         List<ProductListItem2App> list = productService.convert2AppList(products);
+
+
         for (ProductListItem2App productListItem2App : list) {
             productListItem2App.setUrl("product:"+productListItem2App.getId()+"-"+productListItem2App.getName());
         }

@@ -12,7 +12,7 @@
 	<select id="findByPid" resultType="ProductImg">
 		select
 		<include refid="selectsql" />
-		from product_img where pid=#{pid}
+		from product_img where pid=#{pid} order by id
 	</select>
 
 

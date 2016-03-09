@@ -38,6 +38,8 @@ public class PayRecordService {
     @Resource
     UserQuotaService quotaService;
     @Resource
+    OrderService orderService;
+    @Resource
     PayRecordMapper mapper;
     @Resource
     FinanceBillService financeBillService;
@@ -55,18 +57,22 @@ public class PayRecordService {
                            BigDecimal amount) throws Exception {
         if (uid <= 0) {
             logger.warn("UserId is unvalid for recharge process! uid={}", uid);
-            return 0;
+            OrderInfo info = orderService.findByOrderNo(orderNo);
+            if(info==null || info.getUid() <1){return 0;}
+            uid = info.getUid();
         }
         if (orderType == OrderType.RECHARGE && StringUtils.isBlank(orderNo)) {
             orderNo = makeChargeNo(uid);
         }
         if (orderType == OrderType.REFUND || orderType == OrderType.PAYNO) {
+            logger.info("Record 信息 order refund or payno");
             orderNo = billtopayService.payNoToBillsNo(orderNo);
             FinanceBill financeBill = financeBillService.findBillByBillNo(orderNo.split(",")[0]);
 
             BigDecimal present = new BigDecimal(0);
             BigDecimal balance = new BigDecimal(0);
             PayRecord record = buildDefaultRecord(orderType, uid, financeBill.getOrderNo(), amount, balance, present);
+            logger.info("create record {}", record);
             long count = mapper.insertOne(record);
             if(count != 1)throw new Exception("插入流水出错");
             return 1;

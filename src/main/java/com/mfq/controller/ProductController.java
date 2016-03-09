@@ -311,7 +311,7 @@ public class ProductController {
                 	BigDecimal t = product.getMarketPrice().subtract(product.getPrice());
                 	model.put("bt", myformat.format(t));
                 	List<ProductImg> imgs = productService.findProductImg(id);
-                	model.put("imgs", imgs);
+                	model.put("imgs", product.getImg());
                 	ret = "/app/product/detailn";
                 }else {
                     model.put("error", "product_not_exist");

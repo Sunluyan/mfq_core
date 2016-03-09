@@ -122,7 +122,7 @@ public class PaymentController {
 
 
 			// 注意会有重复goPay状况，save的db操作中实际是带有ignore的
-			long s = payRecordService.saveRecord(orderType, UserIdHolder.getLongUid(), orderNo, amount);
+			long s = payRecordService.saveRecord(orderType, UserIdHolder.getUserId(), orderNo, amount);
 			logger.info("save2PayRecord! orderNo={}, count={}", orderNo, s);
 
             System.out.println("before go pay  params:   "+params);

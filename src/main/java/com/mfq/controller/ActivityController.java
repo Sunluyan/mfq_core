@@ -581,7 +581,9 @@ public class ActivityController {
 
             ActivityOnlineDetail onlineDetail = activityService.onlineDetail(id);
 
-            return JsonUtil.successResultJson(onlineDetail);
+            String ret = JsonUtil.successResultJson(onlineDetail);
+            logger.info(" online 欧文 {}",ret);
+            return ret;
         }catch(Exception e){
             logger.error(e.toString());
             return JsonUtil.toJson(9999,"获取线上列表出错",null);
