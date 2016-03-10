@@ -27,7 +27,7 @@
 	<select id="findByTypeAndStatus" resultType="OrderInfo">
 		select 
 		<include refid="selectsqld" />
-		from order_info o, product p where p.id=o.pid and o.status=#{status} and p.type=#{type}
+		from order_info o LEFT JOIN product p ON p.id=o.pid WHERE o.status=#{status} and p.type=#{type}
 	</select>
 
 	<select id="findByOrderNo" resultType="OrderInfo">

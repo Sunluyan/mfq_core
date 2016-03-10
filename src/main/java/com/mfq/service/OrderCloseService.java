@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
@@ -27,6 +28,7 @@ public class OrderCloseService {
     @Resource
     OrderService orderService;
 
+    @Scheduled(cron="0 */1 * * * ?")
     public void start() {
         handleGeneralOrder();
         handleSecKillOrder();

@@ -102,8 +102,11 @@ public class SMSService {
      * @throws Exception
      */
     public void sendFinishOrderSMS(String [] params) throws Exception{
-    		if(filterMobiles(params))
-        		return;
+    		if(filterMobiles(params)){
+                logger.info("过滤测试手机号,{}",params[1]);
+                return;
+            }
+
         	String mobiles= StringUtils.stripToEmpty(Config.getItem("sms_finish_order"));
         	String msgTmpl = StringUtils.stripToEmpty(MsgTmplContext.getSmsTmpl("mobile_finish_order"));
         	MessageFormat messageFormat = new MessageFormat(msgTmpl);

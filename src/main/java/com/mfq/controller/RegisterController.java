@@ -1,8 +1,6 @@
 package com.mfq.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -27,7 +25,6 @@ import com.mfq.helper.SignHelper;
 import com.mfq.service.LoginService;
 import com.mfq.service.RegisterService;
 import com.mfq.utils.JsonUtil;
-import com.mfq.utils.RequestUtils;
 
 @Controller
 public class RegisterController {
@@ -126,10 +123,6 @@ public class RegisterController {
             logger.error("Exception_Register_Progress!", e);
             return JsonUtil.toJson(ErrorCodes.CORE_ERROR, e.toString(), null);
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 
 

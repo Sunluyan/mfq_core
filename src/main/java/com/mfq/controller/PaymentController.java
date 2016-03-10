@@ -14,12 +14,17 @@ import com.google.common.collect.Maps;
 import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.coupon.Coupon;
+import com.mfq.bean.user.User;
 import com.mfq.payment.impl.UnionpayServiceImpl;
 import com.mfq.service.*;
+import com.mfq.service.sms.SMSService;
+import com.mfq.service.user.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.jboss.netty.util.internal.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -302,9 +307,6 @@ public class PaymentController {
 
     }
 
-	public static void main(String[] args) {
-
-	}
 }
 
 
