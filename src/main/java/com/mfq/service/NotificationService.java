@@ -100,7 +100,7 @@ public class NotificationService {
 			}
 			if(!CollectionUtils.isEmpty(noti)){
 	        	ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();
-	        	sortList.sort(noti, "created", "desc"); 
+	        	sortList.sort(noti, "created", "asc");
 	        }
 			
 			data.put("msg", noti);
@@ -113,7 +113,7 @@ public class NotificationService {
 			
 			if(!CollectionUtils.isEmpty(uMsg)){
 	        	ListSortUtil<Notification> sortList = new ListSortUtil<Notification>();
-	        	sortList.sort(uMsg, "created", "desc"); 
+	        	sortList.sort(uMsg, "created", "asc");
 	        }
 			
 			data.put("msg", uMsg);

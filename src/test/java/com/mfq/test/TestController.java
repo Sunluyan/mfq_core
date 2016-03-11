@@ -80,9 +80,9 @@ public class TestController {
     }
 
     public static void testOnline() {
-        String url = purl + "/activity/topimg";
+        String url = purl + "/activity/online/detail";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("id", 5);
+        params.put("id", 7);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -112,8 +112,8 @@ public class TestController {
 //        testCallback();
 //        testGopay();
 //        testFinance();
-//        testOnline();
-        testSearch();
+        testOnline();
+//        testSearch();
     }
 
 }

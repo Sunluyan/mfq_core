@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.*;
 import com.mfq.bean.app.ActivityOffline;
 import com.mfq.bean.app.ActivityOnline;
 import com.mfq.bean.app.ActivityOnlineDetail;
@@ -18,7 +19,9 @@ import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.helper.SignHelper;
 import com.mfq.service.user.UserQuotaService;
+import com.mfq.utils.ListSortUtil;
 import com.qiniu.util.Json;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.slf4j.Logger;
@@ -29,10 +32,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mfq.annotation.LoginRequired;
-import com.mfq.bean.CodeMsg;
-import com.mfq.bean.Hospital;
-import com.mfq.bean.Product;
-import com.mfq.bean.ProductDetail;
 import com.mfq.bean.app.ProductInfoItem;
 import com.mfq.constants.ErrorCodes;
 import com.mfq.constants.ProductType;
@@ -559,6 +558,8 @@ public class ActivityController {
                 return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
             }
             List<ActivityOnline> list = activityService.onlineList();
+            ListSortUtil<ActivityOnline> listSortUtil = new ListSortUtil<>();
+            listSortUtil.sort(list,"end","asc");
             logger.info(list.toString());
             return JsonUtil.successResultJson(list);
         }catch(Exception e){
@@ -582,7 +583,7 @@ public class ActivityController {
             ActivityOnlineDetail onlineDetail = activityService.onlineDetail(id);
 
             String ret = JsonUtil.successResultJson(onlineDetail);
-            logger.info(" online 欧文 {}",ret);
+            logger.info(" online over {}",ret);
             return ret;
         }catch(Exception e){
             logger.error(e.toString());
@@ -604,6 +605,8 @@ public class ActivityController {
                 return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
             }
             List<ActivityOffline> list = activityService.offlineList();
+            ListSortUtil<ActivityOffline> listSortUtil = new ListSortUtil<>();
+            listSortUtil.sort(list,"end","asc");
             return JsonUtil.successResultJson(list);
         }catch(Exception e){
             logger.error(e.toString());
