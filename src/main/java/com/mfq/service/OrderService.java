@@ -685,6 +685,12 @@ public class OrderService {
                 return JsonUtil.toJson(ErrorCodes.FAIL, "更新优惠券状态失败", null);
             }
         }
+        BigDecimal quota = orderInfo.getPeriodPay();
+        long quotaResult = userQuotaService.updateUserQuota(uid,quota.negate());
+        if(quotaResult != 1){
+            return JsonUtil.toJson(ErrorCodes.FAIL, "返还额度失败", null);
+        }
+
         orderInfo.setStatus(OrderStatus.CANCEL_OK.getValue());
         long result = mapper.updateOrderInfo(orderInfo);
         if (result > 0) {
@@ -693,6 +699,7 @@ public class OrderService {
         } else {
             return JsonUtil.toJson(ErrorCodes.FAIL, "取消订单失败", null);
         }
+
 
     }
 

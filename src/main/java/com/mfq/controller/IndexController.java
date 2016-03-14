@@ -13,6 +13,8 @@ import com.mfq.helper.MobileHelper;
 import com.mfq.service.HospitalService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +47,9 @@ public class IndexController {
     ClassifyService classifyService;
 	@Resource
 	HospitalService hospitalService;
-	
+
+	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+
 	private String startDate = "2015-12-10 10:00:00";
     private String endDate = "2015-12-12 23:59:59";
     
@@ -85,6 +89,7 @@ public class IndexController {
     @ResponseBody
     public String ad(HttpServletRequest request,HttpServletResponse response) {
 		String mobileType = MobileHelper.getMobileType(request);
+		logger.info("mobileType"+mobileType);
     	String data = QiniuBucketEnum.IMG2.getDomain()+"/images/ad/"+mobileType.toLowerCase()+"/ad.png?_="+System.currentTimeMillis();
         return JsonUtil.toJson(0, "", data);
     }
