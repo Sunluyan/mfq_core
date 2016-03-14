@@ -126,8 +126,7 @@ public class AppController {
     
     
     @RequestMapping(value = {"/xmei/withyou/" , "/mei/withyou"}, method = { RequestMethod.GET})
-    public String withyou(HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
+    public String withyou() throws Exception {
     	
     	return "activity/xm/withyou";
     }
