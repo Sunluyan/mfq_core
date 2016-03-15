@@ -114,7 +114,6 @@ public class AppController {
     	for(Hospital h:list){
     		City city = new City();
     		city = cityMapper.findById(h.getCityId());
-            logger.info(city.toString());
             clist.add(city);
     	}
 

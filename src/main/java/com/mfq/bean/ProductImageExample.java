@@ -483,6 +483,66 @@ public class ProductImageExample {
             addCriterion("description not between", value1, value2, "description");
             return (Criteria) this;
         }
+
+        public Criteria andIndexIsNull() {
+            addCriterion("index is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexIsNotNull() {
+            addCriterion("index is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexEqualTo(Integer value) {
+            addCriterion("index =", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNotEqualTo(Integer value) {
+            addCriterion("index <>", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexGreaterThan(Integer value) {
+            addCriterion("index >", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexGreaterThanOrEqualTo(Integer value) {
+            addCriterion("index >=", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexLessThan(Integer value) {
+            addCriterion("index <", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexLessThanOrEqualTo(Integer value) {
+            addCriterion("index <=", value, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexIn(List<Integer> values) {
+            addCriterion("index in", values, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNotIn(List<Integer> values) {
+            addCriterion("index not in", values, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexBetween(Integer value1, Integer value2) {
+            addCriterion("index between", value1, value2, "index");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexNotBetween(Integer value1, Integer value2) {
+            addCriterion("index not between", value1, value2, "index");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

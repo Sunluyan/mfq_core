@@ -13,6 +13,8 @@ public class ProductImage {
 
     private String description;
 
+    private Integer index;
+
     public Integer getId() {
         return id;
     }
@@ -59,5 +61,13 @@ public class ProductImage {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 }

@@ -123,6 +123,8 @@
 		<mapper resource="mybatis/mapping/BilltopayMapper.xml"/>
 		<mapper resource="mybatis/mapping/ProFqRecordMapper.xml"/>
 		<mapper resource="mybatis/mapping/ActivityMapper.xml"/>
+		<mapper resource="mybatis/mapping/ProductDetailNewMapper.xml"/>
+		<mapper resource="mybatis/mapping/ProductImageMapper.xml"/>
 
 
 	</mappers>
