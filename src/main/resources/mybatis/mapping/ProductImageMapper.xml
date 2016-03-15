@@ -8,7 +8,7 @@
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="flag" jdbcType="INTEGER" property="flag" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="`index`" jdbcType="INTEGER" property="index" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pid, img, type, flag, description, index
+    id, pid, img, type, flag, description, `index`
   </sql>
   <select id="selectByExample" parameterType="com.mfq.bean.ProductImageExample" resultMap="BaseResultMap">
     select
@@ -104,7 +104,7 @@
   <insert id="insert" parameterType="com.mfq.bean.ProductImage">
     insert into product_image (id, pid, img, 
       type, flag, description, 
-      index)
+      `index`)
     values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
       #{index,jdbcType=INTEGER})
@@ -131,7 +131,7 @@
         description,
       </if>
       <if test="index != null">
-        index,
+        `index`,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -186,7 +186,7 @@
         description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.index != null">
-        index = #{record.index,jdbcType=INTEGER},
+        `index` = #{record.index,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -201,7 +201,7 @@
       type = #{record.type,jdbcType=INTEGER},
       flag = #{record.flag,jdbcType=INTEGER},
       description = #{record.description,jdbcType=VARCHAR},
-      index = #{record.index,jdbcType=INTEGER}
+      `index` = #{record.index,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,7 +225,7 @@
         description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="index != null">
-        index = #{index,jdbcType=INTEGER},
+        `index` = #{index,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -237,7 +237,7 @@
       type = #{type,jdbcType=INTEGER},
       flag = #{flag,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR},
-      index = #{index,jdbcType=INTEGER}
+      `index` = #{index,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
