@@ -25,8 +25,8 @@ public class ExecuteTaskService {
                 FINANCE_CREATE_TIME, TimeUnit.MINUTES);
 
         // 更新过时订单状态
-        scheduledExecutorService.scheduleAtFixedRate(new OrderCloseTask(), 2,
-                ORDER_WAITPAY_TIME, TimeUnit.MINUTES);
+//        scheduledExecutorService.scheduleAtFixedRate(new OrderCloseTask(), 2,
+//                ORDER_WAITPAY_TIME, TimeUnit.MINUTES);
 
         //用户操作定时任务
         scheduledExecutorService.scheduleAtFixedRate(new OperationTask(),5,
