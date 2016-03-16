@@ -18,7 +18,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 public class TestController {
 
     //	private final static String purl="http://i.5imfq.com";
-    private final static String purl = "http://m.5imfq.com";
+    private final static String purl = "http://t.5imfq.com:8080";
 //	private final static String purl="http://localhost:8080";
 
 
@@ -91,10 +91,10 @@ public class TestController {
     }
 
     public static void testSearch() {
-        String url = purl + "/product/search";
+        String url = purl + "/product/detail/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("keyword", "美莱");
-        params.put("page", 1);
+        params.put("pid", "200");
+        params.put("uid", 2847);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
@@ -112,7 +112,7 @@ public class TestController {
 //        testCallback();
 //        testGopay();
 //        testFinance();
-        testOnline();
+        testSearch();
 //        testSearch();
     }
 

@@ -5,33 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="新年活动">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductDetail2App.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/ActivityController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/ActivityController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/AppController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/AppController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/PaymentController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/PaymentController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/ProductController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/PayRecordService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/PayRecordService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/PayService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/PayService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/FavoritesService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/FavoritesService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/NotificationService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/NotificationService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/OrderService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/OrderService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/utils/FQUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/utils/FQUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app.war" afterPath="$PROJECT_DIR$/target/mfq-app.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ActivityController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ActivityController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/AppController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/AppController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PaymentController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PaymentController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ProductController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayRecordService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayRecordService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/FavoritesService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/FavoritesService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/NotificationService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/NotificationService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/OrderService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/OrderService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/FQUtil.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/FQUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config-override.properties" afterPath="$PROJECT_DIR$/target/classes/config-override.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalina.base_IS_UNDEFINED/logs/mfq-app.log" afterPath="$PROJECT_DIR$/catalina.base_IS_UNDEFINED/logs/mfq-app.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/utils/FQUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/utils/FQUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" afterPath="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logback.xml" afterPath="$PROJECT_DIR$/target/classes/logback.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/classes/mysql.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
-    <list id="ff6afb5f-79e4-443a-b419-a44116867988" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties" />
-    </list>
+    <list id="ff6afb5f-79e4-443a-b419-a44116867988" name="New changelist" comment="" />
     <ignored path="meifenqi.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,58 +91,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ActivityController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
+      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.5617977">
+              <caret line="284" column="44" selection-start-line="284" selection-start-column="44" selection-end-line="284" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsonUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/JsonUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+              <caret line="101" column="38" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java">
+      <file leaf-file-name="ServletRequest.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/servlet-api.jar!/javax/servlet/ServletRequest.class">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+              <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config-common.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
+      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+              <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/RegisterController.java">
+      <file leaf-file-name="ProductService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+              <caret line="294" column="18" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/LoginController.java">
+      <file leaf-file-name="FavoritesService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84282905">
-              <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+              <folding>
+                <element signature="e#2018#2019#0" expanded="true" />
+                <element signature="e#2064#2065#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FavoritesMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/dao/FavoritesMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meifenqi.product_img" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/495090fc/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/meifenqi.product_img">
+      <file leaf-file-name="ProductDetail2App.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductDetail2App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="592" column="12" selection-start-line="592" selection-start-column="12" selection-end-line="592" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="meifenqi.pay_record" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/495090fc/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/meifenqi.pay_record">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -144,46 +196,6 @@
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpServletResponse.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/servlet-api.jar!/javax/servlet/http/HttpServletResponse.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/LoginService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PassportService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/passport/PassportService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="228" column="50" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -209,14 +221,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/app/product/detailn.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/help/protocol.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/dao/InterviewInfoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/dao/ProFqRecordMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/ProFqRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/passport/PassportService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/helper/UserHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ClassifyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/LoginService.java" />
@@ -231,7 +239,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ActivityNotOnlineDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductListItem2App2.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapping/product.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/dao/ProductMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/ActivityExample.java" />
@@ -255,11 +262,16 @@
         <option value="$MAVEN_REPOSITORY$/com/squareup/okhttp/okhttp/2.3.0/okhttp-2.3.0-sources.jar!/com/squareup/okhttp/Protocol.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong" />
-        <option value="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/console.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/config-common.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductDetail2App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/utils/FQUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" />
       </list>
     </option>
   </component>
@@ -362,9 +374,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -733,12 +742,79 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meifenqi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mfq_core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mfq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meifenqi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mfq_core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mfq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -753,7 +829,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="Console.TableResult.DefaultCopyAction" value="Tab Separated Values (TSV)" />
     <property name="FullScreen" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="changyong&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/utils/changyong&#10;search&#9;PSI&#9;JAVA://com.mfq.controller.ProductController#searchProduct&#10;testCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;feed&#9;PSI&#9;JAVA://com.mfq.controller.FeedbackController&#10;protocol.jsp&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/help/protocol.jsp&#10;protoco&#9;PSI&#9;JAVA://com.squareup.okhttp.Protocol&#10;productDetail&#9;PSI&#9;JAVA://com.mfq.bean.ProductDetail&#10;testCo&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;logback&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/logback.xml&#10;logbak&#9;null&#9;null&#10;topimg&#9;PSI&#9;JAVA://com.mfq.controller.ActivityController#topimg&#10;registers&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/RegisterService.java&#10;activiCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activ&#9;PSI&#9;JAVA://com.mfq.controller.ActivityController&#10;activitCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activiOffli&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;online&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnline.java&#10;activitOnline&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnline.java&#10;activiMapper&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/dao/ActivityMapper.java&#10;activi.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/ActivityMapper.xml&#10;activitOfflin&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;acti&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;userCOn&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/UserController.java&#10;finance&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/FinanceController.java&#10;financeCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/FinanceController.java&#10;orderDetail&#9;PSI&#9;JAVA://com.mfq.controller.OrderController#orderDetail&#10;payment&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/PaymentController.java&#10;payrecord&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/pay_record.xml&#10;innerserviceImpl&#9;PSI&#9;JAVA://com.mfq.payment.impl.InnerServiceImpl&#10;payrecordService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/PayRecordService.java&#10;orderStatus&#9;PSI&#9;JAVA://com.mfq.constants.OrderStatus&#10;userCont&#9;PSI&#9;JAVA://com.mfq.controller.UserController&#10;financeservice&#9;PSI&#9;JAVA://com.mfq.service.FinanceBillService&#10;financeBillService&#9;RUN_CONFIGURATION&#9;FinanceBillService&#10;orderCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/OrderController.java&#10;actiCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activit&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ActivityService.java&#10;testCOn&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;onlineDe&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;onlinedetail&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;offline&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;detail&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;activiService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ActivityService.java&#10;product.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/product.xml&#10;promapper&#9;PSI&#9;JAVA://com.mfq.dao.ProductMapper&#10;proser&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ProductService.java&#10;activitServi&#9;PSI&#9;JAVA://com.mfq.service.ActivityService&#10;actiContr&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;index&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/activity/baoming/index.jsp&#10;index.jsp&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/activity/baoming/index.jsp" />
+    <property name="SearchEverywhereHistoryKey" value="changyong&#9;FILE&#9;file:///Users/hui/Documents/project/mfq_core/src/main/java/com/mfq/utils/changyong&#10;search&#9;PSI&#9;JAVA://com.mfq.controller.ProductController#searchProduct&#10;testCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;feed&#9;PSI&#9;JAVA://com.mfq.controller.FeedbackController&#10;protocol.jsp&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/help/protocol.jsp&#10;protoco&#9;PSI&#9;JAVA://com.squareup.okhttp.Protocol&#10;productDetail&#9;PSI&#9;JAVA://com.mfq.bean.ProductDetail&#10;testCo&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;logback&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/logback.xml&#10;logbak&#9;null&#9;null&#10;topimg&#9;PSI&#9;JAVA://com.mfq.controller.ActivityController#topimg&#10;registers&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/RegisterService.java&#10;activiCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activ&#9;PSI&#9;JAVA://com.mfq.controller.ActivityController&#10;activitCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activiOffli&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;online&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnline.java&#10;activitOnline&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnline.java&#10;activiMapper&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/dao/ActivityMapper.java&#10;activi.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/ActivityMapper.xml&#10;activitOfflin&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;acti&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;userCOn&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/UserController.java&#10;finance&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/FinanceController.java&#10;financeCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/FinanceController.java&#10;orderDetail&#9;PSI&#9;JAVA://com.mfq.controller.OrderController#orderDetail&#10;payment&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/PaymentController.java&#10;payrecord&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/pay_record.xml&#10;innerserviceImpl&#9;PSI&#9;JAVA://com.mfq.payment.impl.InnerServiceImpl&#10;payrecordService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/PayRecordService.java&#10;orderStatus&#9;PSI&#9;JAVA://com.mfq.constants.OrderStatus&#10;userCont&#9;PSI&#9;JAVA://com.mfq.controller.UserController&#10;financeservice&#9;PSI&#9;JAVA://com.mfq.service.FinanceBillService&#10;financeBillService&#9;RUN_CONFIGURATION&#9;FinanceBillService&#10;orderCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/OrderController.java&#10;actiCon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;activit&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ActivityService.java&#10;testCOn&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/test/java/com/mfq/test/TestController.java&#10;onlineDe&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;onlinedetail&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;offline&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOffline.java&#10;detail&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java&#10;activiService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ActivityService.java&#10;product.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/product.xml&#10;promapper&#9;PSI&#9;JAVA://com.mfq.dao.ProductMapper&#10;proser&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/ProductService.java&#10;activitServi&#9;PSI&#9;JAVA://com.mfq.service.ActivityService&#10;actiContr&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/ActivityController.java&#10;index&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/activity/baoming/index.jsp&#10;index.jsp&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/webapp/WEB-INF/jsp/activity/baoming/index.jsp" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
@@ -772,7 +848,122 @@
       <recent name="D:\meifenqi\project\git\mfq_core\src\main\java\com\mfq\service" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.pacakgeDEV">
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/bean/ProductImage.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/bean/ProductImageExample.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/mybatis/mapping/ProductImageMapper.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/mybatis/sql-map-config.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/config-common.properties</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunManager" selected="Application.TestController (1)">
     <configuration default="false" name="TestController (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1511,7 +1702,10 @@
       <workItem from="1457660951228" duration="2370000" />
       <workItem from="1457676210328" duration="1037000" />
       <workItem from="1457925379033" duration="70000" />
-      <workItem from="1457940995675" duration="2000" />
+      <workItem from="1457940995675" duration="27000" />
+      <workItem from="1458008086086" duration="7479000" />
+      <workItem from="1458036692042" duration="3007000" />
+      <workItem from="1458098854837" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1451275232090</created>
@@ -1663,7 +1857,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457400093700</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="新年活动">
+      <created>1457941010467</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1457941010467</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1672,7 +1872,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222905000" />
+    <option name="totallyTimeSpent" value="233447000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1690,34 +1890,66 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6686252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278496" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4041096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35252643" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26639345" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3520548" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4739726" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24313408" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17609046" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22132471" sideWeight="0.4893617" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36427733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266745" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278496" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57260275" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3260274" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4041096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.5106383" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3654524" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41128084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22132471" sideWeight="0.4893617" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46164384" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6686252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266745" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278496" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35252643" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4041096" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2221374" sideWeight="0.5106383" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4328767" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3654524" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17609046" sideWeight="0.4902439" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41128084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1734,9 +1966,9 @@
     <MESSAGE value="提交" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/com/mfq/controller/ProductController.java&#10;" />
     <MESSAGE value="tijiao" />
-    <MESSAGE value="新年活动" />
     <MESSAGE value="更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新" />
+    <MESSAGE value="新年活动" />
+    <option name="LAST_COMMIT_MESSAGE" value="新年活动" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1747,8 +1979,26 @@
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mfq/utils/JsonUtil.java</url>
+          <line>138</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mfq/utils/JsonUtil.java</url>
+          <line>143</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mfq/utils/JsonUtil.java</url>
+          <line>102</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1757,108 +2007,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/app/FinanceBill2App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4385965">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.6.RELEASE/spring-web-4.1.6.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5964912">
-          <caret line="229" column="51" selection-start-line="229" selection-start-column="51" selection-end-line="229" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/ActivityExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="771" column="0" selection-start-line="771" selection-start-column="0" selection-end-line="771" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/sql-map-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40490797">
-          <caret line="114" column="54" selection-start-line="114" selection-start-column="54" selection-end-line="114" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/db-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5828221">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductListItem2App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ActivityOnlineDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/FinanceBillService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/constants/OrderStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1908,13 +2056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58848614">
-          <caret line="416" column="52" selection-start-line="416" selection-start-column="52" selection-end-line="416" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54371">
@@ -1947,7 +2088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15991472">
           <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2028,40 +2168,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="33" selection-start-line="104" selection-start-column="33" selection-end-line="104" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="40" selection-start-line="93" selection-start-column="40" selection-end-line="93" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config-common.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ActivityController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
-          <folding />
+          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -2069,7 +2186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="133" column="7" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2077,7 +2193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2085,7 +2200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2093,7 +2207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2101,7 +2214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="228" column="50" selection-start-line="228" selection-start-column="34" selection-end-line="228" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2109,7 +2221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2122,14 +2233,168 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84282905">
-          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7928994">
+          <caret line="274" column="4" selection-start-line="274" selection-start-column="4" selection-end-line="274" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46745563">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/FQUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/495090fc/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/meifenqi.pro_fq_record">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/ProFqRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/FavoritesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="118" column="40" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7633136">
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+          <folding>
+            <element signature="e#2018#2019#0" expanded="true" />
+            <element signature="e#2064#2065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/dao/FavoritesMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/FavoritesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="9" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+          <folding>
+            <element signature="e#2018#2019#0" expanded="true" />
+            <element signature="e#2064#2065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="294" column="18" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/495090fc/4202f9e9-9c94-44bf-9fa9-92e1d668d31a/meifenqi.pay_record">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/app/ProductDetail2App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="592" column="12" selection-start-line="592" selection-start-column="12" selection-end-line="592" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/servlet-api.jar!/javax/servlet/ServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="38" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5617977">
+          <caret line="284" column="44" selection-start-line="284" selection-start-column="44" selection-end-line="284" selection-end-column="44" />
           <folding />
         </state>
       </provider>

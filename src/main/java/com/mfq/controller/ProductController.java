@@ -332,4 +332,34 @@ public class ProductController {
         }
         return new ModelAndView(ret, model);
     }
+
+    @RequestMapping(value = { "/detail","/detail/" }, method = {RequestMethod.GET,RequestMethod.POST})
+    public @ResponseBody String detail(HttpServletRequest request){
+        String ret = "";
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+            }
+            if (params.get("pid") == null) {
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法",
+                        null);
+                logger.error("参数不合法！ret={}", ret);
+                return ret;
+            }
+
+            long pid = Long.parseLong(StringUtils.stripToEmpty(params.get("pid").toString()));
+            long uid = 0;
+            if(params.get("uid") != null){
+                uid = Long.parseLong(params.get("uid").toString());
+            }
+            ret = productService.getProductDetail(uid,pid);
+
+        }catch (Exception e){
+            logger.error("product detail is error {}",e);
+        }
+        logger.info("product return is {}", ret);
+        return ret;
+    }
 }

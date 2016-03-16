@@ -81,4 +81,8 @@ public class FavoritesService {
 		fav.setUpdated(new Date());		
 		return mapper.insertFavorite(fav);
 	}
+
+	public Favorites findByPidAndUid(long pid, long uid) {
+		return mapper.findByUidAndPid(uid, pid);
+	}
 }

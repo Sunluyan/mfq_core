@@ -58,6 +58,8 @@ public class FQUtil {
      * @return
      */
     public static Map<Integer, BigDecimal> fenqiCompute(BigDecimal baseFQMoney) {
+
+        if(baseFQMoney==null){return null;}
         Map<Integer, BigDecimal> o = Maps.newTreeMap();
         int min = 3;
         int max = periodMax(baseFQMoney);
