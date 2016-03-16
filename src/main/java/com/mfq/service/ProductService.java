@@ -283,77 +283,27 @@ public class ProductService {
 
 
     public String getProductDetail(long uid, long pid) throws Exception {
-
         Product product = productMapper.findById(pid);
         if(product == null){
             return JsonUtil.toJson(1001,"无此产品...",null);
         }
-        List<ProductImg> productImgs = productImgMapper.findByPid(pid);
-        Hospital hospital = hospitalMapper.findById(product.getHospitalId());
-
-
-        ProductDetail2App app = new ProductDetail2App();
-
-        if(uid == 0){
-            app.setIs_collect(0);
-        }else {
-            Favorites favorites = favoritesService.findByPidAndUid(pid, uid);
-            if(favorites == null){
-                app.setIs_collect(0);
-            }else {
-                app.setIs_collect(1);
-            }
-        }
-
-
-        List<String> Imgs = Lists.newArrayList();
-        for(ProductImg img:productImgs){
-            Imgs.add(img.getImg());
-        }
-
-        app.setProduct_imgs(Imgs);
-        app.setProduct_name(product.getName());
-        app.setProduct_detail("此产品....");
-        app.setCheap_reason("八一特惠.");
-        app.setProduct_price(product.getPrice());
-        app.setOriginal_price(product.getMarketPrice());
-
-        Map<Integer, BigDecimal> fq = FQUtil.fenqiCompute(selectPriceOrFqPrice(pid));// 分期得计算规则
-        if(fq == null){
-            app.setIs_fq(1);
-        }
-        app.setFqs(fq);
-
-        Map<String, String> diary = Maps.newHashMap();
-        diary.put("对比前","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        diary.put("对比后","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        diary.put("水光针","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        diary.put("水光证","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        app.setDiary(diary);
-
-        Map<String, String> documentary = Maps.newHashMap();
-        documentary.put("对比前","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        documentary.put("对比后","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        documentary.put("第一日","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        documentary.put("第二日","http://7xl0ie.com2.z0.glb.qiniucdn.com/img1%2Fp%2F20150930%2F14435889570384P5.jpg");
-        app.setDocumentary(documentary);
-
-        Map<String, String> notice = Maps.newHashMap();
-        notice.put("第一注意事项","号网络快点撒拉飞机萨菲拉斯的疯狂就爱上");
-        notice.put("第二注意事项","奥斯卡了对方就撒了附加赛飞进去我尽量克服决赛的");
-        notice.put("第三注意事项","阿斯蒂芬金坷垃是否能想自驾来上课的减肥");
-        notice.put("第四注意事项","阿斯顿离开房间我去哦放进来撒打开就飞洒");
-
-        app.setNotice(notice);
-
-        List<String> details = Lists.newArrayList();
-        details.add("http://7xl0ie.com2.z0.glb.qiniucdn.com/images%2Fchristmas_new.png");
-
-
-        app.setHospital_icon(hospital.getImg());
-        app.setHospital_name(hospital.getName());
-        app.setHospital_url("http://m.5imfq.com/hospital/"+hospital.getId());
+        ProductDetail2App app = new ProductDetail2App("fuck");
 
         return JsonUtil.successResultJson(app);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
