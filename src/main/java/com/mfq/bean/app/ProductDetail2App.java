@@ -2,8 +2,8 @@ package com.mfq.bean.app;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mfq.bean.Product;
-import com.mfq.bean.ProductDetail;
+import com.mfq.bean.*;
+import com.mfq.constants.ProductImageType;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -27,16 +27,23 @@ public class ProductDetail2App {
     String after = "";
     String dairy = "";
     String surgery = "";
-
     List<String> pro_imgs = Lists.newArrayList();  //产品图片
-
     String ask = "";  //购买须知
     List<String> details = Lists.newArrayList(); //产品详情
-
     String hos_img = "";
     String hos_name = "";
     String hos_desc = "";
     Integer hos_id = 0;
+
+    public ProductDetail2App(Product product, ProductDetailNew detail) {
+        this.name = product.getName();
+        this.cheap_reason = detail.getPreferential();
+        this.price = product.getPrice();
+        this.market_price = product.getMarketPrice();
+        this.is_fq = 1;
+        this.ask = detail.getAsk();
+        this.hos_id = product.getHospitalId();
+    }
 
     public ProductDetail2App() {
         super();
@@ -57,7 +64,7 @@ public class ProductDetail2App {
         this.before = "http://img1.mfqzz.com/img1/p/20160316/145809645474897M.jpg";
         this.after = "http://img1.mfqzz.com/img1/p/20160316/145809645474897M.jpg";
         this.dairy = "http://img1.mfqzz.com/img1/p/20160316/14580964557719vP.jpg";
-        this.surgery = "http://img1.mfqzz.com/img1/p/20160316/1458096452147mRK.jpg";
+        this.surgery = "http://ww1.sinaimg.cn/large/5bc26f12jw1f1ji5tlh4fj214f1q8qt7.jpg";
         this.pro_imgs.add("http://img1.mfqzz.com/img1/p/20160308/1457409297043177.jpg");
         this.pro_imgs.add("http://img1.mfqzz.com/img1/p/20160308/1457409297810i49.jpg");
         this.pro_imgs.add("http://img1.mfqzz.com/img1/p/20151218/14504358495305Pn.jpg");
@@ -215,4 +222,36 @@ public class ProductDetail2App {
     public void setHos_id(Integer hos_id) {
         this.hos_id = hos_id;
     }
+
+
+    public void setImages(List<ProductImg> imgs, List<ProductImage> images) {
+        for (ProductImg img : imgs) {
+            this.pro_imgs.add(img.getImg());
+        }
+        for (ProductImage image : images) {
+            if(image.getType() == ProductImageType.BEFORE.getId()){
+                this.before = image.getImg();
+            }
+            else if(image.getType() == ProductImageType.AFTER.getId()){
+                this.after = image.getImg();
+            }
+            else if(image.getType() == ProductImageType.BEAUTIFUL.getId()){
+                this.dairy = image.getImg();
+            }
+            else if(image.getType() == ProductImageType.DETAIL.getId()){
+                this.details.add(image.getImg());
+            }
+            else if(image.getType() == ProductImageType.SURGERY.getId()){
+                this.surgery = image.getImg();
+            }
+        }
+    }
+
+    public void setHospital(Hospital hospital){
+        this.hos_img = hospital.getImg();
+        this.hos_name = hospital.getName();
+        this.hos_desc = hospital.getDescription();
+    }
+
+
 }

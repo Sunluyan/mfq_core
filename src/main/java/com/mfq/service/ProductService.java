@@ -39,31 +39,30 @@ public class ProductService {
 
     @Resource
     ProductMapper mapper;
-
     @Resource
     ProductDetailMapper detailMapper;
-    
     @Resource
     ClassifyService classifyService;
-
     @Resource
     HospitalService hospitalService;
-    
     @Resource
     ProductImgMapper productImgMapper;
-    
     @Resource
     CityMapper cityMapper;
-
     @Resource
     HospitalMapper hospitalMapper;
     @Resource
     ProductMapper productMapper;
     @Resource
     ProFqRecordMapper preFqRecordMapper;
-
     @Resource
     FavoritesService favoritesService;
+    @Resource
+    ProductDetailNewMapper productDetailNewMapper;
+    @Resource
+    FinanceBillService financeBillService;
+    @Resource
+    ProductImageService productImageService;
 
 
     public ProductInfo2App buildInfo(long pid) {
@@ -250,18 +249,16 @@ public class ProductService {
 
     public BigDecimal selectPriceOrFqPrice(Long pid) throws Exception {
         try{
-            ProFqRecordExample example = new ProFqRecordExample();
-            example.or().andPidEqualTo(pid.intValue());
-            List<ProFqRecord> fqs =preFqRecordMapper.selectByExample(example);
-            if(fqs.size()>0){
-                return null;
+            BigDecimal price = selectFqPriceByPid(pid);
+            if(price == null){//如果没有的话返回产品价格
+                Product p = findById(pid);
+                return p.getPrice();
             }
-            BigDecimal price = BigDecimal.valueOf(fqs.get(0).getPeriodPay());
             return price;
-        }catch(Exception e){ //如果没有的话返回产品价格
-            Product p = findById(pid);
-            return p.getPrice();
+        }catch(Exception e){
+            logger.error(e.toString());
         }
+        return null;
     }
 
     public List<Product> selectByPids(String pids){
@@ -282,14 +279,36 @@ public class ProductService {
     }
 
 
-    public String getProductDetail(long uid, long pid) throws Exception {
+    public String getProductDetail(long uid, Long pid) throws Exception {
         Product product = productMapper.findById(pid);
         if(product == null){
             return JsonUtil.toJson(1001,"无此产品...",null);
         }
-        ProductDetail2App app = new ProductDetail2App("fuck");
+
+        if(pid != 231 && (pid - 231 != 0) && !pid.equals(231)){
+            ProductDetail2App app = new ProductDetail2App("fuck");
+            return JsonUtil.successResultJson(app);
+        }
+        ProductDetailNewExample example = new ProductDetailNewExample();
+        example.or().andPidEqualTo(pid.intValue());
+        ProductDetailNew detail = productDetailNewMapper.selectByExample(example).get(0);
+
+        ProductDetail2App app = new ProductDetail2App(product,detail);
+        /**
+         String hos_desc = "";
+         */
+        app.setIs_collect(favoritesService.isCollect(pid,uid));
+        app.setFqs(financeBillService.getFq(pid));
+        List<ProductImage> images = productImageService.getProductByPid(pid);
+        List<ProductImg> imgs = findProductImg(pid);
+        app.setImages(imgs,images);
+
+        Hospital hospital = hospitalService.findById(app.getHos_id());
+        app.setHospital(hospital);
+
 
         return JsonUtil.successResultJson(app);
+
     }
 
 

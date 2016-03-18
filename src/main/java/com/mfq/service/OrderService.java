@@ -134,6 +134,7 @@ public class OrderService {
             } else { //
                 throw new Exception("余额不够支付此订单");
             }
+
         }
 
         String orderNo = makeOrderNo(p.getId());
@@ -218,7 +219,7 @@ public class OrderService {
 
 
 
-    private static  String createSecurityCode(long orderId){
+    private static String createSecurityCode(long orderId){
         if(orderId < 10){
             logger.info("创建订单号为{}",orderId);
             orderId = new Random().nextInt(9999);

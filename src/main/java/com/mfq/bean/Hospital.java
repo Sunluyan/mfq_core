@@ -11,6 +11,7 @@ public class Hospital {
     long cityId;
     Date createdAt; 
     Date updatedAt;
+    String description;
     
     public long getId() {
         return id;
@@ -55,6 +56,14 @@ public class Hospital {
         this.updatedAt = updatedAt;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Hospital{" +
@@ -65,6 +74,7 @@ public class Hospital {
                 ", cityId=" + cityId +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

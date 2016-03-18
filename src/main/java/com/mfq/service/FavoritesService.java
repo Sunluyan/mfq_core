@@ -1,5 +1,6 @@
 package com.mfq.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,10 +71,11 @@ public class FavoritesService {
 			return 0;
 		}
 		Favorites fav = mapper.findByUidAndPid(uid, pid);
-		if(fav != null && fav.getUid() > 0){
-			fav.setUpdated(new Date());
-			return mapper.updateUpdateTime(fav);
-		}else if(fav == null){
+		if(fav != null && fav.getUid() > 0){//如果已经有了,就删除
+			List<Long> pids = new ArrayList();
+			pids.add(pid);
+			return mapper.deleteByPids(uid,pids);
+		}else if(fav == null){//没有就加入
 			fav = new Favorites();
 		}
 		fav.setUid(uid);
@@ -85,4 +87,17 @@ public class FavoritesService {
 	public Favorites findByPidAndUid(long pid, long uid) {
 		return mapper.findByUidAndPid(uid, pid);
 	}
+
+	public int isCollect(long pid, long uid){
+		Favorites favorites = findByPidAndUid(pid,uid);
+		if(favorites == null){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+
+
+
+
 }

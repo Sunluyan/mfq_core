@@ -1,7 +1,10 @@
 package com.mfq.test;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
@@ -17,9 +20,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 
-    //	private final static String purl="http://i.5imfq.com";
-    private final static String purl = "http://t.5imfq.com:8080";
-//	private final static String purl="http://localhost:8080";
+//    private final static String purl = "http://i.5imfq.com";
+	private final static String purl="http://localhost:8080";
+//private final static String purl = "http://t.5imfq.com:8080";
 
 
     public static void testOrderCreate() throws IOException {
@@ -90,21 +93,135 @@ public class TestController {
         System.out.println(resp);
     }
 
-    public static void testSearch() {
+
+
+    public static void testJson() {
+        String ask = "[{\"answer\":\"问题0\",\"question\":\"问题0\"},{\"answer\":\"回答1\",\"question\":\"问题1\"},{\"answer\":\"回答2\",\"question\":\"问题2\"},{\"answer\":\"回答3\",\"question\":\"问题3\"},{\"answer\":\"回答4\",\"question\":\"问题4\"}]";
+        JSONArray json = JSON.parseArray(ask);
+        System.out.println(json);
+    }
+    public static List<BigInteger> getFibonacci(){
+        List<BigInteger> fibonaccis = new ArrayList<>();
+        fibonaccis.add(BigInteger.ONE);
+        BigInteger one = BigInteger.ZERO;
+        BigInteger two = BigInteger.ONE;
+        for(int i = 0;i<99;i++){
+            BigInteger result = one.add(two);
+            fibonaccis.add(result);
+            one = two;
+            two = result;
+        }
+        BigInteger number = BigInteger.ONE;
+        for (BigInteger fibonacci : fibonaccis) {
+            for(BigInteger i = BigInteger.valueOf(2);i.compareTo(fibonacci) < 0;i = i.add(BigInteger.ONE)){
+                if(fibonacci.divide(i) == i.multiply(fibonacci)){
+                    continue;
+                }
+            }
+            number = fibonacci;
+        }
+        System.out.println(number.toString());
+
+
+        return fibonaccis;
+    }
+    public static boolean isEqual(String str1,String str2){
+        String a = "";
+        String b = "";
+        Integer size = 0;
+        for(int i = 1;i<(str1.length()/2);i++){
+            a = str1.substring(0,i);
+            str1 = str1.substring(i);
+            if(str1.contains(a)){
+                size = i;
+                break;
+            }
+            str1 = a+str1;
+        }
+        if(size == 0){
+            return false;
+        }
+        b = str1.split(a)[0];
+        if(!str1.equals(a+b+a)){
+            return false;
+        }
+        return true;
+    }
+    public static void insertNumToList(List<Integer> list ,Integer num){
+        int index = -1;
+        boolean isBig2Small = false;
+        if(list.get(0)>list.get(1)){
+            isBig2Small = true;
+        }
+        for (int i = 0;i<list.size();i++) {
+            if(isBig2Small){
+                if(num>list.get(i)){
+                    index = i;
+                    break;
+                }
+            }else{
+                if(num<list.get(i)){
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        list.add(list.get(list.size()-1));
+        for(int i = list.size()-2;i>=0;i--){
+            if(i == index){
+                list.set(i,num);
+                break;
+            }
+            list.set(i,list.get(i-1));
+        }
+        for (Integer integer : list) {
+            System.out.println(integer);
+        }
+    }
+
+    public static void findBiggest(String str){
+        List<String> list = new ArrayList<>();
+        Map<String,Integer> map = new HashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            boolean isFind = false;
+            String s = str.split("")[i];
+            for (String word : list) {
+                if(word.equals(s)){
+                    int count = map.get(s);
+                    map.put(s,count +1);
+                    isFind = true;
+                    break;
+                }
+            }
+            if(!isFind){
+                map.put(s,1);
+                list.add(s);
+            }
+        }
+        int biggest = 0;
+        String biggestWord = "";
+        for (String key : map.keySet()){
+            Integer count = map.get(key);
+            if(biggest<count){
+                biggest = count;
+                biggestWord = key;
+            }
+        }
+        System.out.println(biggestWord);
+    }
+
+    public static void testProductDetail() {
         String url = purl + "/product/detail/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("pid", "200");
+        params.put("pid", "231");
         params.put("uid", 2847);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);
         String resp = HttpUtil.postJson(url, body, true);
-        JSONObject json = JSON.parseObject(resp);
-        JSONArray array = json.getJSONArray("data");
-        System.out.println(array.size());
         System.out.println(resp);
     }
-
 
     public static void main(String[] args) throws IOException {
 
@@ -112,8 +229,11 @@ public class TestController {
 //        testCallback();
 //        testGopay();
 //        testFinance();
-        testSearch();
-//        testSearch();
+//        testProductDetail();
+//        testJson();
+//        getFibonacci();
+//        findBiggest("daaaabbbbcccccccc");
+        testProductDetail();
     }
 
 }

@@ -337,7 +337,9 @@ public class UserQuotaService {
 	public String applyAdultInterView(Long uid, int userType, String realname, String idCard, int gender, String origin, String location , String mobile_type, String blackbox) throws Exception {
         logger.info("user applyInterview |{}|{}|{}|{}|{}", uid, realname,
                 idCard, gender, origin, location);
-
+        if(idCard.contains("X")){
+            idCard.replace("X","x");
+        }
         int code = ErrorCodes.SUCCESS;
         String msg = "身份验证成功";
         Gender g = Gender.fromValue(gender);

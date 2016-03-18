@@ -7,6 +7,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.mfq.bean.Product;
+import com.mfq.bean.app.HospitalDetail2App;
+import com.mfq.bean.app.ProductListItem2App;
+import com.mfq.utils.JsonUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,8 @@ public class HospitalService {
     
     @Resource
     HospitalMapper mapper;
+	@Resource
+	ProductService productService;
 
     public Hospital findById(long id){
         return mapper.findById(id);
@@ -76,6 +82,17 @@ public class HospitalService {
 	
 	public List<Map<String,Object>> findProCount(List<Long> hosid){
 		return mapper.findProCount(hosid);
+	}
+
+	public String getDetailById(Integer hosId) {
+		HospitalDetail2App h = new HospitalDetail2App("fuck");
+		Product p = productService.findById(231);
+		List<Product> list = new ArrayList<>();
+		list.add(p);
+		List<ProductListItem2App> app = productService.convert2AppList(list);
+		h.setPros(app);
+
+		return JsonUtil.successResultJson(h);
 	}
 }
 
