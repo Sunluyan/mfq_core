@@ -131,4 +131,13 @@
         </foreach>
     </select>
 
+    <select id="findHotByHospital" resultType="Product" >
+      SELECT
+      <include refid="selectsql"/>
+        from product
+        where hospital_id = #{hosId}
+        order by sale_num desc
+        limit 0,3
+    </select>
+
 </mapper>

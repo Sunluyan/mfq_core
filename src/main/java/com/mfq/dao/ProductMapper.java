@@ -36,4 +36,5 @@ public interface ProductMapper {
 												 @Param("start")long start,@Param("pagesize")long pagesize);
 	List<Product> selectByPids(@Param("pids")List<Long> pids);
 
+	List<Product> findHotByHospital(@Param("hosId")Long hospitalId);
 }

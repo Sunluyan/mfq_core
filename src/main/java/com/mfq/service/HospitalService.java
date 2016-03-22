@@ -19,81 +19,95 @@ import com.mfq.dao.HospitalMapper;
 
 @Service
 public class HospitalService {
-    
+
     @Resource
     HospitalMapper mapper;
-	@Resource
-	ProductService productService;
+    @Resource
+    ProductService productService;
 
-    public Hospital findById(long id){
+    public Hospital findById(long id) {
         return mapper.findById(id);
     }
-    
-    public long insertHospital(Hospital h){
+
+    public long insertHospital(Hospital h) {
         return mapper.insertHospital(h);
     }
-    
-    public List<Hospital> queryHospitals(){
+
+    public List<Hospital> queryHospitals() {
         return mapper.findAll();
     }
 
-	public List<Map<String,Object>> findHospitalByCity(long cityId) {
-		//  Auto-generated method stub
-		List<Hospital> hospitals = mapper.findByCity(cityId);
-		return findHospitalApp(hospitals);
-	}
+    public List<Map<String, Object>> findHospitalByCity(long cityId) {
+        //  Auto-generated method stub
+        List<Hospital> hospitals = mapper.findByCity(cityId);
+        return findHospitalApp(hospitals);
+    }
 
 
-	public List<Map<String,Object>> findHospitalApp(List<Hospital> hospitals){
+    public List<Map<String, Object>> findHospitalApp(List<Hospital> hospitals) {
 
-		List<Long> names = new ArrayList<Long>();
-		for (Hospital hos : hospitals) {
-			names.add(hos.getId());
-		}
-		List<Map<String,Object>> hospitalProCount = findProCount(names);
+        List<Long> names = new ArrayList<Long>();
+        for (Hospital hos : hospitals) {
+            names.add(hos.getId());
+        }
+        List<Map<String, Object>> hospitalProCount = findProCount(names);
 
-		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
-		for (Hospital hos : hospitals) {
-			Map<String,Object> map = new HashMap<String,Object>();
-			map.put("id", hos.getId());
-			map.put("name", hos.getName());
-			map.put("img",hos.getImg());
-			map.put("address",hos.getAddress());
-			for (Map<String, Object> pro : hospitalProCount) {
-				long id = Long.parseLong(pro.get("id").toString());
-				if(id==hos.getId()){
-					map.put("total", pro.get("total"));
-					hospitalProCount.remove(pro);
-					break;
-				}
-			}
-			result.add(map);
-		}
-		return result;
-	}
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        for (Hospital hos : hospitals) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("id", hos.getId());
+            map.put("name", hos.getName());
+            map.put("img", hos.getImg());
+            map.put("address", hos.getAddress());
+            for (Map<String, Object> pro : hospitalProCount) {
+                long id = Long.parseLong(pro.get("id").toString());
+                if (id == hos.getId()) {
+                    map.put("total", pro.get("total"));
+                    hospitalProCount.remove(pro);
+                    break;
+                }
+            }
+            result.add(map);
+        }
+        return result;
+    }
 
 
-	public List<Map<String,Object>> findAll() {
-		//  Auto-generated method stub
-		List<Hospital> hospitals = mapper.findAll();
+    public List<Map<String, Object>> findAll() {
+        //  Auto-generated method stub
+        List<Hospital> hospitals = mapper.findAll();
 
-		return findHospitalApp(hospitals);
-	}
-	
-	public List<Map<String,Object>> findProCount(List<Long> hosid){
-		return mapper.findProCount(hosid);
-	}
+        return findHospitalApp(hospitals);
+    }
 
-	public String getDetailById(Integer hosId) {
-		HospitalDetail2App h = new HospitalDetail2App("fuck");
-		Product p = productService.findById(231);
-		List<Product> list = new ArrayList<>();
-		list.add(p);
-		List<ProductListItem2App> app = productService.convert2AppList(list);
-		h.setPros(app);
+    public List<Map<String, Object>> findProCount(List<Long> hosid) {
+        return mapper.findProCount(hosid);
+    }
 
-		return JsonUtil.successResultJson(h);
-	}
+    public String getDetailById(Integer hosId) {
+
+        if (hosId < 0) {
+            HospitalDetail2App h = new HospitalDetail2App("fuck");
+            Product p = productService.findById(231);
+            List<Product> list = new ArrayList<>();
+            list.add(p);
+            List<ProductListItem2App> app = productService.convert2AppList(list);
+            h.setPros(app);
+            return JsonUtil.successResultJson(h);
+
+        } else {
+            Hospital hospital = mapper.findById(hosId);
+            HospitalDetail2App h = new HospitalDetail2App(hospital);
+
+            List<Product> pros = productService.findHotByHospital(hosId.longValue());
+
+            List<ProductListItem2App> app = productService.convert2AppList(pros);
+            h.setPros(app);
+            return JsonUtil.successResultJson(h);
+        }
+
+
+    }
 }
 
 

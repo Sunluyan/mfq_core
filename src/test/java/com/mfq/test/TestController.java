@@ -20,8 +20,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 
-//    private final static String purl = "http://i.5imfq.com";
-	private final static String purl="http://localhost:8080";
+    private final static String purl = "http://i.5imfq.com";
+//	private final static String purl="http://localhost:8080";
 //private final static String purl = "http://t.5imfq.com:8080";
 
 

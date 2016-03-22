@@ -1,5 +1,6 @@
 package com.mfq.bean.app;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mfq.bean.*;
@@ -29,6 +30,8 @@ public class ProductDetail2App {
     String surgery = "";
     List<String> pro_imgs = Lists.newArrayList();  //产品图片
     String ask = "";  //购买须知
+//    List<Map<String,String>> asks = Lists.newArrayList();
+
     List<String> details = Lists.newArrayList(); //产品详情
     String hos_img = "";
     String hos_name = "";
@@ -41,7 +44,14 @@ public class ProductDetail2App {
         this.price = product.getPrice();
         this.market_price = product.getMarketPrice();
         this.is_fq = 1;
+
+//        String askStr = detail.getAsk();
+//        if(StringUtils.isNotEmpty(askStr)){
+//            JsonU
+//        }
         this.ask = detail.getAsk();
+
+
         this.hos_id = product.getHospitalId();
     }
 

@@ -725,6 +725,17 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testHospitalDetail(){
+        String url = purl+"/hospital/detail";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("id", 2);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -739,12 +750,7 @@ public class TestController {
 //        testCallback();
 //        testOrderFinance();
 //        testFinanceList2();
-//        Long pid = 231L;
-//        if(pid != 231 && (pid - 231 != 0) && !pid.equals(231)){
-//            System.out.println("enter");
-//        }else{
-//            System.out.println("out");
-//        }
+        testHospitalDetail();
 
 
     }

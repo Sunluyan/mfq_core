@@ -1,5 +1,7 @@
 package com.mfq.bean.app;
 
+import com.mfq.bean.Hospital;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,16 @@ public class HospitalDetail2App {
         this.img_details.add("http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-171.png");
         this.img_details.add("http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-172.png");
         this.img_details.add("http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-173.png");
+    }
+
+    public HospitalDetail2App(Hospital hospital) {
+        this.name = hospital.getName();
+        this.img_hos = hospital.getImg();
+        this.desc = hospital.getDescription();
+        String[] details = hospital.getDetails().split(",");
+        for (String detail : details) {
+            this.img_details.add(detail);
+        }
 
     }
 

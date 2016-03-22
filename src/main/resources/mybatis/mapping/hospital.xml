@@ -3,7 +3,7 @@
 <mapper namespace="com.mfq.dao.HospitalMapper">
 	<sql id="selectsql">
 		id, name, img, address, city_id as cityId, created_at as createdAt, updated_at as updatedAt,
-		description
+		description , details
 	</sql>
 	<sql id="insertsql">
 		name, img, address, city_id, created_at, updated_at

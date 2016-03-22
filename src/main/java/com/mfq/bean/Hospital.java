@@ -3,16 +3,25 @@ package com.mfq.bean;
 import java.util.Date;
 
 public class Hospital {
-    
-    long id; 
-    String name;
-    String img; 
-    String address;
-    long cityId;
-    Date createdAt; 
-    Date updatedAt;
-    String description;
-    
+
+    private long id;
+    private String name;
+    private String img;
+    private String address;
+    private long cityId;
+    private Date createdAt;
+    private Date updatedAt;
+    private String description;
+    private String details;
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
     public long getId() {
         return id;
     }
