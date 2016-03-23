@@ -625,6 +625,34 @@ public class ActivityController {
     }
 
 
+    @RequestMapping(value = {"/yanzhiai","/yanzhiai/"})
+    public ModelAndView yanzhiai(){
+        Map<String, Object> model = new HashMap<String, Object>();
+        activityService.addOpenCount("颜值癌");
+        return new ModelAndView("/activity/baoming/yanzhiai", model);
+    }
+
+    @RequestMapping(value = {"/yanzhiai/baoming","/yanzhiai/baoming/"})
+    public @ResponseBody String yanzhiaiBaoming(HttpServletRequest request,HttpServletResponse response){
+        activityService.addResultCount("颜值癌");
+        String name = request.getParameter("name");
+        String mobile = request.getParameter("mobile");
+        String wechat = request.getParameter("wechat");
+
+        Baoming baoming = new Baoming();
+        baoming.setName(name);
+        baoming.setMobile(mobile);
+        baoming.setWechat(wechat);
+        baoming.setActivityName("颜值癌");
+        try{
+            return activityService.saveBaoming(baoming);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"报名出错",null);
+        }
+
+    }
+
 
 
 

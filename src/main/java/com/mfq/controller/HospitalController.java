@@ -7,11 +7,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import com.mfq.constants.ErrorCodes;
+import com.mfq.constants.QiniuBucketEnum;
 import com.mfq.helper.SignHelper;
 import com.mfq.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,29 +36,21 @@ public class HospitalController {
 
 
     /**
-     * 跳转到hospital/index.jsp页面
      *
      * @return
-     * @author liuzhiguo1
      */
-    @RequestMapping(value = {"/list/", "/list"})
-    public String hospitallist() {
-        return "/hospital/index";
+    @RequestMapping(value = {"/{hid}/","/{hid}"})
+    public String hospitalSdy(@PathVariable("hid") int hid, Model model){
+        String tpp = "error";
+        if(hid == 0){
+
+        }
+        tpp = "hospital_"+hid;
+
+        model.addAttribute("static_url", QiniuBucketEnum.STATIC.getDomain());
+        return "/hospital/"+tpp;
     }
 
-    /**
-     * 获取hospital/index.jsp页面的数据
-     *
-     * @return
-     * @author liuzhiguo1
-     */
-    @RequestMapping(value = {"/list/data/", "/list/data"})
-    public
-    @ResponseBody
-    List<Map<String, Object>> hospitalData() {
-        List<Map<String, Object>> list = hospitalService.findAll();
-        return list;
-    }
 
     @RequestMapping(value = {"/detail", "/detail/"})
     public
@@ -86,6 +81,33 @@ public class HospitalController {
         }
         return ret ;
     }
+
+    /**
+     * 跳转到hospital/index.jsp页面
+     *
+     * @return
+     * @author liuzhiguo1
+     */
+    @RequestMapping(value = {"/list/", "/list"})
+    public String hospitallist() {
+        return "/hospital/index";
+    }
+
+    /**
+     * 获取hospital/index.jsp页面的数据
+     *
+     * @return
+     * @author liuzhiguo1
+     */
+    @RequestMapping(value = {"/list/data/", "/list/data"})
+    public
+    @ResponseBody
+    List<Map<String, Object>> hospitalData() {
+        List<Map<String, Object>> list = hospitalService.findAll();
+        return list;
+    }
+
+
 
 
 //    @RequestMapping(value = {"/seckilling","/seckilling/"})

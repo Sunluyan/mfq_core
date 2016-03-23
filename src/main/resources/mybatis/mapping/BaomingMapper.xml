@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mfq.dao.BaomingMapper" >
+  <resultMap id="BaseResultMap" type="com.mfq.bean.Baoming" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="sign_up_time" property="signUpTime" jdbcType="TIMESTAMP" />
+    <result column="column_9" property="column9" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, activity_id, activity_name, name, mobile, wechat, email, sign_up_time, column_9
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mfq.bean.BaomingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from baoming
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from baoming
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from baoming
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mfq.bean.BaomingExample" >
+    delete from baoming
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mfq.bean.Baoming" >
+    insert into baoming (id, activity_id, activity_name, 
+      name, mobile, wechat, 
+      email, sign_up_time, column_9
+      )
+    values (#{id,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, #{activityName,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{signUpTime,jdbcType=TIMESTAMP}, #{column9,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mfq.bean.Baoming" >
+    insert into baoming
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="activityName != null" >
+        activity_name,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="signUpTime != null" >
+        sign_up_time,
+      </if>
+      <if test="column9 != null" >
+        column_9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null" >
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="signUpTime != null" >
+        #{signUpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="column9 != null" >
+        #{column9,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mfq.bean.BaomingExample" resultType="java.lang.Integer" >
+    select count(*) from baoming
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update baoming
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityId != null" >
+        activity_id = #{record.activityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityName != null" >
+        activity_name = #{record.activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechat != null" >
+        wechat = #{record.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signUpTime != null" >
+        sign_up_time = #{record.signUpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.column9 != null" >
+        column_9 = #{record.column9,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update baoming
+    set id = #{record.id,jdbcType=INTEGER},
+      activity_id = #{record.activityId,jdbcType=INTEGER},
+      activity_name = #{record.activityName,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      sign_up_time = #{record.signUpTime,jdbcType=TIMESTAMP},
+      column_9 = #{record.column9,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mfq.bean.Baoming" >
+    update baoming
+    <set >
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityName != null" >
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="signUpTime != null" >
+        sign_up_time = #{signUpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="column9 != null" >
+        column_9 = #{column9,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mfq.bean.Baoming" >
+    update baoming
+    set activity_id = #{activityId,jdbcType=INTEGER},
+      activity_name = #{activityName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sign_up_time = #{signUpTime,jdbcType=TIMESTAMP},
+      column_9 = #{column9,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByBaoming" parameterType="com.mfq.bean.Baoming" resultType="int">
+    select count(*)
+    from baoming
+    where 1=1
+    <if test="mobile != null ">
+      and mobile = #{mobile}
+    </if>
+    <if test="email != null">
+      and email = #{email}
+    </if>
+    <if test="wechat != null">
+      and wechat = #{wechat}
+    </if>
+
+    and activity_id = #{activityId}
+
+  </select>
+</mapper>

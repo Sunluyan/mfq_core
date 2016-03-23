@@ -156,7 +156,9 @@
 <div class="item">
     <c:forEach items="${products}" var="product">
         <div class="item-inner" onclick="window.location.href='product:${product.id}-${product.name}';">
-            <img class="item-1" src="${product.img}" width="614" alt="">
+            <%--<img class="item-1" src="${product.img}" width="614" alt="">--%>
+            <div class="item-1" style="background:url(${product.img});background-size: cover;"></div>
+
             <div class="update"></div>
             <div class="item-foot">
                 <div class="item-foot-l">

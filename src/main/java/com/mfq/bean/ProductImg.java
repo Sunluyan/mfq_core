@@ -14,6 +14,19 @@ public class ProductImg {
     	this.index = 0;
     	this.flag = 0;
     }
+
+	@Override
+	public String toString() {
+		return "ProductImg{" +
+				"id=" + id +
+				", pid=" + pid +
+				", img='" + img + '\'' +
+				", desc='" + desc + '\'' +
+				", index=" + index +
+				", flag=" + flag +
+				'}';
+	}
+
 	public long getId() {
 		return id;
 	}

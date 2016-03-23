@@ -75,6 +75,8 @@ public class ActivityService {
     ActivityRecordMapper activityRecordMapper;
     @Resource
     ActivityMapper activityMapper;
+    @Resource
+    BaomingMapper baomingMapper;
 
     public List<ProductInfoItem> getItemsByType(ProductType type) {
         List<Product> plist = productService.queryProductsByType(type);
@@ -278,6 +280,31 @@ public class ActivityService {
 
 
         return detail;
+    }
+
+    /**
+     * 先保存活动的名称和id , 这个活动不是 activity 是 activity_record
+     * @param baoming
+     * @return
+     */
+    @Transactional
+    public String saveBaoming(Baoming baoming) throws Exception{
+        ActivityRecordExample activityRecordExample = new ActivityRecordExample();
+        activityRecordExample.or().andNameEqualTo(baoming.getActivityName());
+        ActivityRecord activityRecord = activityRecordMapper.selectByExample(activityRecordExample).get(0);
+        baoming.setActivityName(baoming.getActivityName());
+        baoming.setActivityId(activityRecord.getId());
+
+        int count = baomingMapper.selectByBaoming(baoming);
+        if(count > 0){
+            return JsonUtil.toJson(8888,"已经报过名了哦",null);
+        }
+
+        count = baomingMapper.insertSelective(baoming);
+        if(count != 1){
+            throw new Exception("报名出错");
+        }
+        return JsonUtil.successResultJson();
     }
 
 

@@ -11,6 +11,7 @@ import com.mfq.bean.app.ProductDetail2App;
 import com.mfq.bean.passport.PassportOauth;
 import com.mfq.dao.*;
 import com.mfq.utils.JsonUtil;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -232,8 +233,15 @@ public class ProductService {
     }
 
     public List<ProductImg> findProductImg(long id) {
-        return productImgMapper.findByPid(id);
+        List<ProductImg> list = productImgMapper.findByPid(id);
+        for (ProductImg productImg : list) {
+            if(StringUtils.isEmpty(productImg.getImg())){
+                list.remove(productImg);
+            }
+        }
+        return list;
     }
+
 
     public BigDecimal selectFqPriceByPid(Long pid) {
         try {
@@ -271,9 +279,9 @@ public class ProductService {
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         ProductService service = ac.getBean(ProductService.class);
-        List<Product> list = service.selectByPids("223,222,221,");
-        for (Product product : list) {
-            System.out.println(product.toString());
+        List<ProductImg> list =  service.findProductImg(232);
+        for (ProductImg productImg : list) {
+            System.out.println(productImg.toString());
         }
     }
 
@@ -284,7 +292,7 @@ public class ProductService {
             return JsonUtil.toJson(1001, "无此产品...", null);
         }
 
-        if (pid != 231 && (pid - 231 != 0) && !pid.equals(231)) {
+        if (pid == 231 || (pid - 231 == 0) || pid.equals(231)) {
             ProductDetail2App app = new ProductDetail2App("fuck");
             return JsonUtil.successResultJson(app);
         }
