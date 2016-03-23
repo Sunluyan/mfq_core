@@ -228,7 +228,7 @@ public class ProductController {
                                     HttpServletResponse response){
 
 
-        return null;
+        return new ModelAndView("/app/product/detailn", null);
     }
 
 

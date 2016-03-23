@@ -234,12 +234,14 @@ public class ProductService {
 
     public List<ProductImg> findProductImg(long id) {
         List<ProductImg> list = productImgMapper.findByPid(id);
+        List<ProductImg> result = new ArrayList<>();
+
         for (ProductImg productImg : list) {
-            if(StringUtils.isEmpty(productImg.getImg())){
-                list.remove(productImg);
+            if(StringUtils.isNotEmpty(productImg.getImg())){
+                result.add(productImg);
             }
         }
-        return list;
+        return result;
     }
 
 
