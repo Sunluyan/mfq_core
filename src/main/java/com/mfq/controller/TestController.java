@@ -750,7 +750,12 @@ public class TestController {
 //        testCallback();
 //        testOrderFinance();
 //        testFinanceList2();
-        testHospitalDetail();
+//        testHospitalDetail();
+
+        Map<Integer,String> map = new HashMap<>();
+        map.put(1,"fuck");
+        map.put(2,"you");
+        map.put(3,"all");
 
 
     }

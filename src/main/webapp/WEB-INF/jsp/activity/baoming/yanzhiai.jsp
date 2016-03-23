@@ -834,8 +834,8 @@
 
         /*金星页面*/
         .jinxing {
-            width: 17rem;
-            height: 17rem;
+            width: 15rem;
+            height: 15rem;
             margin: 0rem auto 0;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22jinxing.png) no-repeat;
             background-size: cover;
@@ -880,7 +880,7 @@
         .yanzhiai {
             width: 180px;
             height: 38px;
-            margin: 2rem auto 0;
+            margin: 1rem auto 0;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22yanzhiai.png) no-repeat;
             background-size: cover;
         }
@@ -945,7 +945,7 @@
             width: 100%;
             height: 100%;
             display: none;
-            background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22baoming.png) no-repeat;
+            background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22baoming-2.png) no-repeat;
             background-size: cover;
         }
 
@@ -1009,15 +1009,15 @@
         .icon {
             width: 20rem;
             margin: 0 auto;
-            padding-left: 5rem;
+            padding-left: 4rem;
             position: relative;
-            font-size: 12px;
+            font-size: 8px;
             color: #666;
         }
 
         .icon-img {
-            width: 4rem;
-            height: 4rem;
+            width: 3rem;
+            height: 3rem;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22icon.png) no-repeat;
             background-size: cover;
             position: absolute;

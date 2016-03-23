@@ -1,6 +1,8 @@
+<%@ page import="com.mfq.bean.app.ProductDetail2App" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,29 +12,29 @@
     <script src="/js/wx/jquery.js"></script>
     <script type="text/javascript" src="/js/app/product/lunbo.js"></script>
     <script type="text/javascript" src="/js/app/product/index.js"></script>
-    <title></title>
+        <%
+    ProductDetail2App app = (ProductDetail2App) request.getAttribute("app");
+    %>
+    <title><%=app.getName()%> </title>
 </head>
 <body>
+
 <div class="banner">
     <ul class="banner-img">
+        <%
+         for(int i = 0;i<app.getPro_imgs().size();i++){
+             %>
         <li>
-            <a href="#"></a>
+            <a href="#">
+                <img src="<%=app.getPro_imgs().get(i)%>"/>
+            </a>
             <div class="gray">
-                光子嫩肤
+                <%=app.getName() %>
             </div>
         </li>
-        <li>
-            <a href="#"></a>
-            <div class="gray">
-                光子嫩肤
-            </div>
-        </li>
-        <li>
-            <a href="#"></a>
-            <div class="gray">
-                光子嫩肤
-            </div>
-        </li>
+        <%
+         }
+        %>
     </ul>
     <!--<ul class="banner-dot">
         <li class="current">
@@ -49,20 +51,27 @@
     <span class="right arrow">></span>
 </div>
 <div class="yiyuan">
-    <div class="yiyuan-img">
-    </div>
-    <h3>北京美莱医疗美容医院</h3>
-    <p>光子嫩肤是由美莱整形医院推出的光子嫩肤是由美莱整形医院推出的。。。。。。</p>
+    <img src="<%=app.getHos_img()%>" class="yiyuan-img"/>
+    <!--<div class="yiyuan-img">
+    </div>-->
+    <h3><%=app.getHos_name()%></h3>
+    <p><%=app.getHos_desc()%></p>
     <span></span>
 </div>
 <div class="fenqi">
-    <span class="houjia"><span class="little">￥</span>32000.<span class='little'>00</span></span>
-    <span class="yuanjia little"> <span class="little-2">￥</span>450.<span class="little-2">00x12期</span></span>
+    <span class="houjia"><span class="little">￥</span><%=app.getPrice()%>.<span class='little'>00</span></span>
+    <span class="yuanjia little"> <span class="little-2">￥</span><%=app.getMarket_price()%>.<span class="little-2">00x12期</span></span>
     <span class="xiangqing">分期详情</span>
     <span class="zhedie"></span>
     <div class="xiangqing-box">
-        <span>400.00×3期</span>
-        <span>200.00×6期</span>
+        <%
+             for (Integer key : app.getFqs().keySet()) {
+                 %>
+        <span><%=app.getFqs().get(key)%>.00×<%=key%>期</span>
+        <%
+
+        %>
+
         <span>100.00×12期</span>
     </div>
 </div>
@@ -86,16 +95,15 @@
 					</span>
         </div>
         <div class="jiangjie">
-            <div class="jiangjie-img">
-
-            </div>
+            <img src="img/jiangjie.png" class="jiangjie-img"/>
+            <!--<div class="jiangjie-img">
+            </div>-->
         </div>
     </div>
-    <div class="shuhou-box">
-
-    </div>
+    <img src="img/jiangjie.png" class="shuhou-box"/>
+    <!--<div class="shuhou-box">
+    </div>-->
 </ul>
 </body>
 
 </html>
-

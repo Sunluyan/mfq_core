@@ -315,9 +315,37 @@ public class ProductService {
         Hospital hospital = hospitalService.findById(app.getHos_id());
         app.setHospital(hospital);
 
-
         return JsonUtil.successResultJson(app);
+    }
 
+    public ProductDetail2App getProductDetail2Web(long uid, Long pid) throws Exception {
+        Product product = productMapper.findById(pid);
+        if (product == null) {
+            return new ProductDetail2App();
+        }
+
+        if (pid == 231 || (pid - 231 == 0) || pid.equals(231)) {
+            ProductDetail2App app = new ProductDetail2App("fuck");
+            return app;
+        }
+        ProductDetailNewExample example = new ProductDetailNewExample();
+        example.or().andPidEqualTo(pid.intValue());
+        ProductDetailNew detail = productDetailNewMapper.selectByExampleWithBLOBs(example).get(0);
+
+        ProductDetail2App app = new ProductDetail2App(product, detail);
+
+        if(uid != 0){
+            app.setIs_collect(favoritesService.isCollect(pid, uid));
+        }
+        app.setFqs(financeBillService.getFq(pid));
+        List<ProductImage> images = productImageService.getProductByPid(pid);
+        List<ProductImg> imgs = findProductImg(pid);
+        app.setImages(imgs, images);
+
+        Hospital hospital = hospitalService.findById(app.getHos_id());
+        app.setHospital(hospital);
+
+        return app;
     }
 
     /**

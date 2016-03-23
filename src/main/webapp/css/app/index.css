@@ -27,20 +27,10 @@ html,body{
 .banner .banner-img li{
 	width:25%;
 	height: 100%;
-	background: url(../img/banner-1_02.png) no-repeat;
 	float: left;
-	background-size: cover;
 	position: relative;
 	
 	
-}
-.banner .banner-img li:nth-child(2){
-	background: url(../img/banner-1_02.png) no-repeat;
-	background-size: cover;
-}
-.banner .banner-img li:nth-child(3){
-	background: url(../img/banner-1_02.png) no-repeat;
-	background-size: cover;
 }
 .banner-dot{
 	position:absolute;
@@ -127,9 +117,7 @@ html,body{
 	position: absolute;
 	left: 0.5rem;
 	top: 0.5rem;
-	background: url(../img/yiyuan-img_03.png) no-repeat;
-	background-size: cover;
-	
+
 }
 .yiyuan h3{
 	font-size: 1rem;
@@ -158,8 +146,6 @@ html,body{
 	margin-top: -1rem;
 	width: 0.8rem;
 	display: block;
-	background: url(../img/arrow_03.png) no-repeat;
-	background-size: cover;
 }
 
 .fenqi{
@@ -210,8 +196,6 @@ html,body{
 .zhedie{
 	width: 1rem;
 	height: 0.5rem;
-	background: url(../img/zhedie_03.png) no-repeat;
-	background-size: cover;
 	display: block;
 	position: absolute;
 	right: 0.5rem;
@@ -277,19 +261,11 @@ html,body{
 	width: 9.5rem;
 	height: 10rem;
 	display: inline-block;
-	background: url(../img/shuqian_03.png) no-repeat;
-	background-size: cover;
 }
 
-.shuqian-box span:nth-child(2) img{
-	background: url(../img/shuhou_03.png) no-repeat;
-	background-size: cover;
-}
 .shuhou-box{
 	width: 18rem;
 	height: 23rem;
-	background: url(../img/jiangjie.png) no-repeat;
-	background-size: cover;
 	margin: 3rem auto;
 	display: none;
 }
@@ -302,7 +278,6 @@ html,body{
 .shuqian-box .jiangjie-img{
 	width: 18rem;
 	height: 23rem;
-	background: url(../img/jiangjie.png) no-repeat;
 	background-size: cover;
 	display: inline-block;
 }

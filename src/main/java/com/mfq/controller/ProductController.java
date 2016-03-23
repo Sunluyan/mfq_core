@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
+import com.mfq.bean.app.ProductDetail2App;
 import com.mfq.cache.UserOperationUtil;
 import com.mfq.dataservice.context.UserIdHolder;
 import org.apache.commons.lang.StringUtils;
@@ -225,10 +226,21 @@ public class ProductController {
     @RequestMapping(value = {"/app/detail",
             "/app/detail/"}, method = RequestMethod.GET)
     public ModelAndView appItemInfo(HttpServletRequest request,
-                                    HttpServletResponse response){
+                                    HttpServletResponse response) throws Exception {
+        try{
+            String pidStr = request.getParameter("pid");
+            long pid = Long.parseLong(StringUtils.stripToEmpty(pidStr));
+            long uid = UserIdHolder.getLongUid();
+            ProductDetail2App app = productService.getProductDetail2Web(uid, pid);
 
+            request.setAttribute("app",app);
+            return new ModelAndView("/app/product/detail", null);
 
-        return new ModelAndView("/app/product/detailn", null);
+        }catch(Exception e){
+            logger.error(e.toString());
+            return new ModelAndView("/app/product/detail", null);
+        }
+
     }
 
 
