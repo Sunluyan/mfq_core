@@ -44,9 +44,11 @@ public class HospitalController {
     @RequestMapping(value = {"/{hid}/","/{hid}"})
     public String hospitalSdy(@PathVariable("hid") int hid, Model model){
 
-        HospitalDetail2App h = hospitalService.getDetailById2Web(hid);
-        model.addAttribute("hospital",h);
-        return "/hospital/detail";
+//        HospitalDetail2App h = hospitalService.getDetailById2Web(hid);
+//        model.addAttribute("hospital",h);
+//        return "/hospital/detail";
+
+        return "/hospital/hospital_"+hid;
     }
 
 
