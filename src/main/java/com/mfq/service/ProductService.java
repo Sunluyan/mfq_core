@@ -160,7 +160,7 @@ public class ProductService {
             BeanUtils.copyProperties(pt, bean);
             City city = cityMapper.findById(pt.getCityId());
             bean.setCity(city.getName());
-            Map<Integer, BigDecimal> fq = FQUtil.fenqiCompute(pt.getPrice());
+            Map<Long, BigDecimal> fq = FQUtil.fenqiCompute(pt.getPrice());
             bean.setFq(fq);
             bean.setMarketPrice(pt.getMarketPrice());
             bean.setSubsidy(pt.getMarketPrice().subtract(pt.getPrice()));

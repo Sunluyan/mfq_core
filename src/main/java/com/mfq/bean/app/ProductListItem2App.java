@@ -18,7 +18,7 @@ public class ProductListItem2App {
 	String url; //产品详情url
 	BigDecimal subsidy; //补贴
 	String city;   //城市
-	Map<Integer, BigDecimal> fq;  //分期
+	Map<Long, BigDecimal> fq;  //分期
 	String hospitalId;
 	String hospitalName;
 	String hosName;
@@ -136,11 +136,11 @@ public class ProductListItem2App {
 		this.saleNum = saleNum;
 	}
 
-	public Map<Integer, BigDecimal> getFq() {
+	public Map<Long, BigDecimal> getFq() {
 		return fq;
 	}
 
-	public void setFq(Map<Integer, BigDecimal> fq) {
+	public void setFq(Map<Long, BigDecimal> fq) {
 		this.fq = fq;
 	}
 	

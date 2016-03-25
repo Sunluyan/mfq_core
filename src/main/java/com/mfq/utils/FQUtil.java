@@ -39,13 +39,13 @@ public class FQUtil {
      */
     public static Map<String, Object> fenqiMaxCompute(BigDecimal baseFQMoney) {
         Map<String, Object> o = Maps.newTreeMap();
-        int max = periodMax(baseFQMoney);
+        Long max = periodMax(baseFQMoney);
 		if (max < 3) {
             o.put("p_num", 0);
             o.put("p_price", 0);
         	return o;
         }
-        BigDecimal v = computePeriodPay(max, baseFQMoney);
+        BigDecimal v = computePeriodPay(max.intValue(), baseFQMoney);
 
         o.put("p_num", max);
         o.put("p_price", v);
@@ -57,16 +57,16 @@ public class FQUtil {
      * @param baseFQMoney
      * @return
      */
-    public static Map<Integer, BigDecimal> fenqiCompute(BigDecimal baseFQMoney) {
+    public static Map<Long, BigDecimal> fenqiCompute(BigDecimal baseFQMoney) {
 
         if(baseFQMoney==null){return null;}
-        Map<Integer, BigDecimal> o = Maps.newTreeMap();
-        int min = 3;
-        int max = periodMax(baseFQMoney);
+        Map<Long, BigDecimal> o = Maps.newTreeMap();
+        Long min = 3l;
+        Long max = periodMax(baseFQMoney);
 
-        for (int i = min; i <= max; i++) {
-            BigDecimal v = computePeriodPay(i, baseFQMoney);
-            if(isExistInArray(i, nums))
+        for (Long i = min; i <= max; i++) {
+            BigDecimal v = computePeriodPay(i.intValue(), baseFQMoney);
+            if(isExistInArray(i.intValue(), nums))
             	o.put(i, v);
         }
         return o;
@@ -180,10 +180,10 @@ public class FQUtil {
      * @param
      * @return
      */
-    public static int periodMax(BigDecimal baseMoney) {
+    public static Long periodMax(BigDecimal baseMoney) {
         
 
-        return 12;
+        return 12l;
     }
 
     
