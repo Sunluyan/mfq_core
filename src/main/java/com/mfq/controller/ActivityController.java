@@ -616,7 +616,7 @@ public class ActivityController {
     @RequestMapping(value = {"/topimg","/topimg/"})
     public @ResponseBody String topimg(HttpServletRequest request, HttpServletResponse response){
         try{
-            String url = "http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-073.8-top.png";
+            String url = "http://7xlb4k.com2.z0.glb.qiniucdn.com/2016.03.25.topimg.jpg";
             return JsonUtil.successResultJson(url);
         }catch(Exception e){
             logger.error(e.toString());

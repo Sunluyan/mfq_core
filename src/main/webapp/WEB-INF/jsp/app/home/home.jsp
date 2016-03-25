@@ -162,15 +162,10 @@
             <div class="update"></div>
             <div class="item-foot">
                 <div class="item-foot-l">
-                    <p class="top">${product.hospitalName}<span class="position"></span>${product.city}</p>
+                    <p class="top">${product.city}</p>
                     <div class="bottom">
-                        <div class="bottom-l">
-                            <span></span>
-                            <span>可分期</span>
-                        </div>
                         <div class="bottom-r">
-                            <span></span>
-                            <span>可团购</span>
+                            ${product.hospitalName}
                         </div>
                     </div>
                 </div>
@@ -179,10 +174,9 @@
                             ${product.name}
                     </div>
                     <div class="foot-r-bottom">
-                        <p style="color:#fd5a9c;font-size:2rem"><span style="font-size:1rem">￥</span><fmt:formatNumber  value="${product.price }" pattern="###,###"/>
+
+                        <p style="color:#fd5a9c;font-size:2rem"><span style="color:#555;font-size:1.5rem;">月供最低</span><span style="font-size:1rem">￥</span><fmt:formatNumber  value="${product.fq[12]}" pattern="###,###"/>
                                 <%--.<span class="little" style="font-size:0.5rem;margin-right:0.4rem">00</span>--%>
-                        <span class="gray" style="color:#999;font-size:1rem;text-decoration:line-through">原价<fmt:formatNumber  value="${product.marketPrice }" pattern="###,###"/>
-                            <%--.<span class="little" style="font-size:0.5rem">00</span>--%>
                         </span></p>
                     </div>
                 </div>

@@ -314,7 +314,7 @@ public class ProductController {
                     model.put("cureMeans", productDetail.getCureMeans());
                     model.put("p", productDetail);
 
-                    Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
+                    Map<Long, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
 
                     Map<Integer, BigDecimal> f = Maps.newHashMap();
                     if (fqs.containsKey(6)) {
