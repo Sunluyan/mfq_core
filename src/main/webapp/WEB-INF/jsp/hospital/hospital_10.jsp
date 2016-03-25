@@ -90,7 +90,8 @@
             </p>    </td>
     </tr>
     <tr>
-        <td align="left" valign="top"> <span class="STYLE6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="STYLE6">
+        <td align="left" valign="top"> <span class="STYLE6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="STYLE6">
 
    北京薇琳医疗美容医院,坐落于东三环内外国使领馆区，东临农展馆，南依三里屯
 西接东直门交通枢纽，雄踞CBD燕莎商圈核心位置。薇琳作为源自美国的18年历史的医疗
