@@ -86,7 +86,7 @@
 	        	</span>
             <br />
             <p style="height:10px;margin: 0;"></p>
-            <span class="STYLE3">地址：重庆市江北区渝澳大道69号</span>
+            <span class="STYLE3">地址：北京市朝阳区东直门外大街12号(三里屯路北口)</span>
             </p>    </td>
     </tr>
     <tr>
