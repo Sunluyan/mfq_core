@@ -317,20 +317,20 @@ public class ProductController {
                     Map<Long, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
 
                     Map<Integer, BigDecimal> f = Maps.newHashMap();
-                    if (fqs.containsKey(6)) {
-                        model.put("fq_6", fqs.get(6));
+                    if (fqs.containsKey(6l)) {
+                        model.put("fq_6", fqs.get(6l));
                     } else {
                         model.put("fq_6", "");
                     }
 
-                    if (fqs.containsKey(12)) {
-                        model.put("fq_12", fqs.get(12));
+                    if (fqs.containsKey(12l)) {
+                        model.put("fq_12", fqs.get(12l));
                     } else {
                         model.put("fq_12", "");
                     }
 
-                    if (fqs.containsKey(3)) {
-                        model.put("fq_3", fqs.get(3));
+                    if (fqs.containsKey(3l)) {
+                        model.put("fq_3", fqs.get(3l));
                     } else {
                         model.put("fq_3", "");
                     }
