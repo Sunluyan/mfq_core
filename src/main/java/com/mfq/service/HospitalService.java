@@ -12,6 +12,8 @@ import com.mfq.bean.app.HospitalDetail2App;
 import com.mfq.bean.app.ProductListItem2App;
 import com.mfq.utils.JsonUtil;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.mfq.bean.Hospital;
@@ -84,9 +86,14 @@ public class HospitalService {
         return mapper.findProCount(hosid);
     }
 
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        HospitalService service = ac.getBean(HospitalService.class);
+        service.getDetailById(0);
+    }
     public String getDetailById(Integer hosId) {
 
-        if (hosId < 0) {
+        if (hosId <= 0) {
             HospitalDetail2App h = new HospitalDetail2App("fuck");
             Product p = productService.findById(231);
             List<Product> list = new ArrayList<>();
@@ -94,7 +101,6 @@ public class HospitalService {
             List<ProductListItem2App> app = productService.convert2AppList(list);
             h.setPros(app);
             return JsonUtil.successResultJson(h);
-
         } else {
             Hospital hospital = mapper.findById(hosId);
             HospitalDetail2App h = new HospitalDetail2App(hospital);
@@ -105,8 +111,28 @@ public class HospitalService {
             h.setPros(app);
             return JsonUtil.successResultJson(h);
         }
+    }
 
+    public HospitalDetail2App getDetailById2Web(Integer hosId) {
 
+        if (hosId <= 0) {
+            HospitalDetail2App h = new HospitalDetail2App("fuck");
+            Product p = productService.findById(231);
+            List<Product> list = new ArrayList<>();
+            list.add(p);
+            List<ProductListItem2App> app = productService.convert2AppList(list);
+            h.setPros(app);
+            return h;
+        } else {
+            Hospital hospital = mapper.findById(hosId);
+            HospitalDetail2App h = new HospitalDetail2App(hospital);
+
+            List<Product> pros = productService.findHotByHospital(hosId.longValue());
+
+            List<ProductListItem2App> app = productService.convert2AppList(pros);
+            h.setPros(app);
+            return h;
+        }
     }
 }
 

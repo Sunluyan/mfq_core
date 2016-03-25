@@ -2,138 +2,204 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
-    <meta name="format-detection" content="telephone=no">
-    <title>医院详情页</title>
-    <style>
-        *{
-            padding:0;
-            margin:0;
-            list-style:none;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            font-size:16px;
-        }
-        .header{
-            width:100%;
-            height:10rem;
-            background:url(images/header-bg.png) no-repeat;
-            background-size:cover;
-        }
-        .title{
-            font-size:1rem;
-            color:#222;
-            padding-left:1rem;
-            height:3rem;
-            line-height:3rem;
-            border-bottom:1px solid #f1f1f1;
-            font-weight: normal;
-        }
-        .decript{
-            font-size:0.6rem;
-            color:#999;
-            padding:0.5rem 0 1rem 1rem;
-            text-spacing: 25;
-            border-bottom:1rem solid #eee;
-        }
-        .img{
-            padding:1rem 1rem 0 1rem;
-        }
-        .img-1{
-            width:100%;
-            height:10rem;
-            margin-bottom:0.3rem;
-        }
-        .more{
-            font-size:0.8rem;
-            color:#333;
-            padding-left:1rem;
-            height:2.5rem;
-            line-height:2.5rem;
-            border-bottom:1px solid #f1f1f1;
 
+    <title>${hospital.name}</title>
+    <script type="text/javascript" src="/js/wx/jquery.js"></script>
+    <style type="text/css">
+        <%-- 4 和 4s --%>
+        @media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+            html{
+                font-size: 62.5%;
+            }
         }
-        .more-item{
-            border-bottom:1px solid #f1f1f1;
-            height:6rem;
-            padding:0.5rem 0 0.5rem 1rem;
-            border-bottom:1px solid #f1f1f1;
-            position:relative;
+        @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+            /* 兼容iphone5 */
+            html{
+                font-size: 80%;
+            }
         }
-        .left{
-            display:inline-block;
-            width:5rem;
-            height:5rem;
-            background:url(images/more-item-1_03.png) no-repeat;
-            background-size:cover;
+        *{
+            margin:0;
+            padding:0;
+            border:none;
+        }
+        body{
+            background:#ccc;
+        }
+        .top img{
+            width:100%;
+        }
+        .hos-info{
+            margin-top: -0.1rem;
+            height:auto;
+            background:white;
+        }
+        .hos-name{
+            padding:1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .hos-desc{
+            padding:1rem;
+            line-height: 1.4;
+            color:#999;
+            text-align: left;
+        }
+
+        .imgs{
+            margin-top: 1rem;
+            background:white;
+            text-align: center;
+            padding-bottom: 0.6rem;
+        }
+        .imgs img{
+            width:95%;
+            padding:0.6rem;
+            padding-bottom: 0;
+        }
+
+        .pros-title{
+            padding:0.6rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .pros{
+            background:white;
+            position: relative;
+            margin-top: 1rem;
+            overflow:hidden;
+        }
+        .pro{
+            border-bottom: 1px solid #ccc;
+        }
+
+        .pro-left{
+            width:30%;
+            height:100%;
+            padding:3%;
             float:left;
+            overflow:hidden;
+            position: relative;
         }
-        .right{
+        .pro-left img{
+            position: relative;
+            left:50%;
+            margin-left: -310px;
+        }
+        .pro-right{
+            width:58%;
             float:left;
-            padding:0 0.5rem 0 0.5rem;
-            height:5rem;
-            width:auto;
+            padding:3%;
         }
-        .red{
-            color:#f43488;
-        }
-        .gray{
-            color:#ccc;
-            font-size:0.5rem;
-        }
-        .gray-right{
-            position:absolute;
-            right:1rem;
-            bottom:1rem;
-        }
-        .del{
-            text-decoration:line-through;
-        }
-        h4{
+        .pro-name{
+            font-size: 1.05rem;
+            padding:3% 0;
             color:#333;
-            height:2rem;
-            line-height:2rem;
         }
+        .pro-price{
+            color:rgb(218,54,126);
+            font-size: 1.3rem;
+        }
+        .market-price{
+            text-decoration: line-through;
+            color:#999;
+        }
+        .buy{
+            color:#999;
+        }
+        .pro-price{
+            margin-top: 2rem;
+        }
+        .pro-right-bottom{
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        .market-price{
+            float:left;
+        }
+        .buy{
+            float:right;
+        }
+
+
+
+
     </style>
 </head>
 <body>
-<div class="header">
-</div>
-<h2 class="title">
-    北京美莱医疗美容医院
-</h2>
-<p class="decript">
-    医院介绍：北京美莱医疗美容医院—隶属于美莱医学美容集团。医院下设整形、皮肤、无创、抗衰老、中医、口腔六大中心，涵盖胸部整形、鼻部整形、眼部整形、祛斑美白、祛痘嫩肤、紧肤除皱、无创塑形、功能医学抗衰老、中医美容、口腔美容等经典项目。
-</p>
-<p class="img">
-    <img class="img-1" src="images/img-1.png" height="300" width="600" alt="">
-    <img class="img-1" src="images/img-2.png" height="300" width="600" alt="">
-    <img class="img-1" src="images/img-3.png" height="300" width="600" alt="">
-</p>
 
-<p class="more">
-    更多产品
-</p>
-<div class="more-item">
-    <span class="left"></span>
-    <div class="right">
-        <H4>韩式半永久眉</H4>
-        <p class="red"><span class="little">￥</span>3200</p>
-        <span class="gray del" >原价￥4500</span>
-    </div>
-    <span class="gray gray-right" >10人购买</span>
+<div class="top">
+    <img src="${hospital.img_hos}">
 </div>
-<div class="more-item">
-    <span class="left"></span>
-    <div class="right">
-        <H4>韩式半永久眉</H4>
-        <p class="red"><span class="little">￥</span>3200</p>
-        <span class="gray del" >原价￥4500</span>
+<div class="hos-info">
+    <div class="hos-name">
+        ${hospital.name}
     </div>
-    <span class="gray gray-right" >10人购买</span>
+    <p class="hos-desc">
+        ${hospital.desc}
+    </p>
+</div>
+
+<div class="imgs">
+    <c:forEach items="${hospital.img_details}" var="img">
+        <img src="${img}">
+    </c:forEach>
+</div>
+
+<div class="pros">
+    <div class="pros-title">
+        更多产品
+    </div>
+    <c:forEach items="${hospital.pros}" var="pro">
+        <div class="pro">
+            <div class="pro-left">
+                <div class="item-1" style="background-image:url(${pro.img});
+                        background-size: auto 100%;width: 100%;min-height:8rem;height:auto;"></div>
+            </div>
+            <div class="pro-right">
+                <p class="pro-name">${pro.name}</p>
+                <p class="pro-price">
+                    ￥${pro.price}
+                </p>
+                <p class="pro-right-bottom">
+                    <span class="market-price">原价￥${pro.marketPrice}</span>
+                    <span class="buy">${pro.saleNum}人购买</span>
+                </p>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </c:forEach>
+
 </div>
 </body>
+<script type="text/javascript">
+    $(".pro").click(function(){
+        alert("该版本不支持此查看产品，请更新版本。")
+    })
+</script>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.mfq.bean.Hospital;
+import com.mfq.bean.app.HospitalDetail2App;
 import com.mfq.constants.ErrorCodes;
 import com.mfq.constants.QiniuBucketEnum;
 import com.mfq.helper.SignHelper;
@@ -41,14 +43,10 @@ public class HospitalController {
      */
     @RequestMapping(value = {"/{hid}/","/{hid}"})
     public String hospitalSdy(@PathVariable("hid") int hid, Model model){
-        String tpp = "error";
-        if(hid == 0){
 
-        }
-        tpp = "hospital_"+hid;
-
-        model.addAttribute("static_url", QiniuBucketEnum.STATIC.getDomain());
-        return "/hospital/"+tpp;
+        HospitalDetail2App h = hospitalService.getDetailById2Web(hid);
+        model.addAttribute("hospital",h);
+        return "/hospital/detail";
     }
 
 

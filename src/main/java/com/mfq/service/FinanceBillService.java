@@ -396,17 +396,17 @@ public class FinanceBillService {
 	}
 
 
-	public Map<Integer,BigDecimal> getFq(Long pid) throws Exception{
+	public Map<Long,BigDecimal> getFq(Long pid) throws Exception{
 		BigDecimal price = productService.selectPriceOrFqPrice(pid);
-		Map<Integer,BigDecimal> fq = new HashMap<>();
+		Map<Long,BigDecimal> fq = new HashMap<>();
 
 		BigDecimal three = price.divide(new BigDecimal(3),2,BigDecimal.ROUND_HALF_EVEN);
 		BigDecimal six = price.divide(new BigDecimal(6),2,BigDecimal.ROUND_HALF_EVEN);
 		BigDecimal twenty = price.divide(new BigDecimal(12),2,BigDecimal.ROUND_HALF_EVEN);
 
-		fq.put(3,three);
-		fq.put(6,six);
-		fq.put(12,twenty);
+		fq.put(3l,three);
+		fq.put(6l,six);
+		fq.put(12l,twenty);
 
 		return fq;
 	}

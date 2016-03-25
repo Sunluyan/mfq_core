@@ -28,7 +28,7 @@ public class OrderCloseService {
     @Resource
     OrderService orderService;
 
-    @Scheduled(cron="0 */1 * * * ?")
+    @Scheduled(cron="0 */60 * * * ?")
     public void start() {
         handleGeneralOrder();
         handleSecKillOrder();

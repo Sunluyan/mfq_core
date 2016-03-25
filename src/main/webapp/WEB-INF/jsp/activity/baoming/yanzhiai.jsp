@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>H5active</title>
+    <title>测你是不是颜值癌</title>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
@@ -71,12 +71,12 @@
         .item-1 .tishi-0 {
             display: none;
             position: relative;
-            width: 16rem;
+            width: 18rem;
             height: 3rem;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22tishi-2.png) no-repeat;
             background-size: cover;
             margin: 0.5rem auto;
-            margin: 2.5rem auto 0rem;
+            margin: 20rem auto 0rem;
             -webkit-animation: tishi-0 1.5s infinite linear 0s alternate;
             -webkit-transition: all 1s linear;
             z-index: 10000;
@@ -661,8 +661,8 @@
             top: 260px;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22button-left.png) no-repeat;
             -webkit-background-size: contain;
-            width: 60px;
-            height: 75px;
+            width: 75px;
+            height: 92px;
             cursor: pointer;
             position: absolute;
             z-index: 100;
@@ -673,9 +673,9 @@
         .shanshan-three {
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22shanshan.png) no-repeat;
             -webkit-background-size: cover;
-            width: 50px;
-            height: 50px;
-            margin-left: 16px;
+            width: 54px;
+            height: 54px;
+            margin-left: 23px;
             margin-top: -7px;
             z-index: 90;
             animation: shanshan 1.5s linear 0s alternate;
@@ -686,6 +686,8 @@
         .item-1 .four-step {
             left: 100px;
             top: 300px;
+            width:75px;
+            height:92px;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22button-left.png) no-repeat;
             background-size: cover;
             animation: mofabang 1s linear 0s alternate;
@@ -695,9 +697,9 @@
         .shanshan-four {
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22shanshan.png) no-repeat;
             -webkit-background-size: cover;
-            width: 50px;
-            height: 50px;
-            margin-left: 16px;
+            width: 54px;
+            height: 54px;
+            margin-left: 23px;
             margin-top: -7px;
             z-index: 90;
             animation: shanshan 1.5s linear 0s alternate;
@@ -737,8 +739,8 @@
             top: 370px;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22button-left.png) no-repeat;
             -webkit-background-size: contain;
-            width: 60px;
-            height: 75px;
+            width: 92px;
+            height: 106px;
             cursor: pointer;
             position: absolute;
             z-index: 100;
@@ -749,9 +751,9 @@
         .shanshan-six {
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22shanshan.png) no-repeat;
             -webkit-background-size: cover;
-            width: 50px;
-            height: 50px;
-            margin-left: 16px;
+            width: 60px;
+            height: 60px;
+            margin-left: 30px;
             margin-top: -7px;
             z-index: 90;
             animation: shanshan 1.5s linear 0s alternate;
@@ -886,8 +888,8 @@
         }
 
         .need {
-            width: 150px;
-            height: 35px;
+            width: 180px;
+            height: 42px;
             margin: 0.5rem auto 0;
             background: url(http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22need.png) no-repeat;
             background-size: cover;
@@ -1342,8 +1344,9 @@
 
             </div>
         </div>
-        <img class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22arrow.png" height="36"
-             width="54"/>
+            <img class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22arrow.png" height="36"
+                 width="54"/>
+
 
     </div>
     <div class="item item-1">
@@ -1437,6 +1440,8 @@
             <div class="shandian-0 shandian-03">
             </div>
             <!--音乐开始-->
+            <img class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22arrow.png" height="36"
+                 width="54" style="position:absolute;z-index: 999;"/>
 
             <!--音乐结束-->
         </div>
@@ -1487,10 +1492,10 @@
         </div>
         <div class="jinxing-two">
 
-
+            <img class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22arrow.png" height="36"
+                 width="54"/>
         </div>
-        <img class="xiangxiatishi" src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22arrow.png" height="36"
-             width="54"/>
+
     </div>
     <div class="item item-4">
         <!--页面3-->
@@ -1503,7 +1508,7 @@
             <p>姓名 <input type="text" id="name" maxlength="10"/></p>
             <p>手机 <input type="text" id="mobile" maxlength="11"/></p>
             <p>微信 <input type="text" id="wechat"/></p>
-            <input type="button" value="提交" class="submit" id="submit"/>
+            <input type="button" value="提交" class="submit tijiao" id="submit"/>
             <div>
             </div>
             <img src="http://7xlcaq.com2.z0.glb.qiniucdn.com/2016-03-22code.jpg" alt="" class="code"/>
@@ -1538,12 +1543,12 @@
                 //console.log('haole')
                 if (tishi == false) {
                     setTimeout(function () {
-                        $('.button-00').hide(1000)
+                        $('.button-00').hide(500)
                         $('.tishi-0').css({
                             'display': 'block'
                         })
 
-                    }, 2000)
+                    }, 1000)
                     tishi = true;
                 }
             }
@@ -1677,9 +1682,73 @@
             }
         })
     })
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    var url = location.href.split('#')[0];
+
+    $.ajax({
+        url:"/wechat/js/token/",
+        data:{
+            url:url
+        },
+        dataType:"json",
+        success:function(json){
+            if(json.code != 0){
+                return;
+            }
+
+
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: json.data.appId, // 必填，公众号的唯一标识
+                timestamp: json.data.timestamp, // 必填，生成签名的时间戳
+                nonceStr: json.data.nonceStr, // 必填，生成签名的随机串
+                signature: json.data.signature,// 必填，签名，见附录1
+                jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            });
+
+            wx.ready(function(){
+
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+                wx.onMenuShareTimeline({
+                    title: '测你的颜值癌', // 分享标题
+                    link: 'http://m.5imfq.com/activity/yanzhiai', // 分享链接
+                    imgUrl: 'http://7xl0ie.com2.z0.glb.qiniucdn.com/2016.03.24%2F%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%883.11.51.png', // 分享图标
+                    success: function () {
+                        alert("分享成功")
+                    },
+                    cancel: function () {
+
+                    }
+                });
+                wx.onMenuShareAppMessage({
+                    title: '测你的颜值癌', // 分享标题
+                    desc: '看脸年代,颜值癌大爆发,你有没有被传染?来给你诊断一下!来!', // 分享描述
+                    link: 'http://m.5imfq.com/activity/yanzhiai', // 分享链接
+                    imgUrl: 'http://7xl0ie.com2.z0.glb.qiniucdn.com/2016.03.24%2F%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-03-24%20%E4%B8%8B%E5%8D%883.11.51.png', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        alert("分享成功")
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+            });
+            wx.error(function(res){
+
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                alert("error")
+            });
 
 
 
+        }
+    })
 </script>
 
 </body>

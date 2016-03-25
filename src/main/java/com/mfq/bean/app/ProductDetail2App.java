@@ -23,7 +23,7 @@ public class ProductDetail2App {
     BigDecimal market_price = BigDecimal.valueOf(0); //原价
     int is_fq;  //是否分期 0 不可分期 1 可分期
     int is_collect; //收藏状态 0 没 1 有
-    Map<Integer, BigDecimal> fqs = Maps.newHashMap();  //分期
+    Map<Long, BigDecimal> fqs = Maps.newHashMap();  //分期
     String before = "";
     String after = "";
     String dairy = "";
@@ -66,10 +66,10 @@ public class ProductDetail2App {
         this.market_price = BigDecimal.valueOf(5000.00);
         this.is_fq = 1;
         this.is_collect = 0;
-        Map<Integer, BigDecimal> fqMap = new HashMap<>();
-        fqMap.put(3, BigDecimal.valueOf(336.25));
-        fqMap.put(6, BigDecimal.valueOf(234.87));
-        fqMap.put(12, BigDecimal.valueOf(155.32));
+        Map<Long, BigDecimal> fqMap = new HashMap<>();
+        fqMap.put(3l, BigDecimal.valueOf(336.25));
+        fqMap.put(6l, BigDecimal.valueOf(234.87));
+        fqMap.put(12l, BigDecimal.valueOf(155.32));
         this.fqs = fqMap;
         this.before = "http://img1.mfqzz.com/img1/p/20160316/145809645474897M.jpg";
         this.after = "http://img1.mfqzz.com/img1/p/20160316/145809645474897M.jpg";
@@ -137,11 +137,11 @@ public class ProductDetail2App {
         this.is_collect = is_collect;
     }
 
-    public Map<Integer, BigDecimal> getFqs() {
+    public Map<Long, BigDecimal> getFqs() {
         return fqs;
     }
 
-    public void setFqs(Map<Integer, BigDecimal> fqs) {
+    public void setFqs(Map<Long, BigDecimal> fqs) {
         this.fqs = fqs;
     }
 

@@ -17,6 +17,7 @@ import org.apache.commons.lang.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -223,140 +224,140 @@ public class ProductController {
 
     java.text.DecimalFormat myformat = new java.text.DecimalFormat("000");
 
-    @RequestMapping(value = {"/app/detail",
-            "/app/detail/"}, method = RequestMethod.GET)
-    public ModelAndView appItemInfo(HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
-        try{
-            String pidStr = request.getParameter("pid");
-            long pid = Long.parseLong(StringUtils.stripToEmpty(pidStr));
-            long uid = UserIdHolder.getLongUid();
-            ProductDetail2App app = productService.getProductDetail2Web(uid, pid);
-
-            request.setAttribute("app",app);
-            return new ModelAndView("/app/product/detail", null);
-
-        }catch(Exception e){
-            logger.error(e.toString());
-            return new ModelAndView("/app/product/detail", null);
-        }
-
-    }
-
-
-
-
 //    @RequestMapping(value = {"/app/detail",
 //            "/app/detail/"}, method = RequestMethod.GET)
 //    public ModelAndView appItemInfo(HttpServletRequest request,
-//                                    HttpServletResponse response) {
-//        Map<String, Object> model = Maps.newHashMap();
-//        String ret = "";
-//        try {
+//                                    Model model) throws Exception {
+//        try{
+//            String pidStr = request.getParameter("pid");
+//            long pid = Long.parseLong(StringUtils.stripToEmpty(pidStr));
+//            long uid = UserIdHolder.getLongUid();
+//            ProductDetail2App app = productService.getProductDetail2Web(uid, pid);
 //
-//            String pid = request.getParameter("pid");
-//            if (StringUtils.isBlank(pid)) { // 参数异常
-//                model.put("error", "参数异常");
-//                return new ModelAndView("/app/product/detail", model);
-//            }
-//            long id = Long.parseLong(pid);
-//            UserOperationUtil.setProduct(UserIdHolder.getLongUid(), (int) id);  //添加浏览数
-//            ProductDetail productDetail = null;
+//            model.addAttribute("app",app);
 //
+//            return new ModelAndView("/app/product/detail", null);
 //
-//            if (id > 0) {
-//                model.put("error", "");
-//                Product product = productService.findById(id);
-//
-//                //产品特殊处理
-//                if (id == 129) {
-//                    return new ModelAndView("/app/product/t/1980", model);
-//                } else if (id == 130) {
-//                    return new ModelAndView("/app/product/t/3980", model);
-//                } else if (id == 131) {
-//                    return new ModelAndView("/app/product/t/6980", model);
-//                }
-//
-//                model.put("title", product.getName() + "-美分期");
-//                model.put("name", product.getName());
-//                model.put("viewNum", String.valueOf(product.getViewNum()));
-//                model.put("endTime", DateUtil.formatCZYYYYMMDD(product.getDateEnd()));
-//                model.put("price", product.getPrice().toString());
-//                model.put("purl", product.getImg());
-//                model.put("type", product.getType().getId());
-//                model.put("market_price", myformat.format(product.getMarketPrice()));
-//                model.put("begin_time", DateUtil.formatCZYYYYMMDD(product.getDateStart()));
-//                model.put("end_time", DateUtil.formatCZYYYYMMDD(product.getDateEnd()));
-//
-//                productDetail = productService.findProductDetailByPid(id);
-//                if (productDetail != null) {
-//                    model.put("consume_step", productDetail.getConsumeStep());  //消费流程
-//                    model.put("reserve", productDetail.getReserve());  //如何预约
-//                    model.put("special_note", productDetail.getSpecialNote());  //特殊说明
-//                    model.put("body", productDetail.getBody()); //简介
-//                }
-//
-//
-//                Map<String, Object> fq = FQUtil.fenqiMaxCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
-//                model.put("p_price", String.valueOf(fq.get("p_price")));
-//                model.put("p_num", String.valueOf(fq.get("p_num")));
-//
-//                Hospital hospital = hospitalService.findById(product.getHospitalId());
-//                model.put("hid", String.valueOf(hospital.getId()));
-//                model.put("hospital_name", hospital.getName());
-//                model.put("hospital_addr", hospital.getAddress());
-//                model.put("hospital_img", hospital.getImg());
-//
-//                ret = "/app/product/detail";
-//
-//                if (id > 120) {
-//                    model.put("cureMeans", productDetail.getCureMeans());
-//                    model.put("p", productDetail);
-//
-//                    Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
-//
-//                    Map<Integer, BigDecimal> f = Maps.newHashMap();
-//                    if (fqs.containsKey(6)) {
-//                        model.put("fq_6", fqs.get(6));
-//                    } else {
-//                        model.put("fq_6", "");
-//                    }
-//
-//                    if (fqs.containsKey(12)) {
-//                        model.put("fq_12", fqs.get(12));
-//                    } else {
-//                        model.put("fq_12", "");
-//                    }
-//
-//                    if (fqs.containsKey(3)) {
-//                        model.put("fq_3", fqs.get(3));
-//                    } else {
-//                        model.put("fq_3", "");
-//                    }
-//                    BigDecimal t = product.getMarketPrice().subtract(product.getPrice());
-//                    model.put("bt", myformat.format(t));
-//                    List<ProductImg> imgs = productService.findProductImg(id);
-//                    model.put("imgs", product.getImg());
-//                    ret = "/app/product/detailn";
-//                } else {
-//                    model.put("error", "product_not_exist");
-//                }
-//
-//
-//                String s = StringUtils.stripToEmpty(request.getParameter("s"));
-//                if (!"".equals(s)) {
-//                    model.put("s", true);
-//                } else {
-//                    model.put("s", false);
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            logger.error("Exception ProductInfo Process!", e);
-//            model.put("error", "系统异常");
+//        }catch(Exception e){
+//            logger.error(e.toString());
+//            return new ModelAndView("/app/product/detail", null);
 //        }
-//        return new ModelAndView(ret, model);
 //    }
+
+
+
+
+    @RequestMapping(value = {"/app/detail",
+            "/app/detail/"}, method = RequestMethod.GET)
+    public ModelAndView appItemInfo(HttpServletRequest request,
+                                    HttpServletResponse response) {
+        Map<String, Object> model = Maps.newHashMap();
+        String ret = "";
+        try {
+
+            String pid = request.getParameter("pid");
+            if (StringUtils.isBlank(pid)) { // 参数异常
+                model.put("error", "参数异常");
+                return new ModelAndView("/app/product/detail", model);
+            }
+            long id = Long.parseLong(pid);
+            UserOperationUtil.setProduct(UserIdHolder.getLongUid(), (int) id);  //添加浏览数
+            ProductDetail productDetail = null;
+
+
+            if (id > 0) {
+                model.put("error", "");
+                Product product = productService.findById(id);
+
+                //产品特殊处理
+                if (id == 129) {
+                    return new ModelAndView("/app/product/t/1980", model);
+                } else if (id == 130) {
+                    return new ModelAndView("/app/product/t/3980", model);
+                } else if (id == 131) {
+                    return new ModelAndView("/app/product/t/6980", model);
+                }
+
+                model.put("title", product.getName() + "-美分期");
+                model.put("name", product.getName());
+                model.put("viewNum", String.valueOf(product.getViewNum()));
+                model.put("endTime", DateUtil.formatCZYYYYMMDD(product.getDateEnd()));
+                model.put("price", product.getPrice().toString());
+                model.put("purl", product.getImg());
+                model.put("type", product.getType().getId());
+                model.put("market_price", myformat.format(product.getMarketPrice()));
+                model.put("begin_time", DateUtil.formatCZYYYYMMDD(product.getDateStart()));
+                model.put("end_time", DateUtil.formatCZYYYYMMDD(product.getDateEnd()));
+
+                productDetail = productService.findProductDetailByPid(id);
+                if (productDetail != null) {
+                    model.put("consume_step", productDetail.getConsumeStep());  //消费流程
+                    model.put("reserve", productDetail.getReserve());  //如何预约
+                    model.put("special_note", productDetail.getSpecialNote());  //特殊说明
+                    model.put("body", productDetail.getBody()); //简介
+                }
+
+
+                Map<String, Object> fq = FQUtil.fenqiMaxCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
+                model.put("p_price", String.valueOf(fq.get("p_price")));
+                model.put("p_num", String.valueOf(fq.get("p_num")));
+
+                Hospital hospital = hospitalService.findById(product.getHospitalId());
+                model.put("hid", String.valueOf(hospital.getId()));
+                model.put("hospital_name", hospital.getName());
+                model.put("hospital_addr", hospital.getAddress());
+                model.put("hospital_img", hospital.getImg());
+
+                ret = "/app/product/detail";
+
+                if (id > 120) {
+                    model.put("cureMeans", productDetail.getCureMeans());
+                    model.put("p", productDetail);
+
+                    Map<Integer, BigDecimal> fqs = FQUtil.fenqiCompute(productService.selectPriceOrFqPrice(id));// 分期得计算规则
+
+                    Map<Integer, BigDecimal> f = Maps.newHashMap();
+                    if (fqs.containsKey(6)) {
+                        model.put("fq_6", fqs.get(6));
+                    } else {
+                        model.put("fq_6", "");
+                    }
+
+                    if (fqs.containsKey(12)) {
+                        model.put("fq_12", fqs.get(12));
+                    } else {
+                        model.put("fq_12", "");
+                    }
+
+                    if (fqs.containsKey(3)) {
+                        model.put("fq_3", fqs.get(3));
+                    } else {
+                        model.put("fq_3", "");
+                    }
+                    BigDecimal t = product.getMarketPrice().subtract(product.getPrice());
+                    model.put("bt", myformat.format(t));
+                    List<ProductImg> imgs = productService.findProductImg(id);
+                    model.put("imgs", product.getImg());
+                    ret = "/app/product/detailn";
+                } else {
+                    model.put("error", "product_not_exist");
+                }
+
+
+                String s = StringUtils.stripToEmpty(request.getParameter("s"));
+                if (!"".equals(s)) {
+                    model.put("s", true);
+                } else {
+                    model.put("s", false);
+                }
+            }
+
+        } catch (Exception e) {
+            logger.error("Exception ProductInfo Process!", e);
+            model.put("error", "系统异常");
+        }
+        return new ModelAndView(ret, model);
+    }
 
     @RequestMapping(value = {"/detail", "/detail/"}, method = {RequestMethod.GET, RequestMethod.POST})
     public
