@@ -17,7 +17,7 @@ CREATE TABLE `users` (
   `location` varchar(128) NOT NULL DEFAULT '' COMMENT 'locations, separated by comma',
   `birthday` int(11) NOT NULL DEFAULT '0' COMMENT 'birthday using big number',
   `intro` varchar(1024) NOT NULL DEFAULT '' COMMENT 'user intro',
-  `interest` varchar(128) NOT NULL DEFAULT '',
+  `interest` varchar(128) NOT N  ULL DEFAULT '',
   `homesite` varchar(256) NOT NULL DEFAULT '' COMMENT 'homesites,separated by comma',
   `career` varchar(64) NOT NULL DEFAULT '' COMMENT 'carees,separated by comma',
   `created_at` datetime NOT NULL COMMENT 'record created time',
