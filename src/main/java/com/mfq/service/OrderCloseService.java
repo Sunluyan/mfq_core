@@ -28,12 +28,12 @@ public class OrderCloseService {
     @Resource
     OrderService orderService;
 
-    @Scheduled(cron="0 */60 * * * ?")
-    public void start() {
-        handleGeneralOrder();
-        handleSecKillOrder();
-        handleSpecialOrder();
-    }
+//    @Scheduled(cron="0 */60 * * * ?")
+//    public void start() {
+//        handleGeneralOrder();
+//        handleSecKillOrder();
+//        handleSpecialOrder();
+//    }
 
     /**
      * 处理普通订单的环节，普通订单失效时间为1小时
