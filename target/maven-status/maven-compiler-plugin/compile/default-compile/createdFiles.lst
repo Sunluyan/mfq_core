@@ -16,6 +16,7 @@ com/mfq/bean/OperationRecordExample$Criteria.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$27.class
 com/mfq/controller/LoginController.class
 com/mfq/utils/DnsUtil.class
+com/mfq/bean/ProductImageExample$Criteria.class
 com/mfq/net/wukongbao/pojo/QueryPolicy.class
 com/mfq/bean/BilltopayExample.class
 com/mfq/bean/ProFqRecordExample$GeneratedCriteria.class
@@ -57,6 +58,7 @@ com/mfq/bean/page/SimplePage.class
 com/mfq/service/tesk/TaskSmsService.class
 com/mfq/service/user/UserQuotaService.class
 com/mfq/bean/coupon/CouponBatchInfo.class
+com/mfq/bean/ProductImageExample$Criterion.class
 com/mfq/dao/ForbiddenWordMapper.class
 com/mfq/payment/util/unionpay/BeeCloudConfigure.class
 com/mfq/bean/app/Refund2App.class
@@ -172,6 +174,7 @@ com/mfq/dataservice/cache/impl/RedisCacheManipulater$16.class
 com/mfq/bean/CodeMsg.class
 com/mfq/bean/app/ProductInfo2App$Hospital.class
 com/mfq/bean/ActivityRecordExample.class
+com/mfq/bean/ProductDetailNew.class
 com/mfq/cache/IPRateLimiter.class
 com/mfq/bean/DeviceExample$Criterion.class
 com/mfq/utils/XMLConverUtil.class
@@ -187,9 +190,12 @@ com/mfq/dataservice/cache/impl/RedisCacheManipulater$32.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$4.class
 com/mfq/controller/PaymentController.class
 com/mfq/net/wukongbao/pojo/TimeSync.class
+com/mfq/dao/ProductImageMapper.class
 com/mfq/bean/ProFqRecord.class
+com/mfq/bean/ProductDetailNewExample.class
 com/mfq/bean/PresentalExample.class
 com/mfq/constants/ProductType.class
+com/mfq/bean/BaomingExample.class
 com/mfq/bean/DeviceExample$GeneratedCriteria.class
 com/mfq/dao/area/CityMapper.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$31.class
@@ -225,6 +231,7 @@ com/mfq/service/CouponService.class
 com/mfq/bean/PolicyInfoExample.class
 com/mfq/controller/wechat/WeChatController.class
 com/mfq/dao/DeviceMapper.class
+com/mfq/bean/Baoming.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$68.class
 com/mfq/handler/EnumOrdinalTypeHandler.class
 com/mfq/payment/util/wechat/HttpsUtil.class
@@ -235,6 +242,7 @@ com/mfq/constants/Career.class
 com/mfq/net/tongdun/FraudApiInvoker.class
 com/mfq/bean/app/ProductInfo2App$Product.class
 com/mfq/constants/SmsConstants.class
+com/mfq/service/ProductImageService.class
 com/mfq/bean/wechat/message/Music.class
 com/mfq/bean/wechat/message/News.class
 com/mfq/bean/page/Paginable.class
@@ -272,14 +280,18 @@ com/mfq/dataservice/cache/impl/RedisCacheManipulater$34.class
 com/mfq/service/sms/SMSInnerService$4.class
 com/mfq/bean/Comment.class
 com/mfq/bean/PolicyInfoExample$Criteria.class
+com/mfq/constants/ProductImageType.class
 com/mfq/service/sms/MobileMessageClient$2.class
+com/mfq/bean/BaomingExample$Criteria.class
 com/mfq/task/base/ExecuteTaskService.class
 com/mfq/bean/passport/OauthStatus.class
 com/mfq/service/ActivityService.class
 com/mfq/exception/LockedException.class
+com/mfq/bean/ProductImageExample.class
 com/mfq/payment/util/yeepay/PayAPIURIList.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$47.class
 com/mfq/service/user/UserExtendService.class
+com/mfq/dao/ProductDetailNewMapper.class
 com/mfq/service/wechat/WeChatService.class
 com/mfq/dao/PortalTongdunMapper.class
 com/mfq/task/FinanceTask.class
@@ -324,6 +336,7 @@ com/mfq/dao/UsersAuthPicMapper.class
 com/mfq/bean/InviteRecordExample$Criterion.class
 com/mfq/controller/TestController.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$42.class
+com/mfq/bean/ProductImageExample$GeneratedCriteria.class
 com/mfq/bean/SysOperationRecordExample$GeneratedCriteria.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$15.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$55.class
@@ -336,6 +349,7 @@ com/mfq/service/sms/provider/NullMessageProvider.class
 com/mfq/utils/MailHomeUtils.class
 com/mfq/helper/MobileHelper.class
 com/mfq/net/wukongbao/WukongBaoClient2.class
+com/mfq/dao/BaomingMapper.class
 com/mfq/dao/NotificationMapper.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$26.class
 com/mfq/bean/BilltopayExample$Criteria.class
@@ -391,6 +405,7 @@ com/mfq/filemanipulate/image/ImageType.class
 com/mfq/utils/MD5Util.class
 com/mfq/service/LoginService.class
 com/mfq/utils/ListSortUtil$1.class
+com/mfq/bean/app/ProductDetail2App.class
 com/mfq/dao/UserExtendMapper.class
 com/mfq/exception/AccountExpiredException.class
 com/mfq/bean/user/BasicUser.class
@@ -411,6 +426,7 @@ com/mfq/annotation/CheckRiskHtml.class
 com/mfq/service/sms/SMSInnerService$1.class
 com/mfq/utils/JsonUtil.class
 com/mfq/utils/CommonUtil.class
+com/mfq/bean/app/HospitalDetail2App.class
 com/mfq/controller/PictureController.class
 com/mfq/bean/ProFqRecordExample$Criteria.class
 com/mfq/bean/BilltopayExample$GeneratedCriteria.class
@@ -429,8 +445,10 @@ com/mfq/dataservice/cache/impl/RedisCacheManipulater$37.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$57.class
 com/mfq/bean/app/FinanceOrder2App.class
 com/mfq/payment/util/yeepay/encrypt/ConfigureEncryptAndDecrypt.class
+com/mfq/bean/BaomingExample$Criterion.class
 com/mfq/dao/MsInstallationMapper.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$9.class
+com/mfq/bean/ProductDetailNewExample$Criterion.class
 com/mfq/constants/PolicyStatus.class
 com/mfq/service/PolicyService.class
 com/mfq/bean/SysOperationRecord.class
@@ -508,6 +526,7 @@ com/mfq/cache/WeChatJsApiTicketCacheUtils.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$53.class
 com/mfq/bean/app/PolicyListForApp.class
 com/mfq/bean/app/ProductListItem2App.class
+com/mfq/bean/ProductDetailNewExample$GeneratedCriteria.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$45.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$50.class
 com/mfq/bean/user/UserQuota.class
@@ -523,10 +542,12 @@ com/mfq/handler/CardTypeEnumHandler.class
 com/mfq/service/InviteService.class
 com/mfq/bean/user/UserConstants.class
 com/mfq/bean/InviteRecordExample$Criteria.class
+com/mfq/bean/ProductImage.class
 com/mfq/cache/TicketCacheUtils.class
 com/mfq/dao/SysConfigMapper.class
 com/mfq/dataservice/context/AppContext.class
 com/mfq/net/wukongbao/pojo/QueryPolicy$QueryPolicyData.class
+com/mfq/bean/BaomingExample$GeneratedCriteria.class
 com/mfq/controller/ProductController.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater.class
 com/mfq/bean/user/Status.class
@@ -548,6 +569,7 @@ com/mfq/dao/UserQuotaMapper.class
 com/mfq/service/sms/provider/MaiXunMessageProvider.class
 com/mfq/dao/PolicyInfoMapper.class
 com/mfq/task/WeChatTask.class
+com/mfq/bean/ProductDetailNewExample$Criteria.class
 com/mfq/handler/OrderTypeEnumHandler.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$51.class
 com/mfq/servlet/UserTraceFilter.class

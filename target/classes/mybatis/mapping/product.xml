@@ -17,7 +17,7 @@
     <select id="findById" resultType="Product">
         select
         <include refid="selectsql"/>
-        from product where id=#{id} and `flag` != -1
+        from product where id=#{id}
     </select>
 
     <select id="findByClass" resultType="Product">
@@ -85,7 +85,7 @@
 	</update>
 
     <update id="updateProcuctSaleNum">
-		update product set sale_num = sale_num where id = #{pid}
+		update product set sale_num = sale_num+1 where id = #{pid}
 	</update>
 
     <select id="selectByHospitals" resultType="Product">
@@ -129,6 +129,15 @@
         <foreach collection="pids" open="(" close=")" separator="," item="pid">
             #{pid}
         </foreach>
+    </select>
+
+    <select id="findHotByHospital" resultType="Product" >
+      SELECT
+      <include refid="selectsql"/>
+        from product
+        where hospital_id = #{hosId}
+        order by sale_num desc
+        limit 0,3
     </select>
 
 </mapper>
