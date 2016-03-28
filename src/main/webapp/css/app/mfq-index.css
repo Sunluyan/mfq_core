@@ -94,7 +94,7 @@ html,body{
     -moz-box-sizing: border-box;
 }
 .i-biaoqian{
-    border-left:0.4rem solid #ee4562;
+    border-left:0.6rem solid #ee4562;
     color:#ee4562;
     background:#f8f8f8;
 }
@@ -103,7 +103,6 @@ html,body{
     background:#fff;
     padding:1rem 1rem;
     overflow: hidden;
-    margin-bottom: 0.5rem;
 }
 .header_2 .header-inner{
     overflow: hidden;
@@ -170,7 +169,7 @@ html,body{
     left:0;
     bottom:0;
     text-align: center;
-    line-height: 2.5rem;
+    line-height: 3rem;
     font-size: 1.2rem;
     color:#fff;
 }
@@ -261,6 +260,13 @@ html,body{
     line-height: 4.6rem;
     color:#555;
 }
+
+.item-foot-l .top img{
+    position: relative;
+    bottom:-0.4rem;
+    width:0.9rem;
+}
+
 .item-foot-l .bottom{
     overflow: hidden;
     height:3rem;
@@ -306,8 +312,9 @@ html,body{
 .foot-r-top{
     text-align: left;
     height:2.2rem;
-    font-size:1.5rem;
+    font-size:1.8rem;
     margin-top:1rem;
+    font-weight: bold;
     color:#333;
 }
 .foot-r-bottom p{

@@ -38,12 +38,17 @@ public class ProductDetail2App {
     String hos_desc = "";
     Integer hos_id = 0;
 
+    Long pid = 0l;
+    String share_url = "";
+
     public ProductDetail2App(Product product, ProductDetailNew detail) {
         this.name = product.getName();
         this.cheap_reason = detail.getPreferential();
         this.price = product.getPrice();
         this.market_price = product.getMarketPrice();
         this.is_fq = 1;
+        this.pid = product.getId();
+        this.share_url = "/product/app/detail?pid="+product.getId();
 
 //        String askStr = detail.getAsk();
 //        if(StringUtils.isNotEmpty(askStr)){
@@ -87,6 +92,7 @@ public class ProductDetail2App {
         this.hos_name = "北京美莱医疗美容医院";
         this.hos_desc = "北京美莱医疗美容医院—隶属于美莱医学美容集团。医院下设整形、皮肤、无创、抗衰老、中医、口腔六大中心，涵盖胸部整形、鼻部整形、眼部整形、祛斑美白、祛痘嫩肤、紧肤除皱、无创塑形、功能医学抗衰老、中医美容、口腔美容等经典项目.";
         this.hos_id = 3;
+        this.share_url = "/product/app/detail?pid="+this.pid;
     }
 
     public String getName() {
@@ -233,6 +239,21 @@ public class ProductDetail2App {
         this.hos_id = hos_id;
     }
 
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    public String getShare_url() {
+        return share_url;
+    }
+
+    public void setShare_url(String share_url) {
+        this.share_url = share_url;
+    }
 
     public void setImages(List<ProductImg> imgs, List<ProductImage> images) {
         for (ProductImg img : imgs) {

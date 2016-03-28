@@ -162,7 +162,7 @@
             <div class="update"></div>
             <div class="item-foot">
                 <div class="item-foot-l">
-                    <p class="top">${product.city}</p>
+                    <p class="top"><img src="http://7xlb4j.com2.z0.glb.qiniucdn.com/home%2Fimages%2Fposition.png"> ${product.city}</p>
                     <div class="bottom">
                         <div class="bottom-r">
                             ${product.hospitalName}

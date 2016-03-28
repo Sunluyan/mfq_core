@@ -165,7 +165,7 @@ public class ProductService {
             bean.setMarketPrice(pt.getMarketPrice());
             bean.setSubsidy(pt.getMarketPrice().subtract(pt.getPrice()));
             bean.setUrl("http://" + Constants.SITE_DOMAIN + "/product/app/detail?pid=" + pt.getId());
-
+            bean.setSaleNum(pt.getSaleNum()+pt.getId());
             for (Hospital hospital : hospitals) {
                 if (pt.getHospitalId() == hospital.getId()) {
                     bean.setHospitalName(hospital.getName());
@@ -305,6 +305,7 @@ public class ProductService {
         ProductDetail2App app = new ProductDetail2App(product, detail);
         /**
          String hos_desc = "";
+
          */
         app.setIs_collect(favoritesService.isCollect(pid, uid));
         app.setFqs(financeBillService.getFq(pid));

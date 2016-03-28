@@ -735,6 +735,17 @@ public class TestController {
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
     }
+    public static void testProductDetail(){
+        String url = purl+"/product/detail";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("pid", 232);
+        params.put("uid", 2232);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
 
     
 //    private final static String purl="http://i.5imfq.com/";
@@ -745,18 +756,13 @@ public class TestController {
     private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
-       // testProfile();
+   // testProfile();
 //        testBeecloud();
 //        testCallback();
 //        testOrderFinance();
 //        testFinanceList2();
 //        testHospitalDetail();
-
-        Map<Integer,String> map = new HashMap<>();
-        map.put(1,"fuck");
-        map.put(2,"you");
-        map.put(3,"all");
-
+        testProductDetail();
 
     }
     
