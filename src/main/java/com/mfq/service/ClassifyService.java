@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.mfq.bean.ProductClassify;
 import com.mfq.dao.ClassifyMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClassifyService {
@@ -36,15 +37,18 @@ public class ClassifyService {
     public long insertOne(ProductClassify pc){
         return mapper.insertOne(pc);
     }
-    
+
+    @Transactional(readOnly = true)
     public ProductClassify findById(int id){
         return mapper.findById(id);
     }
-    
+
+    @Transactional(readOnly = true)
     public List<ProductClassify> findByRootId(int rootId){
         return  mapper.findByRootId(rootId);
     }
 
+    @Transactional(readOnly = true)
 	public List<Integer> findClassIdsByRootId(int rootId) {
 		return mapper.findClassIdsByRootId(rootId);
 	}

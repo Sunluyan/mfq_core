@@ -22,8 +22,8 @@ public class OrderCloseTask extends DefaultTask {
     public void doTask() throws Exception {
     	logger.info("task  start....");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
-        OrderCloseService service = context.getBean(OrderCloseService.class);
-        service.start();
+//        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+//        OrderCloseService service = context.getBean(OrderCloseService.class);
+//        service.start();
     }
 }

@@ -6,6 +6,7 @@ import com.mfq.annotation.MFQDao;
 import com.mfq.bean.user.Status;
 import com.mfq.bean.user.User;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,11 +17,11 @@ public interface UserMapper {
     public long insertUser(User user);
 
     public User queryUser(@Param("uid") long uid);
-    
+
     public User queryUserByEmail(@Param("email") String email);
     
     public User queryUserByMobile(@Param("mobile") String mobile);
-    
+
     public boolean updateStatus(@Param("uid") long uid, @Param("status") Status status);
     
     public boolean updateSetSigns(@Param("uid") long uid, @Param("setSign") int setSign);

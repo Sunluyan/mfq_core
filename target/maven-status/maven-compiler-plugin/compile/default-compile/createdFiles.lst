@@ -158,6 +158,7 @@ com/mfq/controller/RegisterController.class
 com/mfq/handler/BillStatusEnumHandler.class
 com/mfq/bean/ActivityRecordExample$Criteria.class
 com/mfq/controller/HospitalController.class
+com/mfq/utils/datasource/DynamicSqlSessionTemplate.class
 com/mfq/utils/DateUtil.class
 com/mfq/bean/wechat/message/ImageMessage.class
 com/mfq/bean/sms/SMSSendStatus.class
@@ -208,6 +209,7 @@ com/mfq/bean/user/UsersAuthPicExample.class
 com/mfq/dataservice/cache/impl/transcoders/CachedData.class
 com/mfq/payment/PayFactory.class
 com/mfq/filemanipulate/image/service/QiniuManipulater.class
+com/mfq/utils/datasource/DynamicDataSourceTransactionManager.class
 com/mfq/bean/ActivityRecordExample$Criterion.class
 com/mfq/service/sms/provider/UcpaasMessageProvider.class
 com/mfq/net/wukongbao/pojo/WkbConstants.class
@@ -300,6 +302,7 @@ com/mfq/utils/RunnerUtils$DefaultThreadFactory.class
 com/mfq/payment/BasePaymentService.class
 com/mfq/bean/PolicyInfoExample$Criterion.class
 com/mfq/bean/notification/Notification.class
+com/mfq/utils/datasource/DynamicDataSource.class
 com/mfq/bean/app/ProductListItem2App2.class
 com/mfq/dao/InviteRecordMapper.class
 com/mfq/bean/wechat/WeChatMsg.class
@@ -423,6 +426,7 @@ com/mfq/bean/HomeBanner.class
 com/mfq/payment/util/yeepay/common/RandomUtil.class
 com/mfq/task/MailTask.class
 com/mfq/annotation/CheckRiskHtml.class
+com/mfq/utils/datasource/DynamicLazyConnectionDataSourceProxy.class
 com/mfq/service/sms/SMSInnerService$1.class
 com/mfq/utils/JsonUtil.class
 com/mfq/utils/CommonUtil.class
@@ -572,6 +576,7 @@ com/mfq/task/WeChatTask.class
 com/mfq/bean/ProductDetailNewExample$Criteria.class
 com/mfq/handler/OrderTypeEnumHandler.class
 com/mfq/dataservice/cache/impl/RedisCacheManipulater$51.class
+com/mfq/utils/datasource/DataSourceHolder.class
 com/mfq/servlet/UserTraceFilter.class
 com/mfq/utils/VerifyUtils.class
 com/mfq/bean/Installation.class

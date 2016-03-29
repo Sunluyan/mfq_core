@@ -1,5 +1,6 @@
 package com.mfq.controller;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,9 +8,12 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
 import com.mfq.payment.util.wechat.HttpsUtil;
+import com.mfq.service.user.UserService;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.MFQAdminUtil;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestController {
     
@@ -735,17 +739,6 @@ public class TestController {
         String resp = HttpUtil.postJson(url, body, true);
         System.out.println(resp);
     }
-    public static void testProductDetail(){
-        String url = purl+"/product/detail";
-        Map<String, Object> params = Maps.newHashMap();
-        params.put("pid", 232);
-        params.put("uid", 2232);
-        String sign = SignHelper.makeSign(params);
-        params.put("sign", sign);
-        String body = JsonUtil.writeToJson(params);
-        String resp = HttpUtil.postJson(url, body, true);
-        System.out.println(resp);
-    }
 
     
 //    private final static String purl="http://i.5imfq.com/";
@@ -756,13 +749,13 @@ public class TestController {
     private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
-   // testProfile();
-//        testBeecloud();
-//        testCallback();
-//        testOrderFinance();
-//        testFinanceList2();
-//        testHospitalDetail();
-        testProductDetail();
+
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        UserService userService = ac.getBean(UserService.class);
+
+        userService.queryUsersByPage(1,4);
+
+        userService.findByU(2798);
 
     }
     

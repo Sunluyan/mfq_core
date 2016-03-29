@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.mfq.bean.Hospital;
 import com.mfq.dao.HospitalMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class HospitalService {
@@ -39,6 +40,7 @@ public class HospitalService {
         return mapper.findAll();
     }
 
+    @Transactional(readOnly = true)
     public List<Map<String, Object>> findHospitalByCity(long cityId) {
         //  Auto-generated method stub
         List<Hospital> hospitals = mapper.findByCity(cityId);

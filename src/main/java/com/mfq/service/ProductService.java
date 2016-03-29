@@ -12,12 +12,14 @@ import com.mfq.bean.passport.PassportOauth;
 import com.mfq.dao.*;
 import com.mfq.utils.JsonUtil;
 import org.apache.commons.lang.StringUtils;
+import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.google.common.collect.Lists;
@@ -131,7 +133,7 @@ public class ProductService {
 
     }
 
-
+    @Transactional(readOnly = true)
     public List<ProductListItem2App> findByFlag(int city, ProductFlag recommend, int type) {
         ProductType productType = ProductType.fromId(type);
         if (productType == null) {

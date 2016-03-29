@@ -36,18 +36,62 @@
 		</property>
 	</bean>
 
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="slave" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+		<property name="poolProperties">
+			<bean class="org.apache.tomcat.jdbc.pool.PoolProperties">
+				<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+				<property name="url" value="${jdbc_slave.url}"></property>
+				<property name="username" value="${jdbc_slave.username}"></property>
+				<property name="password" value="${jdbc_slave.password}"></property>
+				<property name="jmxEnabled" value="true" />
+				<property name="testWhileIdle" value="true" />
+				<property name="testOnBorrow" value="true" />
+				<property name="testOnReturn" value="false" />
+				<property name="validationInterval" value="30000" />
+				<property name="validationQuery" value="select 1" />
+				<property name="timeBetweenEvictionRunsMillis" value="15000" />
+				<property name="maxActive" value="10" />
+				<property name="initialSize" value="1" />
+				<property name="maxWait" value="3000" />
+				<property name="minEvictableIdleTimeMillis" value="3000" />
+				<property name="minIdle" value="10" />
+				<property name="maxIdle" value="10" />
+				<property name="logAbandoned" value="true" />
+				<property name="removeAbandoned" value="true" />
+				<property name="removeAbandonedTimeout" value="60" />
+				<property name="jdbcInterceptors"
+						  value="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.mfq.utils.datasource.DynamicDataSource">
+		<property name="master" ref="routingDS" />
+		<property name="slaves">
+			<list>
+				<ref bean="slave"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="com.mfq.utils.datasource.DynamicDataSourceTransactionManager">
 		<property name="dataSource" ref="routingDS" />
 	</bean>
 
-	<bean id="lazyDsTOP" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
-		<property name="targetDataSource" ref="routingDS" />
-		<property name="defaultAutoCommit" value="true" />
-		<property name="defaultTransactionIsolation" value="-1" />
-	</bean>
+
+	<!-- 以 @Transactional 标注来定义事务  -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+						  proxy-target-class="true" />
+
+
+	<!--<bean id="lazyDsTOP" class="com.mfq.utils.datasource.DynamicLazyConnectionDataSourceProxy">-->
+		<!--<property name="targetDataSource" ref="routingDS" />-->
+		<!--<property name="defaultAutoCommit" value="true" />-->
+		<!--<property name="defaultTransactionIsolation" value="-1" />-->
+	<!--</bean>-->
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="lazyDsTOP" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis/sql-map-config.xml" />
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

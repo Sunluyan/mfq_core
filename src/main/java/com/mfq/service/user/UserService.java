@@ -342,4 +342,15 @@ public class UserService {
     public List<User> queryUsersByPage(int p, int size){
         return mapper.queryUsersByPage(p,size);
     }
+
+
+    @Transactional(readOnly = true)
+    public void findByU(long uid){
+        mapper.queryUser(uid);
+    }
+
+    @Transactional(readOnly = false)
+    public void updateMo(long uid){
+        mapper.updateStatus(uid,Status.DELETED);
+    }
 }
