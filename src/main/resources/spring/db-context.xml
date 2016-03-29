@@ -84,14 +84,19 @@
 						  proxy-target-class="true" />
 
 
-	<!--<bean id="lazyDsTOP" class="com.mfq.utils.datasource.DynamicLazyConnectionDataSourceProxy">-->
-		<!--<property name="targetDataSource" ref="routingDS" />-->
-		<!--<property name="defaultAutoCommit" value="true" />-->
-		<!--<property name="defaultTransactionIsolation" value="-1" />-->
-	<!--</bean>-->
+	<bean id="lazyDsTOP" class="com.mfq.utils.datasource.DynamicLazyConnectionDataSourceProxy">
+		<property name="master" ref="routingDS" />
+		<property name="slaves">
+			<list>
+				<ref bean="slave"/>
+			</list>
+		</property>
+		<property name="defaultAutoCommit" value="true" />
+		<property name="defaultTransactionIsolation" value="-1" />
+	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="lazyDsTOP" />
 		<property name="configLocation" value="classpath:mybatis/sql-map-config.xml" />
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
