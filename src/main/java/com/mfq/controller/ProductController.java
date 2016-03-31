@@ -303,12 +303,17 @@ public class ProductController {
                 model.put("p_num", String.valueOf(fq.get("p_num")));
 
                 Hospital hospital = hospitalService.findById(product.getHospitalId());
+
                 model.put("hid", String.valueOf(hospital.getId()));
                 model.put("hospital_name", hospital.getName());
                 model.put("hospital_addr", hospital.getAddress());
                 model.put("hospital_img", hospital.getImg());
 
                 ret = "/app/product/detail";
+
+                if(productDetail==null){
+                    productDetail = new ProductDetail();
+                }
 
                 if (id > 120) {
                     model.put("cureMeans", productDetail.getCureMeans());
@@ -343,7 +348,6 @@ public class ProductController {
                     model.put("error", "product_not_exist");
                 }
 
-
                 String s = StringUtils.stripToEmpty(request.getParameter("s"));
                 if (!"".equals(s)) {
                     model.put("s", true);
@@ -377,7 +381,6 @@ public class ProductController {
                 logger.error("参数不合法！ret={}", ret);
                 return ret;
             }
-
 
             long pid = Long.parseLong(StringUtils.stripToEmpty(params.get("pid").toString()));
             long uid = 0;

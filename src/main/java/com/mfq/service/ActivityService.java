@@ -77,6 +77,8 @@ public class ActivityService {
     ActivityMapper activityMapper;
     @Resource
     BaomingMapper baomingMapper;
+    @Resource
+    ProductImgMapper productImgMapper;
 
     public List<ProductInfoItem> getItemsByType(ProductType type) {
         List<Product> plist = productService.queryProductsByType(type);
@@ -257,12 +259,18 @@ public class ActivityService {
 
     public ActivityOnlineDetail onlineDetail(Integer id) throws Exception{
         Activity activity = activityMapper.selectByPrimaryKey(id);
+        if(activity == null){
+            return null;
+        }
         ActivityOnlineDetail detail = new ActivityOnlineDetail(activity);
 
         if(StringUtils.isNotBlank(activity.getPids())){
             List<Product> products = productService.selectByPids(activity.getPids());
             for(Product p: products){
-                List<ProductImg> imgs = productService.productImgMapper.findByPid(p.getId());
+                if(p==null || p.getId() < 1){
+                    continue;
+                }
+                List<ProductImg> imgs = productImgMapper.findByPid(p.getId());
                 logger.info(" 产品 ... {}",p.getId());
                 if(imgs.size() > 1){
                     logger.info("图片..{}",imgs.get(1).getImg());
@@ -310,8 +318,10 @@ public class ActivityService {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        ActivityService service = (ActivityService) ac.getBean("activityService");
+        service.onlineDetail(1);
     }
 
 

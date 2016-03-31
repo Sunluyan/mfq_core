@@ -20,9 +20,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 public class TestController {
 
-    private final static String purl = "http://i.5imfq.com";
+//    private final static String purl = "http://i.5imfq.com";
 //	private final static String purl="http://localhost:8080";
-//private final static String purl = "http://t.5imfq.com:8080";
+private final static String purl = "http://t.5imfq.com:8080";
 
 
     public static void testOrderCreate() throws IOException {
@@ -214,7 +214,7 @@ public class TestController {
     public static void testProductDetail() {
         String url = purl + "/product/detail/";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("pid", "231");
+        params.put("pid", "232");
         params.put("uid", 2847);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);

@@ -586,7 +586,7 @@ public class ActivityController {
             logger.info(" online over {}",ret);
             return ret;
         }catch(Exception e){
-            logger.error(e.toString());
+            logger.error("online detail error {}",e);
             return JsonUtil.toJson(9999,"获取线上列表出错",null);
         }
     }

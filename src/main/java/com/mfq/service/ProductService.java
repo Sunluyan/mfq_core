@@ -209,8 +209,9 @@ public class ProductService {
         return mapper.updateViewNum(pidNo);
     }
 
-    public ProductDetail findProductDetailByPid(long id) {
-        return detailMapper.findByPid(id);
+    public ProductDetail findProductDetailByPid(long pid) {
+
+        return detailMapper.findByPid(pid);
     }
 
     public List<Product> queryProductsByType(ProductType type) {
@@ -301,8 +302,15 @@ public class ProductService {
             return JsonUtil.successResultJson(app);
         }
         ProductDetailNewExample example = new ProductDetailNewExample();
+
         example.or().andPidEqualTo(pid.intValue());
-        ProductDetailNew detail = productDetailNewMapper.selectByExampleWithBLOBs(example).get(0);
+        List<ProductDetailNew> details = productDetailNewMapper.selectByExampleWithBLOBs(example);
+        ProductDetailNew detail;
+        if(details.size()>0){
+            detail = details.get(0);
+        }else {
+            return JsonUtil.toJson(1002,"无此产品详情...",null);
+        }
 
         ProductDetail2App app = new ProductDetail2App(product, detail);
         /**
