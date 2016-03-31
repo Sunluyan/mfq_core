@@ -12,6 +12,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.collect.Maps;
+import com.mfq.bean.user.Gender;
+import com.mfq.bean.user.User;
 import com.mfq.helper.SignHelper;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
@@ -21,8 +23,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 public class TestController {
 
 //    private final static String purl = "http://i.5imfq.com";
-//	private final static String purl="http://localhost:8080";
-private final static String purl = "http://t.5imfq.com:8080";
+	private final static String purl="http://localhost:8080";
+//private final static String purl = "http://t.5imfq.com:8080";
 
 
     public static void testOrderCreate() throws IOException {
@@ -214,7 +216,17 @@ private final static String purl = "http://t.5imfq.com:8080";
     public static void testProductDetail() {
         String url = purl + "/pay/mobile_pay/wechat.do";
         Map<String, Object> params = Maps.newHashMap();
-        params.put("pid", "232");
+        params.put("pid", "231");
+        params.put("uid", 2847);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+    public static void testUserDetail() {
+        String url = purl + "/user/detail/";
+        Map<String, Object> params = Maps.newHashMap();
         params.put("uid", 2847);
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
@@ -233,8 +245,11 @@ private final static String purl = "http://t.5imfq.com:8080";
 //        testJson();
 //        getFibonacci();
 //        findBiggest("daaaabbbbcccccccc");
-        testProductDetail();
+//        testProductDetail();
+
+        testUserDetail();
     }
+
 
 }
 

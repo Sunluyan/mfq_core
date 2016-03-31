@@ -7,6 +7,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.UsersDetail;
+import com.mfq.bean.app.UsersDetail2App;
+import com.mfq.constants.BloodType;
+import com.mfq.constants.Constellation;
 import com.mfq.dataservice.context.UserIdHolder;
 import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
@@ -255,6 +259,85 @@ public class UserController {
         }
         return ret;
     }
+
+    @RequestMapping(value = {"/detail", "/detail/"}, method = {RequestMethod.POST, RequestMethod.GET})
+    public @ResponseBody String detail(HttpServletRequest request,HttpServletResponse response) {
+        String ret = "";
+
+        try {
+            Map<String, Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+                logger.error("签名验证失败！ret={}", ret);
+                return ret;
+            }
+            if (params.get("uid") == null) {
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+                logger.error("参数不合法！ret={}", ret);
+                return ret;
+            }
+
+
+            long uid = Long.parseLong(params.get("uid").toString());
+            if(uid > 4000){
+                UsersDetail2App result  = userService.detail(uid);
+                return JsonUtil.successResultJson(result);
+            }
+
+            return JsonUtil.successResultJson(new UsersDetail2App("fuck"));
+
+        } catch (Exception e) {
+            logger.error("系统错误:{}",e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,e.toString(),null);
+        }
+        return ret;
+    }
+
+
+
+
+    @RequestMapping(value = {"/detail/modify", "/detail/modify/"}, method = {RequestMethod.POST, RequestMethod.GET})
+    public @ResponseBody String detailModify(HttpServletRequest request,HttpServletResponse response) {
+        String ret = "";
+
+        try {
+            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+            if (!SignHelper.validateSign(params)) { // 签名验证失败
+                ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
+                        null);
+                logger.error("签名验证失败！ret={}", ret);
+                return ret;
+            }
+            if (params.get("uid") == null) {
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数不合法", null);
+                logger.error("参数不合法！ret={}", ret);
+                return ret;
+            }
+            long uid = Long.parseLong(params.get("uid").toString());
+
+            String desc = StringUtils.isEmpty(params.get("desc").toString())?params.get("desc").toString():null;
+            String interest = StringUtils.isEmpty(params.get("interest").toString())?params.get("interest").toString():null;
+            String nick = StringUtils.isEmpty(params.get("nick").toString())?params.get("nick").toString():null;
+            String sex = StringUtils.isEmpty(params.get("sex").toString())?params.get("sex").toString():null;
+            Integer blood = StringUtils.isEmpty(params.get("blood").toString())? BloodType.fromValue(params.get("blood").toString()).getId():null;
+            Integer constellation = StringUtils.isEmpty(params.get("constellation").toString())? Constellation.fromValue(params.get("constellation").toString()).getId():null;
+            String age = StringUtils.isEmpty(params.get("age").toString())?params.get("age").toString():null;
+            String job = StringUtils.isEmpty(params.get("job").toString())?params.get("job").toString():null;
+            String school = StringUtils.isEmpty(params.get("school").toString())?params.get("school").toString():null;
+            String area = StringUtils.isEmpty(params.get("area").toString())?params.get("area").toString():null;
+
+            userService.updateDetail(uid,desc,interest,nick,sex,blood,constellation,age,job,school,area);
+
+            return JsonUtil.successResultJson();
+        } catch (Exception e) {
+            logger.error("系统错误:{}",e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,e.toString(),null);
+        }
+        return ret;
+    }
+
+
 
 
 }

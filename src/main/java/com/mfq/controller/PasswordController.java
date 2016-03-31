@@ -117,8 +117,8 @@ public class PasswordController {
         Vcode vcode = vcodeService.queryVcode(mobile);
         if (vcode.getId() == 0) {
             return mailAndSmsService.sendResetSms(user.getNick(), mobile);
-        } else
-            if (DateUtil.getDayBetweenD(new Date(), vcode.getResendAt()) > 0) {
+        }
+        else if (DateUtil.getDayBetweenD(new Date(), vcode.getResendAt()) > 0) {
             logger.warn(
                     "user want to apply mobile code,but resendat > currentTime,user:"
                             + UserIdHolder.getUserId());
@@ -184,7 +184,6 @@ public class PasswordController {
         String ret = "";
 
         try {
-
 
             String vcode = RequestUtils.getString(request, "vcode", "");
             String key = RequestUtils.getString(request, "key", "");

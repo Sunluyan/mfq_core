@@ -44,4 +44,6 @@ public interface UserMapper {
     public List<User> queryAllUser();
 
     List<User> queryUsersByPage(@Param("start") int p,@Param("size") int size);
+
+    int updateNickAndGenderByPrimaryKey(User user);
 }

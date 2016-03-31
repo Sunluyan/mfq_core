@@ -29,7 +29,7 @@ ssh work@123.59.81.222
 workdev123
 mysql -u root -p -h 10.10.117.231
 
-Pm5JWQ9ATBf5tfNJ
+YLcWemA8pvmPwTdM
 use meifenqi;
 set names utf8;
 
