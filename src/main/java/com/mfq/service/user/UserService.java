@@ -10,9 +10,12 @@ import javax.annotation.Resource;
 
 import com.mfq.bean.InviteRecord;
 import com.mfq.bean.InviteRecordExample;
+import com.mfq.bean.UsersDetail;
+import com.mfq.bean.app.UsersDetail2App;
 import com.mfq.bean.coupon.Coupon;
 import com.mfq.bean.coupon.CouponBatchInfo;
 import com.mfq.dao.InviteRecordMapper;
+import com.mfq.dao.UsersDetailMapper;
 import com.mfq.service.CouponService;
 import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
@@ -353,4 +356,47 @@ public class UserService {
     public void updateMo(long uid){
         mapper.updateStatus(uid,Status.DELETED);
     }
+
+    public UsersDetail2App detail(long uid) {
+        User user = queryUser(uid);
+        UsersDetail detail = usersDetailMapper.selectByPrimaryKey(uid);
+        if(detail == null){
+            detail = new UsersDetail();
+        }
+        UsersDetail2App result = new UsersDetail2App(user,detail);
+
+        return result;
+    }
+
+    public void updateDetail(long uid, String desc, String interest, String nick, String sex, Integer blood, Integer constellation, String age, String job, String school, String area) throws Exception{
+        //Long uid, String img, String nick, String sex, String blood,
+        // String constellation, String age, String job, String school, String area, String description) {
+        User user = new User();
+        user.setUid(uid);
+        user.setNick(nick);
+        user.setGender(sex!=null?sex.equals("男")?Gender.Male:sex.equals("女")?Gender.Female:null:null);
+
+        UsersDetail detail = new UsersDetail();
+        detail.setBloodType(blood);
+        detail.setConstellation(constellation);
+        detail.setAge(age);
+        detail.setJob(job);
+        detail.setSchool(school);
+        detail.setArea(area);
+        detail.setDescription(desc);
+
+        int count = mapper.updateNickAndGenderByPrimaryKey(user);
+
+        if(usersDetailMapper.selectByPrimaryKey(uid) == null){
+            count += usersDetailMapper.insertSelective(detail);
+        }else{
+            count += usersDetailMapper.updateByPrimaryKey(detail);
+        }
+        if(count != 2){
+            throw new Exception("更新出错");
+        }
+
+
+    }
+
 }

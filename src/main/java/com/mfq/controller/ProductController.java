@@ -129,6 +129,7 @@ public class ProductController {
             }
 
             List<ProductListItem2App> list = productService.findProductByKeyword(keyword, page);
+            logger.info(list.toString());
             ret = JsonUtil.successResultJson(list);
             //添加一条用户行为记录
             UserOperationUtil.setKeyword(UserIdHolder.getLongUid(), keyword);

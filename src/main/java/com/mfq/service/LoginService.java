@@ -97,9 +97,9 @@ public class LoginService {
                     autologin);
         
         //////////////插入同盾验证
-        String ip_address = AppContext.getIp();
-        String mobileType = MobileHelper.getMobileType(request);
-        //////////////
+//        String ip_address = AppContext.getIp();
+//        String mobileType = MobileHelper.getMobileType(request);
+
         if (passport.getUid() == 0) {
         	return JsonUtil.toJson(ErrorCodes.USER_WRONG_PASS, "密码错误", null);
         } else {
