@@ -61,7 +61,6 @@ public class WechatServiceImpl extends BasePaymentService {
 	}
     
     @Override
-    @Transactional
     public String goPay(HttpServletRequest request,
             HttpServletResponse response, Map<String, Object> params,
             OrderType orderType) {

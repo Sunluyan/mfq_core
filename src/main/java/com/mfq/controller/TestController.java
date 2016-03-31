@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
+import com.mfq.payment.impl.WechatServiceImpl;
 import com.mfq.payment.util.wechat.HttpsUtil;
 import com.mfq.service.user.UserService;
 import com.mfq.utils.HttpUtil;
@@ -751,11 +752,9 @@ public class TestController {
     public static void main(String[] args){
 
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        UserService userService = ac.getBean(UserService.class);
+        WechatServiceImpl userService = ac.getBean(WechatServiceImpl.class);
 
-        userService.queryUsersByPage(1,4);
 
-        userService.findByU(2798);
 
     }
     

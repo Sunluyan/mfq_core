@@ -83,6 +83,7 @@ public class PaymentController {
 	{
 		String ret = "";
 		long start = System.currentTimeMillis();
+		BasePaymentService service2 = PayFactory.getInstance(tpp);
 		logger.info("Mobiles goPay start");
 		try {
 			Map<String, Object> params = JsonUtil.readMapFromReq(request);

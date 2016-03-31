@@ -212,7 +212,7 @@ private final static String purl = "http://t.5imfq.com:8080";
     }
 
     public static void testProductDetail() {
-        String url = purl + "/product/detail/";
+        String url = purl + "/pay/mobile_pay/wechat.do";
         Map<String, Object> params = Maps.newHashMap();
         params.put("pid", "232");
         params.put("uid", 2847);
