@@ -29,7 +29,7 @@ public class ProductDetail2App {
     String dairy = "";
     String surgery = "";
     List<String> pro_imgs = Lists.newArrayList();  //产品图片
-    String ask = "";  //购买须知
+    String ask = "[{\"answer\":\"\",\"question\":\"\"}]";  //购买须知
 //    List<Map<String,String>> asks = Lists.newArrayList();
 
     List<String> details = Lists.newArrayList(); //产品详情
@@ -41,24 +41,7 @@ public class ProductDetail2App {
     Long pid = 0l;
     String share_url = "";
 
-    public ProductDetail2App(Product product, ProductDetailNew detail) {
-        this.name = product.getName();
-        this.cheap_reason = detail.getPreferential();
-        this.price = product.getPrice();
-        this.market_price = product.getMarketPrice();
-        this.is_fq = 1;
-        this.pid = product.getId();
-        this.share_url = "/product/app/detail?pid="+product.getId();
 
-//        String askStr = detail.getAsk();
-//        if(StringUtils.isNotEmpty(askStr)){
-//            JsonU
-//        }
-        this.ask = detail.getAsk();
-
-
-        this.hos_id = product.getHospitalId();
-    }
 
     public ProductDetail2App() {
         super();
@@ -93,6 +76,32 @@ public class ProductDetail2App {
         this.hos_desc = "北京美莱医疗美容医院—隶属于美莱医学美容集团。医院下设整形、皮肤、无创、抗衰老、中医、口腔六大中心，涵盖胸部整形、鼻部整形、眼部整形、祛斑美白、祛痘嫩肤、紧肤除皱、无创塑形、功能医学抗衰老、中医美容、口腔美容等经典项目.";
         this.hos_id = 3;
         this.share_url = "/product/app/detail?pid="+this.pid;
+    }
+
+
+    public ProductDetail2App(Product product, ProductDetailNew detail) {
+        this.name = product.getName();
+        this.cheap_reason = detail.getPreferential();
+        this.price = product.getPrice();
+        this.market_price = product.getMarketPrice();
+        this.is_fq = 1;
+        this.pid = product.getId();
+        this.share_url = "/product/app/detail?pid="+product.getId();
+
+        this.ask = detail.getAsk();
+        this.hos_id = product.getHospitalId();
+    }
+
+
+    public ProductDetail2App(Product product) {
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.pid = product.getId();
+        this.market_price = product.getMarketPrice();
+        this.is_fq = 1;
+        this.share_url = "/product/app/detail?pid="+product.getId();
+        this.hos_id = product.getHospitalId();
+
     }
 
     public String getName() {

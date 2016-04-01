@@ -306,13 +306,14 @@ public class ProductService {
         example.or().andPidEqualTo(pid.intValue());
         List<ProductDetailNew> details = productDetailNewMapper.selectByExampleWithBLOBs(example);
         ProductDetailNew detail;
+        ProductDetail2App app = new ProductDetail2App();
         if(details.size()>0){
             detail = details.get(0);
+            app = new ProductDetail2App(product, detail);
         }else {
-            return JsonUtil.toJson(1002,"无此产品详情...",null);
+            app = new ProductDetail2App(product);
         }
 
-        ProductDetail2App app = new ProductDetail2App(product, detail);
         /**
          String hos_desc = "";
 

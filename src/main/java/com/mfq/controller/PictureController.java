@@ -145,13 +145,12 @@ public class PictureController {
                         flag = usersAuthPicService.updatePicByType(userId, key, MIAN.SOCIAL_F);
                     }
             	}else{
-            	
 	            	// 处理用户头像的逻辑
 	                
 	                if (StringUtils.isNotBlank(key)) {
 	                    User user = userService.queryUser(userId);
 	                    if(user != null && StringUtils.isNotBlank(user.getPic())){
-	                        QiniuManipulater.deleteByKey(QiniuBucketEnum.AVATAR, user.getPic());
+	                        //QiniuManipulater.deleteByKey(QiniuBucketEnum.AVATAR, user.getPic());
 	                    }
 	                    flag = userService.updatePic(userId, key);
 	                }

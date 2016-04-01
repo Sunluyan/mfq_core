@@ -46,7 +46,7 @@ public class PolicyController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数异常",
                         null);
             }
-            
+
             long uid = Long.parseLong(params.get("uid").toString());
 
             List<PolicyListForApp> data=policyService.findByUid(uid);

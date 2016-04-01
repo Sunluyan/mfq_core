@@ -742,21 +742,31 @@ public class TestController {
         System.out.println(resp);
     }
 
+    public static void testPolicylList(){
+        String url = purl+"/policy/list";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("uid", 2798);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        long begin = System.currentTimeMillis();
+        String resp = HttpUtil.postJson(url, body, true);
+        long end = System.currentTimeMillis();
+        System.out.println(end-begin+"ms");
+        System.out.println(resp);
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
-//	private final static String purl="http://m.5imfq.com/";
+	private final static String purl="http://m.5imfq.com/";
 //	private final static String purl="http://localhost:8080/mfq-app";
   //  private final static String purl="http://localhost:7777/";
-    private final static String purl = "http://localhost:8080/";
+//    private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        PayService userService = ac.getBean(PayService.class);
-
-
-
+        testPolicylList();
     }
     
     

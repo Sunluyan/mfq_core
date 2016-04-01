@@ -77,10 +77,15 @@ public class PolicyService {
     public List<PolicyListForApp> findByUid(long uid) {
         PolicyInsureExample example = new PolicyInsureExample();
         example.createCriteria().andUidEqualTo(uid);
+        long begin = System.currentTimeMillis();
         List<PolicyInsure> list = policyInsureMapper.selectByExample(example);
+//        List<PolicyInsure> list = policyInsureMapper.selectByUid(uid);
+        long end = System.currentTimeMillis();
+        System.out.println(end - begin);
 
         return convert2AppList(list);
     }
+
 
     private List<PolicyListForApp> convert2AppList(List<PolicyInsure> data) {
         List<PolicyListForApp> list = Lists.newArrayList();
@@ -401,13 +406,8 @@ public class PolicyService {
     public static void main(String[] args) {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
-        PolicyService client = (PolicyService) context.getBean("policyService");
-
-        try {
-            client.insure("mn201512231114554417000d3");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        PolicyService client = context.getBean(PolicyService.class);
+        client.findByUid(2798);
     }
 
 }

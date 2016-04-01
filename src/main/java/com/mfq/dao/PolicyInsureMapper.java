@@ -29,4 +29,6 @@ public interface PolicyInsureMapper {
     int updateByPrimaryKeySelective(PolicyInsure record);
 
     int updateByPrimaryKey(PolicyInsure record);
+
+    List<PolicyInsure> selectByUid(@Param("uid")long uid);
 }
