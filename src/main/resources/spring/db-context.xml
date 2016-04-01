@@ -74,9 +74,13 @@
 		</property>
 	</bean>
 
-	<bean id="transactionManager" class="com.mfq.utils.datasource.DynamicDataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="routingDS" />
 	</bean>
+
+	<!--<bean id="transactionManager" class="com.mfq.utils.datasource.DynamicDataSourceTransactionManager">-->
+		<!--<property name="dataSource" ref="dataSource" />-->
+	<!--</bean>-->
 
 	<!--以 @Transactional 标注来定义事务  -->
 	<!--<tx:annotation-driven transaction-manager="transactionManager"-->
@@ -94,8 +98,15 @@
 		<!--<property name="defaultTransactionIsolation" value="-1" />-->
 	<!--</bean>-->
 
+	<bean id="lazyDsTOP" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+		<property name="targetDataSource" ref="routingDS" />
+
+		<property name="defaultAutoCommit" value="true" />
+		<property name="defaultTransactionIsolation" value="-1" />
+	</bean>
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="lazyDsTOP" />
 		<property name="configLocation" value="classpath:mybatis/sql-map-config.xml" />
 	</bean>
 
