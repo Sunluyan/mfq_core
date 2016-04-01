@@ -9,6 +9,7 @@ import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
 import com.mfq.payment.impl.WechatServiceImpl;
 import com.mfq.payment.util.wechat.HttpsUtil;
+import com.mfq.service.PayService;
 import com.mfq.service.user.UserService;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
@@ -752,7 +753,7 @@ public class TestController {
     public static void main(String[] args){
 
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
-        WechatServiceImpl userService = ac.getBean(WechatServiceImpl.class);
+        PayService userService = ac.getBean(PayService.class);
 
 
 

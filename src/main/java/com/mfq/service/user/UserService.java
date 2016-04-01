@@ -57,6 +57,8 @@ public class UserService {
     InviteRecordMapper inviteRecordMapper;
     @Resource
     CouponService couponService;
+    @Resource
+    UsersDetailMapper usersDetailMapper;
 
 
     private final long PERSENTCOUPON = 7;
@@ -367,6 +369,7 @@ public class UserService {
 
         return result;
     }
+
 
     public void updateDetail(long uid, String desc, String interest, String nick, String sex, Integer blood, Integer constellation, String age, String job, String school, String area) throws Exception{
         //Long uid, String img, String nick, String sex, String blood,
