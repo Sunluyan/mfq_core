@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.cache.RedisCache;
 import com.mfq.cache.UserOperationUtil;
+import com.mfq.dataservice.cache.IRedis;
 import com.mfq.dataservice.context.UserIdHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,11 +35,17 @@ public class ClassifyController {
     @Resource
     ClassifyService classifyService;
 
+    public static Map<String,Object> map = null;
+
+
     @RequestMapping(value = {"/info", "/info/"}, method = RequestMethod.GET)
     @ResponseBody
     public String info(HttpServletRequest request, HttpServletResponse response) {
         String ret = "";
         try{
+            if(this.map != null){
+                return JsonUtil.successResultJson(map);
+            }
             Integer rootId = 0;
             String idParam = (String) request.getParameter("id");
             if (!StringUtils.isBlank(idParam)) {

@@ -430,4 +430,11 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByUid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from policy_insure
+    WHERE  uid = #{uid}
+  </select>
 </mapper>

@@ -34,7 +34,7 @@ public class UsersDetail2App {
             this.sex = "女";
             this.blood = "AB";
             this.constellation = "双子座";
-            this.age = "80后";
+            this.age = "";
             this.job = "长得漂亮的设计师";
             this.school = "湖南长沙女子大学";
             this.area = "北京市通州区九棵树站";

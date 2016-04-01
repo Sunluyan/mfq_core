@@ -16,7 +16,6 @@ scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.4:~/tomcat/
 mfq-yqds!!!
 
 
-
 cd ~/tomcat/webapps/ROOT/
 ps -ef|grep tomcat|grep -v grep|awk '{print $2}'|xargs kill -9
 jar -vxf mfq-app.war
