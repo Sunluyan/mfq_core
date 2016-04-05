@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import com.mfq.bean.*;
 import com.mfq.constants.CardType;
 import com.mfq.payment.PayAPIType;
+import com.mfq.utils.XMLConverUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -275,6 +276,10 @@ public class PayRecordService {
     public static void main(String[] args) throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         PayRecordService service = ac.getBean(PayRecordService.class);
+        PayRecord resp = service.findById(342);
+        String str = XMLConverUtil.writeObj2Xml(resp);
+        System.out.println(str);
+
     }
 
     public long insertOne(PayRecord record) {

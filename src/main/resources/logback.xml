@@ -16,7 +16,7 @@
         </encoder>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="file" />
         <appender-ref ref="console" />
     </root>
@@ -27,19 +27,19 @@
 
     </logger>
 
-    <logger name="java.sql.Connection" level="info" additivity="false">
+    <logger name="java.sql.Connection" level="debug" additivity="false">
         <appender-ref ref="file" />
         <appender-ref ref="console" />
 
     </logger>
 
-    <logger name="java.sql.Statement" level="info" additivity="false">
+    <logger name="java.sql.Statement" level="debug" additivity="false">
         <appender-ref ref="file" />
         <appender-ref ref="console" />
 
     </logger>
 
-    <logger name="java.sql.PreparedStatement" level="info" additivity="false">
+    <logger name="java.sql.PreparedStatement" level="debug" additivity="false">
         <appender-ref ref="file" />
         <appender-ref ref="console" />
     </logger>

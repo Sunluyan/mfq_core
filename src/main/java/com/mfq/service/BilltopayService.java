@@ -41,7 +41,7 @@ public class BilltopayService {
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         BilltopayService service = ac.getBean(BilltopayService.class);
-        service.payNoToBillsNo("pa2016022711063050800001");
+        System.out.println(service.payNoToBillsNo("pa2016022711063050800001"));
 
     }
 }

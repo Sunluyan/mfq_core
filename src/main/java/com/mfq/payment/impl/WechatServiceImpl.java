@@ -1,5 +1,6 @@
 package com.mfq.payment.impl;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Random;
@@ -8,10 +9,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.payment.bean.WXResponseData;
 import com.mfq.service.FinanceBillService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Maps;
@@ -88,7 +92,7 @@ public class WechatServiceImpl extends BasePaymentService {
             }
             String nonce_str = genNonceStr();
 
-            //// TODO: 16/2/26  
+
             PayReqData reqBean = new PayReqData(AppContext.getUuid(), nonce_str,
                     pname, orderNo, amount,
                     AppContext.getIp(), buildPayCallbackURL());
@@ -140,8 +144,8 @@ public class WechatServiceImpl extends BasePaymentService {
             HttpServletResponse response, String ret) {
         PayCallbackResult result = new PayCallbackResult();
         result.setApiType(PayAPIType.WECHAT);
-        ResponseData resp = new ResponseData("FAIL","");
-        
+        WXResponseData resp = new WXResponseData("FAIL","");
+
         try {
             String xml = JsonUtil.readRequestString(request);
             Map<String, Object> soap = XMLConverUtil.convertSoapToMap(xml);
@@ -153,8 +157,8 @@ public class WechatServiceImpl extends BasePaymentService {
             if (	StringUtils.equalsIgnoreCase("SUCCESS",(String) soap.get("return_code"))
             	 && StringUtils.equalsIgnoreCase("SUCCESS",(String) soap.get("result_code"))) {
             	
-                if (	StringUtils.equalsIgnoreCase((String) soap.get("appid"), Configure.appID)
-                     || StringUtils.equalsIgnoreCase((String) soap.get("mch_id"), Configure.mchID)) {
+                if (	!StringUtils.equalsIgnoreCase((String) soap.get("appid"), Configure.appID)
+                     || !StringUtils.equalsIgnoreCase((String) soap.get("mch_id"), Configure.mchID)) {
                     // appId不一致
                 	logger.warn("appId不一致！！");
                 }
@@ -182,22 +186,20 @@ public class WechatServiceImpl extends BasePaymentService {
             resp.setReturn_msg("支付回调处理异常");
             logger.error("WECHAT callback process error", e);
         }
-//        try {
-//        	logger.info("cover xml  resp : {}", resp);
-//            String str = XMLConverUtil.writeObj2Xml(resp);
-//            response.setCharacterEncoding("utf-8");
-//            response.setContentType("text/plain");
-//            logger.info("response write..");
-//            response.getWriter().write(str);
-//            logger.info("response write end.");
-//        } catch (IOException ex) {
-//            logger.error("WECHAT response error", ex);
-//        }
-        try{
-        	ret = XMLConverUtil.writeObj2Xml(resp);
-        } catch (Exception ex){
-        	logger.error("WECHAT response error", ex);
+        try {
+        	logger.info("resp : {}", resp);
+            String str = XMLConverUtil.writeObj2Xml(resp);
+            str = str.replace("com.mfq.payment.bean.WXResponseData","xml");
+            logger.info("cover xml  resp : {}", str);
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("text/plain");
+            logger.info("response write..");
+            response.getWriter().write(str);
+            logger.info("response write end.");
+        } catch (Exception ex) {
+            logger.error("WECHAT response error", ex);
         }
+
         logger.info("WECHAT callback response:{}", resp);
         return result;
     }
@@ -218,39 +220,25 @@ public class WechatServiceImpl extends BasePaymentService {
                 PayAPIType.WECHAT.getCode());
     }
 
-   public class ResponseData {
-    	
-        String return_code;
-        String return_msg;
-
-        ResponseData() {}
-        
-        ResponseData(String return_code, String return_msg) {
-            this.return_code = return_code;
-            this.return_msg = return_msg;
-        }
-
-        public String getReturn_code() {
-            return return_code;
-        }
-
-        public void setReturn_code(String return_code) {
-            this.return_code = return_code;
-        }
-
-        public String getReturn_msg() {
-            return return_msg;
-        }
-
-        public void setReturn_msg(String return_msg) {
-            this.return_msg = return_msg;
-        }
-        
-        @Override
-        public String toString(){
-        	return "return_code ="+this.return_code+", return_msg="+this.return_msg;
-        }
+    public String testReponseData() throws Exception{
+        WXResponseData resp = new WXResponseData("FAIL","");
+        resp.setReturn_code("SUCCESS");
+        resp.setReturn_msg("OK");
+        String str = XMLConverUtil.writeObj2Xml(resp);
+        str = str.replace("com.mfq.payment.bean.WXResponseData","xml");
+        System.out.println(str);
+        return null;
     }
+    public static void main(String[] args) throws Exception{
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        WechatServiceImpl service = ac.getBean(WechatServiceImpl.class);
+        service.testReponseData();
+
+    }
+
+
+
+
 
 }
 

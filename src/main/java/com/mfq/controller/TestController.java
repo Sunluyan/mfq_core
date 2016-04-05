@@ -8,12 +8,15 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 import com.mfq.helper.SignHelper;
 import com.mfq.payment.impl.WechatServiceImpl;
+import com.mfq.payment.util.wechat.Configure;
 import com.mfq.payment.util.wechat.HttpsUtil;
 import com.mfq.service.PayService;
 import com.mfq.service.user.UserService;
 import com.mfq.utils.HttpUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.MFQAdminUtil;
+import com.mfq.utils.XMLConverUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -782,19 +785,60 @@ public class TestController {
         System.out.println(resp);
     }
 
+
+    public static void testWechatPay(){
+        String url = purl+"/pay/mobile_callback/wechat.do";
+        Map<String, Object> params = Maps.newHashMap();
+//        is_subscribe=N, appid=wx1c8dcf726a7d540e, fee_type=CNY,
+//                nonce_str=6822951732be44edf818dc5a97d32ca6,
+//                out_trade_no=mn201604051552273155015b,
+//                device_info=BEB762D3-9386-46EC-B871-4EB0716023FF,
+//                transaction_id=4003252001201604054568143679, trade_type=APP,
+//                sign=BAD27F028F023CD5687539D9C7C3EDA7, result_code=SUCCESS,
+//                mch_id=1268884501, total_fee=10, time_end=20160405161246,
+//                openid=oxgUBtwhgcDSyK4JZN8aJHvoVDlQ, bank_type=CFT, return_code=SUCCESS,
+//                cash_fee=10}
+
+        params.put("is_subscribe","N");
+        params.put("appid","wx1c8dcf726a7d540e");
+        params.put("fee_type","CNY");
+        params.put("nonce_str","6822951732be44edf818dc5a97d32ca6");
+        params.put("out_trade_no","mn201604051552273155015b");
+        params.put("device_info","BEB762D3-9386-46EC-B871-4EB0716023FF");
+        params.put("transaction_id","4003252001201604054568143679");
+        params.put("trade_type","APP");
+        params.put("sign","BAD27F028F023CD5687539D9C7C3EDA7");
+        params.put("result_code","SUCCESS");
+        params.put("mch_id","1268884501");
+        params.put("total_fee","10");
+        params.put("time_end","20160405161246");
+        params.put("openid","oxgUBtwhgcDSyK4JZN8aJHvoVDlQ");
+        params.put("bank_type","CFT");
+        params.put("return_code","SUCCESS");
+        params.put("cash_fee","10");
+
+        try {
+            String body = XMLConverUtil.writeObj2Xml(params);
+            String resp = HttpUtil.postJson(url, body, true);
+            System.out.println(resp);
+        }catch(Exception e){
+
+        }
+    }
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
-	private final static String purl="http://m.5imfq.com/";
+//	private final static String purl="http://m.5imfq.com/";
 //	private final static String purl="http://localhost:8080/mfq-app";
   //  private final static String purl="http://localhost:7777/";
-//    private final static String purl = "http://localhost:8080/";
+    private final static String purl = "http://localhost:8080/";
 	
     public static void main(String[] args){
 
 //        testClassify();
 //        testOnline();
-        testOnlineDetail();
+//        testOnlineDetail();
     }
     
     

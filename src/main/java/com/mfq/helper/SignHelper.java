@@ -98,10 +98,7 @@ public class SignHelper {
             return null;
         }
         StringBuffer signBuffer = new StringBuffer();
-//        params.put("noncestr", nonceStr);
-//        params.put("timestamp", timestamp);
-//        params.put("url", url);
-//        params.put("jsapi_ticket", ticket);
+
         signBuffer.append("jsapi_ticket="+map.get("jsapi_ticket").toString()+"&");
         signBuffer.append("noncestr="+map.get("noncestr").toString()+"&");
         signBuffer.append("timestamp="+map.get("timestamp").toString()+"&");

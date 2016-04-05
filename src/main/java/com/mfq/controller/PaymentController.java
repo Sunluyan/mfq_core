@@ -227,11 +227,14 @@ public class PaymentController {
 	    	if(ret.equals("")){
 	    		ret = JsonUtil.successResultJson();
 	    	}
-	        response.setCharacterEncoding("utf-8");
-	        response.setContentType("text/plain");
-	        logger.info("response write..");
-	        response.getWriter().write(ret);
-	        logger.info("response write end.");
+			if(!tpp.equals("wechat")){
+				response.setCharacterEncoding("utf-8");
+				response.setContentType("text/plain");
+				logger.info("response write..");
+				response.getWriter().write(ret);
+				logger.info("response write end.");
+			}
+
 	    } catch (IOException ex) {
 	        logger.error("WECHAT response error", ex);
 	    }

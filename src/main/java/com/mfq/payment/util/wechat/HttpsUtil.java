@@ -33,7 +33,7 @@ import com.mfq.utils.XMLConverUtil;
 
 @SuppressWarnings("deprecation")
 public class HttpsUtil {
-    
+
     private static final Logger log = LoggerFactory.getLogger(HttpsUtil.class);
 
     //表示请求器是否已经做了初始化工作
@@ -104,39 +104,46 @@ public class HttpsUtil {
      */
 
     public String sendPost(String url, Object xmlObj) throws IOException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException {
-        if (!hasInit) {
-            init();
-        }
         String result = null;
-        HttpPost httpPost = new HttpPost(url);
-        String postDataXML = XMLConverUtil.writeObj2Xml(xmlObj);
-        log.info("API，POST过去的数据是：{}", postDataXML);
-
-        //得指明使用UTF-8编码，否则到API服务器XML的中文不能被成功识别
-        StringEntity postEntity = new StringEntity(postDataXML, "UTF-8");
-        httpPost.addHeader("Content-Type", "text/xml");
-        httpPost.setEntity(postEntity);
-
-        //设置请求器的配置
-        httpPost.setConfig(requestConfig);
-        log.info("executing request:{}", httpPost.getRequestLine());
         try {
-            HttpResponse response = httpClient.execute(httpPost);
-            HttpEntity entity = response.getEntity();
-            result = EntityUtils.toString(entity, "UTF-8");
-        } catch (ConnectionPoolTimeoutException e) {
-            log.error("http get throw ConnectionPoolTimeoutException(wait time out)");
-        } catch (ConnectTimeoutException e) {
-            log.error("http get throw ConnectTimeoutException");
-        } catch (SocketTimeoutException e) {
-            log.error("http get throw SocketTimeoutException");
+            String postDataXML = XMLConverUtil.writeObj2Xml(xmlObj);
+
+            if (!hasInit) {
+                init();
+            }
+            HttpPost httpPost = new HttpPost(url);
+
+            log.info("API，POST过去的数据是：{}", postDataXML);
+
+            //得指明使用UTF-8编码，否则到API服务器XML的中文不能被成功识别
+            StringEntity postEntity = new StringEntity(postDataXML, "UTF-8");
+            httpPost.addHeader("Content-Type", "text/xml");
+            httpPost.setEntity(postEntity);
+
+            //设置请求器的配置
+            httpPost.setConfig(requestConfig);
+            log.info("executing request:{}", httpPost.getRequestLine());
+            try {
+                HttpResponse response = httpClient.execute(httpPost);
+                HttpEntity entity = response.getEntity();
+                result = EntityUtils.toString(entity, "UTF-8");
+            } catch (ConnectionPoolTimeoutException e) {
+                log.error("http get throw ConnectionPoolTimeoutException(wait time out)");
+            } catch (ConnectTimeoutException e) {
+                log.error("http get throw ConnectTimeoutException");
+            } catch (SocketTimeoutException e) {
+                log.error("http get throw SocketTimeoutException");
+            } catch (Exception e) {
+                log.error("http get throw Exception");
+            } finally {
+                httpPost.abort();
+            }
         } catch (Exception e) {
-            log.error("http get throw Exception");
-        } finally {
-            httpPost.abort();
+            log.error(e.toString());
         }
         log.info("post end xml:{}", result);
         return result;
+
     }
 
     /**
@@ -167,8 +174,8 @@ public class HttpsUtil {
     public void setRequestConfig(RequestConfig requestConfig) {
         this.requestConfig = requestConfig;
     }
-    
-    private void resetRequestConfig(){
+
+    private void resetRequestConfig() {
         requestConfig = RequestConfig.custom().setSocketTimeout(socketTimeout).setConnectTimeout(connectTimeout).build();
     }
 }

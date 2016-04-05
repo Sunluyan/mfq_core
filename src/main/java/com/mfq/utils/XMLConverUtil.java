@@ -65,7 +65,7 @@ public class XMLConverUtil {
     }
     
 
-    public static String writeObj2Xml(Object xmlObj){
+    public static String writeObj2Xml(Object xmlObj) throws Exception{
     	 
         //解决XStream对出现双下划线的bug
         XStream xStreamForRequestPostData = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
