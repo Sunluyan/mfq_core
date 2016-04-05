@@ -174,6 +174,7 @@ public class ProductService {
                     bean.setHosName(hospital.getName());
                 }
             }
+            bean.setImg(pt.getImg());
 
             list.add(bean);
         }

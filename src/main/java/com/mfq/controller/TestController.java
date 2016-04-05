@@ -261,8 +261,10 @@ public class TestController {
     }
     
     public static void testClassify(){
-
+        long begin = System.currentTimeMillis();
         String resp = HttpUtil.get(purl+"/class/info?id=1", false);
+        long end = System.currentTimeMillis();
+        System.out.println(end - begin +"ms");
         System.out.println(resp);
     }
     
@@ -755,6 +757,30 @@ public class TestController {
         System.out.println(end-begin+"ms");
         System.out.println(resp);
     }
+    public static void testOnline(){
+        String url = purl+"/activity/online";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("uid", 2798);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
+    public static void testOnlineDetail(){
+        String url = purl+"/activity/online/detail";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("id", 9);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        long begin = System.currentTimeMillis();
+        String resp = HttpUtil.postJson(url, body, true);
+        long end = System.currentTimeMillis();
+        System.out.println(end - begin);
+        System.out.println(resp);
+    }
 
     
 //    private final static String purl="http://i.5imfq.com/";
@@ -766,7 +792,9 @@ public class TestController {
 	
     public static void main(String[] args){
 
-        testPolicylList();
+//        testClassify();
+//        testOnline();
+        testOnlineDetail();
     }
     
     

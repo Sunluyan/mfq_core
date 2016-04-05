@@ -58,6 +58,7 @@ public class ClassifyController {
                 Map<String, Object> map = Maps.newHashMap();
                 map.put("lm", lm);
                 map.put("sm", sm);
+                this.map = map;
                 ret = JsonUtil.successResultJson(map);
             }
             //加入一条用户的行为记录
