@@ -90,4 +90,40 @@ public class ClassifyController {
     	
     	return ret;
     }
+
+
+    @RequestMapping(value = {"/infos", "/infos/"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String infos(HttpServletRequest request, HttpServletResponse response) {
+        String ret = "";
+        try{
+            if(this.map != null){
+                map.put("colors","ac513d,af623d,b1743d,b4873e,b69b3e,b9b03e,b2bb3e,a1be3e,8fc13e,7dc23e");
+                return JsonUtil.successResultJson(map);
+            }
+            Integer rootId = 0;
+            String idParam = (String) request.getParameter("id");
+            if (!StringUtils.isBlank(idParam)) {
+                rootId = Integer.parseInt(idParam);
+            }
+            Map<Integer, List<ProductClassify>> lm = Maps.newHashMap();
+            Map<Integer, ProductClassify> sm = Maps.newHashMap();
+            classifyService.buildClassifyInfo(rootId, lm, sm);
+            if(lm != null && sm != null && lm.size() > 0 && sm.size() > 0){
+                Map<String, Object> map = Maps.newHashMap();
+                map.put("lm", lm);
+                map.put("sm", sm);
+                map.put("colors","ac513d,af623d,b1743d,b4873e,b69b3e,b9b03e,b2bb3e,a1be3e,8fc13e,7dc23e");
+                this.map = map;
+                ret = JsonUtil.successResultJson(map);
+            }
+
+        } catch (Exception e) {
+            logger.error("Exception ProductInfo Process!", e);
+            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
+        }
+        return ret;
+    }
+
+
 }

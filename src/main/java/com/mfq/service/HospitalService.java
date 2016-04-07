@@ -91,7 +91,7 @@ public class HospitalService {
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         HospitalService service = ac.getBean(HospitalService.class);
-        service.getDetailById(0);
+        service.getDetailById(2);
     }
     public String getDetailById(Integer hosId) {
 
@@ -114,6 +114,7 @@ public class HospitalService {
             return JsonUtil.successResultJson(h);
         }
     }
+
 
     public HospitalDetail2App getDetailById2Web(Integer hosId) {
 

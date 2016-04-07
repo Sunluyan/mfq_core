@@ -43,4 +43,17 @@
         <appender-ref ref="file" />
         <appender-ref ref="console" />
     </logger>
+
+
+    <appender name="Sentry" class="net.kencochrane.raven.logback.SentryAppender">
+        <dsn>http://0eb589eac1cd4e4aad6f60d967ee2d1d:8933f9a5658c4a69a8fbda7428c4dd7e@app.loginsight.cn/227?options</dsn>
+        <tags>tag1:value1,tag2:value2</tags>
+        <!-- Optional, allows to select the ravenFactory -->
+        <!--<ravenFactory>net.kencochrane.raven.DefaultRavenFactory</ravenFactory>-->
+    </appender>
+    <root level="warn">
+        <appender-ref ref="Sentry"/>
+    </root>
+
+
 </configuration>
