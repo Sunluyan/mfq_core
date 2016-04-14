@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mfq.bean.UsersDetail;
+import com.mfq.dao.UsersDetailMapper;
 import com.mfq.utils.VerifyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -48,6 +50,8 @@ public class LoginService {
     MsInstallationService msInstallationService;
     @Resource
     FraudApiInvoker fraudApiInvoker;
+    @Resource
+    UsersDetailMapper usersDetailMapper;
 
     public User queryUser(String login) {
         log.info("queryUser by {}", login);
@@ -209,7 +213,7 @@ public class LoginService {
         data.put("nick", user.getNick());
         data.put("avatar", user.getIcon());
         data.put("gender", user.getGender().getValue());
-        
+
         return JsonUtil.successResultJson(data);
     }
 }

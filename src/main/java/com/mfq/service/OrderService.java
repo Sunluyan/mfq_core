@@ -470,12 +470,32 @@ public class OrderService {
             BigDecimal fqPrice = productService.selectFqPriceByPid(product.getId());
             if(fqPrice!=null) fm.put("amount",fqPrice);
 
+            BigDecimal fqAmount = quota.getQuotaLeft().compareTo((BigDecimal)fm.get("amount")) < 0?quota.getQuotaLeft():(BigDecimal)fm.get("amount");
+
+            fm.put("fqs",caculationFqs(fqAmount));
+
+
         } else {
             logger.error("Exception_PayType_Param!");
             throw new Exception("Exception_PayType_Param!");
         }
         map.put("pid", product.getId());
         map.put(type.getId(), fm);
+    }
+
+
+
+    public Map<Long,BigDecimal> caculationFqs(BigDecimal price){
+        Map<Long,BigDecimal> fq = new HashMap<>();
+
+        BigDecimal three = price.divide(new BigDecimal(3),2,BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal six = price.divide(new BigDecimal(6),2,BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal twenty = price.divide(new BigDecimal(12),2,BigDecimal.ROUND_HALF_EVEN);
+
+        fq.put(3l,three);
+        fq.put(6l,six);
+        fq.put(12l,twenty);
+        return fq;
     }
 
     /**
@@ -720,7 +740,7 @@ public class OrderService {
     }
 
     /**
-     * 计算分期
+     * 返回pid的分期价
      *
      * @param pid
      * @return

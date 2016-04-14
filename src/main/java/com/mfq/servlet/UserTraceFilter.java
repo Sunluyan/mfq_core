@@ -83,6 +83,7 @@ public class UserTraceFilter implements Filter {
         	UserIdHolder.setUserId(0);
             traceId = cookiePassport.getTicket();
         }
+
         if (StringUtils.isNotBlank(mm)) { // guest已访问过产生过m值！
             traceId = mm;
         } else { // guest首次访问

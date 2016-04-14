@@ -4,7 +4,7 @@ package com.mfq.constants;
  * Created by liuzhiguo1 on 16/3/30.
  */
 public enum Constellation {
-    UNSET(0, "未设置"),
+    UNSET(0, ""),
     Aries(1, "白羊座"),
     Taurus(2, "金牛座"),
     Gemini(3, "双子座"),
@@ -58,7 +58,7 @@ public enum Constellation {
 
     public static Constellation fromValue(String value){
         for(Constellation status : Constellation.values()){
-            if(status.getDesc() == value){
+            if(status.getDesc().equals(value)){
                 return status;
             }
         }

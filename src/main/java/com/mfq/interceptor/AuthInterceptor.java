@@ -47,12 +47,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter
         String serverName = request.getServerName();
         logger.info("requestServerName:{}", serverName);
         String domainSuffix = Constants.COOKIE_DOMAIN;
-        if (!serverName.endsWith(domainSuffix)) {
-            // response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/plain; charset=UTF-8");
-            response.getWriter().append("域名错误(必须*" + domainSuffix + ")");
-            return false;
-        }
+//        if (!serverName.endsWith(domainSuffix)) {
+//            response.setContentType("text/plain; charset=UTF-8");
+//            response.getWriter().append("域名错误(必须*" + domainSuffix + ")");
+//            return false;
+//        }
         if (!checkLoginRequired(request, response, handler)) {
             return false;
         }

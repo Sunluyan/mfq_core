@@ -104,7 +104,7 @@
         select
         <include refid="selectsql"/>
         from product
-        where 1=1 and online = 1
+        where online = 1 and flag!=-1
         <foreach collection="keywords" item="keyword">
             and name like CONCAT('%', #{keyword}, '%')
         </foreach>
@@ -136,6 +136,7 @@
       <include refid="selectsql"/>
         from product
         where hospital_id = #{hosId}
+        and flag!=-1 and online = 1
         order by sale_num desc
         limit 0,3
     </select>

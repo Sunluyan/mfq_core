@@ -1,6 +1,7 @@
 package com.mfq.bean.app;
 
 import com.mfq.bean.Hospital;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +34,14 @@ public class HospitalDetail2App {
         this.name = hospital.getName();
         this.img_hos = hospital.getImg();
         this.desc = hospital.getDescription();
-        String[] details = hospital.getDetails().split(",");
-        for (String detail : details) {
-            this.img_details.add(detail);
+
+        if(StringUtils.isNotBlank(hospital.getDetails())){
+            String[] details = hospital.getDetails().split(",");
+            for (String detail : details) {
+                this.img_details.add(detail);
+            }
         }
+
 
     }
 

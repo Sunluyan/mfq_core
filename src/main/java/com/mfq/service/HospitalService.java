@@ -8,8 +8,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.mfq.bean.Product;
+import com.mfq.bean.ProductImage;
 import com.mfq.bean.app.HospitalDetail2App;
 import com.mfq.bean.app.ProductListItem2App;
+import com.mfq.constants.ProductImageType;
 import com.mfq.utils.JsonUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +29,8 @@ public class HospitalService {
     HospitalMapper mapper;
     @Resource
     ProductService productService;
+    @Resource
+    ProductImageService productImageService;
 
     public Hospital findById(long id) {
         return mapper.findById(id);
@@ -88,12 +92,12 @@ public class HospitalService {
         return mapper.findProCount(hosid);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
         HospitalService service = ac.getBean(HospitalService.class);
         service.getDetailById(2);
     }
-    public String getDetailById(Integer hosId) {
+    public String getDetailById(Integer hosId) throws Exception{
 
         if (hosId <= 0) {
             HospitalDetail2App h = new HospitalDetail2App("fuck");
@@ -101,6 +105,8 @@ public class HospitalService {
             List<Product> list = new ArrayList<>();
             list.add(p);
             List<ProductListItem2App> app = productService.convert2AppList(list);
+            productImageService.changeProduct2AppItemToSquareImg(app);
+
             h.setPros(app);
             return JsonUtil.successResultJson(h);
         } else {
@@ -110,7 +116,11 @@ public class HospitalService {
             List<Product> pros = productService.findHotByHospital(hosId.longValue());
 
             List<ProductListItem2App> app = productService.convert2AppList(pros);
-            h.setPros(app);
+            if(app!=null){
+                productImageService.changeProduct2AppItemToSquareImg(app);
+
+                h.setPros(app);
+            }
             return JsonUtil.successResultJson(h);
         }
     }
@@ -124,6 +134,8 @@ public class HospitalService {
             List<Product> list = new ArrayList<>();
             list.add(p);
             List<ProductListItem2App> app = productService.convert2AppList(list);
+            productImageService.changeProduct2AppItemToSquareImg(app);
+
             h.setPros(app);
             return h;
         } else {
@@ -132,8 +144,14 @@ public class HospitalService {
 
             List<Product> pros = productService.findHotByHospital(hosId.longValue());
 
-            List<ProductListItem2App> app = productService.convert2AppList(pros);
-            h.setPros(app);
+            if(pros.size()!=0){
+                List<ProductListItem2App> app = productService.convert2AppList(pros);
+
+                productImageService.changeProduct2AppItemToSquareImg(app);
+
+                h.setPros(app);
+            }
+
             return h;
         }
     }

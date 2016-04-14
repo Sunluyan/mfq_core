@@ -5,7 +5,7 @@ package com.mfq.constants;
  * 产品相关图片的枚举
  */
 public enum ProductImageType {
-    MAINIMAGE(1,"产品banner图片"),
+    SQUARE(1,"正方形产品图片"),
     BEFORE(2,"手术前"),
     AFTER(3,"手术后"),
     BEAUTIFUL(4,"美丽日记其他内容"),

@@ -1,5 +1,8 @@
 package com.mfq.service.user;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +24,9 @@ import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.messaging.simp.user.UserSessionRegistry;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -116,11 +122,19 @@ public class UserService {
         if(user != null && user.getUid() > 0){
             UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
             if(quota != null){
-                return new UserProfile2App(user, quota);
+                UserProfile2App result = new UserProfile2App(user, quota);
+                UsersDetail usersDetail = usersDetailMapper.selectByPrimaryKey(user.getUid());
+
+                result.setDesc(usersDetail!=null?usersDetail.getDescription():"");
+                result.setPercent(detail(user.getUid()).getpercent());
+
+                return result;
             }
         }
+
         return new UserProfile2App();
     }
+
     
     public User queryUser(long uid) {
         User user = mapper.queryUser(uid);
@@ -364,22 +378,28 @@ public class UserService {
         UsersDetail detail = usersDetailMapper.selectByPrimaryKey(uid);
         if(detail == null){
             detail = new UsersDetail();
+            detail.setUid(uid);
         }
         UsersDetail2App result = new UsersDetail2App(user,detail);
+
 
         return result;
     }
 
 
-    public void updateDetail(long uid, String desc, String interest, String nick, String sex, Integer blood, Integer constellation, String age, String job, String school, String area) throws Exception{
+    @Transactional
+    public void updateDetail(long uid, String desc, String interest, String nick, String sex, Integer blood, Integer constellation, String age, String job, String school, String area,String img) throws Exception{
         //Long uid, String img, String nick, String sex, String blood,
         // String constellation, String age, String job, String school, String area, String description) {
         User user = new User();
         user.setUid(uid);
+        user.setImg(img);
         user.setNick(nick);
+
         user.setGender(sex!=null?sex.equals("男")?Gender.Male:sex.equals("女")?Gender.Female:null:null);
 
         UsersDetail detail = new UsersDetail();
+        detail.setUid(uid);
         detail.setBloodType(blood);
         detail.setConstellation(constellation);
         detail.setAge(age);
@@ -387,19 +407,28 @@ public class UserService {
         detail.setSchool(school);
         detail.setArea(area);
         detail.setDescription(desc);
+        detail.setInteresting(interest);
 
-        int count = mapper.updateNickAndGenderByPrimaryKey(user);
-
+        logger.info(user.toString());
+        int count = 0;
+        if(StringUtils.isNotBlank(user.getNick()) || user.getGender() != null || StringUtils.isNotBlank(user.getImg())) {
+            count += mapper.updateNickAndGenderByPrimaryKey(user);
+        }
         if(usersDetailMapper.selectByPrimaryKey(uid) == null){
             count += usersDetailMapper.insertSelective(detail);
         }else{
-            count += usersDetailMapper.updateByPrimaryKey(detail);
-        }
-        if(count != 2){
-            throw new Exception("更新出错");
+            count += usersDetailMapper.updateByPrimaryKeySelective(detail);
         }
 
 
+
+
+    }
+
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, InvocationTargetException {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
+        UserService service = ac.getBean(UserService.class);
+        service.queryUserProfile2App(2874);
     }
 
 }

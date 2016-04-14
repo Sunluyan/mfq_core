@@ -826,6 +826,45 @@ public class TestController {
         }
     }
 
+
+    public static void testDetailtestDetailModify(){
+        String url = purl+"/user/detail/modify";
+        Map<String, Object> params = Maps.newHashMap();
+        //{uid=3909, school=湖南长沙女子大学, age=, nick=小飞侠, area=北京市通州区九棵树站, blood=AB,
+        // desc=一个与世无争的小女孩~, constellation=双子座, job=长得漂亮的设计师, interest=刘志国,刘志国,刘志国, sign=DDACF03B8D0BCAAA46241FB97617D691}
+        params.put("uid",3160);
+        params.put("school","湖南长沙女子大学");
+        params.put("age","广西壮族");
+        params.put("sex","男");
+        params.put("area","北京市通州区九棵树站");
+        params.put("blood","AB");
+        params.put("desc","一个与世无争的大女孩");
+        params.put("nick","小飞侠");
+        params.put("constellation","双子座");
+        params.put("job","长得漂亮的设计师");
+        params.put("interest","刘志国,刘志国,刘志国,");
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
+    public static void testDetail(){
+        String url = purl+"/user/detail";
+        Map<String, Object> params = Maps.newHashMap();
+        //{uid=3909, school=湖南长沙女子大学, age=, nick=小飞侠, area=北京市通州区九棵树站, blood=AB,
+        // desc=一个与世无争的小女孩~, constellation=双子座, job=长得漂亮的设计师, interest=刘志国,刘志国,刘志国, sign=DDACF03B8D0BCAAA46241FB97617D691}
+        params.put("uid",3161);
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+
+
+
     
 //    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
@@ -839,6 +878,9 @@ public class TestController {
 //        testClassify();
 //        testOnline();
 //        testOnlineDetail();
+//        testDetailModify();
+//        testDetail();
+        testHospitalDetail();
     }
     
     

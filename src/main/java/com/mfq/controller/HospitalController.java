@@ -44,11 +44,11 @@ public class HospitalController {
     @RequestMapping(value = {"/{hid}/","/{hid}"})
     public String hospitalSdy(@PathVariable("hid") int hid, Model model){
 
-//        HospitalDetail2App h = hospitalService.getDetailById2Web(hid);
-//        model.addAttribute("hospital",h);
-//        return "/hospital/detail";
-
-        return "/hospital/hospital_"+hid;
+        HospitalDetail2App h = hospitalService.getDetailById2Web(hid);
+        model.addAttribute("hospital",h);
+        return "/hospital/detail";
+//
+//        return "/hospital/hospital_"+hid;
     }
 
 
@@ -76,7 +76,7 @@ public class HospitalController {
 
 
         } catch (Exception e) {
-            logger.error(e.toString());
+            logger.error(e.getMessage());
             ret = JsonUtil.toJson(1221, "获取详情出错", null);
         }
         return ret ;

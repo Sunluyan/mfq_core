@@ -40,15 +40,15 @@ public class OperationTask extends DefaultTask {
         logger.info("operation_task begin.....");
         OperationRecordMapper recordMapper = new ClassPathXmlApplicationContext("spring/spring.xml").getBean(OperationRecordMapper.class);
         try {
-            while (UserOperationUtil.proOperation.get(0) != null) {
+            while (UserOperationUtil.proOperation.size() != 0 && UserOperationUtil.proOperation.get(0) != null) {
                 recordMapper.insertSelective(UserOperationUtil.proOperation.get(0));
                 UserOperationUtil.proOperation.remove(0);
             }
-            while (UserOperationUtil.typeOperation.get(0) != null) {
+            while (UserOperationUtil.typeOperation.size() != 0 && UserOperationUtil.typeOperation.get(0) != null) {
                 recordMapper.insertSelective(UserOperationUtil.typeOperation.get(0));
                 UserOperationUtil.typeOperation.remove(0);
             }
-            while (UserOperationUtil.searchOperation.get(0) != null) {
+            while (UserOperationUtil.searchOperation.size() != 0 &&UserOperationUtil.searchOperation.get(0) != null) {
                 recordMapper.insertSelective(UserOperationUtil.searchOperation.get(0));
                 UserOperationUtil.searchOperation.remove(0);
             }

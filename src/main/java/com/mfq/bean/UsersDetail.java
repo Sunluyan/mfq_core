@@ -23,6 +23,12 @@ public class UsersDetail {
 
     public UsersDetail() {
         super();
+        this.age = "";
+        this.job = "";
+        this.school = "";
+        this.area = "";
+        this.interesting = "";
+        this.description = "";
     }
 
     public UsersDetail(String fuck) {

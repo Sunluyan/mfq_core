@@ -1,5 +1,6 @@
 package com.mfq.controller;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mfq.bean.UsersDetail;
 import com.mfq.bean.app.UsersDetail2App;
 import com.mfq.constants.BloodType;
@@ -280,13 +282,9 @@ public class UserController {
 
 
             long uid = Long.parseLong(params.get("uid").toString());
-            if(uid > 4000){
-                UsersDetail2App result  = userService.detail(uid);
-                return JsonUtil.successResultJson(result);
-            }
-
-            return JsonUtil.successResultJson(new UsersDetail2App("fuck"));
-
+            UsersDetail2App result  = userService.detail(uid);
+            logger.info(result.toString());
+            return JsonUtil.successResultJson(result);
         } catch (Exception e) {
             logger.error("系统错误:{}",e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,e.toString(),null);
@@ -302,7 +300,9 @@ public class UserController {
         String ret = "";
 
         try {
+            logger.info(request.toString());
             Map<String,Object> params = JsonUtil.readMapFromReq(request);
+            logger.info(params.toString());
             if (!SignHelper.validateSign(params)) { // 签名验证失败
                 ret = JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败",
                         null);
@@ -314,21 +314,33 @@ public class UserController {
                 logger.error("参数不合法！ret={}", ret);
                 return ret;
             }
+
             long uid = Long.parseLong(params.get("uid").toString());
+            if(uid == 0){
+                ret = JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "uid为0", null);
+                logger.error("uid为0！ret={}", ret);
+                return ret;
+            }
 
-            String desc = StringUtils.isEmpty(params.get("desc").toString())?params.get("desc").toString():null;
-            String interest = StringUtils.isEmpty(params.get("interest").toString())?params.get("interest").toString():null;
-            String nick = StringUtils.isEmpty(params.get("nick").toString())?params.get("nick").toString():null;
-            String sex = StringUtils.isEmpty(params.get("sex").toString())?params.get("sex").toString():null;
-            Integer blood = StringUtils.isEmpty(params.get("blood").toString())? BloodType.fromValue(params.get("blood").toString()).getId():null;
-            Integer constellation = StringUtils.isEmpty(params.get("constellation").toString())? Constellation.fromValue(params.get("constellation").toString()).getId():null;
-            String age = StringUtils.isEmpty(params.get("age").toString())?params.get("age").toString():null;
-            String job = StringUtils.isEmpty(params.get("job").toString())?params.get("job").toString():null;
-            String school = StringUtils.isEmpty(params.get("school").toString())?params.get("school").toString():null;
-            String area = StringUtils.isEmpty(params.get("area").toString())?params.get("area").toString():null;
+            String desc = params.get("desc")!=null?params.get("desc").toString():null;
+            String img = params.get("img")!=null?"http://avatar.mfqzz.com/"+params.get("img").toString():null;
+            String interest = params.get("interest")!=null?params.get("interest").toString():null;
+            String nick = params.get("nick")!=null?params.get("nick").toString():null;
+            String sex = params.get("sex")!=null?params.get("sex").toString():null;
+            Integer blood = params.get("blood")!=null? BloodType.fromValue(params.get("blood").toString()).getId():null;
+            Integer constellation = params.get("constellation")!=null? Constellation.fromValue(params.get("constellation").toString()).getId():null;
+            String age = params.get("age")!=null?params.get("age").toString():null;
+            String job = params.get("job")!=null?params.get("job").toString():null;
+            String school = params.get("school")!=null?params.get("school").toString():null;
+            String area = params.get("area")!=null?params.get("area").toString():null;
 
-            userService.updateDetail(uid,desc,interest,nick,sex,blood,constellation,age,job,school,area);
+            if(StringUtils.isNotBlank(interest) && interest.substring(interest.length()-1,interest.length()).equals(",")){
+                interest = interest.substring(0,interest.length()-1);
+            }
 
+            logger.info("desc:{},interest:{},nick:{},sex:{},blood:{},contellation:{},age:{},job:{},school:{},area:{}",
+                    desc,interest,nick,sex,blood,constellation,age,job,school,area);
+            userService.updateDetail(uid,desc,interest,nick,sex,blood,constellation,age,job,school,area,img);
             return JsonUtil.successResultJson();
         } catch (Exception e) {
             logger.error("系统错误:{}",e);

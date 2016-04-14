@@ -3,10 +3,12 @@ package com.mfq.bean.app;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.mfq.bean.UsersDetail;
 import com.mfq.bean.user.Gender;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.helper.UserHelper;
+import org.apache.commons.lang.StringUtils;
 
 public class UserProfile2App {
     long uid;
@@ -27,7 +29,10 @@ public class UserProfile2App {
     BigDecimal quota_left; //（剩余额度）
     BigDecimal balance; //（帐户余额）
     Date graduatedAt;//入学时间
-    
+    String desc;
+    String percent;
+
+
     public UserProfile2App() {
 
     }
@@ -37,7 +42,16 @@ public class UserProfile2App {
         this.mobile = user.getMobile();
         this.nick = user.getNick();
         this.gender = user.getGender() == null ? Gender.Unset.getValue() : user.getGender().getValue();
-        this.avatar = UserHelper.getAvatarUrl(user);
+        if (user != null && StringUtils.isNotBlank(user.getImg())) {
+            this.avatar = user.getImg();
+        } else if (user != null && StringUtils.isNotBlank(user.getPic())) {
+            this.avatar = user.getPic();
+        }
+        if(this.avatar!=null && !this.avatar.contains("http"))
+            this.avatar = UserHelper.getAvatarUrl(user);
+        else if(this.avatar == null)
+            this.avatar = "";
+
         this.location_id = userQuota.getSchoolLocationId();
         this.realname = userQuota.getRealname();
         this.id_card = userQuota.getIdCard();
@@ -51,6 +65,22 @@ public class UserProfile2App {
         this.quota_all = userQuota.getQuotaAll();
         this.quota_left = userQuota.getQuotaLeft();
         this.balance = userQuota.getBalance().add(userQuota.getPresent());
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getPercent() {
+        return percent;
+    }
+
+    public void setPercent(String percent) {
+        this.percent = percent;
     }
 
     public long getUid() {

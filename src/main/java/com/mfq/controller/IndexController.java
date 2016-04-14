@@ -52,38 +52,78 @@ public class IndexController {
 
 	private String startDate = "2015-12-10 10:00:00";
     private String endDate = "2015-12-12 23:59:59";
-    
-    @RequestMapping(value = "/index")
-    public String index(HttpServletRequest request, Model model) {
-    	String city_id = StringUtils.stripToEmpty(request.getParameter("city_id"));
-    	int cityId=0;
-    	if(StringUtils.isNotBlank(city_id)){
-    		cityId = Integer.parseInt(city_id);
-    	}
-    	List<ProductListItem2App> data = productService
-                .findByFlag(cityId, ProductFlag.RECOMMEND, 0);
-    	
-    	List<ProductClassify> classifys = classifyService.findByRootId(0);
+
+	@RequestMapping(value = "/index")
+	public String index(HttpServletRequest request, Model model) {
+		String city_id = StringUtils.stripToEmpty(request.getParameter("city_id"));
+		int cityId=0;
+		if(StringUtils.isNotBlank(city_id)){
+			cityId = Integer.parseInt(city_id);
+		}
+		List<ProductListItem2App> data = productService
+				.findByFlag(cityId, ProductFlag.RECOMMEND, 0);
+
+		List<ProductClassify> classifys = classifyService.findByRootId(0);
 
 		List<Map<String,Object>> hospitals = hospitalService.findHospitalByCity(1);
 
 		model.addAttribute("hospitals", hospitals);
-    	
-    	for(int i=0;i<10;i++){
-    		ProductClassify c=null;
-    		if(i < classifys.size()){
-    			c=classifys.get(i);
-    		}else{
-    			c = new ProductClassify();
-    		}
 
-    		model.addAttribute("classify_"+i, c);
-    	}
+		for(int i=0;i<10;i++){
+			ProductClassify c=null;
+			if(i < classifys.size()){
+				c=classifys.get(i);
+			}else{
+				c = new ProductClassify();
+			}
+
+			model.addAttribute("classify_"+i, c);
+		}
 		model.addAttribute("classifys", classifys);
-    	
-    	model.addAttribute("products", data);
-        return "/app/home/home";
-    }
+
+		model.addAttribute("products", data);
+		return "/app/home/home";
+	}
+
+    /**
+     * app 首页数据
+     * @param request
+     * @return
+     */
+	@RequestMapping(value = {"/home","/home/"})
+	public @ResponseBody String home(HttpServletRequest request) {
+		String city_id = StringUtils.stripToEmpty(request.getParameter("city_id"));
+		int cityId=0;
+		if(StringUtils.isNotBlank(city_id)){
+			cityId = Integer.parseInt(city_id);
+		}
+		List<ProductListItem2App> data = productService
+				.findByFlag(cityId, ProductFlag.RECOMMEND, 0);
+
+		List<ProductClassify> classifys = classifyService.findByRootId(0);
+
+		List<Map<String,Object>> hospitals = hospitalService.findHospitalByCity(1);
+
+        Map<String,Object> result = new HashMap<>();
+        result.put("hospitals", hospitals);
+
+//		for(int i=0;i<10;i++){
+//			ProductClassify c=null;
+//			if(i < classifys.size()){
+//				c=classifys.get(i);
+//			}else{
+//				c = new ProductClassify();
+//			}c
+//
+//            result.put("classify_"+i, c);
+//		}
+        result.put("classifys", classifys);
+
+        result.put("products", data);
+
+        return JsonUtil.successResultJson(result);
+	}
+
     
     @RequestMapping(value = {"/ad","/ad/"})
     @ResponseBody

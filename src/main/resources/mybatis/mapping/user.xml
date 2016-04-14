@@ -94,18 +94,23 @@
 		<include refid="selectsql" />
 		from users where status in (0,1) limit #{start},#{size}
 	</select>
+
 	<update id="updateNickAndGenderByPrimaryKey" parameterType="User" >
 		update users
 		<set >
 			<if test="nick != null" >
-				nick = #{nick,jdbcType=INTEGER},
+				nick = #{nick},
 			</if>
 
 			<if test="gender != null" >
-				gender = #{gender,jdbcType=BIGINT},
+				gender = #{gender},
+			</if>
+
+			<if test="img != null " >
+				img = #{img},
 			</if>
 		</set>
-		where id = #{uid,jdbcType=BIGINT}
+		where uid = #{uid,jdbcType=BIGINT}
 	</update>
 
 

@@ -256,9 +256,6 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
                         null);
             }
-            if(amount.compareTo(new BigDecimal(100))<=0){
-            	return JsonUtil.toJson(ErrorCodes.ORDER_MONEY_TOOLOW, "订单金额小于100", null);
-            }
 
             // MARK 如果有优惠券的话,应该先把amount减掉相应的金额,然后该干嘛干嘛,最后把金额给amout加上.
             String couponNum = null;
@@ -285,10 +282,6 @@ public class OrderController {
             period = (Integer) params.get("period");//总共多少期
             UserQuota userQuota = userQuotaService.queryUserQuota(uid);
             BigDecimal quotaLeft = userQuota.getQuotaLeft();
-            
-            if(quotaLeft.compareTo(new BigDecimal(100))<=0){
-            	return JsonUtil.toJson(ErrorCodes.USER_QUOTALEFT_TOO_LOW, "用户剩余额度小于100", null);
-            }
             
             BigDecimal periodPay;
 

@@ -79,6 +79,8 @@ public class ActivityService {
     BaomingMapper baomingMapper;
     @Resource
     ProductImgMapper productImgMapper;
+    @Resource
+    ProductImageService productImageService;
 
     public List<ProductInfoItem> getItemsByType(ProductType type) {
         List<Product> plist = productService.queryProductsByType(type);
@@ -269,8 +271,16 @@ public class ActivityService {
 
             List<ProductListItem2App> list = productService.convert2AppList(products);
 
+            List<ProductImage> squares = productImageService.getProductByPidsAndType(activity.getPids(),ProductImageType.SQUARE);
+
             for (ProductListItem2App productListItem2App : list) {
                 productListItem2App.setUrl("product:"+productListItem2App.getId()+"-"+productListItem2App.getName());
+                for (ProductImage square : squares) {
+                    if(square.getPid() == productListItem2App.getId()){
+                        productListItem2App.setImg(square.getImg());
+                        continue;
+                    }
+                }
             }
             detail.setPros(list);
         }

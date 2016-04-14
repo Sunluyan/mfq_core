@@ -4,7 +4,7 @@ package com.mfq.constants;
  * Created by liuzhiguo1 on 16/3/30.
  */
 public enum BloodType {
-    UNSET(0,"未设置"),
+    UNSET(0,""),
     A(1,"A"),
     B(2,"B"),
     AB(3,"AB"),
@@ -44,7 +44,7 @@ public enum BloodType {
 
     public static BloodType fromValue(String value){
         for(BloodType status : BloodType.values()){
-            if(status.getDesc() == value){
+            if(status.getDesc().equals(value)){
                 return status;
             }
         }
