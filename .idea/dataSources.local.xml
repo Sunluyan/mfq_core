@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - meifenqi@mysql.mfqzz.com" uuid="cf5bdd85-108c-4fd5-9939-6c5965d0394d">
+    <data-source name="MySQL - app_project_db@rm-2zen7l2xp16jx7xt2.mysql.rds.aliyuncs.com" uuid="cf5bdd85-108c-4fd5-9939-6c5965d0394d">
       <secret-storage>master_key</secret-storage>
-      <user-name>dbmfq_w</user-name>
-    </data-source>
-    <data-source name="mysql" uuid="4202f9e9-9c94-44bf-9fa9-92e1d668d31a">
-      <user-name>dbmfq_w</user-name>
+      <user-name>mfq_db_wr</user-name>
     </data-source>
   </component>
 </project>

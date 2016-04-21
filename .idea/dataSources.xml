@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2801216457">
-    <data-source source="LOCAL" name="MySQL - meifenqi@mysql.mfqzz.com" uuid="cf5bdd85-108c-4fd5-9939-6c5965d0394d">
+  <component name="DataSourceManagerImpl" format="xml" hash="2999877601">
+    <data-source source="LOCAL" name="MySQL - app_project_db@rm-2zen7l2xp16jx7xt2.mysql.rds.aliyuncs.com" uuid="cf5bdd85-108c-4fd5-9939-6c5965d0394d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://mysql.mfqzz.com:3306/meifenqi</jdbc-url>
-      <driver-properties>
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="mysql" uuid="4202f9e9-9c94-44bf-9fa9-92e1d668d31a">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://mysql.mfqzz.com:3306/meifenqi?characterEncoding=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</jdbc-url>
-      <explain-plan-config>
-        <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
-      </explain-plan-config>
+      <jdbc-url>jdbc:mysql://rm-2zen7l2xp16jx7xt2.mysql.rds.aliyuncs.com:3306/app_project_db</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />

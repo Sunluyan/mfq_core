@@ -224,6 +224,7 @@ public class WeChatService {
 				return token;
 			}
 		}
+
 		token = httpAccessToken();
 		sysConfigMapper.updateConfigByKey(new SysConfig(Constants.WACHAT_TOKEN_KEY, JsonUtil.writeToJson(token)));
 		return token;

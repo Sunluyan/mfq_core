@@ -17,8 +17,6 @@ public class test {
 
 		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring.xml");
 		PolicyInfo p = new PolicyInfo();
-		
-		
 	}
 
 }

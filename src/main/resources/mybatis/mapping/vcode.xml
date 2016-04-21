@@ -37,8 +37,8 @@
 		retry_time=0,seq_id=seq_id+1 where emkey=#{key}
 	</update>
 
-	<delete id="updateRetryTime">
+	<update id="updateRetryTime">
 		update vcode set retry_time=retry_time+1 where emkey=#{key}
-	</delete>
+	</update>
 
 </mapper>

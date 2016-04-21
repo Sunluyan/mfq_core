@@ -123,9 +123,6 @@ public class OrderService {
 
         if (t == PayType.FINANCING) {
 
-            if (periodPay.divide(BigDecimal.valueOf(period), 2, BigDecimal.ROUND_HALF_EVEN).compareTo(BigDecimal.valueOf(100)) < 0) {
-                throw new Exception("每月还款金额不能低于100元哦");
-            }
             if (quota.getBalance().compareTo(balancePay) >= 0) {
                 logger.info("分期 ——余额支付！！ balance ={} , balancePay={}",
                         quota.getBalance(), balancePay);
