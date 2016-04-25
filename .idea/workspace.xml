@@ -5,82 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="新年活动">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/mfq/payment/impl/WechatServiceImpl$ResponseData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/payment/impl/WechatServiceImpl$ResponseData.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/bean/app/UserProfile2App.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/bean/app/UserProfile2App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/ActivityController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/ActivityController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/ClassifyController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/ClassifyController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/HospitalController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/HospitalController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/OrderController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/OrderController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/PasswordController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/PasswordController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/PaymentController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/PaymentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/PictureController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/PictureController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/ProductController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/TestController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/dao/PolicyInsureMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/dao/PolicyInsureMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/dao/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/dao/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/helper/SignHelper.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/helper/SignHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/interceptor/AuthInterceptor.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/interceptor/AuthInterceptor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/payment/impl/WechatServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/payment/impl/WechatServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/payment/util/wechat/HttpsUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/payment/util/wechat/HttpsUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/HospitalService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/HospitalService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/LoginService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/LoginService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/OrderService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/OrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/PayRecordService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/PayRecordService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/PolicyService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/PolicyService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/ProductService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/user/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/service/wechat/WeChatService.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/service/wechat/WeChatService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/servlet/UserTraceFilter.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/servlet/UserTraceFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/task/OrderCloseTask.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/task/OrderCloseTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/utils/Config.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/utils/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mfq/utils/XMLConverUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/mfq/utils/XMLConverUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app.war" afterPath="$PROJECT_DIR$/target/mfq-app.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ActivityController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ActivityController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ClassifyController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ClassifyController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/HospitalController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/HospitalController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/IndexController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/IndexController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/OrderController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/OrderController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PasswordController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PasswordController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PaymentController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PaymentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PictureController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/PictureController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/ProductController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/TestController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/UserController.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/helper/SignHelper.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/helper/SignHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/interceptor/AuthInterceptor.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/interceptor/AuthInterceptor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/payment/impl/WechatServiceImpl.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/payment/impl/WechatServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/payment/util/wechat/HttpsUtil.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/payment/util/wechat/HttpsUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ActivityService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/HospitalService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/HospitalService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/LoginService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/LoginService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/OrderService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/OrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayRecordService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PayRecordService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PolicyService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/PolicyService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/ProductService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserService.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/service/user/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/servlet/UserTraceFilter.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/servlet/UserTraceFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/task/OrderCloseTask.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/task/OrderCloseTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/Config.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/XMLConverUtil.class" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/com/mfq/utils/XMLConverUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/service/wechat/WeChatService.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/service/wechat/WeChatService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties" afterPath="$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/vcode.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapping/vcode.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/mfq/test/test.java" afterPath="$PROJECT_DIR$/src/test/java/com/mfq/test/test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config-override.properties" afterPath="$PROJECT_DIR$/target/classes/config-override.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mybatis/mapping/vcode.xml" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapping/vcode.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mysql.properties" afterPath="$PROJECT_DIR$/target/classes/mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/product.xml" afterPath="$PROJECT_DIR$/target/mfq-app/WEB-INF/classes/mybatis/mapping/product.xml" />
     </list>
     <list id="ff6afb5f-79e4-443a-b419-a44116867988" name="New changelist" comment="" />
     <ignored path="meifenqi.iws" />
@@ -112,6 +40,22 @@
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - app_project_db@rm-2zen7l2xp16jx7xt2.mysql.rds.aliyuncs.com" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -119,44 +63,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="spring.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring.xml">
+      <file leaf-file-name="UserTraceFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/servlet/UserTraceFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="springmvc-servlet.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/springmvc-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/TestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="121" column="39" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AuthenticationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -164,58 +76,57 @@
       <file leaf-file-name="AuthInterceptor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/interceptor/AuthInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+            <state relative-caret-position="435">
+              <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <file leaf-file-name="coupon_batch_info.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon_batch_info.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <marker date="1452157183000" expanded="true" signature="474:552" placeholder="select from coupon_batch_info" />
+                <marker date="1452157183000" expanded="true" signature="623:707" placeholder="select from coupon_batch_info" />
+                <marker date="1452157183000" expanded="true" signature="779:864" placeholder="select from coupon_batch_info" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WechatServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/WechatServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="112" column="46" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserTraceFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/servlet/UserTraceFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+      <file leaf-file-name="app_project_db.hospital" pinned="false" current-in-tab="true">
+        <entry file="dbDummy://dbtable:/9759f7c9/cf5bdd85-108c-4fd5-9939-6c5965d0394d/app_project_db.hospital">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changyong" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong">
+      <file leaf-file-name="PaymentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/mfq/test/test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mysql.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="750">
+              <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -242,15 +153,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/helper/SignHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/utils/XMLConverUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/payment/util/wechat/HttpsUtil.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/BilltopayService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/service/PayRecordService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/payment/bean/WXResponseData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/WechatServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ClassifyController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config-common.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/mfq/controller/ProductController.java" />
@@ -293,6 +201,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/spring/springmvc-servlet.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/mfq/test/test.java" />
         <option value="$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/listener/StartListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/WechatServiceImpl.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/833b96bb-1479-416a-9ff1-ef6acf012e7c/console.sql" />
       </list>
     </option>
   </component>
@@ -395,6 +306,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -472,218 +386,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="product" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="baoming" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -913,70 +615,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="payment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1101,45 +739,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="handler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meifenqi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mfq" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1154,7 +759,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="Console.TableResult.DefaultCopyAction" value="Tab Separated Values (TSV)" />
     <property name="FullScreen" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="testcon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/TestController.java&#10;changyong&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/utils/changyong&#10;usertracefil&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/servlet/UserTraceFilter.java&#10;logback.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/logback.xml&#10;authinter&#9;PSI&#9;JAVA://com.mfq.interceptor.AuthInterceptor&#10;auth&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/AuthenticationController.java&#10;usertype&#9;PSI&#9;JAVA://com.mfq.controller.AuthenticationController#userType&#10;registerCOn&#9;PSI&#9;JAVA://com.mfq.controller.RegisterController&#10;authController&#9;PSI&#9;JAVA://com.mfq.controller.AuthenticationController&#10;smsService&#9;PSI&#9;JAVA://com.mfq.service.sms.SMSService&#10;updateretry&#9;PSI&#9;JAVA://com.mfq.dao.VcodeMapper#updateRetryTime&#10;codemsg&#9;PSI&#9;JAVA://com.mfq.bean.CodeMsg&#10;ran&#9;PSI&#9;JAVA://com.mfq.payment.util.yeepay.common.RandomUtil&#10;httpUtil&#9;PSI&#9;JAVA://com.mfq.utils.HttpUtil&#10;wechatservice&#9;PSI&#9;JAVA://com.mfq.service.wechat.WeChatService&#10;updateConfigByKey&#9;PSI&#9;JAVA://com.mfq.dao.SysConfigMapper#updateConfigByKey&#10;sysConfig&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/SysConfig.java&#10;sysConfigMapper&#9;PSI&#9;JAVA://com.mfq.dao.SysConfigMapper&#10;testController&#9;PSI&#9;JAVA://com.mfq.controller.TestController&#10;makepayno&#9;PSI&#9;JAVA://com.mfq.service.BilltopayService#makePayNo&#10;orderService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/OrderService.java&#10;BigDeci&#9;PSI&#9;JAVA://java.math.BigDecimal&#10;userfilter&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/servlet/UserTraceFilter.java&#10;listen&#9;PSI&#9;JAVA://com.mfq.listener.StartListener&#10;smssend&#9;PSI&#9;JAVA://com.mfq.bean.sms.SMSSendStatus&#10;MessageProvider&#9;PSI&#9;JAVA://com.mfq.service.sms.provider.MessageProvider&#10;MobileMessageClient&#9;PSI&#9;JAVA://com.mfq.service.sms.MobileMessageClient&#10;smsIn&#9;PSI&#9;JAVA://com.mfq.service.sms.SMSInnerService&#10;orderinfo2app&#9;PSI&#9;JAVA://com.mfq.bean.app.OrderInfo2App&#10;fqutil&#9;PSI&#9;JAVA://com.mfq.utils.FQUtil&#10;payrecord.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/pay_record.xml&#10;payrecordmapper&#9;PSI&#9;JAVA://com.mfq.dao.PayRecordMapper&#10;ListSortUtil&#9;PSI&#9;JAVA://com.mfq.utils.ListSortUtil&#10;policyinsuremapper&#9;PSI&#9;JAVA://com.mfq.dao.PolicyInsureMapper&#10;policyinsuremapper.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/PolicyInsureMapper.xml&#10;wukong&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/net/wukongbao/WukongBaoClient.java&#10;CouponInfo2App&#9;PSI&#9;JAVA://com.mfq.bean.app.CouponInfo2App&#10;cons&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/constants/Constants.java&#10;wukongbaocli&#9;PSI&#9;JAVA://com.mfq.net.wukongbao.WukongBaoClient&#10;hospitalSer&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/HospitalService.java&#10;policyService&#9;PSI&#9;JAVA://com.mfq.service.PolicyService&#10;SignIndex&#9;PSI&#9;JAVA://com.mfq.bean.user.SignIndex&#10;status&#9;PSI&#9;JAVA://com.mfq.bean.user.Status&#10;userIdHold&#9;PSI&#9;JAVA://com.mfq.dataservice.context.UserIdHolder&#10;orderType&#9;PSI&#9;JAVA://com.mfq.constants.OrderType&#10;PayCallbackResult&#9;PSI&#9;JAVA://com.mfq.bean.PayCallbackResult&#10;PayAPIImpl&#9;PSI&#9;JAVA://com.mfq.annotation.PayAPIImpl&#10;payment&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/PaymentController.java&#10;chagyong&#9;null&#9;null&#10;dev/mysql.&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources-env/dev/mysql.properties" />
+    <property name="SearchEverywhereHistoryKey" value="lastinsert&#9;null&#9;null&#10;Auth&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/interceptor/AuthInterceptor.java&#10;idcardSer&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/http/IDCardCheckService.java&#10;idcardcheckSer&#9;PSI&#9;JAVA://com.mfq.service.http.IDCardCheckService&#10;testcon&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/TestController.java&#10;changyong&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/utils/changyong&#10;usertracefil&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/servlet/UserTraceFilter.java&#10;logback.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/logback.xml&#10;authinter&#9;PSI&#9;JAVA://com.mfq.interceptor.AuthInterceptor&#10;auth&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/controller/AuthenticationController.java&#10;usertype&#9;PSI&#9;JAVA://com.mfq.controller.AuthenticationController#userType&#10;registerCOn&#9;PSI&#9;JAVA://com.mfq.controller.RegisterController&#10;authController&#9;PSI&#9;JAVA://com.mfq.controller.AuthenticationController&#10;smsService&#9;PSI&#9;JAVA://com.mfq.service.sms.SMSService&#10;updateretry&#9;PSI&#9;JAVA://com.mfq.dao.VcodeMapper#updateRetryTime&#10;codemsg&#9;PSI&#9;JAVA://com.mfq.bean.CodeMsg&#10;ran&#9;PSI&#9;JAVA://com.mfq.payment.util.yeepay.common.RandomUtil&#10;httpUtil&#9;PSI&#9;JAVA://com.mfq.utils.HttpUtil&#10;wechatservice&#9;PSI&#9;JAVA://com.mfq.service.wechat.WeChatService&#10;updateConfigByKey&#9;PSI&#9;JAVA://com.mfq.dao.SysConfigMapper#updateConfigByKey&#10;sysConfig&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/bean/SysConfig.java&#10;sysConfigMapper&#9;PSI&#9;JAVA://com.mfq.dao.SysConfigMapper&#10;testController&#9;PSI&#9;JAVA://com.mfq.controller.TestController&#10;makepayno&#9;PSI&#9;JAVA://com.mfq.service.BilltopayService#makePayNo&#10;orderService&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/OrderService.java&#10;BigDeci&#9;PSI&#9;JAVA://java.math.BigDecimal&#10;userfilter&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/servlet/UserTraceFilter.java&#10;listen&#9;PSI&#9;JAVA://com.mfq.listener.StartListener&#10;smssend&#9;PSI&#9;JAVA://com.mfq.bean.sms.SMSSendStatus&#10;MessageProvider&#9;PSI&#9;JAVA://com.mfq.service.sms.provider.MessageProvider&#10;MobileMessageClient&#9;PSI&#9;JAVA://com.mfq.service.sms.MobileMessageClient&#10;smsIn&#9;PSI&#9;JAVA://com.mfq.service.sms.SMSInnerService&#10;orderinfo2app&#9;PSI&#9;JAVA://com.mfq.bean.app.OrderInfo2App&#10;fqutil&#9;PSI&#9;JAVA://com.mfq.utils.FQUtil&#10;payrecord.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/pay_record.xml&#10;payrecordmapper&#9;PSI&#9;JAVA://com.mfq.dao.PayRecordMapper&#10;ListSortUtil&#9;PSI&#9;JAVA://com.mfq.utils.ListSortUtil&#10;policyinsuremapper&#9;PSI&#9;JAVA://com.mfq.dao.PolicyInsureMapper&#10;policyinsuremapper.xml&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/resources/mybatis/mapping/PolicyInsureMapper.xml&#10;wukong&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/net/wukongbao/WukongBaoClient.java&#10;CouponInfo2App&#9;PSI&#9;JAVA://com.mfq.bean.app.CouponInfo2App&#10;cons&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/constants/Constants.java&#10;wukongbaocli&#9;PSI&#9;JAVA://com.mfq.net.wukongbao.WukongBaoClient&#10;hospitalSer&#9;FILE&#9;file:///Users/liuzhiguo1/git/mfq_core/src/main/java/com/mfq/service/HospitalService.java&#10;policyService&#9;PSI&#9;JAVA://com.mfq.service.PolicyService&#10;SignIndex&#9;PSI&#9;JAVA://com.mfq.bean.user.SignIndex&#10;status&#9;PSI&#9;JAVA://com.mfq.bean.user.Status&#10;userIdHold&#9;PSI&#9;JAVA://com.mfq.dataservice.context.UserIdHolder&#10;orderType&#9;PSI&#9;JAVA://com.mfq.constants.OrderType&#10;PayCallbackResult&#9;PSI&#9;JAVA://com.mfq.bean.PayCallbackResult" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="125" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="150" />
@@ -1171,6 +776,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="936" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1962,7 +1568,9 @@
       <workItem from="1460943874829" duration="168000" />
       <workItem from="1460947781295" duration="7919000" />
       <workItem from="1461120459736" duration="2677000" />
-      <workItem from="1461208546787" duration="2000" />
+      <workItem from="1461208546787" duration="8990000" />
+      <workItem from="1461391227985" duration="1229000" />
+      <workItem from="1461554888614" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1451275232090</created>
@@ -2244,7 +1852,14 @@
       <option name="project" value="LOCAL" />
       <updated>1460601413657</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="新年活动">
+      <created>1461208560278</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1461208560278</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2253,7 +1868,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424683000" />
+    <option name="totallyTimeSpent" value="434907000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2266,7 +1881,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6686252" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2277,12 +1892,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29612222" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40305522" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2596945" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320458" sideWeight="0.4902439" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22617246" sideWeight="0.5097561" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22174536" sideWeight="0.4893617" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22174536" sideWeight="0.4893617" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2333,95 +1948,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cf5bdd85-108c-4fd5-9939-6c5965d0394d/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/BilltopayService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="241" column="35" selection-start-line="241" selection-start-column="35" selection-end-line="241" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/UnionpayServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/InnerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/9759f7c9/cf5bdd85-108c-4fd5-9939-6c5965d0394d/app_project_db.system_config">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/bean/SysConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/dao/SysConfigMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/sys_config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/WechatServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="143" column="51" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="348" column="50" selection-start-line="348" selection-start-column="50" selection-end-line="348" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/wechat/WeChatService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="221" column="39" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/util/yeepay/common/RandomUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2613,15 +2139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2633,10 +2150,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources-env/product/mysql.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/UserTraceLogger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state relative-caret-position="228">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="120" column="51" selection-start-line="120" selection-start-column="51" selection-end-line="120" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/service/http/IDCardCheckService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/listener/StartListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/springmvc-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2648,51 +2194,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/springmvc-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="285">
           <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/interceptor/AuthInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="285">
           <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/UserTraceLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/servlet/UserTraceFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2701,15 +2213,130 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/servlet/UserTraceFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/TestController.java">
+    <entry file="dbDummy://dbtable:/9759f7c9/cf5bdd85-108c-4fd5-9939-6c5965d0394d/app_project_db.slow_log">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/user.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="121" column="39" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="39" />
+        <state relative-caret-position="200">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/AppController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapping/coupon_batch_info.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <marker date="1452157183000" expanded="true" signature="474:552" placeholder="select from coupon_batch_info" />
+            <marker date="1452157183000" expanded="true" signature="623:707" placeholder="select from coupon_batch_info" />
+            <marker date="1452157183000" expanded="true" signature="779:864" placeholder="select from coupon_batch_info" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/interceptor/AuthInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="47" column="56" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/impl/WechatServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="112" column="46" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9759f7c9/cf5bdd85-108c-4fd5-9939-6c5965d0394d/app_project_db.hospital">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/833b96bb-1479-416a-9ff1-ef6acf012e7c/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources-env/product/mysql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/payment/BasePaymentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9759f7c9/cf5bdd85-108c-4fd5-9939-6c5965d0394d/app_project_db.hospital">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

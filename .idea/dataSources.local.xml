@@ -5,5 +5,9 @@
       <secret-storage>master_key</secret-storage>
       <user-name>mfq_db_wr</user-name>
     </data-source>
+    <data-source name="MySQL - app_db@rm-2ze1ipo01yhkug7uzo.mysql.rds.aliyuncs.com" uuid="833b96bb-1479-416a-9ff1-ef6acf012e7c">
+      <secret-storage>master_key</secret-storage>
+      <user-name>mfq_db_wr</user-name>
+    </data-source>
   </component>
 </project>
