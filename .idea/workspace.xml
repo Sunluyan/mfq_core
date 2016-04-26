@@ -4,13 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/mfq/service/PayService.java" line="541" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="新年活动">
+    <list default="true" id="9bf1f04e-ca59-498a-ada9-0c06f95fb0b5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/controller/OrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mfq/controller/PaymentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties" afterPath="$PROJECT_DIR$/src/main/resources-env/dev/mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources-env/product/mysql.properties" afterPath="$PROJECT_DIR$/src/main/resources-env/product/mysql.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hospital/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hospital/index.jsp" />
     </list>
     <list id="ff6afb5f-79e4-443a-b419-a44116867988" name="New changelist" comment="" />
     <ignored path="meifenqi.iws" />
@@ -58,8 +53,8 @@
       <file leaf-file-name="changyong" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -1514,7 +1509,7 @@
       <workItem from="1461208546787" duration="8990000" />
       <workItem from="1461391227985" duration="1229000" />
       <workItem from="1461554888614" duration="2383000" />
-      <workItem from="1461579407718" duration="5910000" />
+      <workItem from="1461579407718" duration="6188000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1451275232090</created>
@@ -1810,7 +1805,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461554900470</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="liuzhiguo">
+      <created>1461636631596</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1461636631596</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1819,7 +1821,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="443193000" />
+    <option name="totallyTimeSpent" value="443471000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1886,7 +1888,8 @@
     <MESSAGE value="tijiao" />
     <MESSAGE value="更新" />
     <MESSAGE value="新年活动" />
-    <option name="LAST_COMMIT_MESSAGE" value="新年活动" />
+    <MESSAGE value="liuzhiguo" />
+    <option name="LAST_COMMIT_MESSAGE" value="liuzhiguo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2298,8 +2301,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mfq/utils/changyong">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
           <folding />
         </state>
       </provider>
