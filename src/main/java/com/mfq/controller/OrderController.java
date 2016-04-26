@@ -374,7 +374,7 @@ public class OrderController {
             logger.error("Exception OrderList Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);
         }
-        logger.info("Order_OrderList_Ret is:{}", ret);
+        logger.debug("Order_OrderList_Ret is:{}", ret);
         return ret;
     }
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>美分</title>
+    <title>美分期</title>
 </head>
 <body>
 <style>
