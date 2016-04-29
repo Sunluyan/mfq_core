@@ -47,15 +47,15 @@ public class OrderController {
             .getLogger(OrderController.class);
 
     @Resource
-    OrderService orderService;
+    OrderService orderService;//订单
     @Resource
-    CouponService couponService;
+    CouponService couponService;//优惠券
     @Resource
-    UserQuotaService userQuotaService;
+    UserQuotaService userQuotaService;//用户额度
     @Resource
-    RefundService refundService;
+    RefundService refundService;//资金还款
     @Resource
-    ProductService productService;
+    ProductService productService;//产品
 
 
     /**

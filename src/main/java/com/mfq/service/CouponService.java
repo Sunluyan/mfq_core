@@ -108,6 +108,7 @@ public class CouponService {
             for (CouponBatchInfo batchInfo : couponBatchInfos) {
                 if(batchInfo.getId() == coupon.getBatchId()){
                     couponBatchInfo = batchInfo;
+
                     break;
                 }
             }
@@ -243,6 +244,7 @@ public class CouponService {
     public static void main(String[] args) {
         for(int i = 0;i<3311;i++){
             System.out.println(UserUtils.makeInviteCode(i+10));
+
         }
     }
 }

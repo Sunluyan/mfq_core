@@ -16,7 +16,7 @@ jQuery.noConflict();
 			$(".quren").on('click', function(){
 				_this.__validationForm();
 				if(!_this.__checkForm()){
-					return false;
+					return false;  
 				}
 				$("#reg").submit();
 			});

@@ -30,7 +30,6 @@ public class TestController {
         Map<String, Object> params = Maps.newHashMap();
         params.put("uid", "2847");
         params.put("orderNo", "mn2016011116070133780097");
-
         String sign = SignHelper.makeSign(params);
         params.put("sign", sign);
         String body = JsonUtil.writeToJson(params);

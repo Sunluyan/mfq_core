@@ -4,7 +4,7 @@
 <% 
 String title = (String) request.getAttribute("title");
 String name = (String) request.getAttribute("name");
-String viewNum = (String) request.getAttribute("viewNum");
+String viewNum = (String) requepst.getAttribute("viewNum");
 String endTime = (String) request.getAttribute("endTime");
 String price = (String) request.getAttribute("price");
 String market_price = (String) request.getAttribute("market_price");
