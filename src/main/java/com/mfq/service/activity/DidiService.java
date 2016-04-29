@@ -5,6 +5,7 @@ import com.mfq.bean.DidiExample;
 import com.mfq.controller.ActivityController;
 import com.mfq.dao.DidiMapper;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class DidiService {
     public void insertMobile(String mobile, long uid, String pids) throws Exception {
         String[] pidArray = pids.split(",");
         for (String s : pidArray) {
+            if(StringUtils.isBlank(s)){
+                continue;
+            }
             Didi didi = new Didi();
             didi.setCreatedAt(new Date());
             didi.setUid(uid);

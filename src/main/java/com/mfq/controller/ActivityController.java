@@ -18,6 +18,7 @@ import com.mfq.bean.app.ActivityOnlineDetail;
 import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.helper.SignHelper;
+import com.mfq.service.activity.DidiService;
 import com.mfq.service.user.UserQuotaService;
 import com.mfq.utils.ListSortUtil;
 import com.qiniu.util.Json;
@@ -76,6 +77,8 @@ public class ActivityController {
     SMSService smsService;
     @Resource
     UserQuotaService userQuotaService;
+    @Resource
+    DidiService didiService;
 
     /**
      * 首页HTML5页面
@@ -622,6 +625,38 @@ public class ActivityController {
             logger.error(e.toString());
             return JsonUtil.toJson(9999,"获取线下列表出错",null);
         }
+    }
+
+    @RequestMapping(value = {"/didi/{city}"})
+    public String didiBeijing(@PathVariable("city")String city, HttpServletRequest request, HttpServletResponse response){
+        try{
+            if(city.equals("beijing")){
+
+            }else if(city.equals("shanghai")){
+
+            }else if(city.equals("guangzhou")){
+
+            }
+            return "activity/didi/index";
+        }catch(Exception e){
+            logger.error(e.toString());
+            return JsonUtil.toJson(9999,"获取线下列表出错",null);
+        }
+    }
+
+    @RequestMapping(value = {"/didi/mark"})
+    public String addDidiMark(HttpServletRequest request,HttpServletResponse response){
+        try{
+            String mobile = request.getParameter("mobile");
+            //pid 按照 ',' 连接 , 如 : 213,421,1,2,4
+            String pids = request.getParameter("pids");
+            didiService.insertMobile(mobile,0,pids);
+
+        }catch(Exception e){
+            logger.error(e.getMessage());
+        }
+
+        return "";
     }
 
 

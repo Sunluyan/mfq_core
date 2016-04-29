@@ -32,7 +32,6 @@ public class Base62 {
         }
         return result;
     }
-
     public static String encode(long number) {
         if (number < 0) throw new IllegalArgumentException("Number(Base62) must be positive: " + number);
         if (number == 0) return "0";
