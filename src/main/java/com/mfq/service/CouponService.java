@@ -8,23 +8,20 @@ import java.util.Random;
 
 import javax.annotation.Resource;
 
-import com.mfq.bean.user.User;
+import com.mfq.bean.coupon.*;
 import com.mfq.constants.ErrorCodes;
+import com.mfq.service.activity.DidiService;
 import com.mfq.service.user.UserService;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.UserUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.google.common.collect.Lists;
 import com.mfq.bean.app.CouponInfo2App;
-import com.mfq.bean.coupon.Coupon;
-import com.mfq.bean.coupon.CouponBatchInfo;
 import com.mfq.constants.CouponStatus;
 import com.mfq.dao.CouponBatchInfoMapper;
 import com.mfq.dao.CouponMapper;
@@ -45,6 +42,7 @@ public class CouponService {
 
     @Resource
     UserService userService;
+
 
     /**
      * 构造用户优惠券，并入库
@@ -80,17 +78,21 @@ public class CouponService {
 
     /**
      * 该方法用来查询用户的优惠券,并封装成 CouponInfo2App 对象返回
-     * @param uid
-     * @return List<CouponINfo>
+     *
+     * @param uid  @return List<CouponINfo>
      */
     public List<CouponInfo2App> findValidCoupon(long uid) {
+
+
 		List<Coupon> coupons = couponMapper.findCouponsByUidAndStatus(uid,CouponStatus.INIT);
         if (CollectionUtils.isEmpty(coupons)) {
             return null;
         }
         //封装查询条件,弄成 ('1','2','3') 的样子
 		String batchs = "(";
+        List<Integer> batchsList = new ArrayList<>();
 		for (Coupon coupon : coupons) {
+            batchsList.add((int)coupon.getBatchId());
 			batchs += "'"+coupon.getBatchId()+"',";
 		}
 		batchs = batchs.substring(0,batchs.length()-1);
@@ -102,7 +104,6 @@ public class CouponService {
         List<CouponInfo2App> couponInfo2Apps = new ArrayList<>();
 
         for (Coupon coupon : coupons) {
-
             CouponBatchInfo  couponBatchInfo = new CouponBatchInfo();
             for (CouponBatchInfo batchInfo : couponBatchInfos) {
                 if(batchInfo.getId() == coupon.getBatchId()){
@@ -114,6 +115,8 @@ public class CouponService {
             CouponInfo2App couponInfo2App = new CouponInfo2App(coupon,couponBatchInfo);
             couponInfo2Apps.add(couponInfo2App);
         }
+
+
 
         return couponInfo2Apps;
     }

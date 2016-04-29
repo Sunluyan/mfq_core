@@ -14,6 +14,7 @@ scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war root@112.126.81.8:/usr/mfq
 MFQ-dev-20!6
 
 scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.4:~/tomcat/webapps/ROOT/
+scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.3:~/tomcat/webapps/ROOT/
 mfq-yqds!!!
 
 
@@ -22,6 +23,14 @@ ps -ef|grep tomcat|grep -v grep|awk '{print $2}'|xargs kill -9
 jar -vxf mfq-app.war
 /usr/mfq-dev/tomcat/bin/startup.sh
 cd /usr/mfq-dev/tomcat/logs/
+tail -1000f mfq-app.log
+
+
+cd ~/tomcat/webapps/ROOT/
+ps -ef|grep tomcat|grep -v grep|awk '{print $2}'|xargs kill -9
+jar -vxf mfq-app.war
+~/tomcat/bin/startup.sh
+cd ~/tomcat/logs/
 tail -1000f mfq-app.log
 
 

@@ -732,10 +732,12 @@ public class WeChatController {
         String ret = "";
         try {
         	String url = StringUtils.stripToEmpty(request.getParameter("url"));
+            logger.info("js token url:"+url);
             ret = weChatService.generateJsApiToken(url);
             logger.info("ret:{}",ret);
         } catch (Exception e) {
             logger.info("gen js api token {}", e);
+
         }
 
         return ret;

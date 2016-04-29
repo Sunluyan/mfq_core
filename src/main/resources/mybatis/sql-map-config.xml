@@ -127,7 +127,7 @@
 		<mapper resource="mybatis/mapping/ProductImageMapper.xml"/>
 		<mapper resource="mybatis/mapping/BaomingMapper.xml"/>
 		<mapper resource="mybatis/mapping/UsersDetailMapper.xml"/>
-
+		<mapper resource="mybatis/mapping/DidiMapper.xml"/>
 
 	</mappers>
 

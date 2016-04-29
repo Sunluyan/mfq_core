@@ -652,6 +652,7 @@ pageEncoding="UTF-8"%>
 							alert("取消就不能参与了哦")
 						}
 					});
+
 					wx.onMenuShareAppMessage({
 						title: '一顿饭的时间，提升颜值的秘密', // 分享标题
 						desc: '', // 分享描述

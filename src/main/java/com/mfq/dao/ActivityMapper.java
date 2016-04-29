@@ -7,8 +7,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-@Component
 @MFQDao
+@Component
 public interface ActivityMapper {
     int countByExample(ActivityExample example);
 

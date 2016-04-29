@@ -101,7 +101,6 @@ public class ProductDetail2App {
         this.is_fq = 1;
         this.share_url = "/product/app/detail?pid="+product.getId();
         this.hos_id = product.getHospitalId();
-
     }
 
     public String getName() {

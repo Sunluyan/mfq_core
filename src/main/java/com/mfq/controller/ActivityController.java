@@ -339,169 +339,169 @@ public class ActivityController {
         return "/activity/s/seckiling_product";
     }
 
-    @RequestMapping(value="/newyear/{page}")
-    public ModelAndView ChristmasPage(@PathVariable String page, HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("title", "会员注册");
-        try {
-            // 随机产生用户id(用于验证请求）
-            String uid = UUID.randomUUID().toString();
-            model.put("UID", uid);
-            // 保存至Session
-            request.getSession().setAttribute("uid", uid);
-        } catch (Exception e) {
-            logger.error("WeiXin_REGISTER_Exception", e);
-        }
-        return new ModelAndView("/activity/newyear/"+page, model);
-    }
+//    @RequestMapping(value="/newyear/{page}")
+//    public ModelAndView ChristmasPage(@PathVariable String page, HttpServletRequest request, HttpServletResponse response){
+//        Map<String, Object> model = new HashMap<String, Object>();
+//        model.put("title", "会员注册");
+//        try {
+//            // 随机产生用户id(用于验证请求）
+//            String uid = UUID.randomUUID().toString();
+//            model.put("UID", uid);
+//            // 保存至Session
+//            request.getSession().setAttribute("uid", uid);
+//        } catch (Exception e) {
+//            logger.error("WeiXin_REGISTER_Exception", e);
+//        }
+//        return new ModelAndView("/activity/newyear/"+page, model);
+//    }
 
-    @RequestMapping("/newyear/register/")
-    @ResponseBody
-    public String ChristmasRegister(HttpServletRequest request, HttpServletResponse response){
-        String passwd = request.getParameter("passwd");
-        String mobile = request.getParameter("phone");
-        String vcode = request.getParameter("vcode");
-        String ret = "";
-        if (StringUtils.isBlank(passwd) || StringUtils.isBlank(mobile)) {
-            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,"密码不能为空!",null);
-            return ret;
-        }
+//    @RequestMapping("/newyear/register/")
+//    @ResponseBody
+//    public String ChristmasRegister(HttpServletRequest request, HttpServletResponse response){
+//        String passwd = request.getParameter("passwd");
+//        String mobile = request.getParameter("phone");
+//        String vcode = request.getParameter("vcode");
+//        String ret = "";
+//        if (StringUtils.isBlank(passwd) || StringUtils.isBlank(mobile)) {
+//            ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR,"密码不能为空!",null);
+//            return ret;
+//        }
+//
+//        // 验证 手机验证码
+//        CodeMsg cm = vcodeService.validate(mobile, vcode);
+//        if (cm.getCode() != 0) {
+//            ret = JsonUtil.toJson(3124,"验证码不对哦!",null);
+//            return ret;
+//        }
+//
+//        try {
+//            String result = weChatService.registerWeChatUser(passwd, mobile,
+//                    vcode);
+//            Map<String, Object> ResultMap = JsonUtil.getMapFromJsonStr(result);
+//            int code = Integer.parseInt(ResultMap.get("code").toString());
+//
+//            if (code == 0) {
+//                logger.info("user {} login meifenqi fronted system.....");
+//
+//                User user = userService.queryUserByMobile(mobile);
+//
+//                if(user!=null){
+//                    UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
+//                    System.out.println(quota.toString());
+//                    System.out.println(quota.getPresent().compareTo(BigDecimal.valueOf(500)));
+//
+//                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))==0){
+//                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+//                        return ret;
+//                    }
+//
+//                    //校验优惠券
+//                    if(userService.isHavePresentCoupon(user.getUid())){
+//                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+//                        return ret;
+//                    }
+//                }
+//                userService.updateUserPresentCoupon(user.getUid());
+//                //加一个成功分享
+//                String activityName = request.getParameter("activityName");
+//                if(StringUtils.isNotBlank(activityName)){
+//                    activityService.addResultCount(activityName);
+//                }
+//                return JsonUtil.toJson(0,"注册成功",null);
+//
+//            }else if(code == 1001){
+//                logger.error("Exception WeChatRegister Progress!",
+//                        (String) ResultMap.get("msg"));
+//                ret= JsonUtil.toJson(code,"密码格式错误",null);
+//            }else if(code == 1004){
+//                logger.error("Exception WeChatRegister Progress!",
+//                        (String) ResultMap.get("msg"));
+//                ret= JsonUtil.toJson(code,"手机号非法",null);
+//            }else if(code == 1104){
+//                logger.error("Exception WeChatRegister Progress!",
+//                        (String) ResultMap.get("msg"));
+//                User user = userService.queryUserByMobile(mobile);
+//                if(user!=null){
+//                    UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
+//                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))==0){
+//                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+//                        return ret;
+//                    }
+//                    //校验优惠券
+//                    if(userService.isHavePresentCoupon(user.getUid())){
+//                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
+//                        return ret;
+//                    }
+//                }
+//                userService.updateUserPresentCoupon(user.getUid());
+//                return JsonUtil.toJson(code,"此手机号已注册",null);
+//            }
+//            else {
+//                logger.error("Exception WeChatRegister Progress!",
+//                        (String) ResultMap.get("msg"));
+//                ret= JsonUtil.toJson(code,"注册失败",null);
+//            }
+//
+//            if(code == 0 || code == 1104){
+//                User user = userService.queryUserByMobile(mobile);
+//                userService.updateUserPresentCoupon(user.getUid());
+//            }
+//        } catch (Exception e) {
+//            logger.error("Exception WeChatRegister Progress!", e);
+//            ret = JsonUtil.toJson(7788, "系统错误,请稍后再试", null);
+//        }
+//        return ret;
+//    }
 
-        // 验证 手机验证码
-        CodeMsg cm = vcodeService.validate(mobile, vcode);
-        if (cm.getCode() != 0) {
-            ret = JsonUtil.toJson(3124,"验证码不对哦!",null);
-            return ret;
-        }
 
-        try {
-            String result = weChatService.registerWeChatUser(passwd, mobile,
-                    vcode);
-            Map<String, Object> ResultMap = JsonUtil.getMapFromJsonStr(result);
-            int code = Integer.parseInt(ResultMap.get("code").toString());
+//    /**
+//     * 礼品券号码兑换优惠券
+//     * @param request
+//     * @param response
+//     * @return
+//     */
+//    @RequestMapping("/present/code")
+//    @ResponseBody
+//    public String presentCode(HttpServletRequest request, HttpServletResponse response){
+//        String ret = "";
+//        try {
+//            Map<String,Object> params = JsonUtil.readMapFromReq(request);
+//
+//            if (!SignHelper.validateSign(params)) { // 签名验证失败
+//                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
+//            }
+//
+//            if(params.get("uid") == null || params.get("code") == null){
+//                logger.error("系统非法请求！ATTENTION_UNLAWFULL_ACCESS");
+//                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
+//                        null);
+//            }
+//
+//            long uid = Long.parseLong(params.get("uid").toString());
+//            String code = params.get("code").toString();
+//            logger.info("uid:{},code:{}",uid,code);
+//            ret = activityService.presentCode(uid,code);
+//
+//        } catch (Exception e) {
+//            logger.error(e.getMessage());
+//            e.printStackTrace();
+//            ret = JsonUtil.toJson(9999,"系统错误",null);
+//        }
+//        return ret;
+//    }
 
-            if (code == 0) {
-                logger.info("user {} login meifenqi fronted system.....");
-
-                User user = userService.queryUserByMobile(mobile);
-
-                if(user!=null){
-                    UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
-                    System.out.println(quota.toString());
-                    System.out.println(quota.getPresent().compareTo(BigDecimal.valueOf(500)));
-
-                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))==0){
-                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
-                        return ret;
-                    }
-
-                    //校验优惠券
-                    if(userService.isHavePresentCoupon(user.getUid())){
-                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
-                        return ret;
-                    }
-                }
-                userService.updateUserPresentCoupon(user.getUid());
-                //加一个成功分享
-                String activityName = request.getParameter("activityName");
-                if(StringUtils.isNotBlank(activityName)){
-                    activityService.addResultCount(activityName);
-                }
-                return JsonUtil.toJson(0,"注册成功",null);
-
-            }else if(code == 1001){
-                logger.error("Exception WeChatRegister Progress!",
-                        (String) ResultMap.get("msg"));
-                ret= JsonUtil.toJson(code,"密码格式错误",null);
-            }else if(code == 1004){
-                logger.error("Exception WeChatRegister Progress!",
-                        (String) ResultMap.get("msg"));
-                ret= JsonUtil.toJson(code,"手机号非法",null);
-            }else if(code == 1104){
-                logger.error("Exception WeChatRegister Progress!",
-                        (String) ResultMap.get("msg"));
-                User user = userService.queryUserByMobile(mobile);
-                if(user!=null){
-                    UserQuota quota = userQuotaService.queryUserQuota(user.getUid());
-                    if(quota.getPresent().compareTo(BigDecimal.valueOf(500))==0){
-                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
-                        return ret;
-                    }
-                    //校验优惠券
-                    if(userService.isHavePresentCoupon(user.getUid())){
-                        ret = JsonUtil.toJson(7788,"你已经领取过了哦~",null);
-                        return ret;
-                    }
-                }
-                userService.updateUserPresentCoupon(user.getUid());
-                return JsonUtil.toJson(code,"此手机号已注册",null);
-            }
-            else {
-                logger.error("Exception WeChatRegister Progress!",
-                        (String) ResultMap.get("msg"));
-                ret= JsonUtil.toJson(code,"注册失败",null);
-            }
-
-            if(code == 0 || code == 1104){
-                User user = userService.queryUserByMobile(mobile);
-                userService.updateUserPresentCoupon(user.getUid());
-            }
-        } catch (Exception e) {
-            logger.error("Exception WeChatRegister Progress!", e);
-            ret = JsonUtil.toJson(7788, "系统错误,请稍后再试", null);
-        }
-        return ret;
-    }
-
-
-    /**
-     * 礼品券号码兑换优惠券
-     * @param request
-     * @param response
-     * @return
-     */
-    @RequestMapping("/present/code")
-    @ResponseBody
-    public String presentCode(HttpServletRequest request, HttpServletResponse response){
-        String ret = "";
-        try {
-            Map<String,Object> params = JsonUtil.readMapFromReq(request);
-
-            if (!SignHelper.validateSign(params)) { // 签名验证失败
-                return JsonUtil.toJson(ErrorCodes.SIGN_VALIDATE_ERROR, "签名验证失败", null);
-            }
-
-            if(params.get("uid") == null || params.get("code") == null){
-                logger.error("系统非法请求！ATTENTION_UNLAWFULL_ACCESS");
-                return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
-                        null);
-            }
-
-            long uid = Long.parseLong(params.get("uid").toString());
-            String code = params.get("code").toString();
-            logger.info("uid:{},code:{}",uid,code);
-            ret = activityService.presentCode(uid,code);
-
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            e.printStackTrace();
-            ret = JsonUtil.toJson(9999,"系统错误",null);
-        }
-        return ret;
-    }
-
-    /**
-     * 姓名测试
-     * @param request
-     * @param response
-     * @return
-     */
-    @RequestMapping("/testname")
-    public ModelAndView nameTest(HttpServletRequest request,HttpServletResponse response){
-        Map<String, Object> model = new HashMap<String, Object>();
-        activityService.addOpenCount("testname");
-        return new ModelAndView("/activity/testname/nametest", model);
-    }
+//    /**
+//     * 姓名测试
+//     * @param request
+//     * @param response
+//     * @return
+//     */
+//    @RequestMapping("/testname")
+//    public ModelAndView nameTest(HttpServletRequest request,HttpServletResponse response){
+//        Map<String, Object> model = new HashMap<String, Object>();
+//        activityService.addOpenCount("testname");
+//        return new ModelAndView("/activity/testname/nametest", model);
+//    }
 
     @RequestMapping("/coupon")
     public ModelAndView coupon(){
@@ -510,12 +510,12 @@ public class ActivityController {
         return new ModelAndView("/activity/coupon/index", model);
     }
 
-    @RequestMapping("/baoming")
-    public ModelAndView baoming(){
-        Map<String, Object> model = new HashMap<String, Object>();
-        activityService.addShareCount("baoming");
-        return new ModelAndView("/activity/baoming/index", model);
-    }
+//    @RequestMapping("/baoming")
+//    public ModelAndView baoming(){
+//        Map<String, Object> model = new HashMap<String, Object>();
+//        activityService.addShareCount("baoming");
+//        return new ModelAndView("/activity/baoming/index", model);
+//    }
 
 
 
@@ -625,33 +625,35 @@ public class ActivityController {
     }
 
 
-    @RequestMapping(value = {"/yanzhiai","/yanzhiai/"})
-    public ModelAndView yanzhiai(){
-        Map<String, Object> model = new HashMap<String, Object>();
-        activityService.addOpenCount("颜值癌");
-        return new ModelAndView("/activity/baoming/yanzhiai", model);
-    }
 
-    @RequestMapping(value = {"/yanzhiai/baoming","/yanzhiai/baoming/"})
-    public @ResponseBody String yanzhiaiBaoming(HttpServletRequest request,HttpServletResponse response){
-        activityService.addResultCount("颜值癌");
-        String name = request.getParameter("name");
-        String mobile = request.getParameter("mobile");
-        String wechat = request.getParameter("wechat");
+//
+//    @RequestMapping(value = {"/yanzhiai","/yanzhiai/"})
+//    public ModelAndView yanzhiai(){
+//        Map<String, Object> model = new HashMap<String, Object>();
+//        activityService.addOpenCount("颜值癌");
+//        return new ModelAndView("/activity/baoming/yanzhiai", model);
+//    }
 
-        Baoming baoming = new Baoming();
-        baoming.setName(name);
-        baoming.setMobile(mobile);
-        baoming.setWechat(wechat);
-        baoming.setActivityName("颜值癌");
-        try{
-            return activityService.saveBaoming(baoming);
-        }catch(Exception e){
-            logger.error(e.toString());
-            return JsonUtil.toJson(9999,"报名出错",null);
-        }
-
-    }
+//    @RequestMapping(value = {"/yanzhiai/baoming","/yanzhiai/baoming/"})
+//    public @ResponseBody String yanzhiaiBaoming(HttpServletRequest request,HttpServletResponse response){
+//        activityService.addResultCount("颜值癌");
+//        String name = request.getParameter("name");
+//        String mobile = request.getParameter("mobile");
+//        String wechat = request.getParameter("wechat");
+//
+//        Baoming baoming = new Baoming();
+//        baoming.setName(name);
+//        baoming.setMobile(mobile);
+//        baoming.setWechat(wechat);
+//        baoming.setActivityName("颜值癌");
+//        try{
+//            return activityService.saveBaoming(baoming);
+//        }catch(Exception e){
+//            logger.error(e.toString());
+//            return JsonUtil.toJson(9999,"报名出错",null);
+//        }
+//
+//    }
 
 
 

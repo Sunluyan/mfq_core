@@ -60,7 +60,7 @@ public class OrderController {
 
     /**
      * 进入预定页面
-     * 
+     *
      * @param request
      * @param response
      * @return
@@ -96,7 +96,7 @@ public class OrderController {
 
     /**
      * 根据用户、订单ID获取可用余额（包含优惠券）
-     * 
+     *
      * @param request
      * @param response
      * @return
@@ -165,31 +165,39 @@ public class OrderController {
                 return JsonUtil.toJson(ErrorCodes.CORE_PARAM_UNLAWFUL, "参数非法",
                         null);
             }
-            
-            
-            BigDecimal onlinePay = new BigDecimal(0), balancePay = new BigDecimal(0), periodPay = new BigDecimal(0), hospitalPay = new BigDecimal(0);
-            
+
+
+            BigDecimal onlinePay = new BigDecimal(0),
+                    balancePay = new BigDecimal(0),
+                    periodPay = new BigDecimal(0),
+                    hospitalPay = new BigDecimal(0);
+
             int period = 0;
-            
+
             logger.info("下单类别:{}", payType);
-            
+
             String couponNum = null;
             //-------------------如果有优惠券的话,基本上什么都不用做,应该在支付的时候,考虑到优惠券的优惠,而不是在这里修改amount的值.
             if(params.get("coupon_num")!=null){
                 couponNum = params.get("coupon_num").toString();
-                Coupon coupon = couponService.findByCouponNum(params.get("coupon_num").toString());
-                List<Coupon> couponList = new ArrayList<>();
-                couponList.add(coupon);
-                CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
+                if(couponNum.equals("didi")){
 
-                if(CouponInfo2App.getMoney().compareTo(amount) >= 0){//如果优惠价格比总价还低
-                    ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
-                    return ret;
+                }else{
+                    Coupon coupon = couponService.findByCouponNum(params.get("coupon_num").toString());
+                    List<Coupon> couponList = new ArrayList<>();
+                    couponList.add(coupon);
+                    CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);//这里有可能出错,出错了的话很可能就是没有该优惠券
+
+                    if(CouponInfo2App.getMoney().compareTo(amount) > 0){
+                        ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "减免金额低于总价", null);
+                        return ret;
+                    }
+                    if(CouponInfo2App.getCondition().compareTo(amount) > 0){
+                        ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
+                        return ret;
+                    }
                 }
-                if(CouponInfo2App.getCondition().compareTo(amount) >= 0){//如果优惠价格比总价还低
-                    ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "不满足优惠条件", null);
-                    return ret;
-                }
+
             }
             //--------------------优惠券结束
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
@@ -201,12 +209,12 @@ public class OrderController {
 
             int policy = PolicyStatus.WITHOUT.getId();
             if(params.get("policy")!=null)policy = Integer.parseInt(params.get("policy").toString());
-            
+
             //创建订单
             OrderInfo2App order = orderService.createOrder(payType, uid, pid,
                     amount, onlinePay, hospitalPay, balancePay, period, periodPay,
                     couponNum, policy, operationT);
-            
+
             if (order != null) {
                 ret = JsonUtil.successResultJson(order);
                 logger.info("Order_Create_Ret is:{}", ret);
@@ -219,8 +227,8 @@ public class OrderController {
     }
 
 
-    
-    
+
+
     /**
      * 用于创建分期订单
      * 1、uid
@@ -276,13 +284,13 @@ public class OrderController {
                 amount = amount.subtract(couponInfo2App.getMoney());
             }
             // MARK  优惠券结束
-            
+
             int period = 0;
             logger.info("下单类别:{}", "分期付款");
             period = (Integer) params.get("period");//总共多少期
             UserQuota userQuota = userQuotaService.queryUserQuota(uid);
             BigDecimal quotaLeft = userQuota.getQuotaLeft();
-            
+
             BigDecimal periodPay;
 
             if(params.get("coupon_num")!=null){
@@ -294,7 +302,7 @@ public class OrderController {
             }else{
             	periodPay = amount;
             }
-            
+
 
             String operation_time = params.get("operation_time").toString();  // yyyy-MM-dd 预约就医时间
             if(operation_time.length()!=13){
@@ -302,21 +310,21 @@ public class OrderController {
             }
 
 
-            
+
             Date operationT = new Date(Long.parseLong(operation_time));
             int policy = PolicyStatus.WITHOUT.getId();
             if(params.get("policy")!=null){
-            	policy = Integer.parseInt(params.get("policy").toString());            	
+            	policy = Integer.parseInt(params.get("policy").toString());
             }
-            
+
             BigDecimal onlinePay = BigDecimal.valueOf(0);
             BigDecimal hospitalPay = BigDecimal.valueOf(0);
             BigDecimal balancePay = BigDecimal.valueOf(0);
-            
-            OrderInfo2App order = orderService.createOrder(PayType.FINANCING, uid, pid,amount, onlinePay, hospitalPay, 
+
+            OrderInfo2App order = orderService.createOrder(PayType.FINANCING, uid, pid,amount, onlinePay, hospitalPay,
             												balancePay, period, periodPay,couponNum, policy, operationT);
-            
-            
+
+
             if (order != null) {
             	//更新用户额度 现在的钱数 = 现在的额度 < 总价 ? 0 : 现在的额度 - 总价
             	BigDecimal quotaNow = (quotaLeft.subtract(amount).compareTo(BigDecimal.valueOf(0))<0) ?BigDecimal.valueOf(0):quotaLeft.subtract(amount);
@@ -326,20 +334,20 @@ public class OrderController {
             }
 
 
-            
+
         } catch (Exception e) {
             logger.error("Exception OrderCreate Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, e.getMessage(), null);
         }
     	return ret;
     }
-    
-    
-    
-    
+
+
+
+
     /**
      * 我的订单
-     * 
+     *
      * @param request
      * @param response
      * @return
@@ -368,7 +376,7 @@ public class OrderController {
             if(params.get("status") != null){
                 status = Integer.parseInt(params.get("status").toString());
             }
-            
+
             ret = orderService.queryOrdersByUid(uid, status);
         }catch (Exception e) {
             logger.error("Exception OrderList Process!", e);
@@ -378,10 +386,10 @@ public class OrderController {
         return ret;
     }
 
-    		
+
     /**
      * 订单详情
-     * 
+     *
      * @param request
      * @param response
      * @return
@@ -417,10 +425,10 @@ public class OrderController {
         }
         return ret;
     }
-    
+
     /**
      * 申请退款
-     * 
+     *
      * @param request
      * @param response
      * @return
@@ -446,7 +454,7 @@ public class OrderController {
             }
             Long uid = Long.parseLong(params.get("uid").toString());
             String orderNo = params.get("order_no").toString();
-            
+
             int type = 0;
             if(params.get("type") != null){
             	type = Integer.parseInt(params.get("type").toString());
@@ -522,7 +530,7 @@ public class OrderController {
 
     }
 
-    
+
     /**
      * 订单取消
      * @param request
@@ -558,7 +566,7 @@ public class OrderController {
         logger.info("Order_OrderCancel_Ret is:{}", ret);
         return ret;
     }
-    
+
     /**
      * 获取分期金额
      * 传入uid 和 amount 返回所有的
@@ -583,7 +591,7 @@ public class OrderController {
             Integer pid = Integer.parseInt(params.get("pid").toString());
 
             ret = JsonUtil.successResultJson(orderService.calculateFinancing(pid));
-            
+
         } catch (Exception e) {
             logger.error("Exception Financing Process!", e);
             ret = JsonUtil.toJson(ErrorCodes.CORE_ERROR, "系统异常", null);

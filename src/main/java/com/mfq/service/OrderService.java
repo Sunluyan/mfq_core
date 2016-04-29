@@ -10,11 +10,10 @@ import com.mfq.bean.*;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.constants.*;
 import com.mfq.dao.ProFqRecordMapper;
+import com.mfq.service.activity.DidiService;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +27,6 @@ import com.mfq.bean.user.User;
 import com.mfq.bean.user.UserQuota;
 import com.mfq.dao.OrderInfoMapper;
 import com.mfq.dao.area.CityMapper;
-import com.mfq.dataservice.context.UserIdHolder;
 import com.mfq.net.wukongbao.pojo.WkbConstants;
 import com.mfq.service.sms.SMSService;
 import com.mfq.service.user.UserQuotaService;
@@ -37,7 +35,6 @@ import com.mfq.utils.DateUtil;
 import com.mfq.utils.FQUtil;
 import com.mfq.utils.JsonUtil;
 import com.mfq.utils.ListSortUtil;
-import com.mfq.utils.SecurityCodeUtil;
 
 @Service
 public class OrderService {
@@ -67,6 +64,8 @@ public class OrderService {
     FinanceBillService financeBillService;
     @Resource
     ProFqRecordMapper proFqRecordMapper;
+    @Resource
+    DidiService didiService;
 
 
     static final int max = 100000, min = 10000;
@@ -109,7 +108,7 @@ public class OrderService {
         long ls = mapper.findByUidAndPayTypeAndPid(uid, PayType.FINANCING.getId(), pid);
         long lsr = mapper.findByUidAndPayTypeAndPid(uid, PayType.FULL.getId(), pid);
         logger.info("ls = {}, lsr ={}", ls, lsr);
-        if (ls > 1 || lsr >1) {
+        if (ls > 1 || lsr > 1) {
             throw new Exception("存在未支付订单。");
         }
 
@@ -143,8 +142,15 @@ public class OrderService {
                     toStatus = OrderStatus.PAY_OK;
                 }
             }
-
         }
+        //如果优惠券是didi
+        if (couponNum.equals("didi")) {
+            didiService.updateByMobile(user.getMobile(),(int)pid);
+            onlinePay = amount;
+            toStatus = OrderStatus.PAY_OK;
+        }
+        //didi完毕
+
         logger.info("t in orderService createOrder:{} , toStatus:{}", t, toStatus);
         //之前在创建分期订单的时候,把amount减少了优惠券的优惠金额(比如3000的amount,优惠券是满1000-500,刚才把amount减到了2500)
         //现在需要把amount改回来
@@ -166,7 +172,7 @@ public class OrderService {
             order.setPolicyStatus(PolicyStatus.WITHOUT);
         }
 
-        //购买保险 暂时封锁，待悟空保完成后解锁 by 刘志国
+        //购买保险 暂时封锁，待悟空保完成后解锁
         if (policy_status == 1) {
             boolean c = policyService.saveInsure(order, quota, user, p);
             if (c) {
@@ -178,14 +184,14 @@ public class OrderService {
         order.setSecurityCode("");
         long insertOrder = insertOrder(order);
 
-        if(insertOrder < 10){
-            logger.info("创建订单号为{}",insertOrder);
+        if (insertOrder < 10) {
+            logger.info("创建订单号为{}", insertOrder);
             order = mapper.findByOrderNo(orderNo);
         }
 
         String SecurityCode = createSecurityCode(order.getId());
 
-        long re = mapper.updateSecurityCode(orderNo,SecurityCode);
+        long re = mapper.updateSecurityCode(orderNo, SecurityCode);
 
         logger.info("创建订单的类型是:{},订单的详情为:{}", t.getName(), order.toString());
         if (insertOrder != 1) {
@@ -215,10 +221,9 @@ public class OrderService {
     }
 
 
-
-    private static String createSecurityCode(long orderId){
-        if(orderId < 10){
-            logger.info("创建订单号为{}",orderId);
+    private static String createSecurityCode(long orderId) {
+        if (orderId < 10) {
+            logger.info("创建订单号为{}", orderId);
             orderId = new Random().nextInt(9999);
         }
         StringBuilder code = new StringBuilder("m");
@@ -345,8 +350,6 @@ public class OrderService {
     }
 
 
-
-
     /**
      * 预订时返回的数据
      *
@@ -451,6 +454,25 @@ public class OrderService {
         fm.put("hospital_addr", city.getName());
         fm.put("amount", product.getPrice());
         List<CouponInfo2App> coupons = couponService.findValidCoupon(quota.getUid());
+
+        ///滴滴活动 如果有的话就假造一个优惠券
+        if (didiService.selectByMobile(user.getMobile(), (int) product.getId())) {
+            CouponInfo2App couponInfo2App = new CouponInfo2App();
+            couponInfo2App.setBatchId(666);
+            couponInfo2App.setBatch("didi");
+            couponInfo2App.setCondition(product.getPrice());
+            couponInfo2App.setCouponNum("didi");
+            couponInfo2App.setId(666);
+            couponInfo2App.setUpdatedAt(new Date());
+            couponInfo2App.setPeriodBeg(new Date("2015-01-01"));
+            couponInfo2App.setPeriodEnd(new Date("2017-01-01"));
+            couponInfo2App.setUid(user.getUid());
+            if(org.apache.commons.collections.CollectionUtils.isEmpty(coupons)){
+                coupons = new ArrayList<>();
+            }
+            coupons.add(couponInfo2App);
+        }
+        ///完成
         if (coupons != null && coupons.size() != 0) {
             fm.put("coupons", coupons);
         }
@@ -465,11 +487,11 @@ public class OrderService {
         } else if (PayType.FINANCING == type) { // 分期
             fm.put("quota_left", quota.getQuotaLeft());
             BigDecimal fqPrice = productService.selectFqPriceByPid(product.getId());
-            if(fqPrice!=null) fm.put("amount",fqPrice);
+            if (fqPrice != null) fm.put("amount", fqPrice);
 
-            BigDecimal fqAmount = quota.getQuotaLeft().compareTo((BigDecimal)fm.get("amount")) < 0?quota.getQuotaLeft():(BigDecimal)fm.get("amount");
+            BigDecimal fqAmount = quota.getQuotaLeft().compareTo((BigDecimal) fm.get("amount")) < 0 ? quota.getQuotaLeft() : (BigDecimal) fm.get("amount");
 
-            fm.put("fqs",caculationFqs(fqAmount));
+            fm.put("fqs", caculationFqs(fqAmount));
 
 
         } else {
@@ -481,17 +503,16 @@ public class OrderService {
     }
 
 
+    public Map<Long, BigDecimal> caculationFqs(BigDecimal price) {
+        Map<Long, BigDecimal> fq = new HashMap<>();
 
-    public Map<Long,BigDecimal> caculationFqs(BigDecimal price){
-        Map<Long,BigDecimal> fq = new HashMap<>();
+        BigDecimal three = price.divide(new BigDecimal(3), 2, BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal six = price.divide(new BigDecimal(6), 2, BigDecimal.ROUND_HALF_EVEN);
+        BigDecimal twenty = price.divide(new BigDecimal(12), 2, BigDecimal.ROUND_HALF_EVEN);
 
-        BigDecimal three = price.divide(new BigDecimal(3),2,BigDecimal.ROUND_HALF_EVEN);
-        BigDecimal six = price.divide(new BigDecimal(6),2,BigDecimal.ROUND_HALF_EVEN);
-        BigDecimal twenty = price.divide(new BigDecimal(12),2,BigDecimal.ROUND_HALF_EVEN);
-
-        fq.put(3l,three);
-        fq.put(6l,six);
-        fq.put(12l,twenty);
+        fq.put(3l, three);
+        fq.put(6l, six);
+        fq.put(12l, twenty);
         return fq;
     }
 
@@ -704,8 +725,8 @@ public class OrderService {
             }
         }
         BigDecimal quota = orderInfo.getPeriodPay();
-        long quotaResult = userQuotaService.updateUserQuota(uid,quota.negate());
-        if(quotaResult != 1){
+        long quotaResult = userQuotaService.updateUserQuota(uid, quota.negate());
+        if (quotaResult != 1) {
             return JsonUtil.toJson(ErrorCodes.FAIL, "返还额度失败", null);
         }
 
@@ -774,7 +795,7 @@ public class OrderService {
 //        OrderService service = ac.getBean(OrderService.class);
 //        service.calculateFinancing(223);
 
-       System.out.print(createSecurityCode(6666l));
+        System.out.print(createSecurityCode(6666l));
 
     }
 

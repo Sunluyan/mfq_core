@@ -581,7 +581,7 @@
         if(this.className.indexOf('message') == -1){
             //第二个
             $(".detail-wrap-left").css("left","-50%")
-            $(".detail-wrap-right").css("left","-50%")
+            $(".detail-wrap-right").css("left","0%")
 
             $(".detail-wrap-father").height($(".detail-wrap-right").height())
             $(".wrap").height($(".detail-tab").height()*2+$(".detail-wrap-father").height())
