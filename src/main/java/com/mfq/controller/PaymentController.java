@@ -81,7 +81,7 @@ public class PaymentController {
 	@LoginRequired
 	public String mobileGoPay(@PathVariable String tpp, HttpServletRequest request, HttpServletResponse response)
 	{
-
+		logger.info("enter mobile go pay"+tpp);
 		String ret = "";
 		long start = System.currentTimeMillis();
 		BasePaymentService service2 = PayFactory.getInstance(tpp);

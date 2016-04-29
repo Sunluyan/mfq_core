@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.google.common.collect.Lists;
+import com.mfq.bean.Product;
 import com.mfq.bean.Refund;
 import com.mfq.bean.app.CouponInfo2App;
 import com.mfq.bean.app.Refund2App;
@@ -157,7 +158,8 @@ public class OrderController {
             }
             Long uid = Long.parseLong(params.get("uid").toString());
             Long pid = Long.parseLong(params.get("pid").toString());
-            BigDecimal amount = new BigDecimal(params.get("amount").toString());
+            Product product = productService.findById(pid);
+            BigDecimal amount = product.getPrice();
 
             if (UserIdHolder.isLogin() && UserIdHolder.getLongUid() != uid
                     || pid == null) {

@@ -198,7 +198,7 @@ public class OrderService {
             throw new Exception("插入订单失败！请重试");
         }
         //优惠券标记为已使用
-        if (StringUtils.isNotBlank(couponNum)) {
+        if (StringUtils.isNotBlank(couponNum) && !couponNum.equals("didi")) {
             long l = couponService.updateCouponStatus(couponNum,
                     CouponStatus.USED);
             if (l != 1) {
@@ -463,9 +463,10 @@ public class OrderService {
             couponInfo2App.setCondition(product.getPrice());
             couponInfo2App.setCouponNum("didi");
             couponInfo2App.setId(666);
+            couponInfo2App.setMoney(product.getPrice());
             couponInfo2App.setUpdatedAt(new Date());
-            couponInfo2App.setPeriodBeg(new Date("2015-01-01"));
-            couponInfo2App.setPeriodEnd(new Date("2017-01-01"));
+            couponInfo2App.setPeriodBeg(DateUtil.convertShort("20150101"));
+            couponInfo2App.setPeriodEnd(DateUtil.convertShort("20170101"));
             couponInfo2App.setUid(user.getUid());
             if(org.apache.commons.collections.CollectionUtils.isEmpty(coupons)){
                 coupons = new ArrayList<>();
@@ -640,11 +641,20 @@ public class OrderService {
         OrderInfo2App bean = new OrderInfo2App(product, order, finance, hospital.getName(), order.getPolicyStatus());
         //减去优惠券的价格
         if (StringUtils.isNotBlank(bean.getCouponNum())) {
-            Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
-            List<Coupon> couponList = new ArrayList<>();
-            couponList.add(coupon);
-            CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
-            bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
+            if(bean.getCouponNum().equals("didi")){
+                if(order.getPolicyStatus() == PolicyStatus.WITHOUT){
+                    bean.setNeed_pay(BigDecimal.ZERO);
+                }else{
+                    bean.setNeed_pay(BigDecimal.valueOf(19));
+                }
+            }else{
+                Coupon coupon = couponService.findByCouponNum(bean.getCouponNum());
+                List<Coupon> couponList = new ArrayList<>();
+                couponList.add(coupon);
+                CouponInfo2App CouponInfo2App = couponService.convert2AppList(couponList).get(0);
+                bean.setNeed_pay(bean.getNeed_pay().subtract(CouponInfo2App.getMoney()));
+
+            }
         }
 
         System.out.println(bean.toString());
