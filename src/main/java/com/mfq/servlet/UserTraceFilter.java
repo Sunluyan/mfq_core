@@ -68,8 +68,7 @@ public class UserTraceFilter implements Filter {
             userTrace.info("UserTraceFilter  Token Expired  mm = " + mm);
         }
         if (user != null && user.getUid() > 0) {
-        	
-        	
+
         	String channelId = MobileHelper.getMobileChannelId(req);
         	userTrace.info("登录用户为, user Id = "+user.getUid()+" channelId = "+channelId);
         	UserIdHolder.updateChannelId(user.getUid(), channelId, mobileType);
