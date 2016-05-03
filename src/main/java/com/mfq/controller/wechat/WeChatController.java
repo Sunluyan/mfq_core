@@ -702,7 +702,7 @@ public class WeChatController {
                     System.currentTimeMillis() + Constants.Msm_SEND_DURATION);
             vcode = vcodeService.applyVcode(mobile, expireAt, resendAt);
 
-            String msg = vcode.getVcode() + ",30";
+            String msg = vcode.getVcode();
             System.out.println(msg);
             logger.info("msg_full_log: {}|{}|{}|{}", ip,
                     request.getHeader("Referer"), mobile, msg);

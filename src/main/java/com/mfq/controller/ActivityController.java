@@ -628,15 +628,16 @@ public class ActivityController {
     }
 
     @RequestMapping(value = {"/didi/{city}"})
-    public String didiBeijing(@PathVariable("city")String city, HttpServletRequest request, HttpServletResponse response){
+    public String didiBeijing(@PathVariable("city")String city, HttpServletRequest request, HttpServletResponse response,Model model){
         try{
             if(city.equals("beijing")){
-
+                model.addAttribute("city",1);
             }else if(city.equals("shanghai")){
-
+                model.addAttribute("city",2);
             }else if(city.equals("guangzhou")){
-
+                model.addAttribute("city",3);
             }
+
             return "activity/didi/index";
         }catch(Exception e){
             logger.error(e.toString());
@@ -645,18 +646,24 @@ public class ActivityController {
     }
 
     @RequestMapping(value = {"/didi/mark"})
-    public String addDidiMark(HttpServletRequest request,HttpServletResponse response){
+    public @ResponseBody String addDidiMark(HttpServletRequest request,HttpServletResponse response){
         try{
             String mobile = request.getParameter("mobile");
             //pid 按照 ',' 连接 , 如 : 213,421,1,2,4
             String pids = request.getParameter("pids");
+            String vcode = request.getParameter("vcode");
+            CodeMsg codeMsg = vcodeService.validate(mobile,vcode);
+            if(codeMsg.getCode() != 0){
+                return JsonUtil.toJson(codeMsg.getCode(),codeMsg.getMsg(),null);
+            }
             didiService.insertMobile(mobile,0,pids);
 
         }catch(Exception e){
             logger.error(e.getMessage());
+            return JsonUtil.toJson(9999,"系统错误",null);
         }
 
-        return "";
+        return JsonUtil.successResultJson();
     }
 
 
