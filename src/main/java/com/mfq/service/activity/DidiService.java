@@ -2,8 +2,11 @@ package com.mfq.service.activity;
 
 import com.mfq.bean.Didi;
 import com.mfq.bean.DidiExample;
+import com.mfq.bean.UsersDetailExample;
+import com.mfq.bean.user.User;
 import com.mfq.controller.ActivityController;
 import com.mfq.dao.DidiMapper;
+import com.mfq.service.user.UserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -24,7 +27,8 @@ public class DidiService {
 
     @Resource
     DidiMapper mapper;
-
+    @Resource
+    UserService userService;
     public void insertMobile(String mobile, long uid, String pids) throws Exception {
         String[] pidArray = pids.split(",");
         for (String s : pidArray) {
@@ -33,16 +37,20 @@ public class DidiService {
             }
             Didi didi = new Didi();
             didi.setCreatedAt(new Date());
+
+
             didi.setUid(uid);
             didi.setMobile(mobile);
             didi.setUpdatedAt(new Date());
             didi.setPid(Integer.parseInt(s));
+            didi.setStatus(0);
             int count = mapper.insertSelective(didi);
             if (count != 1) {
                 throw new RuntimeException("插入出错");
             }
         }
     }
+
 
     public boolean selectByMobile(String mobile, int pid) throws Exception {
         DidiExample example = new DidiExample();

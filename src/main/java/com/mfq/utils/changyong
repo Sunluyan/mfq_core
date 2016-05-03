@@ -3,18 +3,25 @@
 测试
 ssh root@112.126.81.8
 
+线上
 ssh work@123.59.51.4
+
+线下测试
+ssh work@123.59.51.3
 
 
 1、删除原有的
   rm -rf *
 
 3、上传新项目
+不用
 scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war root@112.126.81.8:/usr/mfq-dev/tomcat/webapps/ROOT
 MFQ-dev-20!6
 
-scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.4:~/tomcat/webapps/ROOT/
-scp /Users/liuzhiguo1/git/mfq_core/target/mfq-app.war work@123.59.51.3:~/tomcat/webapps/ROOT/
+正式
+scp F:\mfq2\mfq_core\target\mfq-app.war work@123.59.51.4:~/tomcat/webapps/ROOT/
+测试
+scp F:\mfq2\mfq_core\target\mfq-app.war work@123.59.51.3:~/tomcat/webapps/ROOT/
 mfq-yqds!!!
 
 

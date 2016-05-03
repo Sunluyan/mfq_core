@@ -313,7 +313,24 @@ public class TestController {
     
     //"amount":44443,"operation_time":1456416000000,"period":3,"pid":141,"policy":0,
     // "sign":"EE94F0356BFB4C7FD30CD0A9586862A7","uid":3156
+    public static void testOrderCreate(){
+        String url = purl+"/order/create";
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("amount", 44443);
+        params.put("operation_time", 1456416000000l);
+        params.put("period", 3);
+        params.put("pid", 141);
+        params.put("policy", 0);
+        params.put("uid", 3156);
+        params.put("uid", 3156);
 
+        String sign = SignHelper.makeSign(params);
+        params.put("sign", sign);
+        String body = JsonUtil.writeToJson(params);
+        String resp = HttpUtil.postJson(url, body, true);
+        System.out.println(resp);
+    }
+    
     public static void testOrderRefund(){
         String url = purl+"/order/refund";
         Map<String, Object> params = Maps.newHashMap();
@@ -846,26 +863,10 @@ public class TestController {
         System.out.println(resp);
     }
 
-    public static void testOrderCreate(){
-        String url = purl+"/order/create";
-        Map<String, Object> params = Maps.newHashMap();
-        params.put("operation_time", 1456416000000l);
-        params.put("pid", 315);
-        params.put("policy", 0);
-        params.put("uid", 3854);
-
-        String sign = SignHelper.makeSign(params);
-        params.put("sign", sign);
-        String body = JsonUtil.writeToJson(params);
-        String resp = HttpUtil.postJson(url, body, true);
-        System.out.println(resp);
-    }
 
 
-
-
-
-    //    private final static String purl="http://i.5imfq.com/";
+    
+//    private final static String purl="http://i.5imfq.com/";
 	//private final static String purl="http://t.5imfq.com/";
 //	private final static String purl="http://m.5imfq.com/";
 //	private final static String purl="http://localhost:8080/mfq-app";
@@ -879,7 +880,7 @@ public class TestController {
 //        testOnlineDetail();
 //        testDetailModify();
 //        testDetail();
-        testOrderCreate();
+        testPolicylList();
     }
     
     
