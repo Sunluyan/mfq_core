@@ -55,6 +55,7 @@ import com.mfq.utils.JsonUtil;
 @RequestMapping("/activity")
 public class ActivityController {
 
+
     private static final Logger logger = LoggerFactory
             .getLogger(ActivityController.class);
     
@@ -371,7 +372,7 @@ public class ActivityController {
 //        }
 //
 //        // 验证 手机验证码
-//        CodeMsg cm = vcodeService.validate(mobile, vcode);
+//       CodeMsg cm = vcodeService.validate(mobile, vcode);
 //        if (cm.getCode() != 0) {
 //            ret = JsonUtil.toJson(3124,"验证码不对哦!",null);
 //            return ret;
@@ -649,7 +650,9 @@ public class ActivityController {
         try{
             String mobile = request.getParameter("mobile");
             //pid 按照 ',' 连接 , 如 : 213,421,1,2,4
+
             String pids = request.getParameter("pids");
+
             didiService.insertMobile(mobile,0,pids);
 
         }catch(Exception e){
@@ -689,6 +692,15 @@ public class ActivityController {
 //        }
 //
 //    }
+   /* //活动
+        @RequestMapping(value = {"/index/","/index"})
+        public ModelAndView wuyi(HttpServletRequest request,
+                                  HttpServletResponse response) throws Exception {
+
+
+
+            return new ModelAndView("", null);
+        }*/
 
 
 

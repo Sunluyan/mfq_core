@@ -1,0 +1,115 @@
+html,body,ul,li,dl,dt,dd,ol,li,img,a,input,p,button,textarea{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+a{
+	text-decoration: none;
+}
+.mui-content{
+	height: 27.32rem;
+	background:url(../img/背景.png) no-repeat center;
+}
+.mui-content .top{
+	width: 100%;
+}
+.mui-content .top img{
+	width: 100%;
+	
+}
+.mui-content .middle{
+	height: auto;
+	margin-bottom: 0.4rem;
+}
+.mui-content .middle ul{
+	margin: 0rem 0.27rem;
+	
+}
+.mui-content .middle ul li{
+	margin: 0.4rem 0rem;
+}
+.mui-content .middle ul li img{
+	width: 100%;
+}
+.mui-content .information{
+	margin: 0rem 0.27rem;
+	border: none;
+	background: #fff;
+
+}
+.mui-content .information input{
+	width: 70%;
+	color: #646464;
+	border: none;
+	float: left;
+	height: 1.20rem;
+	font-family: "微软雅黑";
+	font-size: 0.36rem;
+	margin: 0;
+	padding: 0;
+	text-indent: 0.3rem;
+}
+.mui-content .information input:nth-child(1){
+	border-top-left-radius: 0.12rem;
+
+	
+}
+.mui-content .information input:nth-child(3){
+	clear: both;
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-radius: 0.12rem;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+.mui-content .information label{
+	background: #ddd;
+		width:30%;
+	display: block;
+	height: 1.20rem;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 0.36rem;
+	color: #646464;text-align: center;
+	line-height: 1.20rem;
+	border-top-right-radius: 0.12rem;
+}
+.mui-content .btn{
+	margin: 0rem 0.27rem;
+}
+.mui-content .btn button{
+	height: 1.2rem;
+	background: #ddd;
+	width: 100%;
+	border: none;
+	margin: 0.6rem 0rem;
+	color: #646464;
+	font-size: 0.4rem;
+	font-family: "微软雅黑";
+	border-radius: 0.14rem;
+}
+.mui-bar{
+	border: none;
+	border-color: #DA5689;
+	background-color: #DA5689;
+}
+.mui-bar-tab{
+	border-color: #DA5689;
+	border: none;
+}
+.mui-bar button{
+	width: 100%;
+	height: 100%;
+	height: 1.12rem;
+	border: none;
+	border-radius: 0;
+	background: #da5689;
+	color:#fff;
+	font-size: 0.4rem;
+	font-family: "微软雅黑";
+}
