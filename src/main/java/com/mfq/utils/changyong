@@ -42,7 +42,7 @@ tail -1000f mfq-app.log
 
 
 
-去正式数据库
+去正式数据库(测试Git上传功能)
 ssh work@123.59.81.222
 workdev123
 mysql -u root -p -h 10.10.117.231
