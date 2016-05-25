@@ -1,0 +1,184 @@
+html,body,ul,li,dl,dt,dd,ol,li,img,a,input,p,button,textarea{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+a{
+	text-decoration: none;
+}
+.mui-content{
+	height: 30.32rem;
+	height: 100%;
+	background:url(/images/activity/didi/背景.png) no-repeat center;
+}
+/*第一部分*/
+.mui-content .top{
+	width: 100%;
+	height: 11.18rem;
+}
+.mui-content .top img{
+	width: 100%;
+	
+}
+/*第二部分*/
+.mui-content .middle{
+	height: 15.27rem;
+	margin-bottom: 0.4rem;
+	position: relative;
+	border: none;
+}
+.mui-content .middle .down{
+	width: 100%;
+}
+.mui-content .middle ul{
+	width: 0.4rem;
+	background: red;
+	text-align: center;
+}
+/*获取验证码部分*/
+.mui-content .information{
+	width: 90%;
+	border: none;
+	background: #fff;
+	position: absolute;
+	top: 9.7rem;
+	margin: 0rem 5%;
+	border-radius: 0.12rem;
+	
+	
+
+}
+.mui-content .information input{
+	width: 70%;
+	color: #4D4D4D;
+	border: none;
+	float: left;
+	height: 1.20rem;
+	font-family: "微软雅黑";
+	font-size: 0.36rem;
+	margin: 0;
+	padding: 0;
+	text-indent: 0.3rem;
+}
+.mui-content .information input:nth-child(1){
+	border-top-left-radius: 0.12rem;
+	border-top-right-radius: 0.12rem;
+	
+
+	
+}
+.mui-content .information input:nth-child(3){
+	clear: both;
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-radius: 0.12rem;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+.mui-content .information label{
+	background: #ddd;
+	width:30%;
+	height: 1.20rem;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 0.36rem;
+	color: #4D4D4D;
+	text-align: center;
+	line-height: 1.20rem;
+	border-top-right-radius: 0.12rem;
+}
+/*领取部分*/
+.mui-content .btn{
+	
+	clear: both;
+	width: 90%;
+	position: absolute;
+	top: 12.2rem;
+	margin: 0rem 5%;
+}
+.mui-content .btn button{
+	height: 1.2rem;
+	background: url(/images/activity/didi/立即领取按钮.png) no-repeat center;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+	width: 100%;
+	border: none;
+	margin: 0.6rem 0rem;
+	color: #fff;
+	font-size: 0.4rem;
+	font-family: "微软雅黑";
+	border-radius: 0.14rem;
+}
+.mui-bar{
+	width: 100%;
+	height: 1.10rem;
+	border: none;
+	border-color: #dc2343;
+	margin: 0;
+	padding: 0;
+	
+}
+.mui-bar-tab{
+	width: 100%;
+	
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.mui-bar button{
+	width: 100%;
+	height: 100%;
+	
+	border: none;
+	border-radius: 0;
+	background: url(/images/activity/didi/下载app按钮.png) no-repeat center;
+	
+	color:#4D4D4D;
+	font-size: 0.4rem;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	
+}
+/*弹出层*/
+.mui-backdrop{
+	display: none;
+}
+/*选项层*/
+.mui-content .middle .cover{
+	width: 4.0rem;
+	height: 2.0rem;
+	background:url(/images/activity/didi/灰色按钮.png) no-repeat center right;
+	background-size:6% 10%;
+	position: absolute;
+	top: 3.0rem;
+	left: 1.8rem;
+}
+.mui-content .middle #cover1{
+	background: url(/images/activity/didi/灰色按钮.png) no-repeat 4% 30%;
+	background-size:8% 16%;
+}
+.mui-content .middle #cover2{
+	
+	position: absolute;
+	top: 5.2rem;
+	left: 1.8rem;
+	background: url(/images/activity/didi/灰色按钮.png) no-repeat 100% 70%;
+	background-size:8% 16%;
+}
+.mui-content .middle #cover3{
+	
+	position: absolute;
+	top: 7.4rem;
+	left: 1.8rem;
+	background: url(/images/activity/didi/灰色按钮.png) no-repeat 98% 24%;
+	background-size:8% 16%;
+	
+}
+

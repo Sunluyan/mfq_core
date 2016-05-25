@@ -17,29 +17,51 @@
 </head>
 <body>
 	<div class="mui-content">
+		<!--第一部分-->
 	    <div class="top">
-	    	<img src="img/123.png"/>
+	    	<img src="img/up.png"/>
 	    </div>
+	    <!--第二部分-->
 	    <div class="middle">
+	    	<!--选项按钮部分-->
+	    	<div class="cover" id="cover1">
+	    		<!--点击选中切换背景图-->
+	    	</div>
+	    	<div class="cover" id="cover2">
+	    		<!--点击选中切换背景图-->
+	    	</div>
+	    	<div class="cover" id="cover3">
+	    		<!--点击选中切换背景图-->
+	    	</div>
 	    	
-	    </div>
-	    <div class="information">
-	    	<form action="" method="post">
-	    		
-	    		<input type="text" id="phoneNumber" name="phoneNumber" value="手机号" /><label>获取验证码</label>
-	    		<input type="text" name="code" id="code" value="验证码" />
-	    	</form>
 	    	
 	    	
+	    	
+	    	
+	    	<img src="img/down.png" class="down"/>
+	    	<img src="img/down.png" class="down" style="display: none;"/>
+	    	<img src="img/down.png" class="down" style="display: none;"/>
+	    	<!--获取验证码部分-->
+	    	<div class="information">
+		    	<form action="" method="post">
+		    		<input type="text" id="phoneNumber" name="phoneNumber" value="手机号" /><label>获取验证码</label>
+		    		<input type="text" name="code" id="code" value="验证码" />
+		    	</form>
+	    	</div>
+	    	<div class="btn" id="btn">
+	    		<button>立即领取</button>
+	    	</div>
 	    </div>
-	    <div class="btn">
-	    	<button>立即领取</button>
-	    </div>
-	    
 	</div>
-	<nav class="mui-bar mui-bar-tab">
-	    <button>下载美分期APP</button>
-	    
+	<!--第三部分-->
+	<nav class="mui-bar mui-bar-tab" style="box-shadow: none;">
+	   
+	   <button>下载美分期APP</button>
+	  
 	</nav>
+	<div class="mui-backdrop" id="tips">
+		
+	</div>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

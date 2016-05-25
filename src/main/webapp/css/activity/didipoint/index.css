@@ -1,0 +1,29 @@
+html,body,ul,li,dl,dt,dd,ol,li,img,a,input,p,button,textarea{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+}
+img{
+	border: none;
+}
+a{
+	text-decoration: none;
+}
+/*兼容UC浏览器的方法*/
+html{
+	font-size: 50px;
+}
+.mui-content .box{
+	width: 100%;
+	text-align:center;
+}
+.mui-content .box a{
+	display: inline-block;
+	margin-top:0.1rem;
+	margin-bottom: 0.4rem;
+}
+.mui-content .box img{
+	width: 100%;
+}
