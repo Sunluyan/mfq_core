@@ -129,8 +129,11 @@ public class IndexController {
     @ResponseBody
     public String ad(HttpServletRequest request,HttpServletResponse response) {
 		String mobileType = MobileHelper.getMobileType(request);
+		/*if (mobileType==null ){
+			mobileType="ios";
+		}*/
 		logger.info("mobileType"+mobileType);
-    	String data = QiniuBucketEnum.IMG2.getDomain()+"/images/ad/"+mobileType.toLowerCase()+"/ad.png?_="+System.currentTimeMillis();
+    	String data = QiniuBucketEnum.IMG2.getDomain()+"/images/ad/"+mobileType.toLowerCase()+"/adm.png?_="+System.currentTimeMillis();
         return JsonUtil.toJson(0, "", data);
     }
     

@@ -135,6 +135,7 @@ public class OrderController {
      * @param request
      * @param response
      * @return
+     * 全款付
      */
     @RequestMapping(value = { "/create","/create/" }, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -244,6 +245,7 @@ public class OrderController {
      * @param response
      * @return
      * @author liuzhiguo1
+     * 分期付
      */
     @RequestMapping(value = { "/create/finance","/create/finance/" }, method = {RequestMethod.POST,RequestMethod.GET}, produces = "application/json;charset=utf-8")
     @ResponseBody

@@ -30,6 +30,7 @@ public class DidiService {
     @Resource
     UserService userService;
     public void insertMobile(String mobile, long uid, String pids) throws Exception {
+
         String[] pidArray = pids.split(",");
         for (String s : pidArray) {
             if(StringUtils.isBlank(s)){

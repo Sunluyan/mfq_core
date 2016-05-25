@@ -42,7 +42,7 @@ public class VcodeService {
         if (vcodeBean.getRetryTime() > LIMIT) {
             return new CodeMsg(ErrorCodes.USER_VCODE_TOOMUCH, "验证码验证次数过多");
         } else if (DateUtil.getDayBetweenD(new Date(), vcodeBean.getExpireAt()) < 0) {
-            return new CodeMsg(ErrorCodes.USER_VCODE_EXPIRED, "验证码过期");
+            return new CodeMsg(ErrorCodes.USER_VCODE_EXPIRED, "请输入验证码");
 
         } else if (!vcodeBean.getVcode().equals(vcode)) {
             mapper.updateRetryTime(key);

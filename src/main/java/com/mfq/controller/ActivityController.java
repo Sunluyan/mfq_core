@@ -96,6 +96,16 @@ public class ActivityController {
 
         return new ModelAndView("/activity/s/index", model);
     }
+    //didi活动引导页
+    @RequestMapping(value = {"/dindex/","/dindex"})
+    public ModelAndView didiindex(HttpServletRequest request,
+                              HttpServletResponse response) throws Exception {
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("title", "首页");
+
+        return new ModelAndView("/activity/didipoint/index", model);
+    }
     
     /**
      * 秒杀活动规则页面
@@ -513,6 +523,7 @@ public class ActivityController {
         return new ModelAndView("/activity/coupon/index", model);
     }
 
+
 //    @RequestMapping("/baoming")
 //    public ModelAndView baoming(){
 //        Map<String, Object> model = new HashMap<String, Object>();
@@ -627,6 +638,8 @@ public class ActivityController {
         }
     }
 
+
+
     @RequestMapping(value = {"/didi/{city}"})
     public String didiBeijing(@PathVariable("city")String city, HttpServletRequest request, HttpServletResponse response,Model model){
         try{
@@ -651,11 +664,13 @@ public class ActivityController {
             String mobile = request.getParameter("mobile");
             //pid 按照 ',' 连接 , 如 : 213,421,1,2,4
             String pids = request.getParameter("pids");
+
             String vcode = request.getParameter("vcode");
             CodeMsg codeMsg = vcodeService.validate(mobile,vcode);
             if(codeMsg.getCode() != 0){
                 return JsonUtil.toJson(codeMsg.getCode(),codeMsg.getMsg(),null);
             }
+
             didiService.insertMobile(mobile,0,pids);
 
         }catch(Exception e){
